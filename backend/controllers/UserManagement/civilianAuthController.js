@@ -5,8 +5,12 @@ const Civilian = require("../../models/UserManagement/civilian");
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
+// The `type` claim keeps this token out of the staff and supplier middleware —
+// all three identities share JWT_SECRET, so the shape alone is not enough.
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+  return jwt.sign({ id, type: "civilian" }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
 };
 
 // Civilian register

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 import {
   FiUser,
   FiMail,
@@ -42,7 +43,7 @@ function UpdateUser() {
         console.log("Fetching user with ID:", id);
         console.log("Token:", token);
 
-        const response = await axios.get(`http://localhost:5000/users/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/users/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         console.log("User fetched:", response.data.user);
@@ -65,7 +66,7 @@ function UpdateUser() {
   const sendRequest = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/users/${id}`,
+        `${API_BASE_URL}/users/${id}`,
         {
           name: String(inputs.name),
           gmail: String(inputs.gmail),
@@ -89,7 +90,7 @@ function UpdateUser() {
     if (passwordData.newPassword && passwordData.newPassword === passwordData.confirmPassword) {
       try {
         await axios.put(
-          `http://localhost:5000/users/${id}/password`,
+          `${API_BASE_URL}/users/${id}/password`,
           { password: passwordData.newPassword },
           { headers: { Authorization: `Bearer ${token}` } }
         );

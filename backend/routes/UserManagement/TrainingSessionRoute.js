@@ -108,7 +108,7 @@ router.get("/attendance/scan/:token", async (req, res) => {
       <body style="font-family: Arial; text-align:center; padding:50px;">
         <h1>✅ QR Scanned</h1>
         <p>Session ID: ${sessionId}</p>
-        <form method="POST" action="/api/sessions/attendance/mark">
+        <form method="POST" action="/sessions/attendance/mark">
           <input type="hidden" name="token" value="${token}" />
           <label>Staff ID: <input name="staffId" /></label><br/><br/>
           <label>Name: <input name="name" /></label><br/><br/>

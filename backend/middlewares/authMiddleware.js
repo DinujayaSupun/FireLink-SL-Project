@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/UserManagement/UserReg");
 const catchAsyncErrors = require("./catchAsyncErrors");
+const ErrorHandler = require("../utils/errorHandler");
 
 exports.protect = catchAsyncErrors(async (req, res, next) => {
 	let token;
@@ -19,6 +20,15 @@ exports.protect = catchAsyncErrors(async (req, res, next) => {
 	}
 
 	const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+	// Staff, suppliers and civilians are all signed with the same JWT_SECRET, so a
+	// valid signature alone proves nothing about which kind of account this is.
+	if (decoded.type !== "staff") {
+		return res
+			.status(401)
+			.json({ success: false, message: "Not authorized, staff token required" });
+	}
+
 	req.user = await User.findById(decoded.userId);
 	if (!req.user) {
 		res.status(404);
@@ -40,6 +50,13 @@ exports.auth = (req, res, next) => {
 	try {
 		// 3 Verify token
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+		// Same shared-secret problem as in protect() above: without this a civilian
+		// token would sail through and expose the staff endpoints.
+		if (decoded.type !== "staff") {
+			return res.status(401).json({ message: "Unauthorized" });
+		}
+
 		req.user = decoded; // attach decoded payload to request
 		next();
 	} catch (err) {

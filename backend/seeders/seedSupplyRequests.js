@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const path = require("path");
 const SupplyRequest = require("../models/SupplyRequest");
 const connectDatabase = require("../config/database");
 const generateUniqueId = require("../utils/generateUniqueId");
 
-dotenv.config({ path: "../config/config.env" });
+// Resolved from this file, not the working directory
+dotenv.config({ path: path.join(__dirname, "../config/config.env") });
 
 const sampleSupplyRequests = [
 	{

@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Sidebar from "../UserManagement/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 
 const FighterDashboard = () => {
   const [user, setUser] = useState(
@@ -24,7 +25,7 @@ const FighterDashboard = () => {
     setLoading(true);
     try {
       // Fetch shifts
-      const { data: scheduleData } = await axios.get("http://localhost:5000/shift-schedules");
+      const { data: scheduleData } = await axios.get(`${API_BASE_URL}/shift-schedules`);
       const ownSchedules = scheduleData.schedules.filter(s =>
         s.members.some(m => m._id === user._id)
       );
@@ -32,7 +33,7 @@ const FighterDashboard = () => {
 
       // Fetch training sessions
       try {
-        const { data: trainingData } = await axios.get(`http://localhost:5000/training-sessions`);
+        const { data: trainingData } = await axios.get(`${API_BASE_URL}/training-sessions`);
         // Filter sessions where the fighter is a member
         const ownSessions = trainingData.sessions.filter(t =>
           t.teamMembers.includes(user._id)
@@ -84,7 +85,7 @@ const FighterDashboard = () => {
 
   const submitShiftRequest = async () => {
     try {
-      await axios.post("http://localhost:5000/shift-change-requests", {
+      await axios.post(`${API_BASE_URL}/shift-change-requests`, {
         shiftId: shiftModal.shiftId,
         fighterId: user._id,
         note: shiftModal.note,
@@ -99,7 +100,7 @@ const FighterDashboard = () => {
 
   const submitTrainingRequest = async () => {
     try {
-      await axios.post("http://localhost:5000/training-requests", {
+      await axios.post(`${API_BASE_URL}/training-requests`, {
         fighterId: user._id,
         title: trainingModal.title,
         note: trainingModal.note,

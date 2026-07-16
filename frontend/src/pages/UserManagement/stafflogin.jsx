@@ -4,8 +4,9 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { useAuth } from "../../context/auth";
+import { API_BASE_URL } from "../../config/api";
 
-const URL = "http://localhost:5000/users/stafflogin";
+const URL = `${API_BASE_URL}/users/stafflogin`;
 
 function StaffLogin() {
 	const navigate = useNavigate();

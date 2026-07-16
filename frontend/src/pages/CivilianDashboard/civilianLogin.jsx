@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { GoogleLogin } from "@react-oauth/google";
 import { FaUserAlt, FaLock, FaEnvelope, FaPhoneAlt, FaUser } from "react-icons/fa";
+import { API_V1_URL } from "../../config/api";
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || "your-google-client-id";
 
@@ -77,7 +78,7 @@ const CivilianLogin = () => {
 
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/v1"}/civilian-auth/login`,
+        `${API_V1_URL}/civilian-auth/login`,
         formData,
         { withCredentials: true }
       );
@@ -142,7 +143,7 @@ const CivilianLogin = () => {
             try {
               setLoading(true);
               const res = await axios.post(
-                `${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/v1"}/civilian-auth/google-login`,
+                `${API_V1_URL}/civilian-auth/google-login`,
                 { credential: response.credential },
                 { withCredentials: true }
               );
@@ -198,7 +199,7 @@ const CivilianLogin = () => {
 
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/v1"}/civilian-auth/register`,
+        `${API_V1_URL}/civilian-auth/register`,
         signupData,
         { withCredentials: true }
       );
@@ -250,7 +251,7 @@ const CivilianLogin = () => {
       const payload = { credential: credentialResponse.credential, id_token: credentialResponse.credential };
       console.debug("Sending Google login payload:", payload);
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/v1"}/civilian-auth/google-login`,
+        `${API_V1_URL}/civilian-auth/google-login`,
         // send both common keys some backends expect
         payload,
         { withCredentials: true }

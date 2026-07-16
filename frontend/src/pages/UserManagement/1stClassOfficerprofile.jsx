@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 
 const OfficerProfile = ({ officerId }) => {
   const { id: paramId } = useParams();
@@ -25,7 +26,7 @@ const OfficerProfile = ({ officerId }) => {
         setLoading(true);
         const token = localStorage.getItem("token");
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        const response = await axios.get(`http://localhost:5000/users/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/users/${id}`, {
           headers,
           withCredentials: true,
         });
@@ -46,7 +47,7 @@ const [loadingRequests, setLoadingRequests] = useState(true);
 useEffect(() => {
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/shiftChange");
+      const res = await axios.get(`${API_BASE_URL}/api/shiftChange`);
       setShiftRequests(res.data.requests || []);
       setLoadingRequests(false);
     } catch (err) {
@@ -65,7 +66,7 @@ const [vehiclesLoading, setVehiclesLoading] = useState(true);
 useEffect(() => {
   const fetchReadyVehicles = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/shifts/ready"); // create this endpoint
+      const res = await axios.get(`${API_BASE_URL}/api/shifts/ready`); // create this endpoint
       setReadyVehicles(res.data.shifts || []);
       setVehiclesLoading(false);
     } catch (err) {

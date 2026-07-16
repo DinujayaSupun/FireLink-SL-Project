@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const MakeTrainingSession = ({ manager }) => {
   const [form, setForm] = useState({
@@ -24,7 +25,7 @@ const MakeTrainingSession = ({ manager }) => {
         createdBy: manager.staffId,
       };
 
-      const res = await axios.post("http://localhost:5000/sessions", payload);
+      const res = await axios.post(`${API_BASE_URL}/sessions`, payload);
       alert("Session Created ✅ ID: " + res.data.session._id);
       setForm({ title: "", description: "", date: "", venue: "", teamMembers: "" });
     } catch (err) {

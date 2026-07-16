@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_BASE_URL as API_ORIGIN } from "../config/api";
 
-const API_BASE_URL = 'http://localhost:5000/api/inventory-vehicle-items';
+const API_BASE_URL = `${API_ORIGIN}/api/inventory-vehicle-items`;
 
 // Assign an item to a vehicle
 export const assignItemToVehicle = async (vehicle_ID, item_ID, quantity) => {

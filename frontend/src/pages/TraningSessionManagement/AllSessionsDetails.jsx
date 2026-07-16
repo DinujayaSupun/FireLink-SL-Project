@@ -4,6 +4,7 @@ import axios from "axios";
 import QRCode from "react-qr-code";
 import { FiClock, FiMapPin, FiUsers, FiHash } from "react-icons/fi";
 import Sidebar from "../UserManagement/Sidebar";
+import { API_BASE_URL } from "../../config/api";
 
 const SessionsList = ({ userFromProps }) => {
   const [sessions, setSessions] = useState([]);
@@ -28,7 +29,7 @@ const SessionsList = ({ userFromProps }) => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/sessions");
+        const res = await axios.get(`${API_BASE_URL}/sessions`);
         setSessions(res.data.sessions || []);
       } catch (err) {
         console.error(err);
@@ -166,7 +167,7 @@ const SessionsList = ({ userFromProps }) => {
                         Scan with your phone to confirm attendance.
                       </p>
                       <QRCode
-                        value={`http://localhost:5000/attendance?sessionId=${activeQR}`}
+                        value={`${API_BASE_URL}/attendance?sessionId=${activeQR}`}
                       />
                     </div>
                   );

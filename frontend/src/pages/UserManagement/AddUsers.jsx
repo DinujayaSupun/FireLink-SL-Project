@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { FaUser, FaPhone, FaBirthdayCake, FaEnvelope, FaBriefcase, FaFlag, FaMapMarkerAlt, FaLock } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 import Sidebar from '../UserManagement/Sidebar'; // import sidebar
 
-const URL = "http://localhost:5000/users";
+const URL = `${API_BASE_URL}/users`;
 
 function AddFireStaff() {
   const navigate = useNavigate();
@@ -24,15 +25,17 @@ function AddFireStaff() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  // These strings are what get stored on the user and matched by the route guards
+  // in App.jsx and the backend. Keep them in sync with those guards.
   const positions = [
-  "chief officer",       // ✅ New
+  "chief officer",
   "1stclassofficer",
-  "financemanager",      // fixed typo: was "finanaceManager"
+  "finance_manager",
   "inventorymanager",
   "recordmanager",
   "preventionmanager",
   "trainingsessionmanager",
-  "suppliermanager",     // fixed typo: was "suplliermanager"
+  "supply_manager",
   "teamcaptain",
   "fighter",
 ];
@@ -78,13 +81,14 @@ function AddFireStaff() {
       else delete err.phone;
     }
 
-    // Password validation
+    // Password validation — the 8 character floor must match MIN_PASSWORD_LENGTH
+    // in the backend's UserController, or the form accepts passwords the API rejects.
     if (name === "password") {
       const passwordPattern =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{6,}$/;
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
       if (!passwordPattern.test(value))
         err.password =
-          "Password must be at least 6 characters and include uppercase, lowercase, number, and special character";
+          "Password must be at least 8 characters and include uppercase, lowercase, number, and special character";
       else delete err.password;
     }
 
@@ -127,7 +131,7 @@ function AddFireStaff() {
           address: "",
           password: "",
         });
-        navigate("/stafflogin");
+        navigate("/staff-login");
       } else alert("Error adding staff");
     } catch (err) {
       console.error(err);

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 import {
   FiArrowLeft,
   FiSave,
@@ -29,7 +30,7 @@ const UpdateSession = () => {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/sessions/${id}`);
+        const res = await axios.get(`${API_BASE_URL}/sessions/${id}`);
         const session = res.data.session;
         setInputs({
           title: session.title || "",
@@ -74,7 +75,7 @@ const UpdateSession = () => {
   e.preventDefault();
   setLoading(true);
   try {
-    await axios.put(`http://localhost:5000/sessions/${id}`, {
+    await axios.put(`${API_BASE_URL}/sessions/${id}`, {
       title: inputs.title,
       description: inputs.description,
       date: inputs.date,

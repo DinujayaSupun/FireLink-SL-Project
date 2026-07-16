@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 import Sidebar from "../UserManagement/Sidebar"; // ✅ add sidebar
 
 const StaffManagementTable = () => {
@@ -21,7 +22,7 @@ const StaffManagementTable = () => {
     const fetchStaffData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/users", {
+        const response = await axios.get(`${API_BASE_URL}/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -60,7 +61,7 @@ const StaffManagementTable = () => {
     if (!window.confirm("Are you sure you want to delete this staff member?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`, {
+      await axios.delete(`${API_BASE_URL}/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const updatedStaff = staff.filter((member) => member._id !== id);

@@ -89,7 +89,7 @@ const Sidebar = ({ user, onLogout }) => {
         );
         break;
 
-      case "suppliermanager":
+      case "supply_manager":
         links.push({ name: "Suppliers", path: "/suppliers", icon: <FaUsers /> });
         break;
 

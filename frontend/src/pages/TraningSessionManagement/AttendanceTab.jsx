@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import QRCodeGenerator from "./QRCodeGenerator";
 import { FiSend, FiList } from "react-icons/fi";
+import { API_BASE_URL } from "../../config/api";
 
 const AttendanceTab = ({ sessions }) => {
   const [attendanceData, setAttendanceData] = useState({});
@@ -8,7 +9,7 @@ const AttendanceTab = ({ sessions }) => {
 
   const fetchAttendance = async (sessionId) => {
     try {
-      const res = await fetch(`http://localhost:5000/sessions/attendance/${sessionId}`);
+      const res = await fetch(`${API_BASE_URL}/sessions/attendance/${sessionId}`);
       const data = await res.json();
       if (data.status === "ok") {
         setAttendanceData(prev => ({ ...prev, [sessionId]: data.attendance }));

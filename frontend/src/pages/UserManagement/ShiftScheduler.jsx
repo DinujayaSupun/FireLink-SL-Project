@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Sidebar from "../UserManagement/Sidebar"; // adjust path if needed
 import firelinkLogo from '../../assets/images/firelink-logo.png';
+import { API_BASE_URL } from "../../config/api";
 
 const ShiftScheduler = () => {
   const [schedules, setSchedules] = useState([]);
@@ -31,14 +32,14 @@ const ShiftScheduler = () => {
 
   const fetchSchedules = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/shift-schedules');
+      const res = await axios.get(`${API_BASE_URL}/shift-schedules`);
       setSchedules(res.data.schedules);
     } catch (err) { console.error(err); }
   };
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/shift-schedules/members/all');
+      const res = await axios.get(`${API_BASE_URL}/shift-schedules/members/all`);
       setMembers(res.data.users);
     } catch (err) { console.error(err); }
   };
@@ -193,10 +194,10 @@ const ShiftScheduler = () => {
 
     try {
       if (editingSchedule) {
-        await axios.put(`http://localhost:5000/shift-schedules/${editingSchedule._id}`, formData);
+        await axios.put(`${API_BASE_URL}/shift-schedules/${editingSchedule._id}`, formData);
         alert('Schedule updated successfully');
       } else {
-        await axios.post('http://localhost:5000/shift-schedules', {
+        await axios.post(`${API_BASE_URL}/shift-schedules`, {
           ...formData,
           createdBy: '64fa...'
         });
@@ -231,7 +232,7 @@ const ShiftScheduler = () => {
   const deleteSchedule = async (id) => {
     if (!window.confirm('Are you sure you want to delete this schedule?')) return;
     try {
-      await axios.delete(`http://localhost:5000/shift-schedules/${id}`);
+      await axios.delete(`${API_BASE_URL}/shift-schedules/${id}`);
       alert('Schedule deleted successfully');
       fetchSchedules();
     } catch (err) {
@@ -307,7 +308,7 @@ const ShiftScheduler = () => {
     }
 
     try {
-      const res = await axios.get("http://localhost:5000/shift-schedules/download", {
+      const res = await axios.get("${API_BASE_URL}/shift-schedules/download", {
         params: { startDate: downloadStartDate, endDate: downloadEndDate },
         responseType: "blob"
       });
@@ -328,7 +329,7 @@ const ShiftScheduler = () => {
   // Load all schedule data for report generation
   const loadAllScheduleData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/shift-schedules');
+      const res = await axios.get(`${API_BASE_URL}/shift-schedules`);
       return res.data.schedules || [];
     } catch (error) {
       console.error('Error loading schedule data for report:', error);

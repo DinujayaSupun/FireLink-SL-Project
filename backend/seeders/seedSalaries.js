@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const Salary = require("../models/Salary");
 const connectDatabase = require("../config/database");
 
-// Load environment variables
-dotenv.config({ path: "../config/config.env" });
+// Load environment variables — resolved from this file, not the working directory
+dotenv.config({ path: path.join(__dirname, "../config/config.env") });
 
 // ============================
 // User Data (From your list)
@@ -33,7 +33,7 @@ const users = [
 		_id: "68e74bb10dad4da914121fd5",
 		name: "vidura",
 		gmail: "vidura@gmail.com",
-		position: "suppliermanager",
+		position: "supply_manager",
 	},
 	{
 		_id: "68e74d920dad4da914121fdf",

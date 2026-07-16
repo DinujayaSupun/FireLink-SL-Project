@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FiArrowLeft, FiUser, FiCalendar, FiCheck } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 
 const AttendanceForm = () => {
   const [staffId, setStaffId] = useState("");
@@ -16,7 +17,7 @@ const AttendanceForm = () => {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/sessions");
+        const res = await axios.get(`${API_BASE_URL}/sessions`);
         if (res.data.sessions) setSessions(res.data.sessions);
       } catch (err) {
         console.error("Error fetching sessions:", err);
@@ -34,7 +35,7 @@ const AttendanceForm = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/attendance/mark", {
+      const res = await axios.post(`${API_BASE_URL}/attendance/mark`, {
         staffId,
         name,
         sessionId,

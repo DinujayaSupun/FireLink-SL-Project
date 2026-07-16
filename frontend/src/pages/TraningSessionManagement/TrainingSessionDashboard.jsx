@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
+import { API_BASE_URL } from "../../config/api";
 import "react-calendar/dist/Calendar.css";
 import { 
   FiHash, FiMail, FiShield, FiCheckCircle, 
@@ -55,7 +56,7 @@ const TrainingSessionDashboard = () => {
 
   const fetchSessions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/sessions");
+      const res = await fetch(`${API_BASE_URL}/sessions`);
       const data = await res.json();
       if (data.sessions) setSessions(data.sessions);
     } catch (err) {

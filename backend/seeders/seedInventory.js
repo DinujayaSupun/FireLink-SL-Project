@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const Inventory = require("./models/Inventory");
-require("dotenv").config();
+const path = require("path");
+const Inventory = require("../models/Inventory");
+require("dotenv").config({ path: path.join(__dirname, "../config/config.env") });
 
 // Sample inventory data for FireLink SL
 const sampleInventory = [
@@ -252,7 +253,7 @@ const sampleInventory = [
 const seedInventory = async () => {
 	try {
 		// Connect to MongoDB
-		await mongoose.connect(process.env.MONGO_URI);
+		await mongoose.connect(process.env.DB_URI);
 		console.log("Connected to MongoDB");
 
 		// Clear existing inventory data

@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const UserDetails = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem("token"); // JWT token
-        const response = await axios.get(`http://localhost:5000/users/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/users/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

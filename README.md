@@ -1,224 +1,237 @@
-# Fire Handling System
+# FireLink-SL — Fire & Rescue Management System
 
-A comprehensive fire department management system with role-based access control, inventory management, staff management, and more.
+A fire department management system built for the Colombo Municipal Council fire service.
+Covers staff and shift management, training with QR attendance, inventory and vehicles,
+supplier procurement, finance, mission records, and public fire-safety permit applications.
 
-## 🚀 Features
+Stack: **MongoDB · Express · React · Node** (MERN).
 
-- **Authentication & Authorization**: JWT-based authentication with role-based access control
-- **User Management**: Complete user registration, login, and role management
-- **Staff Management**: Fire department staff records and information
-- **Inventory Management**: Equipment and supply tracking
-- **Finance Management**: Budget and expense tracking
-- **Records Management**: Incident and attendance records
-- **Prevention Management**: Fire prevention and training programs
-- **Dashboard**: Real-time system overview and analytics
-
-## 🏗️ Project Structure
+## Project structure
 
 ```
-fire_handling_System/
-├── backend/
-│   ├── server/
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── controllers/
-│   │   │   └── authControllers.js
-│   │   ├── middlewares/
-│   │   │   ├── authMiddleware.js
-│   │   │   └── roleMiddleware.js
-│   │   ├── models/
-│   │   │   ├── User.js
-│   │   │   ├── Role.js
-│   │   │   ├── Staff.js
-│   │   │   ├── Inventory.js
-│   │   │   └── ... (other models)
-│   │   ├── routes/
-│   │   │   └── authRoutes.js
-│   │   ├── app.js
-│   │   ├── server.js
-│   │   └── package.json
-│   └── seed.js
-└── FrontEnd/
-    └── client/
-        ├── src/
-        │   ├── components/
-        │   ├── pages/
-        │   ├── services/
-        │   ├── utils/
-        │   └── App.jsx
-        └── package.json
+FireLink-SL-Project/
+├── backend/                  Express + Mongoose REST API (port 5000)
+│   ├── config/
+│   │   ├── config.env        Your local config — gitignored, create from config.sample.env
+│   │   ├── config.sample.env Template
+│   │   └── database.js
+│   ├── controllers/
+│   ├── middlewares/          auth, roles, error handling, validation
+│   ├── models/
+│   ├── routes/
+│   ├── seeders/              Database seed + migration scripts
+│   ├── services/
+│   ├── validators/
+│   ├── app.js                Express app + route mounting
+│   └── server.js             Entry point
+├── frontend/                 React 18 + Vite + Tailwind (port 5173)
+│   ├── src/
+│   │   ├── api/              Inventory API clients
+│   │   ├── components/
+│   │   ├── config/api.js     Backend URL — import from here, never hardcode a host
+│   │   ├── context/          Auth context + the global axios token interceptor
+│   │   ├── pages/
+│   │   └── services/
+│   ├── .env                  Your local config — gitignored
+│   └── .env.example          Template
+└── package.json              Runs both apps via concurrently
 ```
 
-## 🛠️ Setup Instructions
+## Prerequisites
 
-### Prerequisites
+- Node.js 18+
+- MongoDB 6+ running locally (or a connection string to one)
 
-- Node.js (v16 or higher)
-- MongoDB (v4.4 or higher)
-- npm or yarn
+## Setup
 
-### Backend Setup
-
-1. **Navigate to backend directory:**
-
-   ```bash
-   cd backend/server
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Create environment file:**
-   Create a `.env` file in the `backend/server` directory with the following variables:
-
-   ```env
-   NODE_ENV=development
-   PORT=5000
-   MONGO_URI=mongodb://localhost:27017/fire_handling_system
-   JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-   JWT_REFRESH_SECRET=your-super-secret-refresh-jwt-key-change-this-in-production
-   ACCESS_TOKEN_EXP=15m
-   REFRESH_TOKEN_EXP=7d
-   FRONTEND_URL=http://localhost:5173
-   BCRYPT_SALT_ROUNDS=12
-   ```
-
-4. **Start MongoDB:**
-   Make sure MongoDB is running on your system.
-
-5. **Seed the database:**
-
-   ```bash
-   npm run seed
-   ```
-
-6. **Start the server:**
-   ```bash
-   npm run dev
-   ```
-
-### Frontend Setup
-
-1. **Navigate to frontend directory:**
-
-   ```bash
-   cd FrontEnd/client
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Create environment file:**
-   Create a `.env` file in the `FrontEnd/client` directory:
-
-   ```env
-   VITE_API_BASE_URL=http://localhost:5000
-   ```
-
-4. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-
-## 🔐 User Roles
-
-The system supports the following roles with different access levels:
-
-1. **CFO (Chief Fire Officer)** - Full system access
-2. **1st Class Officer** - Operational management access
-3. **Finance Manager** - Financial management access
-4. **Record Manager** - Records and documentation access
-5. **Inventory Manager** - Equipment and supply management
-6. **Training Session Manager** - Training program management
-7. **Prevention Manager** - Fire prevention programs
-8. **Fighter** - Basic access level
-
-## 🚨 Default Users
-
-After running the seed script, the following default users will be created:
-
-- **CFO**: cfo@firedept.com / password123
-- **Finance Manager**: finance@firedept.com / password123
-- **Record Manager**: records@firedept.com / password123
-
-## 📝 API Endpoints
-
-### Authentication
-
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - User login
-- `POST /api/auth/refresh` - Refresh access token
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/me` - Get current user info
-- `GET /api/auth/roles` - Get available roles
-
-### Health Check
-
-- `GET /api/health` - API health status
-
-## 🔧 Development
-
-### Running in Development Mode
+**1. Install dependencies** — from the repo root:
 
 ```bash
-# Backend
-cd backend/server
-npm run dev
+npm install
+npm run deps
+```
 
-# Frontend
-cd FrontEnd/client
+> `npm run deps` passes `--legacy-peer-deps`. This is required: `react-qr-reader@3.0.0-beta-1`
+> declares a peer range that predates React 18. A plain `npm install` will fail with ERESOLVE.
+
+**2. Configure the backend.** Copy `backend/config/config.sample.env` to
+`backend/config/config.env` and fill it in:
+
+```env
+NODE_ENV=development
+PORT=5000
+DB_URI=mongodb://localhost:27017/itp_database
+JWT_SECRET=<a long random string>
+JWT_REFRESH_SECRET=<a different long random string>
+ACCESS_TOKEN_EXP=15m
+REFRESH_TOKEN_EXP=7d
+COOKIE_EXPIRE=7
+FRONTEND_URL=http://localhost:5173
+```
+
+Generate secrets with:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+```
+
+Google OAuth (civilian sign-in) is optional — leave the placeholder values and that one
+button stays inert; everything else works.
+
+**3. Configure the frontend.** Copy `frontend/.env.example` to `frontend/.env`:
+
+```env
+VITE_API_URL=http://localhost:5000
+VITE_API_BASE_URL=http://localhost:5000/api/v1
+VITE_GOOGLE_CLIENT_ID=your-google-client-id-here.apps.googleusercontent.com
+```
+
+**4. Seed the database:**
+
+```bash
+npm run seed
+```
+
+This creates one staff account per position plus sample suppliers, inventory, vehicles and
+expenses. **Seeding users is required** — `POST /users` is restricted to an authenticated
+chief officer, so the first one has to come from the seeder.
+
+**5. Run it:**
+
+```bash
 npm run dev
 ```
 
-### Building for Production
+Backend on http://localhost:5000, frontend on http://localhost:5173.
+
+## Signing in
+
+**Staff sign in with a generated Staff ID, not an email address.** `npm run seed:users`
+prints the full table of IDs when it runs. They look like `INV53183` — the prefix comes from
+the position, so it differs on every seed.
+
+Default seeded password: `password123` (override with `SEED_PASSWORD`).
+
+There are three separate login portals:
+
+| Portal | Path | Credential |
+|---|---|---|
+| Fire staff | `/staff-login` | Staff ID + password |
+| Civilians | `/civilian-login` | Email + password, or Google |
+| Suppliers | `/supplier-login` | Email + password |
+
+## Positions
+
+`position` is the role field on a user. These exact strings are what route guards match, so
+keep them in sync between `frontend/src/pages/UserManagement/AddUsers.jsx`, the
+`ProtectedRoute` guards in `App.jsx`, and `authorizePositions(...)` on the backend:
+
+| Position | Access |
+|---|---|
+| `chief officer` | Full access; the only role that can create staff or delete inventory |
+| `1stclassofficer` | Operational management; can create staff |
+| `finance_manager` | Budgets, expenses, employee payments |
+| `supply_manager` | Suppliers, supply requests, procurement reports |
+| `inventorymanager` | Inventory, vehicles, reorders |
+| `recordmanager` | Mission records |
+| `preventionmanager` | Fire prevention and certificates |
+| `trainingsessionmanager` | Training sessions and attendance |
+| `teamcaptain` | Team management |
+| `fighter` | Basic access |
+
+Comparison is normalised (lowercased, non-alphanumerics stripped), so `chief officer` and
+`chiefofficer` match. It is **not** fuzzy — `supply_manager` and `suppliermanager` are
+different roles as far as the guards are concerned.
+
+## API
+
+Mounted in `backend/app.js`:
+
+| Prefix | Purpose |
+|---|---|
+| `/users` | Staff CRUD and `/users/stafflogin` |
+| `/sessions`, `/attendance` | Training sessions and attendance |
+| `/shift-schedules`, `/api/shifts`, `/api/shiftChange` | Shift scheduling |
+| `/api/inventory` | Inventory items, dashboard stats, reports |
+| `/api/inventory-vehicles`, `/api/inventory-reorders`, `/api/inventory-logs` | Inventory sub-resources |
+| `/api/v1/supplier`, `/api/v1/supply-requests`, `/api/v1/supply-reports` | Procurement |
+| `/api/v1/finance`, `/api/v1/salaries` | Finance |
+| `/api/v1/missions` | Mission records |
+| `/api/prevention/certificates`, `/api/prevention-officer` | Fire prevention |
+| `/api/v1/civilian-auth` | Civilian login/registration |
+
+Protected routes expect `Authorization: Bearer <token>`. On the frontend this is attached
+automatically by the axios interceptor in `src/context/auth.jsx` — you do not need to set it
+per request.
+
+## Tests
 
 ```bash
-# Frontend
-cd FrontEnd/client
-npm run build
+npm run seed:all        # from backend/ — the suite signs in as the seeded accounts
+npm run backend:dev     # in another terminal
+npm run test:api        # from backend/
 ```
 
-## 🐛 Troubleshooting
+`backend/tests/api-smoke.js` drives the real API against the real database — integration
+tests, not unit tests, and deliberately dependency-free so no test framework is imposed on
+the project. It covers auth, staff CRUD and role enforcement, inventory (including the
+quantity arithmetic), the QR attendance round trip, finance totals reconciled against the
+database, and cross-identity token isolation. It cleans up everything it creates and exits
+non-zero on failure.
 
-### Common Issues
+Several checks exist specifically as regression guards for bugs that were live in this
+codebase — the password hash leaking into login responses, phone numbers losing their leading
+zero, forged QR tokens, and civilian tokens reaching staff endpoints. Please don't delete
+them; each one has failed for real.
 
-1. **MongoDB Connection Error**
+## Seeding
 
-   - Ensure MongoDB is running
-   - Check the MONGO_URI in your .env file
+Run individually from `backend/` if you don't want the full set:
 
-2. **Port Already in Use**
+| Script | Seeds |
+|---|---|
+| `npm run seed:users` | One staff account per position (prints the Staff IDs) |
+| `npm run seed:suppliers` | Suppliers |
+| `npm run seed:inventory` | Inventory items |
+| `npm run seed:inventory-vehicles` | Inventory vehicles |
+| `npm run seed:vehicle-items` | Vehicle ↔ item assignments (needs the two above) |
+| `npm run seed:reorders` | Reorder requests (needs inventory) |
+| `npm run seed:vehicles` | Fleet vehicles |
+| `npm run seed:exp` | Expenses |
+| `npm run migrate:phone` | One-off: repairs phone numbers stored before `phone` became a String |
 
-   - Change the PORT in your .env file
-   - Kill processes using the default port
+`npm run seed:all` runs them in dependency order.
 
-3. **JWT Token Errors**
+## Conventions worth knowing
 
-   - Ensure JWT_SECRET and JWT_REFRESH_SECRET are set
-   - Check token expiration settings
+- **Never hardcode `http://localhost:5000`.** Import `API_BASE_URL` from `src/config/api.js`.
+- **Filename casing matters.** `middlewares/roleMiddleware.js` and `models/SupplyRequest.js`
+  are capitalised exactly as their imports expect. Windows and macOS won't notice a mismatch;
+  Linux and Docker will fail to boot.
+- **Phone numbers are Strings**, not Numbers — a Number silently eats the leading zero from
+  Sri Lankan numbers (`0771234567`).
+- **Passwords must be 8+ characters.** Enforced in `UserController` and mirrored in the
+  Add Staff form; change both together.
 
-4. **CORS Errors**
-   - Verify FRONTEND_URL in backend .env file
-   - Check that frontend is running on the correct port
+## Troubleshooting
 
-## 📄 License
+**`npm install` fails with ERESOLVE** — use `npm run deps`, or add `--legacy-peer-deps`.
 
-This project is licensed under the MIT License.
+**`MODULE_NOT_FOUND` on Linux/Docker but fine on Windows** — an import's casing doesn't match
+the real filename. Windows is case-insensitive and hides it.
 
-## 🤝 Contributing
+**MongoDB connection error** — check `DB_URI` in `backend/config/config.env` and that MongoDB
+is actually running. `PORT` and `DB_URI` are both required; the server exits without them.
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+**Port already in use** — change `PORT` in `config.env` (backend) or `server.port` in
+`vite.config.js` (frontend). Update `FRONTEND_URL` to match, or CORS will reject the browser.
 
-## 📞 Support
+**401 on every API call** — you're not sending a token. Sign in at `/staff-login`; the
+interceptor handles the rest.
 
-For support and questions, please contact the development team.
+**403 "Access denied for position: X"** — that position isn't in the route's allowed list.
+Check the `authorizePositions(...)` call on the route against the Positions table above.
+
+## License
+
+MIT

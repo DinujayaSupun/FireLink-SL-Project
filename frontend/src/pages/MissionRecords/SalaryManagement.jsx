@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./SalaryManagement.css";
 import { salaryService } from "../../services/salaryService";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const initialForm = {
 	employeeName: "",
@@ -109,7 +110,7 @@ const SalaryManagement = () => {
 			try {
 				setError("");
 				const token = localStorage.getItem("token");
-				const res = await axios.get("http://localhost:5000/users", {
+				const res = await axios.get(`${API_BASE_URL}/users`, {
 					headers: token ? { Authorization: `Bearer ${token}` } : {},
 					withCredentials: true,
 				});

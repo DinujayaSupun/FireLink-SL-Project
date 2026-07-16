@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import { FiLock, FiSave, FiTrash2 } from "react-icons/fi";
+import { API_BASE_URL } from "../../config/api";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const Settings = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:5000/users/${user._id}`,
+        `${API_BASE_URL}/users/${user._id}`,
         {
           name: inputs.name,
           age: inputs.age,
@@ -87,7 +88,7 @@ const Settings = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/users/${user._id}/password`,
+        `${API_BASE_URL}/users/${user._id}/password`,
         { password: passwordData.newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -106,7 +107,7 @@ const Settings = () => {
       )
     ) {
       try {
-        await axios.delete(`http://localhost:5000/users/${user._id}`, {
+        await axios.delete(`${API_BASE_URL}/users/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Account deleted successfully!");

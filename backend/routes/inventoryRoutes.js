@@ -15,25 +15,26 @@ const {
 } = require("../controllers/inventoryController");
 
 // Import middleware
-// TODO: Auth - Uncomment when auth is implemented
-// const authModule = require("../middlewares/authMiddleware");
-// const protect = authModule.protect || authModule;
-const protect = (req, res, next) => next(); // Temporary bypass for development
+const { protect } = require("../middlewares/authMiddleware");
+const { authorizePositions } = require("../middlewares/roleMiddleware");
 
-let roleModule = {};
-try {
-	roleModule = require("../middlewares/roleMiddleware");
-} catch (err) {
-	console.warn("roleMiddleware not found, applying no-op role/permission guards");
-}
-
-const requirePermission = roleModule.requirePermission || (() => (req, res, next) => next());
-const requireAnyPermission = roleModule.requireAnyPermission || (() => (req, res, next) => next());
-const requireMinimumLevel = roleModule.requireMinimumLevel || (() => (req, res, next) => next());
-const requireRole = roleModule.requireRole || (() => (req, res, next) => next());
-const requireAnyRole = roleModule.requireAnyRole || (() => (req, res, next) => next());
-const permissions = roleModule.permissions || {};
-const levels = roleModule.levels || {};
+// Position groups behind each endpoint, per the @access notes below. Spelling
+// follows the Add Staff form (frontend AddUsers.jsx); authorizePositions
+// normalises spacing/underscores, so "chief officer" also matches "chiefofficer".
+// Note there is no "admin" position in this system — the Chief Fire Officer is
+// the top-level role.
+const CHIEF = "chief officer";
+const CAN_VIEW_INVENTORY = [
+	"inventorymanager",
+	CHIEF,
+	"1stclassofficer",
+	"recordmanager",
+	"supply_manager",
+];
+const CAN_EDIT_INVENTORY = ["inventorymanager", CHIEF];
+const CAN_VIEW_REPORTS = ["inventorymanager", "financemanager", CHIEF];
+const CAN_USE_MISSION_ITEMS = ["recordmanager", "inventorymanager", CHIEF];
+const CAN_DELETE_INVENTORY = [CHIEF];
 
 // Import validation
 const { validateInventoryItem } = require("../validators/inventoryValidator");
@@ -46,11 +47,7 @@ const { validateInventoryItem } = require("../validators/inventoryValidator");
 router.post(
 	"/",
 	protect,						//8.verify JWT token
-	requireAnyPermission([			//9.Check user permissions
-		"inventory_management",
-		"procurement_requests",
-		"all_access",
-	]),
+	authorizePositions(CAN_EDIT_INVENTORY),	//9.Check user position
 	validateInventoryItem,		//10.validate input data
 	createItem			        //11.execute controller function to create item	--> LOOK inventoryController.js
 );
@@ -61,24 +58,19 @@ router.post(
 router.get(
 	"/",
 	protect,	//verify JWT token
-	requireAnyPermission([	//Check user permissions
-		"equipment_tracking",
-		"supply_management",
-		"inventory_management",
-		"all_access",
-	]),
+	authorizePositions(CAN_VIEW_INVENTORY),	//Check user position
 	getItems //execute controller function to get items --> LOOK inventoryController.js
 );
 
 // @route   GET /api/inventory/check-id/:itemId
 // @desc    Check if item ID exists
-// @access  Public (will be Private when auth is enabled)
-router.get("/check-id/:itemId", checkItemIdExists);
-
-// @route   GET /api/inventory/check-id/:itemId
-// @desc    Check if item ID exists
-// @access  Public (will be Private when auth is enabled)
-router.get('/check-id/:itemId', checkItemIdExists);
+// @access  Private - Anyone with inventory access
+router.get(
+	"/check-id/:itemId",
+	protect,
+	authorizePositions(CAN_VIEW_INVENTORY),
+	checkItemIdExists
+);
 
 // @route   GET /api/inventory/reports
 // @desc    Generate inventory reports
@@ -86,12 +78,7 @@ router.get('/check-id/:itemId', checkItemIdExists);
 router.get(
 	"/reports",
 	protect,
-	requireAnyPermission([
-		"inventory_management",
-		"financial_reports",
-		"report_generation",
-		"all_access",
-	]),
+	authorizePositions(CAN_VIEW_REPORTS),
 	generateReport
 );
 
@@ -102,11 +89,7 @@ router.get(
 router.get(
 	"/items-for-missions",
 	protect,
-	requireAnyPermission([
-		"mission_records",
-		"inventory_management",
-		"all_access",
-	]),
+	authorizePositions(CAN_USE_MISSION_ITEMS),
 	getItemsForMissions
 );
 
@@ -116,11 +99,7 @@ router.get(
 router.get(
 	"/by-item-id/:itemId",
 	protect,
-	requireAnyPermission([
-		"mission_records",
-		"inventory_management",
-		"all_access",
-	]),
+	authorizePositions(CAN_USE_MISSION_ITEMS),
 	getItemByItemId
 );
 
@@ -130,12 +109,7 @@ router.get(
 router.get(//update 6: route processes GET request
 	"/:id",
 	protect,
-	requireAnyPermission([
-		"equipment_tracking",
-		"supply_management",
-		"inventory_management",
-		"all_access",
-	]),
+	authorizePositions(CAN_VIEW_INVENTORY),
 	getItemById // update 7: Calls inventoryController.js getItemById function which fetches item data from database
 );
 
@@ -144,20 +118,21 @@ router.get(//update 6: route processes GET request
 // @access  Private - Inventory Manager, Admin
 router.put(
 	"/:id",						//update 15: route processes PUT request to update item by ID
-	protect,			//verify JWT token	
-	requireAnyPermission([					//Check user permissions
-		"inventory_management",
-		"equipment_tracking",
-		"all_access",
-	]),
+	protect,			//verify JWT token
+	authorizePositions(CAN_EDIT_INVENTORY),	//Check user position
 	validateInventoryItem,		//validate input data
 	updateItem		        //execute controller function to update item --> LOOK inventoryController.js
 );
 
 // @route   DELETE /api/inventory/:id
 // @desc    Delete inventory item
-// @access  Private - Admin only
-router.delete("/:id", protect, requireRole("admin"), deleteItem);
+// @access  Private - Chief Officer only
+router.delete(
+	"/:id",
+	protect,
+	authorizePositions(CAN_DELETE_INVENTORY),
+	deleteItem
+);
 
 // @route   POST /api/inventory/:id/add-quantity
 // @desc    Add quantity to inventory item (Quick Adjust)
@@ -165,11 +140,7 @@ router.delete("/:id", protect, requireRole("admin"), deleteItem);
 router.post(
 	"/:id/add-quantity",
 	protect,
-	requireAnyPermission([
-		"inventory_management",
-		"equipment_tracking",
-		"all_access",
-	]),
+	authorizePositions(CAN_EDIT_INVENTORY),
 	addItemQuantity
 );
 
@@ -179,11 +150,7 @@ router.post(
 router.post(
 	"/:id/remove-quantity",
 	protect,
-	requireAnyPermission([
-		"inventory_management",
-		"equipment_tracking",
-		"all_access",
-	]),
+	authorizePositions(CAN_EDIT_INVENTORY),
 	removeItemQuantity
 );
 

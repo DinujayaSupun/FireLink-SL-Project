@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBriefcase, FaIdCard, FaEdit, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const InventoryManagerProfile = () => {
   const navigate = useNavigate();
@@ -117,7 +118,7 @@ const InventoryManagerProfile = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/users/${user._id}`,
+        `${API_BASE_URL}/users/${user._id}`,
         {
           name: formData.name,
           gmail: formData.gmail,
@@ -160,7 +161,7 @@ const InventoryManagerProfile = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/users/${user._id}/password`,
+        `${API_BASE_URL}/users/${user._id}/password`,
         { password: passwordData.newPassword },
         {
           headers: { Authorization: `Bearer ${token}` },

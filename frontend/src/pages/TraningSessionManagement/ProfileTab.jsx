@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { FiList, FiMapPin, FiHash, FiMail, FiShield, FiCheckCircle } from "react-icons/fi";
+import { API_BASE_URL } from "../../config/api";
 
 // ----------- Profile Section -----------
 const ProfileTab = ({ user }) => {
@@ -52,7 +53,7 @@ const TrainingSessionDashboard = () => {
 
   const fetchSessions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/sessions");
+      const res = await fetch(`${API_BASE_URL}/sessions`);
       const data = await res.json();
       if (data.sessions) setSessions(data.sessions);
     } catch (err) {
