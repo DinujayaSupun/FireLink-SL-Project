@@ -693,7 +693,7 @@ const MissionRecords = () => {
 													<li><strong>${item.itemCode}</strong> (Avail: ${item.quantity}, Used: ${item.usedQuantity})</li>
 												`).join('')}
 											</ul>
-										` : '<span style="color: #9CA3AF;">No items</span>'}
+										` : '<span style="color: var(--color-gray-400);">No items</span>'}
 									</td>
 									<td>
 										<span class="status-badge status-${mission.status.toLowerCase()}">

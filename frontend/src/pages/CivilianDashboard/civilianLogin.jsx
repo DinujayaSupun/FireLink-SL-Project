@@ -298,9 +298,9 @@ const CivilianLogin = () => {
 
   // ---------------------- JSX ----------------------
   return (
-    <div className="min-h-screen bg-[#1E2A38] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-navy flex items-center justify-center p-6">
       <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md">
-        <h2 className="text-4xl font-bold text-[#C62828] mb-2 text-center">
+        <h2 className="text-4xl font-bold text-fire mb-2 text-center">
           Civilian Portal
         </h2>
         <p className="text-center text-gray-500 mb-6">
@@ -325,7 +325,7 @@ const CivilianLogin = () => {
                     signupData.firstName && !validateName(signupData.firstName)
                       ? "border-red-500"
                       : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition`}
+                  } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
                 />
               </div>
@@ -341,7 +341,7 @@ const CivilianLogin = () => {
                     signupData.lastName && !validateName(signupData.lastName)
                       ? "border-red-500"
                       : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition`}
+                  } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
                 />
               </div>
@@ -357,7 +357,7 @@ const CivilianLogin = () => {
                     signupData.username && !validateUsername(signupData.username)
                       ? "border-red-500"
                       : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition`}
+                  } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
                 />
               </div>
@@ -373,7 +373,7 @@ const CivilianLogin = () => {
                     signupData.phoneNumber && !validatePhone(signupData.phoneNumber)
                       ? "border-red-500"
                       : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition`}
+                  } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
                 />
               </div>
@@ -382,7 +382,7 @@ const CivilianLogin = () => {
                 placeholder="Address"
                 value={signupData.address}
                 onChange={handleChange}
-                className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition"
+                className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber transition"
                 disabled={loading}
               />
               <div className="relative">
@@ -397,7 +397,7 @@ const CivilianLogin = () => {
                     signupData.password && !validatePassword(signupData.password)
                       ? "border-red-500"
                       : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition`}
+                  } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
                 />
               </div>
@@ -414,7 +414,7 @@ const CivilianLogin = () => {
                     signupData.confirmPassword !== signupData.password
                       ? "border-red-500"
                       : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition`}
+                  } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
                 />
               </div>
@@ -435,7 +435,7 @@ const CivilianLogin = () => {
                 !validateEmail(isSignup ? signupData.email : formData.email)
                   ? "border-red-500"
                   : "border-gray-300"
-              } focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition`}
+              } focus:outline-none focus:ring-2 focus:ring-amber transition`}
               disabled={loading}
             />
           </div>
@@ -449,7 +449,7 @@ const CivilianLogin = () => {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber transition"
                 disabled={loading}
               />
             </div>
@@ -461,10 +461,10 @@ const CivilianLogin = () => {
             className={`w-full p-3 font-semibold rounded-xl shadow-lg transition ${
               isSignup
                 ? isSignupFormValid()
-                  ? "bg-[#FF9800] text-white hover:shadow-xl"
+                  ? "bg-amber text-white hover:shadow-xl"
                   : "bg-gray-400 text-gray-200 cursor-not-allowed"
                 : isLoginFormValid()
-                ? "bg-[#FF9800] text-white hover:shadow-xl"
+                ? "bg-amber text-white hover:shadow-xl"
                 : "bg-gray-400 text-gray-200 cursor-not-allowed"
             }`}
           >
@@ -498,14 +498,14 @@ const CivilianLogin = () => {
           {isSignup ? (
             <p>
               Already have an account?{" "}
-              <button type="button" onClick={() => setIsSignup(false)} className="text-[#C62828] underline">
+              <button type="button" onClick={() => setIsSignup(false)} className="text-fire underline">
                 Login
               </button>
             </p>
           ) : (
             <p>
               Don't have an account?{" "}
-              <button type="button" onClick={() => setIsSignup(true)} className="text-[#C62828] underline">
+              <button type="button" onClick={() => setIsSignup(true)} className="text-fire underline">
                 Sign Up
               </button>
             </p>

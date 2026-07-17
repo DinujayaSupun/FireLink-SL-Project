@@ -1,11 +1,11 @@
 import React from 'react';
 import { ClockIcon, TruckIcon } from 'lucide-react';
 export function AboutUs() {
-  return <div className="min-h-screen bg-[#1E2A38] py-12 px-4 sm:px-6 lg:px-8">
+  return <div className="min-h-screen bg-navy py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-[#C62828] py-8 px-6 text-center">
+          <div className="bg-fire py-8 px-6 text-center">
             <h1 className="text-4xl font-bold text-white">About FireLink SL</h1>
             <p className="text-white/90 mt-2 text-lg">
               The History of the Colombo Fire Brigade
@@ -15,11 +15,11 @@ export function AboutUs() {
           <div className="p-6 md:p-10">
             {/* Introduction */}
             <div className="flex flex-col md:flex-row items-start gap-6 mb-12">
-              <div className="bg-[#FF9800]/10 rounded-2xl p-4 flex items-center justify-center md:w-1/4">
-                <div className="w-20 h-20 text-[#FF9800]" />
+              <div className="bg-amber/10 rounded-2xl p-4 flex items-center justify-center md:w-1/4">
+                <div className="w-20 h-20 text-amber" />
               </div>
               <div className="md:w-3/4">
-                <h2 className="text-2xl font-bold text-[#C62828] mb-4">
+                <h2 className="text-2xl font-bold text-fire mb-4">
                   Our Origins
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
@@ -38,13 +38,13 @@ export function AboutUs() {
               <div className="timeline-item">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-1/4">
-                    <div className="bg-[#1E2A38]/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-                      <ClockIcon className="w-12 h-12 text-[#1E2A38]" />
+                    <div className="bg-navy/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+                      <ClockIcon className="w-12 h-12 text-navy" />
                       <span className="mt-2 font-bold">1905-1913</span>
                     </div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="text-xl font-bold text-[#C62828]">
+                    <h3 className="text-xl font-bold text-fire">
                       Early Development
                     </h3>
                     <p className="text-gray-700 mt-3 leading-relaxed">
@@ -65,13 +65,13 @@ export function AboutUs() {
               <div className="timeline-item">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-1/4">
-                    <div className="bg-[#1E2A38]/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-                      <TruckIcon className="w-12 h-12 text-[#1E2A38]" />
+                    <div className="bg-navy/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+                      <TruckIcon className="w-12 h-12 text-navy" />
                       <span className="mt-2 font-bold">1913-1931</span>
                     </div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="text-xl font-bold text-[#C62828]">
+                    <h3 className="text-xl font-bold text-fire">
                       Mechanization Era
                     </h3>
                     <p className="text-gray-700 mt-3 leading-relaxed">
@@ -93,13 +93,13 @@ export function AboutUs() {
               <div className="timeline-item">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-1/4">
-                    <div className="bg-[#1E2A38]/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-                      <div className="w-12 h-12 text-[#1E2A38]" />
+                    <div className="bg-navy/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+                      <div className="w-12 h-12 text-navy" />
                       <span className="mt-2 font-bold">1931-1946</span>
                     </div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="text-xl font-bold text-[#C62828]">
+                    <h3 className="text-xl font-bold text-fire">
                       Local Leadership
                     </h3>
                     <p className="text-gray-700 mt-3 leading-relaxed">
@@ -121,13 +121,13 @@ export function AboutUs() {
               <div className="timeline-item">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-1/4">
-                    <div className="bg-[#1E2A38]/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-                      <div className="w-12 h-12 text-[#1E2A38]" />
+                    <div className="bg-navy/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+                      <div className="w-12 h-12 text-navy" />
                       <span className="mt-2 font-bold">1946-1969</span>
                     </div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="text-xl font-bold text-[#C62828]">
+                    <h3 className="text-xl font-bold text-fire">
                       Modern Developments
                     </h3>
                     <p className="text-gray-700 mt-3 leading-relaxed">
@@ -151,13 +151,13 @@ export function AboutUs() {
               <div className="timeline-item">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-1/4">
-                    <div className="bg-[#1E2A38]/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-                      <TruckIcon className="w-12 h-12 text-[#1E2A38]" />
+                    <div className="bg-navy/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+                      <TruckIcon className="w-12 h-12 text-navy" />
                       <span className="mt-2 font-bold">1969-1977</span>
                     </div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="text-xl font-bold text-[#C62828]">
+                    <h3 className="text-xl font-bold text-fire">
                       Expansion & Modernization
                     </h3>
                     <p className="text-gray-700 mt-3 leading-relaxed">
@@ -180,13 +180,13 @@ export function AboutUs() {
               <div className="timeline-item">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-1/4">
-                    <div className="bg-[#1E2A38]/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-                      <div className="w-12 h-12 text-[#1E2A38]" />
+                    <div className="bg-navy/10 rounded-2xl p-4 flex flex-col items-center justify-center">
+                      <div className="w-12 h-12 text-navy" />
                       <span className="mt-2 font-bold">1977-Present</span>
                     </div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="text-xl font-bold text-[#C62828]">
+                    <h3 className="text-xl font-bold text-fire">
                       Recent History
                     </h3>
                     <p className="text-gray-700 mt-3 leading-relaxed">
@@ -202,13 +202,13 @@ export function AboutUs() {
               </div>
             </div>
             {/* Footer Quote */}
-            <div className="mt-16 text-center p-6 bg-[#FF9800]/10 rounded-2xl">
+            <div className="mt-16 text-center p-6 bg-amber/10 rounded-2xl">
               <p className="italic text-lg text-gray-700">
                 "From water pots to modern fire engines, the Colombo Fire
                 Brigade has evolved over more than a century, always dedicated
                 to protecting the lives and property of our citizens."
               </p>
-              <div className="mt-4 font-semibold text-[#C62828]">
+              <div className="mt-4 font-semibold text-fire">
                 FireLink SL
               </div>
             </div>

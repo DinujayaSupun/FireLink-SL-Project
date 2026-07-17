@@ -1,5 +1,49 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+ * Design tokens.
+ *
+ * Tailwind v4 reads its theme from here, NOT from tailwind.config.js — a JS
+ * config is only picked up via an explicit @config directive. The old config
+ * defined a black/red/yellow palette that consequently never rendered.
+ *
+ * Each token below generates the matching utilities (bg-navy, text-fire,
+ * ring-amber, border-navy-light, ...) and a CSS variable of the same name, so
+ * inline styles can use var(--color-fire).
+ *
+ * Chart.js and other canvas code cannot resolve var(), so the same values are
+ * mirrored in src/config/theme.js. Change both together.
+ * ------------------------------------------------------------------------- */
+/* `static` opts these variables out of Tailwind v4's tree-shaking. They must be
+ * emitted unconditionally because inline styles reference them as
+ * var(--color-navy) — a usage Tailwind cannot detect by scanning class names. */
+@theme static {
+  /* Brand — navy. Sidebars, headers, dark surfaces. */
+  --color-navy: #1e2a38;
+  --color-navy-light: #2c3e50;
+  --color-navy-dark: #141d27;
+
+  /* Brand — fire red. Primary actions, alerts, brand marks.
+     Previously three different reds (#c62828, #dc2626, #ef4444) all served this
+     role; they are unified here. */
+  --color-fire: #c62828;
+  --color-fire-dark: #b71c1c;
+  --color-fire-light: #ef5350;
+  --color-fire-50: #fef2f2;
+  --color-fire-100: #fee2e2;
+
+  /* Brand — amber. Accents, focus rings, warnings. */
+  --color-amber: #ff9800;
+  --color-amber-dark: #f57c00;
+  --color-amber-light: #ffb74d;
+
+  /* Semantic */
+  --color-success: #10b981;
+  --color-success-dark: #059669;
+  --color-info: #3b82f6;
+  --color-info-dark: #2563eb;
+}
+
 /* Custom styles for Fire Department Home Page */
 .text-stroke {
   -webkit-text-stroke: 2px #fff;
@@ -28,7 +72,7 @@
 
 /* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(45deg, #ef4444, #f97316, #eab308);
+  background: linear-gradient(45deg, var(--color-fire), #f97316, #eab308);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -36,7 +80,7 @@
 
 /* Custom button hover effects */
 .btn-fire {
-  background: linear-gradient(45deg, #dc2626, #ea580c);
+  background: linear-gradient(45deg, var(--color-fire), #ea580c);
   transition: all 0.3s ease;
 }
 

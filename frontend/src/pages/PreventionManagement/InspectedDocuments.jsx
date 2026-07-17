@@ -93,13 +93,13 @@ const InspectedDocuments = () => {
   const containerStyle = {
     flex: 1,
     padding: '20px',
-    backgroundColor: '#354759',
+    backgroundColor: 'var(--color-gray-700)',
     minHeight: '100vh',
     fontFamily: 'Public Sans, system-ui, -apple-system, sans-serif',
   };
 
   const cardStyle = {
-    backgroundColor: '#CED6DF',
+    backgroundColor: 'var(--color-gray-300)',
     borderRadius: '12px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
@@ -108,28 +108,28 @@ const InspectedDocuments = () => {
 
   const headerStyle = {
     padding: '20px 24px 16px',
-    borderBottom: '1px solid #e5e7eb',
-    backgroundColor: '#CED6DF',
+    borderBottom: '1px solid var(--color-gray-200)',
+    backgroundColor: 'var(--color-gray-300)',
   };
 
   const titleStyle = {
     fontSize: '20px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     margin: 0,
   };
 
   const searchContainerStyle = {
     padding: '16px 24px',
-    borderBottom: '1px solid #e5e7eb',
-    backgroundColor: '#CED6DF',
+    borderBottom: '1px solid var(--color-gray-200)',
+    backgroundColor: 'var(--color-gray-300)',
   };
 
   const searchInputStyle = {
     width: '100%',
     maxWidth: '400px',
     padding: '8px 12px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '6px',
     fontSize: '14px',
     outline: 'none',
@@ -149,13 +149,13 @@ const InspectedDocuments = () => {
   };
 
   const thStyle = {
-    backgroundColor: '#f9fafb',
+    backgroundColor: 'var(--color-gray-50)',
     padding: '12px 16px',
     textAlign: 'left',
     fontSize: '14px',
     fontWeight: '600',
-    color: '#374151',
-    borderBottom: '1px solid #e5e7eb',
+    color: 'var(--color-gray-700)',
+    borderBottom: '1px solid var(--color-gray-200)',
     position: 'sticky',
     top: 0,
     zIndex: 10,
@@ -164,15 +164,15 @@ const InspectedDocuments = () => {
   const tdStyle = {
     padding: '12px 16px',
     fontSize: '14px',
-    color: '#374151',
-    borderBottom: '1px solid #f3f4f6',
+    color: 'var(--color-gray-700)',
+    borderBottom: '1px solid var(--color-gray-100)',
     backgroundColor: 'white',
   };
 
   const noDataStyle = {
     textAlign: 'center',
     padding: '40px 20px',
-    color: '#6b7280',
+    color: 'var(--color-gray-500)',
     fontSize: '16px',
     fontWeight: '500',
   };
@@ -180,7 +180,7 @@ const InspectedDocuments = () => {
   const loadingStyle = {
     textAlign: 'center',
     padding: '40px 20px',
-    color: '#6b7280',
+    color: 'var(--color-gray-500)',
     fontSize: '16px',
   };
 
@@ -189,7 +189,7 @@ const InspectedDocuments = () => {
     borderRadius: '12px',
     fontSize: '12px',
     fontWeight: '500',
-    backgroundColor: '#10b981',
+    backgroundColor: 'var(--color-success)',
     color: 'white',
   };
 
@@ -219,7 +219,7 @@ const InspectedDocuments = () => {
   };
 
   const modalHeaderStyle = {
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     paddingBottom: '16px',
     marginBottom: '20px',
     display: 'flex',
@@ -230,7 +230,7 @@ const InspectedDocuments = () => {
   const modalTitleStyle = {
     fontSize: '20px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     margin: 0,
   };
 
@@ -239,7 +239,7 @@ const InspectedDocuments = () => {
     border: 'none',
     fontSize: '24px',
     cursor: 'pointer',
-    color: '#6b7280',
+    color: 'var(--color-gray-500)',
     padding: '0',
   };
 
@@ -258,17 +258,17 @@ const InspectedDocuments = () => {
     display: 'block',
     fontSize: '14px',
     fontWeight: '600',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
     marginBottom: '4px',
   };
 
   const valueStyle = {
     fontSize: '14px',
-    color: '#6b7280',
-    backgroundColor: '#f9fafb',
+    color: 'var(--color-gray-500)',
+    backgroundColor: 'var(--color-gray-50)',
     padding: '8px 12px',
     borderRadius: '6px',
-    border: '1px solid #e5e7eb',
+    border: '1px solid var(--color-gray-200)',
   };
 
   const notesStyle = {
@@ -279,8 +279,8 @@ const InspectedDocuments = () => {
     padding: '6px 12px',
     fontSize: '12px',
     borderRadius: '4px',
-    border: '1px solid #dc2626',
-    backgroundColor: '#dc2626',
+    border: '1px solid var(--color-fire)',
+    backgroundColor: 'var(--color-fire)',
     color: 'white',
     cursor: 'pointer',
     fontWeight: '500',
@@ -379,9 +379,9 @@ const InspectedDocuments = () => {
                             padding: '6px 12px',
                             fontSize: '12px',
                             borderRadius: '4px',
-                            border: '1px solid #d1d5db',
-                            backgroundColor: '#f9fafb',
-                            color: '#374151',
+                            border: '1px solid var(--color-gray-300)',
+                            backgroundColor: 'var(--color-gray-50)',
+                            color: 'var(--color-gray-700)',
                             cursor: 'pointer',
                             fontWeight: '500',
                           }}

@@ -147,14 +147,14 @@ function AddFireStaff() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#1E2A38]">
+    <div className="flex min-h-screen bg-navy">
       {/* Sidebar */}
       <Sidebar user={user} onLogout={handleLogout} />
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center p-6">
-        <div className="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-2xl border-t-8 border-[#C62828]">
-          <h2 className="text-3xl font-bold text-[#C62828] mb-8 text-center">
+        <div className="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-2xl border-t-8 border-fire">
+          <h2 className="text-3xl font-bold text-fire mb-8 text-center">
             Add Fire Department Staff
           </h2>
 
@@ -168,7 +168,7 @@ function AddFireStaff() {
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
               {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
@@ -183,7 +183,7 @@ function AddFireStaff() {
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
               {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
@@ -198,7 +198,7 @@ function AddFireStaff() {
                 placeholder="Age"
                 value={formData.age}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
               {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
@@ -213,7 +213,7 @@ function AddFireStaff() {
                 placeholder="Email"
                 value={formData.gmail}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
               {errors.gmail && <p className="text-red-500 text-sm mt-1">{errors.gmail}</p>}
@@ -226,7 +226,7 @@ function AddFireStaff() {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] appearance-none"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber appearance-none"
                 required
               >
                 <option value="">Select Position</option>
@@ -245,7 +245,7 @@ function AddFireStaff() {
                 name="status"
                 value={formData.status}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] appearance-none"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber appearance-none"
                 required
               >
                 <option value="">Select Status</option>
@@ -265,7 +265,7 @@ function AddFireStaff() {
                 placeholder="Address"
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full pl-10 pt-3 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 pt-3 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 rows={3}
                 required
               />
@@ -281,7 +281,7 @@ function AddFireStaff() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
               {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
@@ -293,7 +293,7 @@ function AddFireStaff() {
               disabled={!isFormValid() || loading}
               className={`w-full p-3 text-white font-semibold rounded-xl shadow-lg transition ${
                 isFormValid() && !loading
-                  ? "bg-[#FF9800] hover:shadow-xl"
+                  ? "bg-amber hover:shadow-xl"
                   : "bg-gray-400 cursor-not-allowed"
               }`}
             >

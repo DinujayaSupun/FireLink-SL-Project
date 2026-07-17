@@ -20,7 +20,7 @@ const StatisticsOverview = ({ applications }) => {
     datasets: [
       {
         data: [stats.pending, stats.approved, stats.paymentAssigned, stats.inspected, stats.rejected],
-        backgroundColor: ['#f59e0b', '#3b82f6', '#8b5cf6', '#10b981', '#ef4444'],
+        backgroundColor: ['var(--color-amber)', 'var(--color-info)', '#8b5cf6', 'var(--color-success)', 'var(--color-fire)'],
         borderWidth: 0,
       },
     ],
@@ -59,14 +59,14 @@ const StatisticsOverview = ({ applications }) => {
   };
 
   const statsBoxStyle = {
-    backgroundColor: '#CED6DF',
+    backgroundColor: 'var(--color-gray-300)',
     borderRadius: '12px',
     padding: '24px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   };
 
   const chartBoxStyle = {
-    backgroundColor: '#CED6DF',
+    backgroundColor: 'var(--color-gray-300)',
     borderRadius: '12px',
     padding: '24px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -77,7 +77,7 @@ const StatisticsOverview = ({ applications }) => {
   const statsHeaderStyle = {
     fontSize: '18px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     marginBottom: '16px',
   };
 
@@ -91,13 +91,13 @@ const StatisticsOverview = ({ applications }) => {
 
   const statLabelStyle = {
     fontSize: '14px',
-    color: '#6b7280',
+    color: 'var(--color-gray-500)',
   };
 
   const statValueStyle = {
     fontSize: '16px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
   };
 
   const chartContainerInnerStyle = {
@@ -112,9 +112,9 @@ const StatisticsOverview = ({ applications }) => {
       pending: '#d97706',
       approved: '#1e40af',
       paymentAssigned: '#8b5cf6',
-      inspected: '#059669',
-      rejected: '#dc2626',
-      total: '#1f2937',
+      inspected: 'var(--color-success-dark)',
+      rejected: 'var(--color-fire)',
+      total: 'var(--color-gray-800)',
     };
     return colors[type] || colors.total;
   };
@@ -130,7 +130,7 @@ const StatisticsOverview = ({ applications }) => {
             {stats.total > 0 ? (
               <Pie data={chartData} options={chartOptions} />
             ) : (
-              <div style={{ textAlign: 'center', color: '#6b7280' }}>
+              <div style={{ textAlign: 'center', color: 'var(--color-gray-500)' }}>
                 <div style={{ fontSize: '48px', marginBottom: '16px' }}>📊</div>
                 <div>No data available</div>
               </div>
@@ -177,7 +177,7 @@ const StatisticsOverview = ({ applications }) => {
           </div>
           <div style={{ ...statItemStyle, borderBottom: 'none', marginTop: '12px' }}>
             <span style={{ ...statLabelStyle, fontWeight: '600' }}>Completion Rate</span>
-            <span style={{ ...statValueStyle, color: '#059669' }}>
+            <span style={{ ...statValueStyle, color: 'var(--color-success-dark)' }}>
               {completionRate}%
             </span>
           </div>

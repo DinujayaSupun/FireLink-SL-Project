@@ -114,7 +114,7 @@ const StaffManagementTable = () => {
   if (error) return <div className="text-center py-8 text-red-600">{error}</div>;
 
   return (
-    <div className="flex min-h-screen bg-[#1e2a38]">
+    <div className="flex min-h-screen bg-navy">
       {/* Sidebar */}
       <Sidebar user={user} onLogout={handleLogout} />
 

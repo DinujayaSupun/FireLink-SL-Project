@@ -124,7 +124,7 @@ const Settings = () => {
   if (!user) return null;
 
   return (
-    <div className="flex min-h-screen bg-[#1e2a38]">
+    <div className="flex min-h-screen bg-navy">
       {/* Sidebar */}
       <Sidebar user={user} onLogout={() => navigate("/staff-login")} />
 

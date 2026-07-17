@@ -64,7 +64,7 @@ const SessionsList = ({ userFromProps }) => {
 
   return (
     
-    <div className="min-h-screen bg-[#1e2a38] p-6">
+    <div className="min-h-screen bg-navy p-6">
       <div className="max-w-4xl mx-auto space-y-6">
         <h1 className="text-3xl text-white font-bold">Training Sessions</h1>
 
@@ -112,7 +112,7 @@ const SessionsList = ({ userFromProps }) => {
                 {status === "active" && (
                   <button
                     onClick={() => openQR(s._id)}
-                    className="px-4 py-2 bg-[#2563eb] text-white rounded hover:bg-blue-600"
+                    className="px-4 py-2 bg-info-dark text-white rounded hover:bg-blue-600"
                   >
                     Show QR for attendance
                   </button>

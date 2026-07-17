@@ -115,9 +115,9 @@ const TrainingSessionManager = () => {
       const dateStr = date.toDateString();
       let bgColor = "";
 
-      if (todaySessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "#9ca3af"; // gray
-      else if (upcomingSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "#3b82f6"; // blue
-      else if (expiredSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "#ef4444"; // red
+      if (todaySessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "var(--color-gray-400)"; // gray
+      else if (upcomingSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "var(--color-info)"; // blue
+      else if (expiredSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "var(--color-fire)"; // red
 
       if (bgColor)
         return (

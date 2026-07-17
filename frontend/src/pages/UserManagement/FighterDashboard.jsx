@@ -114,7 +114,7 @@ const FighterDashboard = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#1e2a38]">
+    <div className="flex min-h-screen bg-navy">
       <Sidebar />
 
       <div className="flex-1 p-6">
@@ -246,7 +246,7 @@ const Modal = ({ title, value, onChange, extraInput, onClose, onSubmit, placehol
       />
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="px-4 py-2 border rounded hover:bg-gray-100">Cancel</button>
-        <button onClick={onSubmit} className={`px-4 py-2 text-white rounded hover:opacity-90`} style={{ backgroundColor: color === "green" ? "#16a34a" : "#2563eb" }}>
+        <button onClick={onSubmit} className={`px-4 py-2 text-white rounded hover:opacity-90`} style={{ backgroundColor: color === "green" ? "#16a34a" : "var(--color-info-dark)" }}>
           {submitText}
         </button>
       </div>

@@ -93,7 +93,7 @@ const UpdateSession = () => {
 };
 
   return (
-    <div className="min-h-screen bg-[#1e2a38] py-8 px-4">
+    <div className="min-h-screen bg-navy py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Back button */}
         <button
@@ -104,7 +104,7 @@ const UpdateSession = () => {
         </button>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
-          <div className="bg-[#c62828] text-white p-6">
+          <div className="bg-fire text-white p-6">
             <h1 className="text-3xl font-bold text-center">
               Update Training Session
             </h1>
@@ -122,7 +122,7 @@ const UpdateSession = () => {
                   name="title"
                   value={inputs.title}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
               </div>
@@ -137,7 +137,7 @@ const UpdateSession = () => {
                   value={inputs.description}
                   onChange={handleChange}
                   rows="3"
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 ></textarea>
               </div>
@@ -152,7 +152,7 @@ const UpdateSession = () => {
                   name="date"
                   value={inputs.date}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
               </div>
@@ -167,7 +167,7 @@ const UpdateSession = () => {
                   name="venue"
                   value={inputs.venue}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
               </div>
@@ -183,12 +183,12 @@ const UpdateSession = () => {
                     placeholder="Enter staff ID"
                     value={newMember}
                     onChange={(e) => setNewMember(e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#c62828] focus:border-transparent transition"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fire focus:border-transparent transition"
                   />
                   <button
                     type="button"
                     onClick={addTeamMember}
-                    className="px-4 py-2 bg-[#c62828] text-white rounded-lg hover:bg-red-700 transition"
+                    className="px-4 py-2 bg-fire text-white rounded-lg hover:bg-red-700 transition"
                   >
                     Add
                   </button>
@@ -227,7 +227,7 @@ const UpdateSession = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-3 bg-[#c62828] text-white rounded-lg shadow hover:bg-red-800 transition flex items-center"
+                className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-red-800 transition flex items-center"
               >
                 {loading ? "Updating..." : <><FiSave className="mr-2" /> Update Session</>}
               </button>

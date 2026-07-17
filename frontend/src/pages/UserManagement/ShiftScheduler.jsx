@@ -343,7 +343,7 @@ const ShiftScheduler = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1e2a38] py-8 px-4">
+    <div className="min-h-screen bg-navy py-8 px-4">
 
       <div className="max-w-7xl mx-auto">
 

@@ -70,7 +70,7 @@ const UserDetails = () => {
     );
 
   return (
-    <div className="min-h-screen bg-[#1e2a38] py-8 px-4">
+    <div className="min-h-screen bg-navy py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Print button */}
         <div className="flex justify-end mb-4">

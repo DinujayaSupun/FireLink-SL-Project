@@ -302,9 +302,9 @@ const SupplyDashboard = () => {
 												bottom: 5,
 											}}
 										>
-											<CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-											<XAxis dataKey="name" stroke="#9ca3af" />
-											<YAxis stroke="#9ca3af" />
+											<CartesianGrid strokeDasharray="3 3" stroke="var(--color-gray-100)" />
+											<XAxis dataKey="name" stroke="var(--color-gray-400)" />
+											<YAxis stroke="var(--color-gray-400)" />
 											<Tooltip
 												contentStyle={{
 													backgroundColor: "#fff",
@@ -316,15 +316,15 @@ const SupplyDashboard = () => {
 											<Line
 												type="monotone"
 												dataKey="requests"
-												stroke="#dc2626"
+												stroke="var(--color-fire)"
 												strokeWidth={2}
 												dot={{
 													r: 4,
-													fill: "#dc2626",
+													fill: "var(--color-fire)",
 												}}
 												activeDot={{
 													r: 6,
-													fill: "#dc2626",
+													fill: "var(--color-fire)",
 												}}
 											/>
 										</LineChart>
@@ -514,10 +514,10 @@ const SupplyDashboard = () => {
 																		width: `${supplier.onTimeRate}%`,
 																		backgroundColor:
 																			supplier.onTimeRate >= 95
-																				? "#10B981"
+																				? "var(--color-success)"
 																				: supplier.onTimeRate >= 90
 																				? "#FBBF24"
-																				: "#EF4444",
+																				: "var(--color-fire)",
 																	}}
 																></div>
 															</div>

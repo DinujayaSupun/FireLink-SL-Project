@@ -25,7 +25,7 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	background-color: #1e2a38;
+	background-color: var(--color-navy);
 }
 
 .supplier-login-left {
@@ -140,5 +140,5 @@
 }
 
 .supplier-login-button:hover {
-	background-color: #b71c1c;
+	background-color: var(--color-fire-dark);
 }

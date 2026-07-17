@@ -336,7 +336,7 @@ export function ProcurementReport() {
 											bottom: 5,
 										}}
 									>
-										<CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+										<CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
 										<XAxis dataKey="name" stroke="#9ca3af" />
 										<YAxis stroke="#9ca3af" />
 										<Tooltip
@@ -350,7 +350,7 @@ export function ProcurementReport() {
 										<Line
 											type="monotone"
 											dataKey="requests"
-											stroke="#ef4444"
+											stroke="#c62828"
 											strokeWidth={2}
 											activeDot={{
 												r: 6,

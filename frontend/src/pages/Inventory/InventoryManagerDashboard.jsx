@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getInventoryDashboardStats } from '../../api/inventoryDashboardApi';
 
 // Enhanced line chart component with detailed X and Y axes
-const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', yAxisLabel = 'Value' }) => {
+const LineChart = ({ data, height = 200, stroke = 'var(--color-info-dark)', dataKey = 'count', yAxisLabel = 'Value' }) => {
   try {
     if (!data || !Array.isArray(data) || data.length === 0) {
       return <div className="text-gray-400 text-sm">No trend data available</div>;
@@ -46,7 +46,7 @@ const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', 
           {/* Background grid */}
           <defs>
             <pattern id="grid" width="50" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
+              <path d="M 50 0 L 0 0 0 40" fill="none" stroke="var(--color-gray-100)" strokeWidth="1"/>
             </pattern>
           </defs>
           <rect 
@@ -63,7 +63,7 @@ const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', 
             y1={padding.top} 
             x2={padding.left} 
             y2={padding.top + chartHeight} 
-            stroke="#6b7280" 
+            stroke="var(--color-gray-500)" 
             strokeWidth="2"
           />
           
@@ -75,7 +75,7 @@ const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', 
                 y1={tick.y} 
                 x2={padding.left} 
                 y2={tick.y} 
-                stroke="#6b7280" 
+                stroke="var(--color-gray-500)" 
                 strokeWidth="1"
               />
               <text 
@@ -93,7 +93,7 @@ const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', 
                 y1={tick.y} 
                 x2={padding.left + chartInnerWidth} 
                 y2={tick.y} 
-                stroke="#e5e7eb" 
+                stroke="var(--color-gray-200)" 
                 strokeWidth="0.5" 
                 strokeDasharray="2,2"
               />
@@ -106,7 +106,7 @@ const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', 
             y1={padding.top + chartHeight} 
             x2={padding.left + chartInnerWidth} 
             y2={padding.top + chartHeight} 
-            stroke="#6b7280" 
+            stroke="var(--color-gray-500)" 
             strokeWidth="2"
           />
           
@@ -124,7 +124,7 @@ const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', 
                   y1={padding.top + chartHeight} 
                   x2={point.x} 
                   y2={padding.top + chartHeight + 5} 
-                  stroke="#6b7280" 
+                  stroke="var(--color-gray-500)" 
                   strokeWidth="1"
                 />
                 <text 
@@ -151,7 +151,7 @@ const LineChart = ({ data, height = 200, stroke = '#2563eb', dataKey = 'count', 
                   y1={padding.top} 
                   x2={point.x} 
                   y2={padding.top + chartHeight} 
-                  stroke="#f3f4f6" 
+                  stroke="var(--color-gray-100)" 
                   strokeWidth="1"
                 />
               </g>
@@ -536,7 +536,7 @@ const InventoryManagerDashboard = () => {
                   <LineChart 
                     data={trends.itemsAddedLast7Days || []} 
                     height={180} 
-                    stroke="#2563eb"
+                    stroke="var(--color-info-dark)"
                     dataKey="quantity"
                     yAxisLabel="Quantity (Units)"
                   />
@@ -555,7 +555,7 @@ const InventoryManagerDashboard = () => {
                   <LineChart 
                     data={trends.itemsRemovedLast7Days || []} 
                     height={180} 
-                    stroke="#ea580c"
+                    stroke="var(--color-amber-dark)"
                     yAxisLabel="Items (Count)"
                   />
                 </div>
@@ -571,7 +571,7 @@ const InventoryManagerDashboard = () => {
                   <LineChart 
                     data={trends.itemsRemovedLast7Days || []} 
                     height={180} 
-                    stroke="#dc2626"
+                    stroke="var(--color-fire)"
                     dataKey="quantity"
                     yAxisLabel="Quantity (Units)"
                   />

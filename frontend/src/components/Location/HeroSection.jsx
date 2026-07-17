@@ -9,7 +9,7 @@ export function HeroSection() {
 						"url('https://images.unsplash.com/photo-1486427115014-e1d94e7e6bd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
 				}}
 			>
-				<div className="absolute inset-0 bg-[#1E2A38] bg-opacity-75"></div>
+				<div className="absolute inset-0 bg-navy bg-opacity-75"></div>
 			</div>
 			<div className="relative h-full flex flex-col items-center justify-center text-white px-4">
 				<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center">

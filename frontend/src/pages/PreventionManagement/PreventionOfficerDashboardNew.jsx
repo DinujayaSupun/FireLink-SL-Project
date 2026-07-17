@@ -437,7 +437,7 @@ const PreventionOfficerDashboard = () => {
 
   // Styles
   const containerStyle = {
-    backgroundColor: '#354759',
+    backgroundColor: 'var(--color-gray-700)',
     minHeight: '100vh',
     fontFamily: 'Public Sans, Arial, sans-serif',
     padding: '32px 0',
@@ -496,14 +496,14 @@ const PreventionOfficerDashboard = () => {
     maxWidth: '1200px',
     margin: '0 auto',
     padding: '32px 24px',
-    backgroundColor: '#354759',
+    backgroundColor: 'var(--color-gray-700)',
     minHeight: 'calc(100vh - 160px)',
   };
 
   const errorAlertStyle = {
-    backgroundColor: '#fef2f2',
-    border: '1px solid #fecaca',
-    color: '#dc2626',
+    backgroundColor: 'var(--color-fire-50)',
+    border: '1px solid var(--color-fire-100)',
+    color: 'var(--color-fire)',
     padding: '16px',
     borderRadius: '8px',
     marginBottom: '24px',
@@ -512,7 +512,7 @@ const PreventionOfficerDashboard = () => {
   const loadingStyle = {
     textAlign: 'center',
     padding: '60px',
-    color: '#6b7280',
+    color: 'var(--color-gray-500)',
     fontSize: '18px',
   };
 

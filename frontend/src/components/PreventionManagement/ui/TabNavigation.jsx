@@ -8,7 +8,7 @@ const TabNavigation = ({
 }) => {
   const tabContainerStyle = {
     display: 'flex',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     marginBottom: '24px',
     backgroundColor: 'transparent',
     overflow: 'hidden',
@@ -37,15 +37,15 @@ const TabNavigation = ({
 
     return {
       ...baseStyle,
-      backgroundColor: isActive ? '#f8fafc' : 'transparent',
-      color: isActive ? '#1f2937' : '#6b7280',
+      backgroundColor: isActive ? 'var(--color-gray-50)' : 'transparent',
+      color: isActive ? 'var(--color-gray-800)' : 'var(--color-gray-500)',
       borderBottom: isActive ? '2px solid #3b82f6' : '2px solid transparent',
       fontWeight: isActive ? '600' : '500',
     };
   };
 
   const badgeStyle = {
-    backgroundColor: '#3b82f6',
+    backgroundColor: 'var(--color-info)',
     color: 'white',
     borderRadius: '50%',
     padding: '4px 8px',
@@ -60,8 +60,8 @@ const TabNavigation = ({
   };
 
   const inactiveBadgeStyle = {
-    backgroundColor: '#e5e7eb',
-    color: '#6b7280',
+    backgroundColor: 'var(--color-gray-200)',
+    color: 'var(--color-gray-500)',
     borderRadius: '50%',
     padding: '4px 8px',
     fontSize: '11px',
@@ -81,14 +81,14 @@ const TabNavigation = ({
         onClick={() => onTabChange('review')}
         onMouseOver={(e) => {
           if (activeTab !== 'review') {
-            e.target.style.backgroundColor = '#f1f5f9';
-            e.target.style.color = '#374151';
+            e.target.style.backgroundColor = 'var(--color-gray-100)';
+            e.target.style.color = 'var(--color-gray-700)';
           }
         }}
         onMouseOut={(e) => {
           if (activeTab !== 'review') {
             e.target.style.backgroundColor = 'transparent';
-            e.target.style.color = '#6b7280';
+            e.target.style.color = 'var(--color-gray-500)';
           }
         }}
       >
@@ -105,14 +105,14 @@ const TabNavigation = ({
         onClick={() => onTabChange('rejected')}
         onMouseOver={(e) => {
           if (activeTab !== 'rejected') {
-            e.target.style.backgroundColor = '#f1f5f9';
-            e.target.style.color = '#374151';
+            e.target.style.backgroundColor = 'var(--color-gray-100)';
+            e.target.style.color = 'var(--color-gray-700)';
           }
         }}
         onMouseOut={(e) => {
           if (activeTab !== 'rejected') {
             e.target.style.backgroundColor = 'transparent';
-            e.target.style.color = '#6b7280';
+            e.target.style.color = 'var(--color-gray-500)';
           }
         }}
       >

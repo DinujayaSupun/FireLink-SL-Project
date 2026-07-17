@@ -55,7 +55,7 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
   const headerStyle = {
     fontSize: '24px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     marginBottom: '20px',
     paddingBottom: '12px',
     borderBottom: '1px solid #e5e7eb',
@@ -76,17 +76,17 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
     display: 'block',
     marginBottom: '4px',
     fontWeight: '500',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
     fontSize: '14px',
   };
 
   const valueStyle = {
     padding: '8px 12px',
-    backgroundColor: '#f9fafb',
+    backgroundColor: 'var(--color-gray-50)',
     borderRadius: '6px',
     border: '1px solid #e5e7eb',
     fontSize: '14px',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
   };
 
   const buttonStyle = {
@@ -122,12 +122,12 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
   const statusColors = {
     'Pending': { bg: '#fef3c7', color: '#92400e' },
     'Approved': { bg: '#d1fae5', color: '#065f46' },
-    'Rejected': { bg: '#fee2e2', color: '#991b1b' },
-    'Payment Assigned': { bg: '#e0e7ff', color: '#3730a3' },
+    'Rejected': { bg: 'var(--color-fire-100)', color: 'var(--color-fire-dark)' },
+    'Payment Assigned': { bg: 'var(--color-gray-100)', color: '#3730a3' },
     'Inspected': { bg: '#ecfdf5', color: '#14532d' },
   };
 
-  const statusStyle = statusColors[application.status] || { bg: '#f3f4f6', color: '#374151' };
+  const statusStyle = statusColors[application.status] || { bg: 'var(--color-gray-100)', color: 'var(--color-gray-700)' };
 
   return (
     <div style={modalOverlayStyle} onClick={onClose}>
@@ -235,8 +235,8 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
             <label style={labelStyle}>Rejection Reason</label>
             <div style={{
               ...valueStyle,
-              backgroundColor: '#fee2e2',
-              color: '#991b1b',
+              backgroundColor: 'var(--color-fire-100)',
+              color: 'var(--color-fire-dark)',
               border: '1px solid #fecaca',
             }}>
               {application.rejectionReason}
@@ -253,7 +253,7 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
 
         {/* Rejection Form */}
         {showRejectForm && (
-          <div style={{ ...fieldStyle, marginTop: '20px', padding: '16px', backgroundColor: '#fef2f2', borderRadius: '8px' }}>
+          <div style={{ ...fieldStyle, marginTop: '20px', padding: '16px', backgroundColor: 'var(--color-fire-50)', borderRadius: '8px' }}>
             <label style={labelStyle}>Rejection Reason *</label>
             <textarea
               value={rejectionReason}
@@ -270,8 +270,8 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
             onClick={onClose}
             style={{
               ...buttonStyle,
-              backgroundColor: '#f3f4f6',
-              color: '#374151',
+              backgroundColor: 'var(--color-gray-100)',
+              color: 'var(--color-gray-700)',
             }}
           >
             Close
@@ -288,7 +288,7 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
                     }}
                     style={{
                       ...buttonStyle,
-                      backgroundColor: '#6b7280',
+                      backgroundColor: 'var(--color-gray-500)',
                       color: 'white',
                     }}
                   >
@@ -298,7 +298,7 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
                     onClick={handleReject}
                     style={{
                       ...buttonStyle,
-                      backgroundColor: '#ef4444',
+                      backgroundColor: 'var(--color-fire)',
                       color: 'white',
                     }}
                   >
@@ -311,7 +311,7 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
                     onClick={() => setShowRejectForm(true)}
                     style={{
                       ...buttonStyle,
-                      backgroundColor: '#ef4444',
+                      backgroundColor: 'var(--color-fire)',
                       color: 'white',
                     }}
                   >
@@ -321,7 +321,7 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
                     onClick={handleApprove}
                     style={{
                       ...buttonStyle,
-                      backgroundColor: '#10b981',
+                      backgroundColor: 'var(--color-success)',
                       color: 'white',
                     }}
                   >
@@ -336,7 +336,7 @@ const ApplicationDetailsModal = ({ application, onClose, onApprove, onReject, on
             onClick={handleDelete}
             style={{
               ...buttonStyle,
-              backgroundColor: '#dc2626',
+              backgroundColor: 'var(--color-fire)',
               color: 'white',
             }}
           >

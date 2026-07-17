@@ -11,7 +11,7 @@ const ResultsVerificationSection = () => (
     <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 text-center" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       Fire and Rescue Training Program<br />Results Verification
     </h2>
-    <button className="bg-[#FF6F47] text-white text-xl font-semibold px-10 py-5 rounded-md shadow hover:bg-[#ff4c1a] transition">
+    <button className="bg-amber text-white text-xl font-semibold px-10 py-5 rounded-md shadow hover:bg-amber-dark transition">
       Verify Results
     </button>
   </section>

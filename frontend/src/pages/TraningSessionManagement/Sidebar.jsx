@@ -21,7 +21,7 @@ const Sidebar = ({ activeTab, setActiveTab, topLayout }) => {
           onClick={() => setActiveTab(tab.name)}
           className={`flex items-center gap-2 px-4 py-3 m-2 rounded-lg font-medium transition ${
             activeTab === tab.name
-              ? "bg-[#c62828] text-white"
+              ? "bg-fire text-white"
               : "text-gray-700 hover:bg-gray-200"
           }`}
         >

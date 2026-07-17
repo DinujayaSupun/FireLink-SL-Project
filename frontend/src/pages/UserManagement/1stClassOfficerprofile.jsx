@@ -82,7 +82,7 @@ useEffect(() => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1e2a38]">
+      <div className="flex items-center justify-center min-h-screen bg-navy">
         <div className="text-xl text-blue-400">Loading officer data...</div>
       </div>
     );
@@ -90,7 +90,7 @@ useEffect(() => {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1e2a38]">
+      <div className="flex items-center justify-center min-h-screen bg-navy">
         <div className="text-xl text-red-400">{error}</div>
       </div>
     );
@@ -98,14 +98,14 @@ useEffect(() => {
 
   if (!officer) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1e2a38]">
+      <div className="flex items-center justify-center min-h-screen bg-navy">
         <div className="text-xl text-red-400">Officer not found</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#1e2a38] py-8 px-4">
+    <div className="min-h-screen bg-navy py-8 px-4">
       {/* Officer Profile Card */}
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden mb-8">
         {/* Header */}

@@ -15,14 +15,14 @@ const Profile = () => {
 
   if (!user) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1e2a38]">
+      <div className="flex items-center justify-center min-h-screen bg-navy">
         <p className="text-xl text-red-400">User not found</p>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-[#1e2a38]">
+    <div className="flex min-h-screen bg-navy">
       {/* Sidebar */}
       <Sidebar user={user} onLogout={handleLogout} />
 

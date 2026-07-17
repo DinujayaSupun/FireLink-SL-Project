@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 		fontFamily: "Helvetica",
 		fontSize: 10,
 		lineHeight: 1.5,
-		backgroundColor: "#f8f8f8",
+		backgroundColor: "#f9fafb",
 	},
 	headerContainer: {
 		flexDirection: "row",
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 		alignItems: "flex-start",
 		paddingBottom: 10,
 		borderBottomWidth: "2pt",
-		borderBottomColor: "#D90429",
+		borderBottomColor: "#c62828",
 		marginBottom: 15,
 	},
 	companyInfo: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 	companyTitle: {
 		fontSize: 18,
 		fontWeight: "bold",
-		color: "#D90429",
+		color: "#c62828",
 	},
 	contactText: {
 		fontSize: 8,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		textAlign: "center",
 		fontWeight: "bold",
-		color: "#EF4444",
+		color: "#c62828",
 		marginBottom: 15,
 		marginTop: 10,
 	},
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 	},
 	tableHeader: {
-		backgroundColor: "#f0f0f0",
+		backgroundColor: "#f3f4f6",
 		fontWeight: "bold",
 	},
 	tableCellDesc: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
 	netPayAmount: {
 		fontSize: 14,
 		fontWeight: "bold",
-		color: "#D90429",
+		color: "#c62828",
 		width: "30%",
 		textAlign: "right",
 	},

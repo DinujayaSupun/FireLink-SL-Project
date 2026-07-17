@@ -29,7 +29,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
             {sessions.map(session => (
               <div key={session._id} className="border border-gray-700 rounded-xl p-5 hover:shadow-md transition bg-gray-800 text-white group">
                 <div className="flex justify-between items-start mb-3">
-                  <h4 className="font-semibold text-lg text-white group-hover:text-[#c62828] transition">{session.title}</h4>
+                  <h4 className="font-semibold text-lg text-white group-hover:text-fire transition">{session.title}</h4>
                   <span className="bg-blue-700 text-white text-xs font-medium px-2 py-1 rounded">{session.teamMembers.length} participants</span>
                 </div>
                 <p className="text-gray-300 mb-2">{session.description}</p>

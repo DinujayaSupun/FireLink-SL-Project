@@ -31,7 +31,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
           value={formData.date}
           handleInputChange={handleInputChange}
           type="datetime-local"
-          icon={<FiCalendar className="mr-2 text-[#c62828]" />}
+          icon={<FiCalendar className="mr-2 text-fire" />}
           inputProps={{ min: new Date().toISOString().slice(0,16) }}
         />
         <InputField
@@ -39,7 +39,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
           name="venue"
           value={formData.venue}
           handleInputChange={handleInputChange}
-          icon={<FiMapPin className="mr-2 text-[#c62828]" />}
+          icon={<FiMapPin className="mr-2 text-fire" />}
         />
       </div>
 
@@ -91,7 +91,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
         <button
           type="submit"
           disabled={loading || formData.teamMembers.length === 0}
-          className="px-8 py-3 bg-gradient-to-r from-[#c62828] to-[#d32f2f] text-white rounded-lg hover:from-[#b71c1c] hover:to-[#c62828] disabled:opacity-50 transition flex items-center shadow-md"
+          className="px-8 py-3 bg-gradient-to-r from-fire to-fire text-white rounded-lg hover:from-fire-dark hover:to-fire disabled:opacity-50 transition flex items-center shadow-md"
         >
           {loading ? <><FiSettings className="animate-spin mr-2" /> Creating...</> : <><FiPlus className="mr-2" /> Create Session</>}
         </button>

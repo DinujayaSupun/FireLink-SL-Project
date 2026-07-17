@@ -25,7 +25,7 @@ export function MapSection({ stations }) {
 	return (
 		<div className="py-12 px-4 md:px-8 bg-gray-100">
 			<div className="max-w-7xl mx-auto">
-				<h2 className="text-3xl font-bold mb-8 text-center text-[#1E2A38]">
+				<h2 className="text-3xl font-bold mb-8 text-center text-navy">
 					Interactive Map
 				</h2>
 				<div className="h-[500px] rounded-lg overflow-hidden shadow-lg">
@@ -45,7 +45,7 @@ export function MapSection({ stations }) {
 							<Marker key={station.id} position={station.coordinates}>
 								<Popup>
 									<div>
-										<h3 className="font-bold text-[#C62828]">{station.name}</h3>
+										<h3 className="font-bold text-fire">{station.name}</h3>
 										<p className="text-sm">{station.address}</p>
 										<p className="text-sm">{station.phone}</p>
 									</div>
