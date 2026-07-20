@@ -4,3 +4,6 @@ node_modules/
 **/docs/**
 *.md
 !README.md
+
+# Generated app screenshots — kept local, not committed
+screenshots/

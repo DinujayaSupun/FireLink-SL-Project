@@ -5,6 +5,10 @@ import { createReorder } from '../../api/inventoryReorderApi';
 import firelinkLogo from '../../assets/images/firelink-logo.png';
 import Sidebar from '../UserManagement/Sidebar';
 
+// Secondary (neutral) button style — shared by the page's navigation buttons so
+// only the one primary action (fire) stands out.
+const navBtn = "bg-white text-navy border border-gray-300 hover:bg-gray-50 px-3 py-1.5 rounded text-sm font-medium transition-colors disabled:opacity-45";
+
 const InventoryList = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -464,30 +468,11 @@ const InventoryList = () => {
                 <p className="text-sm text-gray-600">Manage fire department equipment and supplies</p>
               </div>
           <div className="flex gap-2 flex-wrap">
-            <Link
-              to="/inventory/vehicles"
-              className="bg-success hover:bg-success-dark text-white px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200"
-            >
-              Vehicles
-            </Link>
-            <Link
-              to="/inventory/vehicle-items"
-              className="bg-info hover:bg-info-dark text-white px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200"
-            >
-              Vehicle Items
-            </Link>
-            <Link
-              to="/inventory/logs"
-              className="bg-info hover:bg-info-dark text-white px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200"
-            >
-              Logs
-            </Link>
-            <Link
-              to="/inventory/reorders"
-              className="bg-amber hover:bg-amber-dark text-white px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200"
-            >
-              Reorders
-            </Link>
+            {/* Navigation — neutral/secondary. Only the main action below is primary. */}
+            <Link to="/inventory/vehicles" className={navBtn}>Vehicles</Link>
+            <Link to="/inventory/vehicle-items" className={navBtn}>Vehicle Items</Link>
+            <Link to="/inventory/logs" className={navBtn}>Logs</Link>
+            <Link to="/inventory/reorders" className={navBtn}>Reorders</Link>
             <button
               onClick={async () => {
                 setLoadingReport(true);
@@ -497,13 +482,14 @@ const InventoryList = () => {
                 setLoadingReport(false);
               }}
               disabled={loadingReport}
-              className="bg-info hover:bg-info-dark disabled:bg-info-300 text-white px-3 py-1.5 rounded text-sm font-medium transition-colors duration-200"
+              className={navBtn}
             >
               {loadingReport ? 'Loading...' : 'Report'}
             </button>
+            {/* The single primary action for this page */}
             <Link
               to="/inventory/add"
-              className="bg-fire hover:bg-fire-dark text-white px-4 py-1.5 rounded text-sm font-medium transition-colors duration-200"
+              className="bg-fire hover:bg-fire-dark text-white px-4 py-1.5 rounded text-sm font-medium transition-colors"
             >
               + Add Item
             </Link>
@@ -516,66 +502,20 @@ const InventoryList = () => {
         <h2 className="text-sm font-semibold text-gray-900 mb-2">Overview</h2>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-          {/* Total Items */}
-          <div className="bg-gradient-to-r from-info to-info rounded p-2 text-white">
-            <div className="text-center">
-              <p className="text-info-100 text-xs">Total Items</p>
-              <p className="text-lg font-bold">
-                {dashboardData.reduce((total, item) => total + (item.quantity || 0), 0)}
-              </p>
+          {/* Neutral tiles; colour appears only where a number means "attention". */}
+          {[
+            { label: 'Total Items', tone: 'text-navy', value: dashboardData.reduce((total, item) => total + (item.quantity || 0), 0) },
+            { label: 'Available', tone: 'text-navy', value: dashboardData.filter(item => !isLowStock(item) && item.quantity > 0).length },
+            { label: 'Low Stock', tone: 'text-amber-dark', value: dashboardData.filter(item => isLowStock(item)).length },
+            { label: 'Empty', tone: 'text-fire', value: dashboardData.filter(item => item.quantity === 0).length },
+            { label: 'Expires Soon', tone: 'text-amber-dark', value: dashboardData.filter(item => isExpiringSoon(item)).length },
+            { label: 'Expired', tone: 'text-fire', value: dashboardData.filter(item => item.expire_date && new Date(item.expire_date) < new Date()).length },
+          ].map((t) => (
+            <div key={t.label} className="bg-white border border-gray-200 rounded p-2 text-center">
+              <p className="text-gray-500 text-xs">{t.label}</p>
+              <p className={`text-lg font-bold tabular-nums ${t.tone}`}>{t.value}</p>
             </div>
-          </div>
-
-          {/* Available */}
-          <div className="bg-gradient-to-r from-success to-success rounded p-2 text-white">
-            <div className="text-center">
-              <p className="text-success-100 text-xs">Available</p>
-              <p className="text-lg font-bold">
-                {dashboardData.filter(item => !isLowStock(item) && item.quantity > 0).length}
-              </p>
-            </div>
-          </div>
-
-          {/* Low Stock */}
-          <div className="bg-gradient-to-r from-amber to-amber rounded p-2 text-white">
-            <div className="text-center">
-              <p className="text-amber-100 text-xs">Low Stock</p>
-              <p className="text-lg font-bold">
-                {dashboardData.filter(item => isLowStock(item)).length}
-              </p>
-            </div>
-          </div>
-
-          {/* Empty */}
-          <div className="bg-gradient-to-r from-fire to-fire rounded p-2 text-white">
-            <div className="text-center">
-              <p className="text-fire-100 text-xs">Empty</p>
-              <p className="text-lg font-bold">
-                {dashboardData.filter(item => item.quantity === 0).length}
-              </p>
-            </div>
-          </div>
-
-          {/* Expires Soon */}
-          <div className="bg-gradient-to-r from-amber-300 to-amber rounded p-2 text-white">
-            <div className="text-center">
-              <p className="text-amber-100 text-xs">Expires Soon</p>
-              <p className="text-lg font-bold">
-                {dashboardData.filter(item => isExpiringSoon(item)).length}
-              </p>
-            </div>
-          </div>
-
-          {/* Expired Items */}
-          <div className="bg-gradient-to-r from-fire to-fire rounded p-2 text-white">
-            <div className="text-center">
-              <p className="text-fire-100 text-xs">Expired</p>
-              <p className="text-lg font-bold">
-                {dashboardData.filter(item => item.expire_date && new Date(item.expire_date) < new Date()).length}
-              </p>
-            </div>
-          </div>
-
+          ))}
         </div>
       </div>
 
@@ -783,7 +723,7 @@ const InventoryList = () => {
                                 </Link>
                                 <Link
                                   to="/inventory/reorders"
-                                  className="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-info text-white rounded-md hover:bg-info-dark transition-colors shadow-sm"
+                                  className="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-white text-navy border border-gray-300 rounded-md hover:bg-gray-50 transition-colors shadow-sm"
                                 >
                                   View All Reorders
                                 </Link>
@@ -816,7 +756,7 @@ const InventoryList = () => {
                                 </Link>
                                 <Link
                                   to="/inventory/reorders"
-                                  className="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-info text-white rounded-md hover:bg-info-dark transition-colors shadow-sm"
+                                  className="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-white text-navy border border-gray-300 rounded-md hover:bg-gray-50 transition-colors shadow-sm"
                                 >
                                   View All Reorders
                                 </Link>
@@ -849,7 +789,7 @@ const InventoryList = () => {
                                 </Link>
                                 <Link
                                   to="/inventory/reorders"
-                                  className="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-info text-white rounded-md hover:bg-info-dark transition-colors shadow-sm"
+                                  className="inline-flex items-center px-3 py-1.5 text-xs font-medium bg-white text-navy border border-gray-300 rounded-md hover:bg-gray-50 transition-colors shadow-sm"
                                 >
                                   View All Reorders
                                 </Link>

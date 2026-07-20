@@ -388,7 +388,7 @@ const InventoryManagerDashboard = () => {
     { 
       label: 'Total Item Types', 
       value: inventory.totalItems || 0, 
-      color: 'bg-info-50 text-info-dark hover:bg-info-100', 
+      color: 'bg-white border border-gray-200 text-navy hover:bg-gray-50', 
       link: '/inventory',
       description: 'View all inventory items'
     },
@@ -416,28 +416,28 @@ const InventoryManagerDashboard = () => {
     { 
       label: 'Total Vehicles', 
       value: vehicles.totalVehicles || 0, 
-      color: 'bg-info-50 text-info-dark hover:bg-info-100', 
+      color: 'bg-white border border-gray-200 text-navy hover:bg-gray-50', 
       link: '/inventory/vehicles',
       description: 'View all vehicles'
     },
     { 
       label: 'Available Vehicles', 
       value: vehicles.availableVehicles || 0, 
-      color: 'bg-success-50 text-success-dark hover:bg-success-100', 
+      color: 'bg-white border border-gray-200 text-navy hover:bg-gray-50', 
       link: '/inventory/vehicles?status=Available',
       description: 'Vehicles ready for use'
     },
     { 
       label: 'Assignments', 
       value: assignments.totalAssignments || 0, 
-      color: 'bg-success-50 text-success-dark hover:bg-success-100', 
+      color: 'bg-white border border-gray-200 text-navy hover:bg-gray-50', 
       link: '/inventory/vehicle-items',
       description: 'View vehicle assignments'
     },
     { 
       label: 'Assigned Qty', 
       value: assignments.totalAssignedQuantity || 0, 
-      color: 'bg-info-50 text-info-dark hover:bg-info-100', 
+      color: 'bg-white border border-gray-200 text-navy hover:bg-gray-50', 
       link: '/inventory/vehicle-items',
       description: 'Total assigned quantities'
     }
