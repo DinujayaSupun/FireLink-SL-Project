@@ -1,0 +1,73 @@
+# ============================================================================
+# FireLink — full stack in three containers.
+#
+#   docker compose build     # build the backend + frontend images
+#   docker compose up -d      # start everything in the background
+#   docker compose down       # stop and remove the containers
+#
+# Secrets (JWT_SECRET, JWT_REFRESH_SECRET) come from a .env file next to this
+# one — see .env.docker.example. Compose loads .env automatically.
+# ============================================================================
+
+services:
+  # ---- Database ----
+  mongo:
+    image: mongo:7.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db        # data survives `docker compose down`
+    # No `ports:` on purpose. Only the backend talks to Mongo, and it does so
+    # over the private Docker network below — Mongo never needs to be reachable
+    # from your host. (Leaving it off also avoids clashing with the firelink-mongo
+    # container you already run on host port 27017.)
+    healthcheck:
+      # Lets the backend wait until Mongo can actually accept queries, not just
+      # until its container has started. See `depends_on` under backend.
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # ---- API ----
+  backend:
+    build: ./backend               # uses backend/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "5000"
+      # THE key Docker-networking line: "mongo" is the service name above, and
+      # Docker's internal DNS resolves it to that container. Using "localhost"
+      # here would point the backend at ITSELF, not the database.
+      DB_URI: mongodb://mongo:27017/itp_database
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      ACCESS_TOKEN_EXP: 15m
+      REFRESH_TOKEN_EXP: 7d
+      COOKIE_EXPIRE: "7"
+      # CORS allow-list. The browser loads the app from the frontend port (8080),
+      # so the API must accept that origin for the absolute http://localhost:5000
+      # calls the app makes.
+      FRONTEND_URL: http://localhost:8080
+    ports:
+      - "5000:5000"                # published so the browser can call the API directly
+    depends_on:
+      mongo:
+        condition: service_healthy   # wait for Mongo's healthcheck, not just its start
+
+  # ---- Web (nginx serving the built React app) ----
+  frontend:
+    build:
+      context: ./frontend          # uses frontend/Dockerfile
+      args:
+        # Baked into the JS bundle at build time (see frontend/Dockerfile).
+        # This is the URL the BROWSER uses, hence localhost, not "backend".
+        VITE_API_URL: http://localhost:5000
+    restart: unless-stopped
+    ports:
+      - "8080:80"                  # open the app at http://localhost:8080
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:                      # named volume for Mongo's data files

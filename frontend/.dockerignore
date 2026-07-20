@@ -1,0 +1,5 @@
+# Not copied into the build context.
+node_modules   # reinstalled in the build stage
+dist           # rebuilt in the build stage
+.env           # VITE_API_URL comes from the Dockerfile build arg instead
+.git

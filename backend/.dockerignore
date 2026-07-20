@@ -1,0 +1,14 @@
+# Files the build should NOT copy into the image.
+# (Mirrors .gitignore in spirit, but for the Docker build context.)
+
+# Reinstalled fresh inside the image — never copy the host's copy.
+node_modules
+
+# Secrets + local config. Provided via docker-compose environment instead, so
+# they never get baked into the image.
+config/config.env
+
+# Not needed at runtime.
+.git
+tests
+*.md
