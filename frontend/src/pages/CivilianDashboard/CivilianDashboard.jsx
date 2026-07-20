@@ -33,7 +33,7 @@ const CivilianDashboard = () => {
 
 							<button
 								onClick={handleLogout} // added here
-								className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md text-sm font-medium transition-colors"
+								className="bg-fire hover:bg-fire-dark px-4 py-2 rounded-md text-sm font-medium transition-colors"
 							>
 								Logout
 							</button>
@@ -59,7 +59,7 @@ const CivilianDashboard = () => {
 					{/* Emergency Services */}
 					<div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:shadow-md transition bg-gray-800 text-white">
 						<div className="flex items-center mb-4">
-							<div className="bg-red-700 p-3 rounded-md flex-shrink-0">
+							<div className="bg-fire-dark p-3 rounded-md flex-shrink-0">
 								<svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
 								</svg>
@@ -69,7 +69,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Report emergencies, request fire department assistance, and access emergency contacts.
 						</p>
-						<button className="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-fire hover:bg-fire-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							Report Emergency
 						</button>
 					</div>
@@ -77,7 +77,7 @@ const CivilianDashboard = () => {
 					{/* Safety Information */}
 					<div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:shadow-md transition text-white">
 						<div className="flex items-center mb-4">
-							<div className="bg-blue-700 p-3 rounded-md flex-shrink-0">
+							<div className="bg-info-dark p-3 rounded-md flex-shrink-0">
 								<svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
 								</svg>
@@ -87,7 +87,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Learn about fire safety, emergency preparedness, and community safety programs.
 						</p>
-						<button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-info hover:bg-info-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							View Safety Info
 						</button>
 					</div>
@@ -95,7 +95,7 @@ const CivilianDashboard = () => {
 					{/* Community Events */}
 					<div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:shadow-md transition text-white">
 						<div className="flex items-center mb-4">
-							<div className="bg-green-700 p-3 rounded-md flex-shrink-0">
+							<div className="bg-success-dark p-3 rounded-md flex-shrink-0">
 								<svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 								</svg>
@@ -105,7 +105,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Stay updated on fire department events, training sessions, and community outreach programs.
 						</p>
-						<button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-success hover:bg-success-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							View Events
 						</button>
 					</div>
@@ -113,7 +113,7 @@ const CivilianDashboard = () => {
 					{/* Fire Permits */}
 					<div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:shadow-md transition text-white">
 						<div className="flex items-center mb-4">
-							<div className="bg-yellow-700 p-3 rounded-md flex-shrink-0">
+							<div className="bg-amber-dark p-3 rounded-md flex-shrink-0">
 								<svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 								</svg>
@@ -125,7 +125,7 @@ const CivilianDashboard = () => {
 						</p>
 						<button
 							onClick={() => navigate("/apply-permit")}
-							className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors"
+							className="w-full bg-amber hover:bg-amber-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors"
 						>
 							Apply for Permit
 						</button>
@@ -135,7 +135,7 @@ const CivilianDashboard = () => {
 					{/* Incident Reports */}
 					<div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:shadow-md transition text-white">
 						<div className="flex items-center mb-4">
-							<div className="bg-purple-700 p-3 rounded-md flex-shrink-0">
+							<div className="bg-info-dark p-3 rounded-md flex-shrink-0">
 								<svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
 								</svg>
@@ -145,7 +145,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Submit incident reports, view report status, and access historical incident data.
 						</p>
-						<button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-info hover:bg-info-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							Submit Report
 						</button>
 					</div>
@@ -153,7 +153,7 @@ const CivilianDashboard = () => {
 					{/* Contact Information */}
 					<div className="bg-gray-800 rounded-xl border border-gray-700 p-6 hover:shadow-md transition text-white">
 						<div className="flex items-center mb-4">
-							<div className="bg-indigo-700 p-3 rounded-md flex-shrink-0">
+							<div className="bg-info-dark p-3 rounded-md flex-shrink-0">
 								<svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
 								</svg>
@@ -163,7 +163,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Get in touch with the fire department for non-emergency inquiries and general information.
 						</p>
-						<button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-info hover:bg-info-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							Contact Department
 						</button>
 					</div>

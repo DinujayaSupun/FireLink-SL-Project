@@ -375,19 +375,19 @@ const ReorderPage = () => {
             .print\\:text-xs { font-size: 10px; }
             .print\\:bg-white { background-color: white !important; }
             .print\\:border-b { border-bottom: 1px solid black; }
-            .print\\:border-red-600 { border-color: black; }
+            .print\\:border-fire { border-color: black; }
             .print\\:break-inside-avoid { page-break-inside: avoid; }
-            .bg-red-600, .bg-green-100, .bg-yellow-100, .bg-red-100,
-            .bg-gray-50, .bg-red-50, .bg-orange-100, .bg-blue-100 {
+            .bg-fire, .bg-success-100, .bg-amber-100, .bg-fire-100,
+            .bg-gray-50, .bg-fire-50, .bg-amber-100, .bg-info-100 {
               background: white !important;
               color: black !important;
             }
-            .text-red-600, .text-green-600, .text-yellow-600,
-            .text-red-800, .text-green-800, .text-yellow-800,
-            .text-orange-600, .text-blue-600, .text-gray-600 {
+            .text-fire, .text-success, .text-amber,
+            .text-fire-dark, .text-success-dark, .text-amber-dark,
+            .text-amber, .text-info, .text-gray-600 {
               color: black !important;
             }
-            .border-red-600, .border-red-300, .border-red-200,
+            .border-fire, .border-fire-300, .border-fire-200,
             .border-gray-300, .border-gray-200 {
               border-color: black !important;
             }
@@ -524,7 +524,7 @@ const ReorderPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-fire mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading reorder form...</p>
         </div>
       </div>
@@ -535,8 +535,8 @@ const ReorderPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-600 mb-4">{error || 'Item not found'}</p>
-          <Link to="/inventory" className="text-blue-600 hover:underline">
+          <p className="text-fire mb-4">{error || 'Item not found'}</p>
+          <Link to="/inventory" className="text-info hover:underline">
             ← Back to Inventory
           </Link>
         </div>
@@ -564,7 +564,7 @@ const ReorderPage = () => {
           <div className="flex gap-3 items-center">
             <Link
               to="/inventory-manager/profile"
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
+              className="bg-fire hover:bg-fire-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
             >
               <FaUser className="text-sm" />
               Profile
@@ -606,7 +606,7 @@ const ReorderPage = () => {
           <div>
             <p className="text-sm font-medium text-gray-500">Status</p>
             <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full ${
-              (item.threshold > 0 && item.quantity < item.threshold) ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'
+              (item.threshold > 0 && item.quantity < item.threshold) ? 'bg-amber-100 text-amber-dark' : 'bg-success-100 text-success-dark'
             }`}>
               {(item.threshold > 0 && item.quantity < item.threshold) ? 'Low Stock' : 'Normal'}
             </span>
@@ -615,19 +615,19 @@ const ReorderPage = () => {
       </div>
 
       {/* Current Reorder Summary */}
-      <div className="bg-blue-50 rounded-lg border border-blue-200 p-6 mb-6">
-        <h2 className="text-xl font-semibold text-blue-900 mb-4">Current Reorder Summary</h2>
+      <div className="bg-info-50 rounded-lg border border-info-200 p-6 mb-6">
+        <h2 className="text-xl font-semibold text-info-dark mb-4">Current Reorder Summary</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white p-3 rounded border">
             <p className="text-sm font-medium text-gray-500">Quantity to Order</p>
-            <p className="text-2xl font-bold text-blue-600">{reorderData.quantity} units</p>
+            <p className="text-2xl font-bold text-info">{reorderData.quantity} units</p>
           </div>
           <div className="bg-white p-3 rounded border">
             <p className="text-sm font-medium text-gray-500">Priority</p>
             <p className={`text-lg font-semibold ${
-              reorderData.priority === 'Urgent' ? 'text-red-600' :
-              reorderData.priority === 'High' ? 'text-orange-600' :
-              reorderData.priority === 'Medium' ? 'text-blue-600' : 'text-gray-600'
+              reorderData.priority === 'Urgent' ? 'text-fire' :
+              reorderData.priority === 'High' ? 'text-amber' :
+              reorderData.priority === 'Medium' ? 'text-info' : 'text-gray-600'
             }`}>
               {reorderData.priority}
             </p>
@@ -670,17 +670,17 @@ const ReorderPage = () => {
                 required
                 className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                   fieldErrors.quantity
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.quantity === '' && reorderData.quantity > 0
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-red-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-fire'
                 }`}
                 placeholder="Enter quantity to order (1-99,999)"
               />
               
               {/* Field-specific error message */}
               {fieldErrors.quantity && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.quantity}
                 </p>
               )}
@@ -701,10 +701,10 @@ const ReorderPage = () => {
                 required
                 className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                   fieldErrors.priority
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : reorderData.priority
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-red-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-fire'
                 }`}
               >
                 <option value="Low">Low</option>
@@ -715,7 +715,7 @@ const ReorderPage = () => {
               
               {/* Field-specific error message */}
               {fieldErrors.priority && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.priority}
                 </p>
               )}
@@ -734,16 +734,16 @@ const ReorderPage = () => {
                 min={new Date().toISOString().split('T')[0]}
                 className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                   fieldErrors.expectedDate
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.expectedDate === '' && reorderData.expectedDate
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-red-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-fire'
                 }`}
               />
               
               {/* Field-specific error message */}
               {fieldErrors.expectedDate && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.expectedDate}
                 </p>
               )}
@@ -761,16 +761,16 @@ const ReorderPage = () => {
                 placeholder="Enter supplier name (2-100 characters, optional)"
                 className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                   fieldErrors.supplier
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.supplier === '' && reorderData.supplier
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-red-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-fire'
                 }`}
               />
               
               {/* Field-specific error message */}
               {fieldErrors.supplier && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.supplier}
                 </p>
               )}
@@ -795,14 +795,14 @@ const ReorderPage = () => {
               placeholder="Any additional information about this reorder... (max 500 characters)"
               className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                 fieldErrors.notes
-                  ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
-                  : 'border-gray-300 focus:ring-red-500'
+                  ? 'border-fire-300 focus:ring-fire focus:border-fire'
+                  : 'border-gray-300 focus:ring-fire'
               }`}
             />
             
             {/* Field-specific error message */}
             {fieldErrors.notes && (
-              <p className="mt-1 text-xs text-red-600">
+              <p className="mt-1 text-xs text-fire">
                 {fieldErrors.notes}
               </p>
             )}
@@ -812,7 +812,7 @@ const ReorderPage = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+              className="bg-fire hover:bg-fire-dark disabled:bg-fire-300 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               {submitting ? 'Submitting...' : 'Submit Reorder'}
             </button>
@@ -820,7 +820,7 @@ const ReorderPage = () => {
               type="button"
               onClick={handleGeneratePDF}
               disabled={!item || !reorderData.quantity}
-              className="bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+              className="bg-success hover:bg-success-dark disabled:bg-success-300 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               Download PDF Report
             </button>
@@ -828,7 +828,7 @@ const ReorderPage = () => {
               type="button"
               onClick={handleSendToManager}
               disabled={!lastCreatedReorderId || sending}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+              className="bg-info hover:bg-info-dark disabled:bg-info-300 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               {sending ? 'Sending...' : 'Send to Supply Manager'}
             </button>
@@ -846,7 +846,7 @@ const ReorderPage = () => {
       <div ref={printRef} className="hidden">
         <div className="print-content p-8 max-w-4xl mx-auto bg-white">
           {/* Official Government Header */}
-          <div className="border-b-2 border-red-600 pb-3 print:pb-2 mb-4 print:mb-2">
+          <div className="border-b-2 border-fire pb-3 print:pb-2 mb-4 print:mb-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3 print:space-x-2">
                 <div className="w-12 h-12 print:w-8 print:h-8 mr-2 flex-shrink-0">
@@ -860,12 +860,12 @@ const ReorderPage = () => {
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
-                  <div className="w-full h-full bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm print:text-xs hidden">
+                  <div className="w-full h-full bg-fire rounded-full flex items-center justify-center text-white font-bold text-sm print:text-xs hidden">
                     
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-red-600 print:text-base">FIRELINK-SL</h1>
+                  <h1 className="text-lg font-bold text-fire print:text-base">FIRELINK-SL</h1>
                   <p className="text-xs font-semibold print:text-[10px] text-gray-700">Fire and Rescue Service</p>
                   <div className="text-[10px] text-gray-600 print:text-[8px] mt-1">
                     <p className="font-medium">Main Fire Station (Head Quarters)</p>
@@ -888,23 +888,23 @@ const ReorderPage = () => {
             <div className="grid grid-cols-4 gap-2 print:gap-1 text-center text-xs print:text-[10px]">
               <div>
                 <p className="font-semibold text-gray-700 print:text-[8px]">Current Stock</p>
-                <p className="text-sm print:text-[10px] font-bold text-blue-600">{item.quantity}</p>
+                <p className="text-sm print:text-[10px] font-bold text-info">{item.quantity}</p>
               </div>
               <div>
                 <p className="font-semibold text-gray-700 print:text-[8px]">Reorder Quantity</p>
-                <p className="text-sm print:text-[10px] font-bold text-green-600">{reorderData.quantity}</p>
+                <p className="text-sm print:text-[10px] font-bold text-success">{reorderData.quantity}</p>
               </div>
               <div>
                 <p className="font-semibold text-gray-700 print:text-[8px]">Priority Level</p>
                 <p className={`text-sm print:text-[10px] font-bold ${
-                  reorderData.priority === 'Urgent' ? 'text-red-600' :
-                  reorderData.priority === 'High' ? 'text-orange-600' :
-                  reorderData.priority === 'Medium' ? 'text-blue-600' : 'text-gray-600'
+                  reorderData.priority === 'Urgent' ? 'text-fire' :
+                  reorderData.priority === 'High' ? 'text-amber' :
+                  reorderData.priority === 'Medium' ? 'text-info' : 'text-gray-600'
                 }`}>{reorderData.priority}</p>
               </div>
               <div>
                 <p className="font-semibold text-gray-700 print:text-[8px]">Status</p>
-                <p className={`text-sm print:text-[10px] font-bold ${(item.threshold > 0 && item.quantity < item.threshold) ? 'text-red-600' : 'text-green-600'}`}>
+                <p className={`text-sm print:text-[10px] font-bold ${(item.threshold > 0 && item.quantity < item.threshold) ? 'text-fire' : 'text-success'}`}>
                   {(item.threshold > 0 && item.quantity < item.threshold) ? 'LOW STOCK' : 'NORMAL'}
                 </p>
               </div>
@@ -913,7 +913,7 @@ const ReorderPage = () => {
 
           {/* Current Reorder Details */}
           <div className="border border-gray-300 mt-0 print:mt-0 mb-4">
-            <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-red-600 print:bg-white print:border-b print:border-red-600 print:text-sm">ITEM DETAILS</h3>
+            <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-fire print:bg-white print:border-b print:border-fire print:text-sm">ITEM DETAILS</h3>
             <div className="p-3 print:p-2">
               <div className="grid grid-cols-3 gap-4 text-sm print:text-xs">
                 <div>
@@ -946,19 +946,19 @@ const ReorderPage = () => {
 
           {/* Reorder Information */}
           <div className="border border-gray-300 mt-2 print:mt-1 mb-4">
-            <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-red-600 print:bg-white print:border-b print:border-red-600 print:text-sm">REORDER DETAILS</h3>
+            <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-fire print:bg-white print:border-b print:border-fire print:text-sm">REORDER DETAILS</h3>
             <div className="p-3 print:p-2">
               <div className="grid grid-cols-2 gap-4 text-sm print:text-xs mb-4">
                 <div>
                   <p className="text-xs font-medium text-gray-500 mb-1">Quantity to Order:</p>
-                  <p className="text-lg font-bold text-red-600">{reorderData.quantity} units</p>
+                  <p className="text-lg font-bold text-fire">{reorderData.quantity} units</p>
                 </div>
                 <div>
                   <p className="text-xs font-medium text-gray-500 mb-1">Priority Level:</p>
                   <p className={`text-lg font-semibold ${
-                    reorderData.priority === 'Urgent' ? 'text-red-600' :
-                    reorderData.priority === 'High' ? 'text-orange-600' :
-                    reorderData.priority === 'Medium' ? 'text-blue-600' : 'text-gray-600'
+                    reorderData.priority === 'Urgent' ? 'text-fire' :
+                    reorderData.priority === 'High' ? 'text-amber' :
+                    reorderData.priority === 'Medium' ? 'text-info' : 'text-gray-600'
                   }`}>
                     {reorderData.priority.toUpperCase()}
                   </p>
@@ -987,11 +987,11 @@ const ReorderPage = () => {
 
           {/* All Reorder Items Table */}
           <div className="border border-gray-300 mt-2 print:mt-1 mb-4">
-            <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-red-600 print:bg-white print:border-b print:border-red-600 print:text-sm">REORDER REQUESTS LISTING</h3>
+            <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-fire print:bg-white print:border-b print:border-fire print:text-sm">REORDER REQUESTS LISTING</h3>
             {allReorders.length > 0 ? (
               <div className="overflow-x-auto print:overflow-visible">
                 <table className="w-full text-sm print:text-xs">
-                  <thead className="bg-red-600 text-white">
+                  <thead className="bg-fire text-white">
                     <tr>
                       <th className="px-3 py-2 text-left">Item Name</th>
                       <th className="px-3 py-2 text-center">Category</th>
@@ -1010,19 +1010,19 @@ const ReorderPage = () => {
                         <td className="px-3 py-2 border-b text-center">{reorder.quantity}</td>
                         <td className="px-3 py-2 border-b text-center">
                           <span className={`px-2 py-1 rounded-full text-xs ${
-                            reorder.priority === 'Urgent' ? 'bg-red-100 text-red-800' :
-                            reorder.priority === 'High' ? 'bg-orange-100 text-orange-800' :
-                            reorder.priority === 'Medium' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'
+                            reorder.priority === 'Urgent' ? 'bg-fire-100 text-fire-dark' :
+                            reorder.priority === 'High' ? 'bg-amber-100 text-amber-dark' :
+                            reorder.priority === 'Medium' ? 'bg-info-100 text-info-dark' : 'bg-gray-100 text-gray-800'
                           }`}>
                             {reorder.priority}
                           </span>
                         </td>
                         <td className="px-3 py-2 border-b text-center">
                           <span className={`px-2 py-1 rounded-full text-xs ${
-                            reorder.status === 'Pending' ? 'bg-yellow-100 text-yellow-800' :
-                            reorder.status === 'Approved' ? 'bg-green-100 text-green-800' :
-                            reorder.status === 'In Transit' ? 'bg-blue-100 text-blue-800' :
-                            reorder.status === 'Delivered' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                            reorder.status === 'Pending' ? 'bg-amber-100 text-amber-dark' :
+                            reorder.status === 'Approved' ? 'bg-success-100 text-success-dark' :
+                            reorder.status === 'In Transit' ? 'bg-info-100 text-info-dark' :
+                            reorder.status === 'Delivered' ? 'bg-success-100 text-success-dark' : 'bg-fire-100 text-fire-dark'
                           }`}>
                             {reorder.status}
                           </span>
@@ -1043,18 +1043,18 @@ const ReorderPage = () => {
 
           {/* Critical Items Section */}
           {(item.threshold > 0 && item.quantity < item.threshold) && (
-            <div className="border border-red-300 p-4 mt-4 bg-red-50">
-              <h3 className="text-lg font-semibold mb-3 text-red-600">
+            <div className="border border-fire-300 p-4 mt-4 bg-fire-50">
+              <h3 className="text-lg font-semibold mb-3 text-fire">
                 URGENT REORDER REQUIRED
               </h3>
-              <div className="bg-white p-3 rounded border border-red-200">
+              <div className="bg-white p-3 rounded border border-fire-200">
                 <div className="flex justify-between items-center">
                   <div>
                     <span className="font-semibold">{item.item_name}</span>
                     <span className="text-gray-600 ml-2">({item.item_ID})</span>
                   </div>
                   <div className="text-right">
-                    <span className="text-red-600 font-bold">Stock: {item.quantity}</span>
+                    <span className="text-fire font-bold">Stock: {item.quantity}</span>
                     <span className="text-gray-500 ml-2">/ Threshold: {item.threshold}</span>
                   </div>
                 </div>
@@ -1066,22 +1066,22 @@ const ReorderPage = () => {
           )}
 
           {/* Report Footer */}
-          <div className="border-t-2 border-red-600 mt-6 pt-4 print:mt-4 print:pt-2">
+          <div className="border-t-2 border-fire mt-6 pt-4 print:mt-4 print:pt-2">
             <div className="grid grid-cols-3 gap-4 text-sm print:text-xs">
               <div>
-                <h4 className="font-semibold text-red-600 mb-2 print:mb-1">SYSTEM INFORMATION</h4>
+                <h4 className="font-semibold text-fire mb-2 print:mb-1">SYSTEM INFORMATION</h4>
                 <p><strong>Generated By:</strong> FireLink-SL IMS</p>
                 <p><strong>Platform Version:</strong> 2.1.0</p>
                 <p><strong>Database:</strong> MongoDB Atlas</p>
               </div>
               <div>
-                <h4 className="font-semibold text-red-600 mb-2 print:mb-1">CONTACT INFORMATION</h4>
+                <h4 className="font-semibold text-fire mb-2 print:mb-1">CONTACT INFORMATION</h4>
                 <p><strong>Emergency Hotline:</strong> 110</p>
                 <p><strong>Admin Office:</strong> +94-11-XXXXXXX</p>
                 <p><strong>Email:</strong> inventory@firelink.lk</p>
               </div>
               <div>
-                <h4 className="font-semibold text-red-600 mb-2 print:mb-1">DOCUMENT CONTROL</h4>
+                <h4 className="font-semibold text-fire mb-2 print:mb-1">DOCUMENT CONTROL</h4>
                 <p><strong>Valid Until:</strong> {new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                 <p><strong>Next Review:</strong> {new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                 <p><strong>Page:</strong> 1 of 1</p>
@@ -1089,7 +1089,7 @@ const ReorderPage = () => {
             </div>
             
             {/* Official Disclaimer */}
-            <div className="bg-red-50 print:bg-gray-100 p-3 print:p-2 rounded print:rounded-none mt-4 print:mt-2 border border-red-200 print:border-gray-300">
+            <div className="bg-fire-50 print:bg-gray-100 p-3 print:p-2 rounded print:rounded-none mt-4 print:mt-2 border border-fire-200 print:border-gray-300">
               <p className="text-xs print:text-[10px] text-gray-700 text-center">
                 <strong>CONFIDENTIAL DOCUMENT</strong> - This reorder report contains sensitive procurement data of the Fire and Rescue Service of Sri Lanka. 
                 Distribution is restricted to authorized personnel only. Any unauthorized disclosure, copying, or distribution is strictly prohibited. 

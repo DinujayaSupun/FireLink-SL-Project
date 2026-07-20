@@ -764,7 +764,7 @@ const MissionRecords = () => {
 							name="missionType"
 							value={filters.missionType}
 							onChange={handleFilterChange}
-							className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 						>
 							<option value="">All Types</option>
 							{missionTypes.map((type) => (
@@ -805,14 +805,14 @@ const MissionRecords = () => {
 						setShowForm(true);
 					}
 				}}
-				className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+				className="bg-info hover:bg-info-dark text-white font-medium py-2 px-4 rounded-md transition duration-200"
 			>
 				{showForm ? "Cancel" : "Add New Mission"}
 			</button>
 			<button
 				onClick={() => loadAllMissionsForReport()}
 				disabled={loadingReport}
-				className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2 px-4 rounded-md transition duration-200 flex items-center gap-2"
+				className="bg-info hover:bg-info-dark disabled:bg-info-300 text-white font-medium py-2 px-4 rounded-md transition duration-200 flex items-center gap-2"
 			>
 				{loadingReport ? (
 					<>
@@ -826,7 +826,7 @@ const MissionRecords = () => {
 			</button>
 			<button
 				onClick={() => navigate("/salary-management")}
-				className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+				className="bg-success hover:bg-success-dark text-white font-medium py-2 px-4 rounded-md transition duration-200"
 			>
 				Go to Salary Management
 			</button>
@@ -839,7 +839,7 @@ const MissionRecords = () => {
 						{editingMissionId ? "Edit Mission Record" : "Add New Mission Record"}
 					</h2>
 					{error && (
-						<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+						<div className="bg-fire-100 border border-fire-300 text-fire-dark px-4 py-3 rounded mb-4">
 							{error}
 						</div>
 					)}
@@ -855,7 +855,7 @@ const MissionRecords = () => {
 									value={formData.missionType}
 									onChange={handleInputChange}
 									required
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 								>
 									<option value="">Select Mission Type</option>
 									{missionTypes.map((type) => (
@@ -876,7 +876,7 @@ const MissionRecords = () => {
 									value={formData.missionDate}
 									onChange={handleInputChange}
 									required
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 								/>
 							</div>
 
@@ -890,7 +890,7 @@ const MissionRecords = () => {
 									value={formData.missionTime}
 									onChange={handleInputChange}
 									required
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 								/>
 							</div>
 						</div>
@@ -903,7 +903,7 @@ const MissionRecords = () => {
 		value={formData.status}
 		onChange={handleInputChange}
 		required
-		className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+		className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 	>
 		<option value="Active">Active</option>
 		<option value="Completed">Completed</option>
@@ -923,7 +923,7 @@ const MissionRecords = () => {
 								required
 								rows="4"
 								maxLength={25}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 								placeholder="Provide a detailed description of the mission..."
 							/>
 						</div>
@@ -937,7 +937,7 @@ const MissionRecords = () => {
 								<button
 									type="button"
 									onClick={addInventoryItem}
-									className="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-1 rounded"
+									className="bg-success hover:bg-success-dark text-white text-sm px-3 py-1 rounded"
 								>
 									Add Item
 								</button>
@@ -979,7 +979,7 @@ const MissionRecords = () => {
 															setShowSuggestions((prev) => ({ ...prev, [index]: false }));
 														}, 200);
 													}}
-													className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+													className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 													placeholder="Type ID or name..."
 													required
 												/>
@@ -991,7 +991,7 @@ const MissionRecords = () => {
 														setFilteredSuggestions((prev) => ({ ...prev, [index]: inventoryItems }));
 														setShowSuggestions((prev) => ({ ...prev, [index]: !showSuggestions[index] }));
 													}}
-													className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+													className="px-3 py-2 bg-info hover:bg-info-dark text-white rounded-md"
 													title="Browse all items"
 												>
 													▼
@@ -1037,7 +1037,7 @@ const MissionRecords = () => {
 																		selectInventoryItem(index, suggestion);
 																		setSelectedCategory((prev) => ({ ...prev, [index]: "" }));
 																	}}
-																	className="px-3 py-2 hover:bg-blue-50 cursor-pointer border-b border-gray-100"
+																	className="px-3 py-2 hover:bg-info-50 cursor-pointer border-b border-gray-100"
 																>
 																	<div className="font-medium text-sm text-gray-900">
 																		ID{String(suggestion.item_ID).padStart(3, "0")} - {suggestion.itemName}
@@ -1099,7 +1099,7 @@ const MissionRecords = () => {
 												}
 												min="0"
 												max={item.quantity}
-												className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+												className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 												required
 											/>
 										</div>
@@ -1155,7 +1155,7 @@ const MissionRecords = () => {
 												min="0"
 												max={item.usedQuantity}
 												disabled={!item.isDamaged}
-												className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+												className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info ${
 													!item.isDamaged ? "bg-gray-100 text-gray-400" : ""
 												}`}
 											/>
@@ -1167,7 +1167,7 @@ const MissionRecords = () => {
 										<button
 											type="button"
 											onClick={() => removeInventoryItem(index)}
-											className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+											className="bg-fire hover:bg-fire-dark text-white px-4 py-2 rounded"
 										>
 											Remove Item
 										</button>
@@ -1197,7 +1197,7 @@ const MissionRecords = () => {
 							<button
 								type="submit"
 								disabled={loading}
-								className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+								className="px-4 py-2 bg-info text-white rounded-md hover:bg-info-dark disabled:opacity-50"
 							>
 								{loading 
 									? (editingMissionId ? "Updating..." : "Creating...") 
@@ -1217,7 +1217,7 @@ const MissionRecords = () => {
 
 				{loading ? (
 					<div className="p-6 text-center">
-						<div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+						<div className="animate-spin rounded-full h-8 w-8 border-b-2 border-info mx-auto"></div>
 						<p className="mt-2 text-gray-600">Loading missions...</p>
 					</div>
 				) : missions.length === 0 ? (
@@ -1262,7 +1262,7 @@ const MissionRecords = () => {
 								{missions.map((mission) => (
 									<tr key={mission._id} className="hover:bg-gray-50">
 										<td className="px-6 py-4 whitespace-nowrap">
-											<span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+											<span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-info-100 text-info-dark">
 												{mission.missionType}
 											</span>
 										</td>
@@ -1298,10 +1298,10 @@ const MissionRecords = () => {
 											<span
 												className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
 													mission.status === "Active"
-														? "bg-yellow-100 text-yellow-800"
+														? "bg-amber-100 text-amber-dark"
 														: mission.status === "Completed"
-														? "bg-green-100 text-green-800"
-														: "bg-red-100 text-red-800"
+														? "bg-success-100 text-success-dark"
+														: "bg-fire-100 text-fire-dark"
 												}`}
 											>
 												{mission.status}
@@ -1314,13 +1314,13 @@ const MissionRecords = () => {
 											<div className="flex items-center gap-2">
 												<button
 													onClick={() => startEditMission(mission)}
-													className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded"
+													className="px-3 py-1 bg-info hover:bg-info-dark text-white rounded"
 												>
 													Edit
 												</button>
 												<button
 													onClick={() => deleteMission(mission._id)}
-													className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded"
+													className="px-3 py-1 bg-fire hover:bg-fire-dark text-white rounded"
 												>
 													Delete
 												</button>
@@ -1397,7 +1397,7 @@ const MissionRecords = () => {
 										type="date"
 										value={dateRange.startDate}
 										onChange={(e) => setDateRange(prev => ({ ...prev, startDate: e.target.value }))}
-										className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+										className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 									/>
 								</div>
 								<div>
@@ -1408,7 +1408,7 @@ const MissionRecords = () => {
 										type="date"
 										value={dateRange.endDate}
 										onChange={(e) => setDateRange(prev => ({ ...prev, endDate: e.target.value }))}
-										className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+										className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
 									/>
 								</div>
 								<div className="flex items-end">
@@ -1417,7 +1417,7 @@ const MissionRecords = () => {
 											loadAllMissionsForReport();
 										}}
 										disabled={loadingReport}
-										className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-4 py-2 rounded-md transition-colors"
+										className="w-full bg-info hover:bg-info-dark disabled:bg-info-300 text-white px-4 py-2 rounded-md transition-colors"
 									>
 										{loadingReport ? 'Applying...' : 'Apply Filter'}
 									</button>
@@ -1429,7 +1429,7 @@ const MissionRecords = () => {
 										setDateRange({ startDate: '', endDate: '' });
 										loadAllMissionsForReport();
 									}}
-									className="mt-2 text-sm text-blue-600 hover:text-blue-800"
+									className="mt-2 text-sm text-info hover:text-info-dark"
 								>
 									Clear Date Filter
 								</button>
@@ -1444,27 +1444,27 @@ const MissionRecords = () => {
 								<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 									<div className="bg-white p-3 rounded border">
 										<div className="text-sm text-gray-600">Total Missions</div>
-										<div className="text-2xl font-bold text-red-600">{reportStats.totalMissions || 0}</div>
+										<div className="text-2xl font-bold text-fire">{reportStats.totalMissions || 0}</div>
 									</div>
 									<div className="bg-white p-3 rounded border">
 										<div className="text-sm text-gray-600">Active</div>
-										<div className="text-2xl font-bold text-yellow-600">{reportStats.byStatus?.Active || 0}</div>
+										<div className="text-2xl font-bold text-amber">{reportStats.byStatus?.Active || 0}</div>
 									</div>
 									<div className="bg-white p-3 rounded border">
 										<div className="text-sm text-gray-600">Completed</div>
-										<div className="text-2xl font-bold text-green-600">{reportStats.byStatus?.Completed || 0}</div>
+										<div className="text-2xl font-bold text-success">{reportStats.byStatus?.Completed || 0}</div>
 									</div>
 									<div className="bg-white p-3 rounded border">
 										<div className="text-sm text-gray-600">Cancelled</div>
-										<div className="text-2xl font-bold text-red-600">{reportStats.byStatus?.Cancelled || 0}</div>
+										<div className="text-2xl font-bold text-fire">{reportStats.byStatus?.Cancelled || 0}</div>
 									</div>
 									<div className="bg-white p-3 rounded border">
 										<div className="text-sm text-gray-600">Items Used</div>
-										<div className="text-2xl font-bold text-blue-600">{reportStats.totalItemsUsed || 0}</div>
+										<div className="text-2xl font-bold text-info">{reportStats.totalItemsUsed || 0}</div>
 									</div>
 									<div className="bg-white p-3 rounded border">
 										<div className="text-sm text-gray-600">Unique Items</div>
-										<div className="text-2xl font-bold text-purple-600">{reportStats.uniqueItemCodesCount || 0}</div>
+										<div className="text-2xl font-bold text-info">{reportStats.uniqueItemCodesCount || 0}</div>
 									</div>
 								</div>
 							</div>
@@ -1518,7 +1518,7 @@ const MissionRecords = () => {
 											{allMissionsData.slice(0, 10).map((mission, idx) => (
 												<tr key={idx} className="hover:bg-gray-50">
 													<td className="border border-gray-300 px-3 py-2">
-														<span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+														<span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-info-100 text-info-dark">
 															{mission.missionType}
 														</span>
 													</td>
@@ -1540,9 +1540,9 @@ const MissionRecords = () => {
 													</td>
 													<td className="border border-gray-300 px-3 py-2">
 														<span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-															mission.status === 'Active' ? 'bg-yellow-100 text-yellow-800' :
-															mission.status === 'Completed' ? 'bg-green-100 text-green-800' :
-															'bg-red-100 text-red-800'
+															mission.status === 'Active' ? 'bg-amber-100 text-amber-dark' :
+															mission.status === 'Completed' ? 'bg-success-100 text-success-dark' :
+															'bg-fire-100 text-fire-dark'
 														}`}>
 															{mission.status}
 														</span>
@@ -1570,7 +1570,7 @@ const MissionRecords = () => {
 							</button>
 							<button
 								onClick={handlePrintReport}
-								className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors flex items-center gap-2"
+								className="px-6 py-2 bg-info hover:bg-info-dark text-white rounded-md transition-colors flex items-center gap-2"
 							>
 								Print Report
 							</button>

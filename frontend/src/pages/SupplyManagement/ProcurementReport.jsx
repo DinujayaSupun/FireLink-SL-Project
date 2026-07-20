@@ -174,7 +174,7 @@ export function ProcurementReport() {
 								<div className="flex flex-wrap gap-3 flex-1">
 									<div className="relative">
 										<select
-											className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+											className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-fire"
 											value={supplierFilter}
 											onChange={(e) => setSupplierFilter(e.target.value)}
 										>
@@ -192,7 +192,7 @@ export function ProcurementReport() {
 									</div>
 									<div className="relative">
 										<select
-											className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+											className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-fire"
 											value={categoryFilter}
 											onChange={(e) => setCategoryFilter(e.target.value)}
 										>
@@ -210,7 +210,7 @@ export function ProcurementReport() {
 									</div>
 									<div className="relative">
 										<select
-											className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+											className="appearance-none bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-fire"
 											value={statusFilter}
 											onChange={(e) => setStatusFilter(e.target.value)}
 										>
@@ -228,7 +228,7 @@ export function ProcurementReport() {
 									</div>
 								</div>
 								<div className="flex gap-3 ml-auto">
-									<button className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition-colors">
+									<button className="flex items-center gap-2 bg-fire hover:bg-fire-dark text-white px-4 py-2 rounded-md transition-colors">
 										<PDFDownloadLink
 											document={<ProcurementPdfDocument requests={pdfData} />}
 											fileName={`procurement-report-${
@@ -253,12 +253,12 @@ export function ProcurementReport() {
 											{kpiData.totalRequests}
 										</p>
 									</div>
-									<div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
-										<Download className="h-6 w-6 text-blue-600" />
+									<div className="h-12 w-12 rounded-full bg-info-100 flex items-center justify-center">
+										<Download className="h-6 w-6 text-info" />
 									</div>
 								</div>
 								<div className="mt-4 text-sm">
-									<span className="text-green-600 font-medium">+12%</span>
+									<span className="text-success font-medium">+12%</span>
 									<span className="text-gray-500 ml-1">from last month</span>
 								</div>
 							</div>
@@ -272,12 +272,12 @@ export function ProcurementReport() {
 											{kpiData.openRequests}
 										</p>
 									</div>
-									<div className="h-12 w-12 rounded-full bg-yellow-100 flex items-center justify-center">
-										<Download className="h-6 w-6 text-yellow-600" />
+									<div className="h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center">
+										<Download className="h-6 w-6 text-amber" />
 									</div>
 								</div>
 								<div className="mt-4 text-sm">
-									<span className="text-red-600 font-medium">+5%</span>
+									<span className="text-fire font-medium">+5%</span>
 									<span className="text-gray-500 ml-1">from last month</span>
 								</div>
 							</div>
@@ -291,12 +291,12 @@ export function ProcurementReport() {
 											{kpiData.closedRequests}
 										</p>
 									</div>
-									<div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
-										<Download className="h-6 w-6 text-green-600" />
+									<div className="h-12 w-12 rounded-full bg-success-100 flex items-center justify-center">
+										<Download className="h-6 w-6 text-success" />
 									</div>
 								</div>
 								<div className="mt-4 text-sm">
-									<span className="text-green-600 font-medium">+18%</span>
+									<span className="text-success font-medium">+18%</span>
 									<span className="text-gray-500 ml-1">from last month</span>
 								</div>
 							</div>
@@ -310,12 +310,12 @@ export function ProcurementReport() {
 											{kpiData.overdueRequests}
 										</p>
 									</div>
-									<div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center">
-										<Download className="h-6 w-6 text-red-600" />
+									<div className="h-12 w-12 rounded-full bg-fire-100 flex items-center justify-center">
+										<Download className="h-6 w-6 text-fire" />
 									</div>
 								</div>
 								<div className="mt-4 text-sm">
-									<span className="text-red-600 font-medium">-8%</span>
+									<span className="text-fire font-medium">-8%</span>
 									<span className="text-gray-500 ml-1">from last month</span>
 								</div>
 							</div>
@@ -407,10 +407,10 @@ export function ProcurementReport() {
 													<span
 														className={`inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
 															supplier.failedCount === 0
-																? "bg-green-100 text-green-800"
+																? "bg-success-100 text-success-dark"
 																: supplier.failedCount > 3
-																? "bg-red-100 text-red-800"
-																: "bg-yellow-100 text-yellow-800"
+																? "bg-fire-100 text-fire-dark"
+																: "bg-amber-100 text-amber-dark"
 														}`}
 													>
 														{supplier.failedCount}

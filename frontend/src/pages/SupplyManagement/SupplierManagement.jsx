@@ -133,7 +133,7 @@ const SupplierManagement = () => {
 							</h1>
 							<button
 								onClick={() => setShowAddModal(true)}
-								className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md"
+								className="flex items-center gap-2 bg-fire hover:bg-fire-dark text-white py-2 px-4 rounded-md"
 							>
 								<Plus size={18} />
 								<span>Add Supplier</span>
@@ -147,7 +147,7 @@ const SupplierManagement = () => {
 								</div>
 								<div className="flex flex-wrap gap-3">
 									<select
-										className="border border-gray-300 rounded-md px-3 py-1.5 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+										className="border border-gray-300 rounded-md px-3 py-1.5 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-fire"
 										value={filterCategory}
 										onChange={(e) => {
 											setFilterCategory(e.target.value);
@@ -203,7 +203,7 @@ const SupplierManagement = () => {
 													<div className="flex items-center">
 														<div className="w-24 bg-gray-200 rounded-full h-2.5 mr-2">
 															<div
-																className="bg-blue-600 h-2.5 rounded-full"
+																className="bg-info h-2.5 rounded-full"
 																style={{
 																	width: supplier.supplyCount
 																		? `${
@@ -230,17 +230,17 @@ const SupplierManagement = () => {
 																setCurrentSupplier(supplier);
 															}}
 														>
-															<Edit size={18} className="text-blue-600" />
+															<Edit size={18} className="text-info" />
 														</button>
 														<button
-															className="p-1 hover:bg-red-100 rounded"
+															className="p-1 hover:bg-fire-100 rounded"
 															title="Delete"
 															onClick={() => {
 																setShowDeleteConfirm(true);
 																setCurrentSupplier(supplier);
 															}}
 														>
-															<Trash2 size={18} className="text-red-500" />
+															<Trash2 size={18} className="text-fire" />
 														</button>
 													</div>
 												</td>

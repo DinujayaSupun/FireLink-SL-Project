@@ -54,7 +54,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
               handleTeamMemberChange(selectedId);
             }
           }}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-info transition"
         >
           <option value="">-- Select staff --</option>
           {staffMembers.map(staff => (
@@ -70,9 +70,9 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
             const staff = staffMembers.find(s => s.staffId === id);
             const displayName = staff ? `${staff.name} (${staff.staffId})` : id;
             return (
-              <span key={idx} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center gap-2">
+              <span key={idx} className="bg-info-100 text-info-dark px-3 py-1 rounded-full flex items-center gap-2">
                 {displayName}
-                <button type="button" onClick={() => handleTeamMemberChange(id)} className="text-red-500 font-bold">×</button>
+                <button type="button" onClick={() => handleTeamMemberChange(id)} className="text-fire font-bold">×</button>
               </span>
             );
           })}

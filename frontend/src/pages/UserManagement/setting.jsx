@@ -131,7 +131,7 @@ const Settings = () => {
       {/* Main Settings Section */}
       <div className="flex-1 py-10 px-6">
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6">
+          <div className="bg-gradient-to-r from-fire to-fire-dark text-white p-6">
             <h1 className="text-3xl font-bold">Settings</h1>
           </div>
 
@@ -178,7 +178,7 @@ const Settings = () => {
                   ></textarea>
                   <button
                     type="submit"
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="flex items-center gap-2 px-4 py-2 bg-info text-white rounded hover:bg-info-dark"
                   >
                     <FiSave /> Update Profile
                   </button>
@@ -207,11 +207,11 @@ const Settings = () => {
                   className="p-3 border rounded"
                 />
                 {passwordError && (
-                  <p className="text-red-500 text-sm">{passwordError}</p>
+                  <p className="text-fire text-sm">{passwordError}</p>
                 )}
                 <button
                   type="submit"
-                  className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700"
+                  className="flex items-center gap-2 px-4 py-2 bg-amber text-white rounded hover:bg-amber-dark"
                 >
                   <FiLock /> Update Password
                 </button>
@@ -220,7 +220,7 @@ const Settings = () => {
 
             {/* Delete Account */}
             <div className="bg-gray-50 rounded-lg p-6 border">
-              <h2 className="text-xl font-semibold mb-2 text-red-600">
+              <h2 className="text-xl font-semibold mb-2 text-fire">
                 Delete Account
               </h2>
               <p className="mb-4">
@@ -228,7 +228,7 @@ const Settings = () => {
               </p>
               <button
                 onClick={handleDeleteAccount}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                className="flex items-center gap-2 px-4 py-2 bg-fire text-white rounded hover:bg-fire-dark"
               >
                 <FiTrash2 /> Delete Account
               </button>

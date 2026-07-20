@@ -307,8 +307,8 @@ const CivilianLogin = () => {
           {isSignup ? "Create your account" : "Enter your credentials to login"}
         </p>
 
-        {error && <div className="mb-4 text-red-700 bg-red-50 px-4 py-2 rounded">{error}</div>}
-        {success && <div className="mb-4 text-green-700 bg-green-50 px-4 py-2 rounded">{success}</div>}
+        {error && <div className="mb-4 text-fire-dark bg-fire-50 px-4 py-2 rounded">{error}</div>}
+        {success && <div className="mb-4 text-success-dark bg-success-50 px-4 py-2 rounded">{success}</div>}
 
         <form onSubmit={isSignup ? handleSignup : handleLogin} className="space-y-4">
           {isSignup && (
@@ -323,7 +323,7 @@ const CivilianLogin = () => {
                   onChange={handleChange}
                   className={`w-full pl-10 p-3 rounded-xl border ${
                     signupData.firstName && !validateName(signupData.firstName)
-                      ? "border-red-500"
+                      ? "border-fire"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
@@ -339,7 +339,7 @@ const CivilianLogin = () => {
                   onChange={handleChange}
                   className={`w-full pl-10 p-3 rounded-xl border ${
                     signupData.lastName && !validateName(signupData.lastName)
-                      ? "border-red-500"
+                      ? "border-fire"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
@@ -355,7 +355,7 @@ const CivilianLogin = () => {
                   onChange={handleChange}
                   className={`w-full pl-10 p-3 rounded-xl border ${
                     signupData.username && !validateUsername(signupData.username)
-                      ? "border-red-500"
+                      ? "border-fire"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
@@ -371,7 +371,7 @@ const CivilianLogin = () => {
                   onChange={handleChange}
                   className={`w-full pl-10 p-3 rounded-xl border ${
                     signupData.phoneNumber && !validatePhone(signupData.phoneNumber)
-                      ? "border-red-500"
+                      ? "border-fire"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
@@ -395,7 +395,7 @@ const CivilianLogin = () => {
                   onChange={handleChange}
                   className={`w-full pl-10 p-3 rounded-xl border ${
                     signupData.password && !validatePassword(signupData.password)
-                      ? "border-red-500"
+                      ? "border-fire"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
@@ -412,7 +412,7 @@ const CivilianLogin = () => {
                   className={`w-full pl-10 p-3 rounded-xl border ${
                     signupData.confirmPassword &&
                     signupData.confirmPassword !== signupData.password
-                      ? "border-red-500"
+                      ? "border-fire"
                       : "border-gray-300"
                   } focus:outline-none focus:ring-2 focus:ring-amber transition`}
                   disabled={loading}
@@ -433,7 +433,7 @@ const CivilianLogin = () => {
               className={`w-full pl-10 p-3 rounded-xl border ${
                 (isSignup ? signupData.email : formData.email) &&
                 !validateEmail(isSignup ? signupData.email : formData.email)
-                  ? "border-red-500"
+                  ? "border-fire"
                   : "border-gray-300"
               } focus:outline-none focus:ring-2 focus:ring-amber transition`}
               disabled={loading}
@@ -517,7 +517,7 @@ const CivilianLogin = () => {
             ← Back to Staff Login
                     {/* Debug panel for Google OAuth issues */}
                     {googleDebug && (
-                      <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 text-sm text-yellow-800 rounded">
+                      <div className="mt-4 p-3 bg-amber-50 border border-amber-200 text-sm text-amber-dark rounded">
                         <div><strong>Google Debug:</strong></div>
                         <div>Client ID: {import.meta.env.VITE_GOOGLE_CLIENT_ID || "(not set)"}</div>
                         <div>Origin: {window.location.origin}</div>

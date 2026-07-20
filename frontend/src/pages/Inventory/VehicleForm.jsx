@@ -117,7 +117,7 @@ const VehicleForm = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-info mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading vehicle data...</p>
         </div>
       </div>
@@ -157,15 +157,15 @@ const VehicleForm = () => {
       {/* Form */}
       <div className="bg-white rounded-lg shadow-md p-6">
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md">
+          <div className="mb-6 p-4 bg-fire-50 border border-fire-200 rounded-md">
             <div className="flex">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <svg className="h-5 w-5 text-fire-300" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
               <div className="ml-3">
-                <p className="text-sm text-red-700">{error}</p>
+                <p className="text-sm text-fire-dark">{error}</p>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ const VehicleForm = () => {
                   value={formData.vehicle_ID}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                   placeholder="e.g., V001"
                 />
               </div>
@@ -201,7 +201,7 @@ const VehicleForm = () => {
                   value={formData.vehicle_name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                   placeholder="e.g., Fire Truck - Engine 1"
                 />
               </div>
@@ -215,7 +215,7 @@ const VehicleForm = () => {
                   value={formData.vehicle_type}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                 >
                   <option value="">Select vehicle type</option>
                   <option value="Fire Engine">Fire Engine</option>
@@ -237,7 +237,7 @@ const VehicleForm = () => {
                   value={formData.license_plate}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                   placeholder="e.g., FT-001"
                 />
               </div>
@@ -258,7 +258,7 @@ const VehicleForm = () => {
                   value={formData.capacity}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                   placeholder="e.g., 500 gallons"
                 />
               </div>
@@ -272,7 +272,7 @@ const VehicleForm = () => {
                   value={formData.status}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                 >
                   <option value="Available">Available</option>
                   <option value="In Use">In Use</option>
@@ -297,7 +297,7 @@ const VehicleForm = () => {
                   value={formData.location}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                   placeholder="e.g., Main Station - Vehicle Bay 1"
                 />
               </div>
@@ -311,7 +311,7 @@ const VehicleForm = () => {
                   name="nextMaintenance"
                   value={formData.nextMaintenance}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   Leave empty to set 6 months from now
@@ -330,7 +330,7 @@ const VehicleForm = () => {
               value={formData.notes}
               onChange={handleInputChange}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-info"
               placeholder="Additional notes about the vehicle..."
             />
           </div>
@@ -340,14 +340,14 @@ const VehicleForm = () => {
             <button
               type="button"
               onClick={handleCancel}
-              className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-400"
+              className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-info hover:bg-info-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info disabled:bg-info-300"
             >
               {submitting ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Vehicle' : 'Create Vehicle')}
             </button>

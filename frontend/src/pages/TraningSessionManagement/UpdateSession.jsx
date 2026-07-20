@@ -188,7 +188,7 @@ const UpdateSession = () => {
                   <button
                     type="button"
                     onClick={addTeamMember}
-                    className="px-4 py-2 bg-fire text-white rounded-lg hover:bg-red-700 transition"
+                    className="px-4 py-2 bg-fire text-white rounded-lg hover:bg-fire-dark transition"
                   >
                     Add
                   </button>
@@ -198,13 +198,13 @@ const UpdateSession = () => {
                     {inputs.teamMembers.map((member, index) => (
                       <span
                         key={index}
-                        className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center gap-2"
+                        className="bg-info-100 text-info-dark px-3 py-1 rounded-full flex items-center gap-2"
                       >
                         {member}
                         <button
                           type="button"
                           onClick={() => removeTeamMember(member)}
-                          className="text-red-500 font-bold"
+                          className="text-fire font-bold"
                         >
                           ×
                         </button>
@@ -227,7 +227,7 @@ const UpdateSession = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-red-800 transition flex items-center"
+                className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-fire-dark transition flex items-center"
               >
                 {loading ? "Updating..." : <><FiSave className="mr-2" /> Update Session</>}
               </button>

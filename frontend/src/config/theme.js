@@ -23,17 +23,33 @@ export const colors = {
 	fireLight: "#ef5350",
 	fire50: "#fef2f2",
 	fire100: "#fee2e2",
+	fire200: "#fecaca",
+	fire300: "#fca5a5",
 
 	// Amber — accents, focus, warnings
 	amber: "#ff9800",
 	amberDark: "#f57c00",
 	amberLight: "#ffb74d",
+	amber50: "#fffbeb",
+	amber100: "#fef3c7",
+	amber200: "#fde68a",
+	amber300: "#fcd34d",
 
-	// Semantic
+	// Semantic — success
 	success: "#10b981",
 	successDark: "#059669",
+	success50: "#f0fdf4",
+	success100: "#dcfce7",
+	success200: "#bbf7d0",
+	success300: "#86efac",
+
+	// Semantic — info (also the home for stray blue/indigo/purple accents)
 	info: "#3b82f6",
 	infoDark: "#2563eb",
+	info50: "#eff6ff",
+	info100: "#dbeafe",
+	info200: "#bfdbfe",
+	info300: "#93c5fd",
 };
 
 /**

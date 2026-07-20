@@ -25,21 +25,41 @@
 
   /* Brand — fire red. Primary actions, alerts, brand marks.
      Previously three different reds (#c62828, #dc2626, #ef4444) all served this
-     role; they are unified here. */
-  --color-fire: #c62828;
-  --color-fire-dark: #b71c1c;
-  --color-fire-light: #ef5350;
+     role; they are unified here. The 50–300 tints and -dark step let status
+     badges (bg-fire-100 text-fire-dark) keep the same look they had as raw
+     red-100/red-800 utilities. */
   --color-fire-50: #fef2f2;
   --color-fire-100: #fee2e2;
+  --color-fire-200: #fecaca;
+  --color-fire-300: #fca5a5;
+  --color-fire-light: #ef5350;
+  --color-fire: #c62828;
+  --color-fire-dark: #b71c1c;
 
-  /* Brand — amber. Accents, focus rings, warnings. */
+  /* Brand — amber. Accents, focus rings, warnings. Tints cover the old
+     yellow-100/orange-100 warning badges. */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-light: #ffb74d;
   --color-amber: #ff9800;
   --color-amber-dark: #f57c00;
-  --color-amber-light: #ffb74d;
 
-  /* Semantic */
+  /* Semantic — success (green). */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
   --color-success: #10b981;
   --color-success-dark: #059669;
+
+  /* Semantic — info (blue). Also the home for the off-brand blue/indigo/purple
+     accents that were scattered across the dashboards. */
+  --color-info-50: #eff6ff;
+  --color-info-100: #dbeafe;
+  --color-info-200: #bfdbfe;
+  --color-info-300: #93c5fd;
   --color-info: #3b82f6;
   --color-info-dark: #2563eb;
 }

@@ -120,12 +120,12 @@ const EmployeePayments = () => {
 	const getStatusBadge = (status) => {
 		switch (status) {
 			case "paid":
-				return "bg-green-100 text-green-800";
+				return "bg-success-100 text-success-dark";
 			case "rejected":
-				return "bg-red-100 text-red-800";
+				return "bg-fire-100 text-fire-dark";
 			case "pending":
 			default:
-				return "bg-yellow-100 text-yellow-800";
+				return "bg-amber-100 text-amber-dark";
 		}
 	};
 
@@ -160,7 +160,7 @@ const EmployeePayments = () => {
 							Employee Payments
 						</h1>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-							<div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white">
+							<div className="bg-gradient-to-br from-info to-info rounded-lg p-6 text-white">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
@@ -172,14 +172,14 @@ const EmployeePayments = () => {
 													.length
 											}
 										</p>
-										<p className="text-blue-100 mt-1">payments need review</p>
+										<p className="text-info-100 mt-1">payments need review</p>
 									</div>
-									<div className="bg-blue-400/30 p-4 rounded-full">
+									<div className="bg-info-300/30 p-4 rounded-full">
 										<UserIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white">
+							<div className="bg-gradient-to-br from-success to-success rounded-lg p-6 text-white">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
@@ -192,23 +192,23 @@ const EmployeePayments = () => {
 												.reduce((sum, p) => sum + p.finalSalary, 0)
 												.toLocaleString()}
 										</p>
-										<p className="text-green-100 mt-1">total approved</p>
+										<p className="text-success-100 mt-1">total approved</p>
 									</div>
-									<div className="bg-green-400/30 p-4 rounded-full">
+									<div className="bg-success-300/30 p-4 rounded-full">
 										<CheckIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-6 text-white">
+							<div className="bg-gradient-to-br from-info to-info rounded-lg p-6 text-white">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Payment Schedule
 										</h3>
 										<p className="text-3xl font-bold">Oct 30</p>
-										<p className="text-purple-100 mt-1">next payroll date</p>
+										<p className="text-info-100 mt-1">next payroll date</p>
 									</div>
-									<div className="bg-purple-400/30 p-4 rounded-full">
+									<div className="bg-info-300/30 p-4 rounded-full">
 										<CalendarIcon size={32} />
 									</div>
 								</div>
@@ -217,8 +217,8 @@ const EmployeePayments = () => {
 						<div className="bg-white rounded-lg shadow-sm p-5">
 							<div className="flex items-center justify-between mb-6 border-b border-b-gray-200 pb-4">
 								<div className="flex items-center">
-									<div className="bg-blue-100 p-2 rounded-full mr-3">
-										<UsersIcon size={20} className="text-blue-600" />
+									<div className="bg-info-100 p-2 rounded-full mr-3">
+										<UsersIcon size={20} className="text-info" />
 									</div>
 									<h2 className="text-xl font-semibold">Employee Payments</h2>
 								</div>
@@ -314,7 +314,7 @@ const EmployeePayments = () => {
 											<Fragment key={payment._id}>
 												<tr
 													className={`hover:bg-gray-50 ${
-														showDetails === payment._id ? "bg-blue-50" : ""
+														showDetails === payment._id ? "bg-info-50" : ""
 													}`}
 												>
 													<td className="py-3 px-4">
@@ -347,8 +347,8 @@ const EmployeePayments = () => {
 														<span
 															className={`px-2 py-1 rounded-full text-xs font-medium ${
 																payment.noPayLeaves > 0
-																	? "bg-yellow-100 text-yellow-800"
-																	: "bg-green-100 text-green-800"
+																	? "bg-amber-100 text-amber-dark"
+																	: "bg-success-100 text-success-dark"
 															}`}
 														>
 															{payment.noPayLeaves} days
@@ -378,7 +378,7 @@ const EmployeePayments = () => {
 																		onClick={() => {
 																			handleAccept(payment._id);
 																		}}
-																		className="p-1.5 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition-colors"
+																		className="p-1.5 bg-success-100 text-success rounded-lg hover:bg-success-200 transition-colors"
 																		title="Approve"
 																	>
 																		<CheckIcon size={16} />
@@ -387,7 +387,7 @@ const EmployeePayments = () => {
 																		onClick={() => {
 																			handleRejection(payment._id);
 																		}}
-																		className="p-1.5 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors"
+																		className="p-1.5 bg-fire-100 text-fire rounded-lg hover:bg-fire-200 transition-colors"
 																		title="Reject"
 																	>
 																		<XIcon size={16} />
@@ -406,7 +406,7 @@ const EmployeePayments = () => {
 																>
 																	{({ loading }) => (
 																		<button
-																			className="p-1.5 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition-colors"
+																			className="p-1.5 bg-success-100 text-success rounded-lg hover:bg-success-200 transition-colors"
 																			title={
 																				loading
 																					? "Generating PDF..."
@@ -431,7 +431,7 @@ const EmployeePayments = () => {
 																			: payment._id
 																	)
 																}
-																className="p-1.5 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition-colors"
+																className="p-1.5 bg-info-100 text-info rounded-lg hover:bg-info-200 transition-colors"
 																title="View Details"
 															>
 																{showDetails === payment._id ? (
@@ -444,14 +444,14 @@ const EmployeePayments = () => {
 													</td>
 												</tr>
 												{showDetails === payment._id && (
-													<tr className="bg-blue-50">
+													<tr className="bg-info-50">
 														<td colSpan={7} className="py-4 px-6">
 															<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 																<div className="bg-white p-4 rounded-lg shadow-sm">
 																	<h4 className="font-medium text-sm mb-3 flex items-center">
 																		<DollarSignIcon
 																			size={16}
-																			className="mr-1 text-blue-600"
+																			className="mr-1 text-info"
 																		/>
 																		Salary Details
 																	</h4>
@@ -491,7 +491,7 @@ const EmployeePayments = () => {
 																	<h4 className="font-medium text-sm mb-3 flex items-center">
 																		<ClockIcon
 																			size={16}
-																			className="mr-1 text-green-600"
+																			className="mr-1 text-success"
 																		/>
 																		Allowances
 																	</h4>
@@ -542,7 +542,7 @@ const EmployeePayments = () => {
 																	<h4 className="font-medium text-sm mb-3 flex items-center">
 																		<UsersIcon
 																			size={16}
-																			className="mr-1 text-red-600"
+																			className="mr-1 text-fire"
 																		/>
 																		Deductions
 																	</h4>
@@ -554,7 +554,7 @@ const EmployeePayments = () => {
 																			<span
 																				className={
 																					payment.noPayLeaves > 0
-																						? "text-red-600"
+																						? "text-fire"
 																						: ""
 																				}
 																			>
@@ -594,7 +594,7 @@ const EmployeePayments = () => {
 																		</div>
 																		<div className="flex justify-between font-medium pt-2 mt-1 border-t border-gray-100">
 																			<span>Final Salary:</span>
-																			<span className="text-lg text-blue-600">
+																			<span className="text-lg text-info">
 																				Rs.
 																				{payment.finalSalary.toLocaleString()}
 																			</span>
@@ -616,7 +616,7 @@ const EmployeePayments = () => {
 																		onClick={() =>
 																			handleApproval(payment._id, "approved")
 																		}
-																		className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-sm transition-colors"
+																		className="px-4 py-2 bg-info text-white rounded-lg hover:bg-info-dark shadow-sm transition-colors"
 																	>
 																		Approve Payment
 																	</button>

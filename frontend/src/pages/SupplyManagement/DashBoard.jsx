@@ -60,13 +60,13 @@ const SupplyDashboard = () => {
 	const getStatusBadgeStyle = (status) => {
 		switch (status.toLowerCase()) {
 			case "open":
-				return "bg-blue-100 text-blue-800";
+				return "bg-info-100 text-info-dark";
 			case "closed":
-				return "bg-green-100 text-green-800";
+				return "bg-success-100 text-success-dark";
 			case "assigned":
-				return "bg-yellow-100 text-yellow-800";
+				return "bg-amber-100 text-amber-dark";
 			case "rejected":
-				return "bg-red-100 text-red-800";
+				return "bg-fire-100 text-fire-dark";
 			default:
 				return "bg-gray-100 text-gray-800";
 		}
@@ -75,11 +75,11 @@ const SupplyDashboard = () => {
 	const getAlertIcon = (type) => {
 		switch (type) {
 			case "overdue":
-				return <Clock size={16} className="text-red-500" />;
+				return <Clock size={16} className="text-fire" />;
 			case "deadline-closed":
-				return <AlertTriangle size={16} className="text-red-500" />;
+				return <AlertTriangle size={16} className="text-fire" />;
 			case "not-assigned":
-				return <AlertCircle size={16} className="text-yellow-500" />;
+				return <AlertCircle size={16} className="text-amber" />;
 			default:
 				return <AlertCircle size={16} />;
 		}
@@ -136,8 +136,8 @@ const SupplyDashboard = () => {
 									<span className="text-sm text-gray-500 font-medium">
 										Total Supply Requests
 									</span>
-									<div className="p-2 bg-blue-100 rounded-md">
-										<Package size={16} className="text-blue-600" />
+									<div className="p-2 bg-info-100 rounded-md">
+										<Package size={16} className="text-info" />
 									</div>
 								</div>
 								<div className="text-2xl font-bold text-gray-800">
@@ -147,9 +147,9 @@ const SupplyDashboard = () => {
 									<span
 										className={`font-medium ${
 											kpiData.totalRequests.growth.startsWith("+")
-												? "text-green-600"
+												? "text-success"
 												: kpiData.totalRequests.growth.startsWith("-")
-												? "text-red-600"
+												? "text-fire"
 												: "text-gray-500"
 										}`}
 									>
@@ -163,8 +163,8 @@ const SupplyDashboard = () => {
 									<span className="text-sm text-gray-500 font-medium">
 										Active Suppliers
 									</span>
-									<div className="p-2 bg-green-100 rounded-md">
-										<Users size={16} className="text-green-600" />
+									<div className="p-2 bg-success-100 rounded-md">
+										<Users size={16} className="text-success" />
 									</div>
 								</div>
 								<div className="text-2xl font-bold text-gray-800">
@@ -174,9 +174,9 @@ const SupplyDashboard = () => {
 									<span
 										className={`font-medium ${
 											kpiData.totalSuppliers.growth.startsWith("+")
-												? "text-green-600"
+												? "text-success"
 												: kpiData.totalSuppliers.growth.startsWith("-")
-												? "text-red-600"
+												? "text-fire"
 												: "text-gray-500"
 										}`}
 									>
@@ -190,8 +190,8 @@ const SupplyDashboard = () => {
 									<span className="text-sm text-gray-500 font-medium">
 										Active Requests
 									</span>
-									<div className="p-2 bg-yellow-100 rounded-md">
-										<Clock size={16} className="text-yellow-600" />
+									<div className="p-2 bg-amber-100 rounded-md">
+										<Clock size={16} className="text-amber" />
 									</div>
 								</div>
 								<div className="text-2xl font-bold text-gray-800">
@@ -201,9 +201,9 @@ const SupplyDashboard = () => {
 									<span
 										className={`font-medium ${
 											kpiData.activeRequests.growth.startsWith("+")
-												? "text-green-600"
+												? "text-success"
 												: kpiData.activeRequests.growth.startsWith("-")
-												? "text-red-600"
+												? "text-fire"
 												: "text-gray-500"
 										}`}
 									>
@@ -217,8 +217,8 @@ const SupplyDashboard = () => {
 									<span className="text-sm text-gray-500 font-medium">
 										Overdue Requests
 									</span>
-									<div className="p-2 bg-red-100 rounded-md">
-										<AlertTriangle size={16} className="text-red-600" />
+									<div className="p-2 bg-fire-100 rounded-md">
+										<AlertTriangle size={16} className="text-fire" />
 									</div>
 								</div>
 								<div className="text-2xl font-bold text-gray-800">
@@ -228,9 +228,9 @@ const SupplyDashboard = () => {
 									<span
 										className={`font-medium ${
 											kpiData.overdueRequests.growth.startsWith("+")
-												? "text-green-600"
+												? "text-success"
 												: kpiData.overdueRequests.growth.startsWith("-")
-												? "text-red-600"
+												? "text-fire"
 												: "text-gray-500"
 										}`}
 									>
@@ -244,15 +244,15 @@ const SupplyDashboard = () => {
 									<span className="text-sm text-gray-500 font-medium">
 										Monthly Spend
 									</span>
-									<div className="p-2 bg-purple-100 rounded-md">
-										<DollarSign size={16} className="text-purple-600" />
+									<div className="p-2 bg-info-100 rounded-md">
+										<DollarSign size={16} className="text-info" />
 									</div>
 								</div>
 								<div className="text-2xl font-bold text-gray-800">
 									${(kpiData.monthlySpend / 1000).toFixed(1)}k
 								</div>
 								<div className="mt-2 text-xs flex items-center">
-									<span className="text-red-600 font-medium">+15%</span>
+									<span className="text-fire font-medium">+15%</span>
 									<span className="text-gray-500 ml-1">from last month</span>
 								</div>
 							</div> */}
@@ -261,8 +261,8 @@ const SupplyDashboard = () => {
 									<span className="text-sm text-gray-500 font-medium">
 										Avg. Bids per Request
 									</span>
-									<div className="p-2 bg-blue-100 rounded-md">
-										<BarChart3 size={16} className="text-blue-600" />
+									<div className="p-2 bg-info-100 rounded-md">
+										<BarChart3 size={16} className="text-info" />
 									</div>
 								</div>
 								<div className="text-2xl font-bold text-gray-800">
@@ -272,9 +272,9 @@ const SupplyDashboard = () => {
 									<span
 										className={`font-medium ${
 											kpiData.avgBidsPerRequest.growth.startsWith("+")
-												? "text-green-600"
+												? "text-success"
 												: kpiData.avgBidsPerRequest.growth.startsWith("-")
-												? "text-red-600"
+												? "text-fire"
 												: "text-gray-500"
 										}`}
 									>
@@ -376,7 +376,7 @@ const SupplyDashboard = () => {
 										Recent Supply Requests
 									</h2>
 									<button
-										className="text-red-600 hover:text-red-800 text-sm font-medium flex items-center gap-1"
+										className="text-fire hover:text-fire-dark text-sm font-medium flex items-center gap-1"
 										onClick={() => {
 											navigate("/supply-requests", { replace: true });
 										}}
@@ -409,7 +409,7 @@ const SupplyDashboard = () => {
 										<tbody className="divide-y divide-gray-200">
 											{recentRequestsData.map((request, index) => (
 												<tr key={index} className="hover:bg-gray-50">
-													<td className="py-3 px-4 font-medium text-red-600">
+													<td className="py-3 px-4 font-medium text-fire">
 														{request.id}
 													</td>
 													<td className="py-3 px-4">{request.category}</td>
@@ -466,7 +466,7 @@ const SupplyDashboard = () => {
 										Top Performing Suppliers
 									</h2>
 									<button
-										className="text-red-600 hover:text-red-800 text-sm font-medium flex items-center gap-1"
+										className="text-fire hover:text-fire-dark text-sm font-medium flex items-center gap-1"
 										onClick={() => {
 											navigate("/suppliers", { replace: true });
 										}}
@@ -524,10 +524,10 @@ const SupplyDashboard = () => {
 															<span
 																className={`text-xs font-medium ${
 																	supplier.onTimeRate >= 95
-																		? "text-green-600"
+																		? "text-success"
 																		: supplier.onTimeRate >= 90
-																		? "text-yellow-600"
-																		: "text-red-600"
+																		? "text-amber"
+																		: "text-fire"
 																}`}
 															>
 																{supplier.onTimeRate}%
@@ -549,7 +549,7 @@ const SupplyDashboard = () => {
 								</div>
 								<div className="p-4 grid grid-cols-1 gap-3">
 									<button
-										className="flex items-center gap-3 w-full p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-md transition-colors text-left"
+										className="flex items-center gap-3 w-full p-3 bg-fire-50 hover:bg-fire-100 text-fire-dark rounded-md transition-colors text-left"
 										onClick={() => {
 											navigate("/supply-requests", {
 												state: { showAddModal: true },
@@ -560,7 +560,7 @@ const SupplyDashboard = () => {
 										<span className="font-medium">Create New Request</span>
 									</button>
 									<button
-										className="flex items-center gap-3 w-full p-3 bg-green-50 hover:bg-green-100 text-green-700 rounded-md transition-colors text-left"
+										className="flex items-center gap-3 w-full p-3 bg-success-50 hover:bg-success-100 text-success-dark rounded-md transition-colors text-left"
 										onClick={() => {
 											navigate("/suppliers", {
 												state: { showAddModal: true },
@@ -571,7 +571,7 @@ const SupplyDashboard = () => {
 										<span className="font-medium">Add Supplier</span>
 									</button>
 									<button
-										className="flex items-center gap-3 w-full p-3 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-md transition-colors text-left"
+										className="flex items-center gap-3 w-full p-3 bg-info-50 hover:bg-info-100 text-info-dark rounded-md transition-colors text-left"
 										onClick={() => {
 											navigate("/procurement-report", {
 												state: { showAddModal: true },

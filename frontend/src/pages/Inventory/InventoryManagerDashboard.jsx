@@ -230,7 +230,7 @@ const LineChart = ({ data, height = 200, stroke = 'var(--color-info-dark)', data
     );
   } catch (error) {
     console.error('LineChart error:', error);
-    return <div className="text-red-400 text-sm">Chart error</div>;
+    return <div className="text-fire-300 text-sm">Chart error</div>;
   }
 };
 
@@ -289,7 +289,7 @@ const InventoryManagerDashboard = () => {
       <div className="p-8 min-h-screen bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center h-64">
-            <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+            <div className="animate-spin h-8 w-8 border-2 border-info border-t-transparent rounded-full"></div>
             <span className="ml-3 text-gray-600">Loading dashboard...</span>
           </div>
         </div>
@@ -301,13 +301,13 @@ const InventoryManagerDashboard = () => {
     return (
       <div className="p-8 min-h-screen bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-            <div className="text-red-800 text-center">
+          <div className="bg-fire-50 border border-fire-200 rounded-lg p-6">
+            <div className="text-fire-dark text-center">
               <h3 className="text-lg font-medium mb-2">Dashboard Error</h3>
               <p>{error}</p>
               <button 
                 onClick={() => window.location.reload()} 
-                className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                className="mt-4 bg-fire text-white px-4 py-2 rounded hover:bg-fire-dark"
               >
                 Retry
               </button>
@@ -388,56 +388,56 @@ const InventoryManagerDashboard = () => {
     { 
       label: 'Total Item Types', 
       value: inventory.totalItems || 0, 
-      color: 'bg-blue-50 text-blue-700 hover:bg-blue-100', 
+      color: 'bg-info-50 text-info-dark hover:bg-info-100', 
       link: '/inventory',
       description: 'View all inventory items'
     },
     { 
       label: 'Low Stock', 
       value: inventory.lowStockCount || 0, 
-      color: 'bg-amber-50 text-amber-700 hover:bg-amber-100', 
+      color: 'bg-amber-50 text-amber-dark hover:bg-amber-100', 
       link: '/inventory?condition=Low Stock',
       description: 'Items needing restock'
     },
     { 
       label: 'Expired', 
       value: inventory.expiredCount || 0, 
-      color: 'bg-red-50 text-red-700 hover:bg-red-100', 
+      color: 'bg-fire-50 text-fire-dark hover:bg-fire-100', 
       link: '/inventory?condition=Expired',
       description: 'Expired items requiring attention'
     },
     { 
       label: 'Expiring Soon', 
       value: inventory.expiringSoonCount || 0, 
-      color: 'bg-orange-50 text-orange-700 hover:bg-orange-100', 
+      color: 'bg-amber-50 text-amber-dark hover:bg-amber-100', 
       link: '/inventory?search=expiring',
       description: 'Items expiring within 120 days'
     },
     { 
       label: 'Total Vehicles', 
       value: vehicles.totalVehicles || 0, 
-      color: 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100', 
+      color: 'bg-info-50 text-info-dark hover:bg-info-100', 
       link: '/inventory/vehicles',
       description: 'View all vehicles'
     },
     { 
       label: 'Available Vehicles', 
       value: vehicles.availableVehicles || 0, 
-      color: 'bg-green-50 text-green-700 hover:bg-green-100', 
+      color: 'bg-success-50 text-success-dark hover:bg-success-100', 
       link: '/inventory/vehicles?status=Available',
       description: 'Vehicles ready for use'
     },
     { 
       label: 'Assignments', 
       value: assignments.totalAssignments || 0, 
-      color: 'bg-teal-50 text-teal-700 hover:bg-teal-100', 
+      color: 'bg-success-50 text-success-dark hover:bg-success-100', 
       link: '/inventory/vehicle-items',
       description: 'View vehicle assignments'
     },
     { 
       label: 'Assigned Qty', 
       value: assignments.totalAssignedQuantity || 0, 
-      color: 'bg-sky-50 text-sky-700 hover:bg-sky-100', 
+      color: 'bg-info-50 text-info-dark hover:bg-info-100', 
       link: '/inventory/vehicle-items',
       description: 'Total assigned quantities'
     }
@@ -489,20 +489,20 @@ const InventoryManagerDashboard = () => {
               <div className="text-right">
                 <div className="grid grid-cols-2 gap-6 text-sm">
                   <div>
-                    <div className="text-green-600 font-medium">Added</div>
-                    <div className="text-lg font-bold text-green-700">
+                    <div className="text-success font-medium">Added</div>
+                    <div className="text-lg font-bold text-success-dark">
                       {(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
                     </div>
-                    <div className="text-base font-semibold text-blue-600">
+                    <div className="text-base font-semibold text-info">
                       {(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0)} units
                     </div>
                   </div>
                   <div>
-                    <div className="text-red-600 font-medium">Removed</div>
-                    <div className="text-lg font-bold text-red-700">
+                    <div className="text-fire font-medium">Removed</div>
+                    <div className="text-lg font-bold text-fire-dark">
                       {(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
                     </div>
-                    <div className="text-base font-semibold text-orange-600">
+                    <div className="text-base font-semibold text-amber">
                       {(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0)} units
                     </div>
                   </div>
@@ -589,7 +589,7 @@ const InventoryManagerDashboard = () => {
               
               {/* Added Items & Quantity */}
               <div className="mb-4">
-                <h4 className="text-xs font-medium text-green-700 mb-2">Items Added (Count)</h4>
+                <h4 className="text-xs font-medium text-success-dark mb-2">Items Added (Count)</h4>
                 <div className="grid grid-cols-7 gap-2 text-xs">
                   {(trends.itemsAddedLast7Days || []).map((d, index) => {
                     const date = new Date(d?.date);
@@ -599,11 +599,11 @@ const InventoryManagerDashboard = () => {
                     
                     return (
                       <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-green-100 border-2 border-green-300' : 
-                        isHighest && d?.count > 0 ? 'bg-green-50 border border-green-300' : 
+                        isToday ? 'bg-success-100 border-2 border-success-300' : 
+                        isHighest && d?.count > 0 ? 'bg-success-50 border border-success-300' : 
                         'bg-gray-50 border border-gray-200'
                       }`}>
-                        <div className={`font-medium ${isToday ? 'text-green-700' : isHighest && d?.count > 0 ? 'text-green-600' : 'text-gray-700'}`}>
+                        <div className={`font-medium ${isToday ? 'text-success-dark' : isHighest && d?.count > 0 ? 'text-success' : 'text-gray-700'}`}>
                           +{d?.count || 0}
                         </div>
                         <div className="text-gray-500 text-xs">{dayName}</div>
@@ -616,7 +616,7 @@ const InventoryManagerDashboard = () => {
               
               {/* Added Quantity */}
               <div className="mb-4">
-                <h4 className="text-xs font-medium text-blue-700 mb-2">Quantity Added (Units)</h4>
+                <h4 className="text-xs font-medium text-info-dark mb-2">Quantity Added (Units)</h4>
                 <div className="grid grid-cols-7 gap-2 text-xs">
                   {(trends.itemsAddedLast7Days || []).map((d, index) => {
                     const date = new Date(d?.date);
@@ -626,11 +626,11 @@ const InventoryManagerDashboard = () => {
                     
                     return (
                       <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-blue-100 border-2 border-blue-300' : 
-                        isHighest && d?.quantity > 0 ? 'bg-blue-50 border border-blue-300' : 
+                        isToday ? 'bg-info-100 border-2 border-info-300' : 
+                        isHighest && d?.quantity > 0 ? 'bg-info-50 border border-info-300' : 
                         'bg-gray-50 border border-gray-200'
                       }`}>
-                        <div className={`font-medium ${isToday ? 'text-blue-700' : isHighest && d?.quantity > 0 ? 'text-blue-600' : 'text-gray-700'}`}>
+                        <div className={`font-medium ${isToday ? 'text-info-dark' : isHighest && d?.quantity > 0 ? 'text-info' : 'text-gray-700'}`}>
                           +{d?.quantity || 0}
                         </div>
                         <div className="text-gray-500 text-xs">{dayName}</div>
@@ -643,7 +643,7 @@ const InventoryManagerDashboard = () => {
               
               {/* Removed Items (Count) */}
               <div className="mb-4">
-                <h4 className="text-xs font-medium text-orange-700 mb-2">Items Removed (Count)</h4>
+                <h4 className="text-xs font-medium text-amber-dark mb-2">Items Removed (Count)</h4>
                 <div className="grid grid-cols-7 gap-2 text-xs">
                   {(trends.itemsRemovedLast7Days || []).map((d, index) => {
                     const date = new Date(d?.date);
@@ -653,11 +653,11 @@ const InventoryManagerDashboard = () => {
                     
                     return (
                       <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-orange-100 border-2 border-orange-300' : 
-                        isHighest && d?.count > 0 ? 'bg-orange-50 border border-orange-300' : 
+                        isToday ? 'bg-amber-100 border-2 border-amber-300' : 
+                        isHighest && d?.count > 0 ? 'bg-amber-50 border border-amber-300' : 
                         'bg-gray-50 border border-gray-200'
                       }`}>
-                        <div className={`font-medium ${isToday ? 'text-orange-700' : isHighest && d?.count > 0 ? 'text-orange-600' : 'text-gray-700'}`}>
+                        <div className={`font-medium ${isToday ? 'text-amber-dark' : isHighest && d?.count > 0 ? 'text-amber' : 'text-gray-700'}`}>
                           -{d?.count || 0}
                         </div>
                         <div className="text-gray-500 text-xs">{dayName}</div>
@@ -670,7 +670,7 @@ const InventoryManagerDashboard = () => {
               
               {/* Removed Quantity */}
               <div className="mb-4">
-                <h4 className="text-xs font-medium text-red-700 mb-2">Quantity Removed (Units)</h4>
+                <h4 className="text-xs font-medium text-fire-dark mb-2">Quantity Removed (Units)</h4>
                 <div className="grid grid-cols-7 gap-2 text-xs">
                   {(trends.itemsRemovedLast7Days || []).map((d, index) => {
                     const date = new Date(d?.date);
@@ -680,11 +680,11 @@ const InventoryManagerDashboard = () => {
                     
                     return (
                       <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-red-100 border-2 border-red-300' : 
-                        isHighest && d?.quantity > 0 ? 'bg-red-50 border border-red-300' : 
+                        isToday ? 'bg-fire-100 border-2 border-fire-300' : 
+                        isHighest && d?.quantity > 0 ? 'bg-fire-50 border border-fire-300' : 
                         'bg-gray-50 border border-gray-200'
                       }`}>
-                        <div className={`font-medium ${isToday ? 'text-red-700' : isHighest && d?.quantity > 0 ? 'text-red-600' : 'text-gray-700'}`}>
+                        <div className={`font-medium ${isToday ? 'text-fire-dark' : isHighest && d?.quantity > 0 ? 'text-fire' : 'text-gray-700'}`}>
                           -{d?.quantity || 0}
                         </div>
                         <div className="text-gray-500 text-xs">{dayName}</div>
@@ -704,29 +704,29 @@ const InventoryManagerDashboard = () => {
                   <div className="text-xs text-gray-500 font-medium mb-2">ITEM COUNT (Number of Items)</div>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
                     {/* Added Items Count Stats */}
-                    <div className="bg-green-50 p-3 rounded">
-                      <div className="text-green-600 font-medium">Items Added</div>
-                      <div className="text-green-800 font-bold">
+                    <div className="bg-success-50 p-3 rounded">
+                      <div className="text-success font-medium">Items Added</div>
+                      <div className="text-success-dark font-bold">
                         +{(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
                       </div>
                     </div>
-                    <div className="bg-green-50 p-3 rounded">
-                      <div className="text-green-600 font-medium">Avg Added/Day</div>
-                      <div className="text-green-800 font-bold">
+                    <div className="bg-success-50 p-3 rounded">
+                      <div className="text-success font-medium">Avg Added/Day</div>
+                      <div className="text-success-dark font-bold">
                         {((trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0) / 7).toFixed(1)} items
                       </div>
                     </div>
                     
                     {/* Removed Items Count Stats */}
-                    <div className="bg-red-50 p-3 rounded">
-                      <div className="text-red-600 font-medium">Items Removed</div>
-                      <div className="text-red-800 font-bold">
+                    <div className="bg-fire-50 p-3 rounded">
+                      <div className="text-fire font-medium">Items Removed</div>
+                      <div className="text-fire-dark font-bold">
                         -{(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
                       </div>
                     </div>
-                    <div className="bg-red-50 p-3 rounded">
-                      <div className="text-red-600 font-medium">Avg Removed/Day</div>
-                      <div className="text-red-800 font-bold">
+                    <div className="bg-fire-50 p-3 rounded">
+                      <div className="text-fire font-medium">Avg Removed/Day</div>
+                      <div className="text-fire-dark font-bold">
                         {((trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0) / 7).toFixed(1)} items
                       </div>
                     </div>
@@ -738,29 +738,29 @@ const InventoryManagerDashboard = () => {
                   <div className="text-xs text-gray-500 font-medium mb-2">QUANTITY (Total Units)</div>
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
                     {/* Added Quantity Stats */}
-                    <div className="bg-green-50 p-3 rounded">
-                      <div className="text-green-600 font-medium">Quantity Added</div>
-                      <div className="text-green-800 font-bold">
+                    <div className="bg-success-50 p-3 rounded">
+                      <div className="text-success font-medium">Quantity Added</div>
+                      <div className="text-success-dark font-bold">
                         +{(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0).toLocaleString()} units
                       </div>
                     </div>
-                    <div className="bg-green-50 p-3 rounded">
-                      <div className="text-green-600 font-medium">Avg Qty Added/Day</div>
-                      <div className="text-green-800 font-bold">
+                    <div className="bg-success-50 p-3 rounded">
+                      <div className="text-success font-medium">Avg Qty Added/Day</div>
+                      <div className="text-success-dark font-bold">
                         {((trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0) / 7).toFixed(0)} units
                       </div>
                     </div>
                     
                     {/* Removed Quantity Stats */}
-                    <div className="bg-red-50 p-3 rounded">
-                      <div className="text-red-600 font-medium">Quantity Removed</div>
-                      <div className="text-red-800 font-bold">
+                    <div className="bg-fire-50 p-3 rounded">
+                      <div className="text-fire font-medium">Quantity Removed</div>
+                      <div className="text-fire-dark font-bold">
                         -{(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0).toLocaleString()} units
                       </div>
                     </div>
-                    <div className="bg-red-50 p-3 rounded">
-                      <div className="text-red-600 font-medium">Avg Qty Removed/Day</div>
-                      <div className="text-red-800 font-bold">
+                    <div className="bg-fire-50 p-3 rounded">
+                      <div className="text-fire font-medium">Avg Qty Removed/Day</div>
+                      <div className="text-fire-dark font-bold">
                         {((trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0) / 7).toFixed(0)} units
                       </div>
                     </div>
@@ -769,10 +769,10 @@ const InventoryManagerDashboard = () => {
                 
                 {/* Net Change - Both Count and Quantity */}
                 <div className="mt-3 grid grid-cols-1 lg:grid-cols-2 gap-3">
-                  <div className="bg-blue-50 p-3 rounded">
+                  <div className="bg-info-50 p-3 rounded">
                     <div className="flex justify-between items-center">
-                      <span className="text-blue-600 font-medium">Net Item Change (7 days)</span>
-                      <span className="text-blue-800 font-bold text-lg">
+                      <span className="text-info font-medium">Net Item Change (7 days)</span>
+                      <span className="text-info-dark font-bold text-lg">
                         {(() => {
                           const added = (trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0);
                           const removed = (trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0);
@@ -782,10 +782,10 @@ const InventoryManagerDashboard = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-purple-50 p-3 rounded">
+                  <div className="bg-info-50 p-3 rounded">
                     <div className="flex justify-between items-center">
-                      <span className="text-purple-600 font-medium">Net Quantity Change (7 days)</span>
-                      <span className="text-purple-800 font-bold text-lg">
+                      <span className="text-info font-medium">Net Quantity Change (7 days)</span>
+                      <span className="text-info-dark font-bold text-lg">
                         {(() => {
                           const added = (trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0);
                           const removed = (trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0);
@@ -873,16 +873,16 @@ const InventoryManagerDashboard = () => {
           <div className="bg-white rounded-lg shadow p-5">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">Quick Links</h2>
             <div className="grid grid-cols-2 gap-3 text-sm">
-              <Link to="/inventory" className="px-3 py-2 rounded bg-blue-600 text-white text-center hover:bg-blue-700 transition-colors">
+              <Link to="/inventory" className="px-3 py-2 rounded bg-info text-white text-center hover:bg-info-dark transition-colors">
                 Inventory
               </Link>
-              <Link to="/inventory/vehicle-items" className="px-3 py-2 rounded bg-indigo-600 text-white text-center hover:bg-indigo-700 transition-colors">
+              <Link to="/inventory/vehicle-items" className="px-3 py-2 rounded bg-info text-white text-center hover:bg-info-dark transition-colors">
                 Vehicle Items
               </Link>
-              <Link to="/inventory/vehicles" className="px-3 py-2 rounded bg-emerald-600 text-white text-center hover:bg-emerald-700 transition-colors">
+              <Link to="/inventory/vehicles" className="px-3 py-2 rounded bg-success text-white text-center hover:bg-success-dark transition-colors">
                 Vehicles
               </Link>
-              <Link to="/inventory/reorders" className="px-3 py-2 rounded bg-amber-600 text-white text-center hover:bg-amber-700 transition-colors">
+              <Link to="/inventory/reorders" className="px-3 py-2 rounded bg-amber text-white text-center hover:bg-amber-dark transition-colors">
                 Reorders
               </Link>
               <Link to="/inventory/logs" className="px-3 py-2 rounded bg-gray-700 text-white text-center hover:bg-gray-800 transition-colors">
@@ -899,7 +899,7 @@ const InventoryManagerDashboard = () => {
         <div className="bg-white rounded-lg shadow p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-800">Recent Inventory Activity</h2>
-            <Link to="/inventory/logs" className="text-sm text-blue-600 hover:underline">
+            <Link to="/inventory/logs" className="text-sm text-info hover:underline">
               View All Logs
             </Link>
           </div>

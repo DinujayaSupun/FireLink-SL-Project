@@ -136,12 +136,12 @@ const InventoryLogs = () => {
 
   const getActionColor = (action) => {
     const colors = {
-      CREATE: 'bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300',
-      UPDATE: 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 border border-blue-300',
-      DELETE: 'bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300',
-      STOCK_CHANGE: 'bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 border border-yellow-300',
-      REORDER_CREATED: 'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800 border border-purple-300',
-      REORDER_STATUS_CHANGE: 'bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 border border-indigo-300'
+      CREATE: 'bg-gradient-to-r from-success-100 to-success-200 text-success-dark border border-success-300',
+      UPDATE: 'bg-gradient-to-r from-info-100 to-info-200 text-info-dark border border-info-300',
+      DELETE: 'bg-gradient-to-r from-fire-100 to-fire-200 text-fire-dark border border-fire-300',
+      STOCK_CHANGE: 'bg-gradient-to-r from-amber-100 to-amber-200 text-amber-dark border border-amber-300',
+      REORDER_CREATED: 'bg-gradient-to-r from-info-100 to-info-200 text-info-dark border border-info-300',
+      REORDER_STATUS_CHANGE: 'bg-gradient-to-r from-info-100 to-info-200 text-info-dark border border-info-300'
     };
     return colors[action] || 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 border border-gray-300';
   };
@@ -154,7 +154,7 @@ const InventoryLogs = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-fire mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading inventory logs...</p>
         </div>
       </div>
@@ -192,23 +192,23 @@ const InventoryLogs = () => {
       {/* Statistics Cards */}
       {stats && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="rounded-lg bg-blue-600 p-4 text-white shadow-md">
+          <div className="rounded-lg bg-info p-4 text-white shadow-md">
             <div className="text-center">
-              <p className="text-blue-100 text-xs font-medium">Total Logs</p>
+              <p className="text-info-100 text-xs font-medium">Total Logs</p>
               <p className="text-xl font-bold">{stats.totalLogs}</p>
             </div>
           </div>
 
-          <div className="rounded-lg bg-green-600 p-4 text-white shadow-md">
+          <div className="rounded-lg bg-success p-4 text-white shadow-md">
             <div className="text-center">
-              <p className="text-green-100 text-xs font-medium">Today's Activities</p>
+              <p className="text-success-100 text-xs font-medium">Today's Activities</p>
               <p className="text-xl font-bold">{stats.todayLogs}</p>
             </div>
           </div>
 
-          <div className="rounded-lg bg-purple-600 p-4 text-white shadow-md">
+          <div className="rounded-lg bg-info p-4 text-white shadow-md">
             <div className="text-center">
-              <p className="text-purple-100 text-xs font-medium">Action Types</p>
+              <p className="text-info-100 text-xs font-medium">Action Types</p>
               <p className="text-xl font-bold">{stats.actionBreakdown?.length || 0}</p>
             </div>
           </div>
@@ -226,7 +226,7 @@ const InventoryLogs = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search logs..."
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             />
           </div>
 
@@ -235,7 +235,7 @@ const InventoryLogs = () => {
             <select
               value={selectedAction}
               onChange={(e) => setSelectedAction(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             >
               <option value="">All Actions</option>
               <option value="CREATE">Create</option>
@@ -253,7 +253,7 @@ const InventoryLogs = () => {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             />
           </div>
 
@@ -263,14 +263,14 @@ const InventoryLogs = () => {
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             />
           </div>
 
           <div className="flex items-end">
             <button
               onClick={handleSearch}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200"
+              className="w-full bg-info hover:bg-info-dark text-white px-4 py-2 rounded-md font-medium transition-colors duration-200"
             >
               Apply Filters
             </button>
@@ -280,8 +280,8 @@ const InventoryLogs = () => {
 
       {/* Error Message */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-6">
-          <p className="text-red-600">{error}</p>
+        <div className="bg-fire-50 border border-fire-200 rounded-md p-4 mb-6">
+          <p className="text-fire">{error}</p>
         </div>
       )}
 
@@ -336,7 +336,7 @@ const InventoryLogs = () => {
                     <div className="text-sm text-gray-900">{log.description}</div>
                     {log.quantityChange !== 0 && (
                       <div className="text-sm text-gray-500 mt-1">
-                        Quantity change: <span className={`font-semibold ${log.quantityChange > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        Quantity change: <span className={`font-semibold ${log.quantityChange > 0 ? 'text-success' : 'text-fire'}`}>
                           {log.quantityChange > 0 ? '+' : ''}{log.quantityChange}
                         </span>
                       </div>
@@ -349,13 +349,13 @@ const InventoryLogs = () => {
                     <div className="flex gap-3">
                       <button
                         onClick={() => handleEdit(log)}
-                        className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200 flex items-center"
+                        className="text-info hover:text-info-dark font-semibold transition-colors duration-200 flex items-center"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(log._id)}
-                        className="text-red-600 hover:text-red-800 font-semibold transition-colors duration-200 flex items-center"
+                        className="text-fire hover:text-fire-dark font-semibold transition-colors duration-200 flex items-center"
                       >
                         Delete
                       </button>
@@ -410,7 +410,7 @@ const InventoryLogs = () => {
                     value={editFormData.description}
                     onChange={(e) => setEditFormData({...editFormData, description: e.target.value})}
                     rows="3"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire"
                   />
                 </div>
                 <div className="mb-4">
@@ -421,13 +421,13 @@ const InventoryLogs = () => {
                     value={editFormData.notes}
                     onChange={(e) => setEditFormData({...editFormData, notes: e.target.value})}
                     rows="3"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire"
                   />
                 </div>
                 <div className="flex gap-3">
                   <button
                     type="submit"
-                    className="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200"
+                    className="flex-1 bg-fire hover:bg-fire-dark text-white px-4 py-2 rounded-md font-medium transition-colors duration-200"
                   >
                     Save Changes
                   </button>

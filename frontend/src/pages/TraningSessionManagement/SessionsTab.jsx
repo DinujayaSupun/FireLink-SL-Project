@@ -19,7 +19,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
           <div className="flex justify-end mb-2">
             <button 
               onClick={() => setShowReportModal(true)} 
-              className="px-4 py-2 bg-red-600 text-white rounded-md shadow hover:bg-red-700 transition text-sm"
+              className="px-4 py-2 bg-fire text-white rounded-md shadow hover:bg-fire-dark transition text-sm"
             >
               Generate Report
             </button>
@@ -30,7 +30,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
               <div key={session._id} className="border border-gray-700 rounded-xl p-5 hover:shadow-md transition bg-gray-800 text-white group">
                 <div className="flex justify-between items-start mb-3">
                   <h4 className="font-semibold text-lg text-white group-hover:text-fire transition">{session.title}</h4>
-                  <span className="bg-blue-700 text-white text-xs font-medium px-2 py-1 rounded">{session.teamMembers.length} participants</span>
+                  <span className="bg-info-dark text-white text-xs font-medium px-2 py-1 rounded">{session.teamMembers.length} participants</span>
                 </div>
                 <p className="text-gray-300 mb-2">{session.description}</p>
                 <div className="flex items-center text-sm text-gray-400 mb-1">
@@ -45,8 +45,8 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                 <div className="flex justify-between items-center pt-3 border-t border-gray-700">
                   <span className="text-xs text-gray-400">Created by: {session.createdBy}</span>
                   <div className="flex space-x-2">
-                    <button className="p-2 text-gray-400 hover:text-blue-500 transition" onClick={() => navigate(`/update-session/${session._id}`)}><FiEdit2 /></button>
-                    <button onClick={() => handleDeleteSession(session._id)} className="p-2 text-gray-400 hover:text-red-500 transition"><FiTrash2 /></button>
+                    <button className="p-2 text-gray-400 hover:text-info transition" onClick={() => navigate(`/update-session/${session._id}`)}><FiEdit2 /></button>
+                    <button onClick={() => handleDeleteSession(session._id)} className="p-2 text-gray-400 hover:text-fire transition"><FiTrash2 /></button>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
             </div>
 
             {/* Ultra Compact Report Header */}
-            <div className="border border-red-600 p-2 print:p-1 mb-1 print:mb-0">
+            <div className="border border-fire p-2 print:p-1 mb-1 print:mb-0">
               <div className="flex items-center justify-between mb-1 print:mb-0">
                 {/* Logo & Title Section */}
                 <div className="flex items-center">
@@ -85,12 +85,12 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                         e.target.nextSibling.style.display = 'flex';
                       }}
                     />
-                    <div className="w-full h-full bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm print:text-xs hidden">
+                    <div className="w-full h-full bg-fire rounded-full flex items-center justify-center text-white font-bold text-sm print:text-xs hidden">
                       FL
                     </div>
                   </div>
                   <div className="text-left">
-                    <h1 className="text-lg font-bold text-red-600 print:text-base">FIRELINK-SL</h1>
+                    <h1 className="text-lg font-bold text-fire print:text-base">FIRELINK-SL</h1>
                     <p className="text-xs font-semibold print:text-[10px] text-gray-700">Fire and Rescue Service</p>
                     <p className="text-[10px] print:text-[8px] text-gray-600 mt-0.5 leading-tight">
                       Main Fire Station (Head Quarters)<br />
@@ -120,13 +120,13 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-700 print:text-[8px]">Total Participants</p>
-                  <p className="text-sm print:text-[10px] font-bold text-blue-600">
+                  <p className="text-sm print:text-[10px] font-bold text-info">
                     {sessions.reduce((sum, s) => sum + s.teamMembers.length, 0)}
                   </p>
                 </div>
                 <div>
                   <p className="font-semibold text-gray-700 print:text-[8px]">Upcoming Sessions</p>
-                  <p className="text-sm print:text-[10px] font-bold text-green-600">
+                  <p className="text-sm print:text-[10px] font-bold text-success">
                     {sessions.filter(s => new Date(s.date) > new Date()).length}
                   </p>
                 </div>
@@ -138,7 +138,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-700 print:text-[8px]">Avg. Participants</p>
-                  <p className="text-sm print:text-[10px] font-bold text-red-600">
+                  <p className="text-sm print:text-[10px] font-bold text-fire">
                     {sessions.length > 0 ? Math.round(sessions.reduce((sum, s) => sum + s.teamMembers.length, 0) / sessions.length) : 0}
                   </p>
                 </div>
@@ -147,10 +147,10 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
 
             {/* Detailed Sessions Table */}
             <div className="border border-gray-300 mt-0 print:mt-0">
-              <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-red-600 print:bg-white print:border-b print:border-red-600 print:text-sm">DETAILED TRAINING SESSIONS</h3>
+              <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-fire print:bg-white print:border-b print:border-fire print:text-sm">DETAILED TRAINING SESSIONS</h3>
               <div className="overflow-x-auto print:overflow-visible">
                 <table className="w-full text-sm print:text-xs">
-                  <thead className="bg-red-600 text-white">
+                  <thead className="bg-fire text-white">
                     <tr>
                       <th className="px-3 py-2 text-left">No.</th>
                       <th className="px-3 py-2 text-left">Session Title</th>
@@ -176,7 +176,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                           <td className="px-3 py-2 border-b text-center">{sessionDate.toLocaleTimeString()}</td>
                           <td className="px-3 py-2 border-b text-center">{session.venue || 'N/A'}</td>
                           <td className="px-3 py-2 border-b text-center">
-                            <span className={`px-2 py-1 rounded-full text-xs ${isUpcoming ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
+                            <span className={`px-2 py-1 rounded-full text-xs ${isUpcoming ? 'bg-success-100 text-success-dark' : 'bg-gray-100 text-gray-800'}`}>
                               {session.teamMembers.length}
                             </span>
                           </td>
@@ -191,21 +191,21 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
 
             {/* Upcoming Sessions Highlight */}
             {sessions.filter(s => new Date(s.date) > new Date()).length > 0 && (
-              <div className="border border-red-300 p-4 mt-4 bg-red-50">
-                <h3 className="text-lg font-semibold mb-3 text-red-600">
+              <div className="border border-fire-300 p-4 mt-4 bg-fire-50">
+                <h3 className="text-lg font-semibold mb-3 text-fire">
                   UPCOMING TRAINING SESSIONS
                 </h3>
                 <div className="grid gap-2">
                   {sessions
                     .filter(s => new Date(s.date) > new Date())
                     .map(session => (
-                      <div key={session._id} className="flex justify-between items-center bg-white p-2 rounded border border-red-200">
+                      <div key={session._id} className="flex justify-between items-center bg-white p-2 rounded border border-fire-200">
                         <div>
                           <span className="font-semibold">{session.title}</span>
                           <span className="text-gray-600 ml-2">({session.venue})</span>
                         </div>
                         <div className="text-right">
-                          <span className="text-red-600 font-bold">{new Date(session.date).toLocaleDateString()}</span>
+                          <span className="text-fire font-bold">{new Date(session.date).toLocaleDateString()}</span>
                           <span className="text-gray-500 ml-2">Participants: {session.teamMembers.length}</span>
                         </div>
                       </div>
@@ -215,27 +215,27 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
             )}
 
             {/* Report Footer */}
-            <div className="border-t-2 border-red-600 mt-6 pt-4 print:mt-4 print:pt-2">
+            <div className="border-t-2 border-fire mt-6 pt-4 print:mt-4 print:pt-2">
               <div className="grid grid-cols-3 gap-4 text-sm print:text-xs">
                 <div>
-                  <h4 className="font-semibold text-red-600 mb-2 print:mb-1">SYSTEM INFORMATION</h4>
+                  <h4 className="font-semibold text-fire mb-2 print:mb-1">SYSTEM INFORMATION</h4>
                   <p><strong>Generated By:</strong> FireLink-SL TMS</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-red-600 mb-2 print:mb-1">CONTACT INFORMATION</h4>
+                  <h4 className="font-semibold text-fire mb-2 print:mb-1">CONTACT INFORMATION</h4>
                   <p><strong>Emergency Hotline:</strong> 110</p>
                   <p><strong>Admin Office:</strong> +94-11-55544466</p>
                   <p><strong>Email:</strong> training@firelink.lk</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-red-600 mb-2 print:mb-1">DOCUMENT CONTROL</h4>
+                  <h4 className="font-semibold text-fire mb-2 print:mb-1">DOCUMENT CONTROL</h4>
                   <p><strong>Valid Until:</strong> {new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                   <p><strong>Next Review:</strong> {new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                 </div>
               </div>
               
               {/* Official Disclaimer */}
-              <div className="bg-red-50 print:bg-gray-100 p-3 print:p-2 rounded print:rounded-none mt-4 print:mt-2 border border-red-200 print:border-gray-300">
+              <div className="bg-fire-50 print:bg-gray-100 p-3 print:p-2 rounded print:rounded-none mt-4 print:mt-2 border border-fire-200 print:border-gray-300">
                 <p className="text-xs print:text-[10px] text-gray-700 text-center">
                   <strong>CONFIDENTIAL DOCUMENT</strong> - This training sessions report contains sensitive operational data of the Fire and Rescue Service of Sri Lanka. 
                   Distribution is restricted to authorized personnel only. Any unauthorized disclosure, copying, or distribution is strictly prohibited. 
@@ -313,17 +313,17 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                           page-break-inside: avoid; 
                           page-break-after: auto; 
                         }
-                        .bg-red-600, .bg-green-100, .bg-yellow-100, .bg-red-100,
-                        .bg-gray-50, .bg-red-50, .bg-blue-600, .bg-green-600, .bg-gray-600,
+                        .bg-fire, .bg-success-100, .bg-amber-100, .bg-fire-100,
+                        .bg-gray-50, .bg-fire-50, .bg-info, .bg-success, .bg-gray-600,
                         .bg-gray-100, .bg-gray-800 {
                           background: white !important;
                           color: black !important;
                         }
-                        .text-red-600, .text-green-600, .text-yellow-600, .text-blue-600,
-                        .text-red-800, .text-green-800, .text-yellow-800, .text-gray-800 {
+                        .text-fire, .text-success, .text-amber, .text-info,
+                        .text-fire-dark, .text-success-dark, .text-amber-dark, .text-gray-800 {
                           color: black !important;
                         }
-                        .border-red-600, .border-red-300, .border-red-200,
+                        .border-fire, .border-fire-300, .border-fire-200,
                         .border-gray-300, .border-gray-200 {
                           border-color: black !important;
                         }
@@ -350,7 +350,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                     printWindow.close();
                   }, 500);
                 }}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-info text-white rounded-md hover:bg-info-dark transition-colors"
               >
                 Print Report
               </button>
@@ -411,19 +411,19 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                         .print\\:text-xs { font-size: 10px; }
                         .print\\:bg-white { background-color: white !important; }
                         .print\\:border-b { border-bottom: 1px solid black; }
-                        .print\\:border-red-600 { border-color: black; }
+                        .print\\:border-fire { border-color: black; }
                         .print\\:break-inside-avoid { page-break-inside: avoid; }
-                        .bg-red-600, .bg-green-100, .bg-yellow-100, .bg-red-100,
-                        .bg-gray-50, .bg-red-50, .bg-blue-600, .bg-green-600, .bg-gray-600,
+                        .bg-fire, .bg-success-100, .bg-amber-100, .bg-fire-100,
+                        .bg-gray-50, .bg-fire-50, .bg-info, .bg-success, .bg-gray-600,
                         .bg-gray-100, .bg-gray-800 {
                           background: white !important;
                           color: black !important;
                         }
-                        .text-red-600, .text-green-600, .text-yellow-600, .text-blue-600,
-                        .text-red-800, .text-green-800, .text-yellow-800, .text-gray-800 {
+                        .text-fire, .text-success, .text-amber, .text-info,
+                        .text-fire-dark, .text-success-dark, .text-amber-dark, .text-gray-800 {
                           color: black !important;
                         }
-                        .border-red-600, .border-red-300, .border-red-200,
+                        .border-fire, .border-fire-300, .border-fire-200,
                         .border-gray-300, .border-gray-200 {
                           border-color: black !important;
                         }
@@ -444,7 +444,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                     printWindow.close();
                   }, 500);
                 }}
-                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+                className="px-4 py-2 bg-success text-white rounded-md hover:bg-success-dark transition-colors"
               >
                 Export PDF
               </button>

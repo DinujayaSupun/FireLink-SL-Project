@@ -11,7 +11,7 @@ const InputField = ({ label, name, value, handleInputChange, type = "text", icon
       value={value}
       onChange={handleInputChange}
       required
-      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-info transition"
       {...inputProps}
       placeholder={`Enter ${label.toLowerCase()}`}
     />

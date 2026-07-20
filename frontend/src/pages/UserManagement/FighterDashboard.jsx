@@ -66,12 +66,12 @@ const FighterDashboard = () => {
     return (
       <div className="mt-1 flex flex-col gap-1 text-xs">
         {dayShifts.map(s => (
-          <span key={s._id} className="bg-blue-100 text-blue-800 rounded px-1">
+          <span key={s._id} className="bg-info-100 text-info-dark rounded px-1">
             {s.vehicle} ({s.shiftType})
           </span>
         ))}
         {dayTraining.map(t => (
-          <span key={t._id} className="bg-green-100 text-green-800 rounded px-1">
+          <span key={t._id} className="bg-success-100 text-success-dark rounded px-1">
             {t.title}
           </span>
         ))}
@@ -144,7 +144,7 @@ const FighterDashboard = () => {
                     </div>
                     <button
                       onClick={() => openShiftModal(s._id)}
-                      className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                      className="bg-success text-white px-3 py-1 rounded hover:bg-success-dark"
                     >
                       Request Shift Change
                     </button>
@@ -174,7 +174,7 @@ const FighterDashboard = () => {
                       </button>
                       <button
                         onClick={() => setTrainingModal({ open: true, title: t.title, note: "" })}
-                        className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                        className="bg-info text-white px-3 py-1 rounded hover:bg-info-dark"
                       >
                         Request Training Session
                       </button>

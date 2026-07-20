@@ -124,7 +124,7 @@ function StaffLogin() {
 					<p>
 						<Link
 							to="/supplier-login"
-							className="text-blue-600 hover:underline"
+							className="text-info hover:underline"
 						>
 							Supplier Login
 						</Link>
@@ -132,7 +132,7 @@ function StaffLogin() {
 					<p>
 						<Link
 							to="/civilian-login"
-							className="text-green-600 hover:underline"
+							className="text-success hover:underline"
 						>
 							Civilian Login
 						</Link>

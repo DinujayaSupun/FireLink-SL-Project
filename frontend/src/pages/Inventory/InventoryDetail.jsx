@@ -84,18 +84,18 @@ const InventoryDetail = () => {
 
   const getConditionColor = (condition) => {
     switch (condition) {
-      case 'Good': return 'bg-green-100 text-green-800';
-      case 'Damaged': return 'bg-yellow-100 text-yellow-800';
-      case 'Expired': return 'bg-red-100 text-red-800';
+      case 'Good': return 'bg-success-100 text-success-dark';
+      case 'Damaged': return 'bg-amber-100 text-amber-dark';
+      case 'Expired': return 'bg-fire-100 text-fire-dark';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Available': return 'bg-green-100 text-green-800';
-      case 'In Use': return 'bg-blue-100 text-blue-800';
-      case 'Maintenance': return 'bg-yellow-100 text-yellow-800';
+      case 'Available': return 'bg-success-100 text-success-dark';
+      case 'In Use': return 'bg-info-100 text-info-dark';
+      case 'Maintenance': return 'bg-amber-100 text-amber-dark';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -104,7 +104,7 @@ const InventoryDetail = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-info mx-auto mb-4"></div>
           <p className="text-gray-600">Loading item details...</p>
         </div>
       </div>
@@ -115,12 +115,12 @@ const InventoryDetail = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-red-600 text-6xl mb-4 font-bold">⚠</div>
+          <div className="text-fire text-6xl mb-4 font-bold">⚠</div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Item Not Found</h2>
           <p className="text-gray-600 mb-4">{error || 'The requested item could not be found.'}</p>
           <Link
             to="/inventory"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-info hover:bg-info-dark"
           >
             ← Back to Inventory
           </Link>
@@ -147,7 +147,7 @@ const InventoryDetail = () => {
               <div className="flex items-center gap-4 mb-2">
                 <Link
                   to="/inventory"
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                  className="text-info hover:text-info-dark text-sm font-medium"
                 >
                   ← Back to Inventory
                 </Link>
@@ -158,7 +158,7 @@ const InventoryDetail = () => {
             <div className="flex gap-3">
               <Link
                 to={`/inventory/edit/${item._id}`}
-                className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -168,7 +168,7 @@ const InventoryDetail = () => {
               <button
                 onClick={handleDelete}
                 disabled={deleting}
-                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:bg-red-400"
+                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-fire hover:bg-fire-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fire disabled:bg-fire-300"
               >
                 {deleting ? (
                   <>
@@ -192,21 +192,21 @@ const InventoryDetail = () => {
         {(isLowStock(item) || isExpired(item)) && (
           <div className="mb-6 space-y-3">
             {isLowStock(item) && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
+              <div className="bg-amber-50 border border-amber-200 rounded-md p-4">
                 <div className="flex">
                   <div className="flex-shrink-0">
-                    <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="h-5 w-5 text-amber-300" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                     </svg>
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-sm font-medium text-yellow-800">Low Stock Alert</h3>
-                    <div className="mt-2 text-sm text-yellow-700">
+                    <h3 className="text-sm font-medium text-amber-dark">Low Stock Alert</h3>
+                    <div className="mt-2 text-sm text-amber-dark">
                       <p>Current stock ({item.quantity}) is below the threshold ({item.threshold}).</p>
                       <div className="mt-3">
                         <Link
                           to={`/inventory/${item._id}/reorder`}
-                          className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-yellow-800 bg-yellow-100 hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                          className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-amber-dark bg-amber-100 hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
                         >
                           Create Reorder
                         </Link>
@@ -218,16 +218,16 @@ const InventoryDetail = () => {
             )}
             
             {isExpired(item) && (
-              <div className="bg-red-50 border border-red-200 rounded-md p-4">
+              <div className="bg-fire-50 border border-fire-200 rounded-md p-4">
                 <div className="flex">
                   <div className="flex-shrink-0">
-                    <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="h-5 w-5 text-fire-300" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                     </svg>
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-sm font-medium text-red-800">Expired Item Alert</h3>
-                    <div className="mt-2 text-sm text-red-700">
+                    <h3 className="text-sm font-medium text-fire-dark">Expired Item Alert</h3>
+                    <div className="mt-2 text-sm text-fire-dark">
                       <p>This item expired on {new Date(item.expire_date).toLocaleDateString()}. Immediate replacement is required.</p>
                     </div>
                   </div>
@@ -330,19 +330,19 @@ const InventoryDetail = () => {
           <div className="flex flex-wrap gap-4">
             <Link
               to={`/inventory/${item._id}/reorder`}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-info hover:bg-info-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
             >
               Create Reorder
             </Link>
             <Link
               to="/inventory/reorders"
-              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
             >
               View All Reorders
             </Link>
             <Link
               to="/inventory"
-              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
             >
               ← Back to Inventory
             </Link>

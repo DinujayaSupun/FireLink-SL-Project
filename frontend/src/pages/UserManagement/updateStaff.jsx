@@ -213,7 +213,7 @@ function UpdateUser() {
                   className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                {errors.name && <p className="text-fire text-sm mt-1">{errors.name}</p>}
               </div>
 
               {/* Age */}
@@ -231,7 +231,7 @@ function UpdateUser() {
                   className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
+                {errors.age && <p className="text-fire text-sm mt-1">{errors.age}</p>}
               </div>
 
               {/* Email */}
@@ -247,7 +247,7 @@ function UpdateUser() {
                   className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.gmail && <p className="text-red-500 text-sm mt-1">{errors.gmail}</p>}
+                {errors.gmail && <p className="text-fire text-sm mt-1">{errors.gmail}</p>}
               </div>
 
               {/* Address */}
@@ -263,7 +263,7 @@ function UpdateUser() {
                   className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+                {errors.address && <p className="text-fire text-sm mt-1">{errors.address}</p>}
               </div>
 
               {/* Phone */}
@@ -279,7 +279,7 @@ function UpdateUser() {
                   className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                {errors.phone && <p className="text-fire text-sm mt-1">{errors.phone}</p>}
               </div>
 
               {/* Position */}
@@ -332,7 +332,7 @@ function UpdateUser() {
               </button>
               <button
                 type="submit"
-                className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-red-800 transition flex items-center"
+                className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-fire-dark transition flex items-center"
                 disabled={Object.keys(errors).length > 0}
               >
                 <FiSave className="mr-2" /> Update User
@@ -401,7 +401,7 @@ function UpdateUser() {
                     {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
                   </button>
                 </div>
-                {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
+                {passwordError && <p className="text-fire text-sm mt-1">{passwordError}</p>}
               </div>
             </div>
 

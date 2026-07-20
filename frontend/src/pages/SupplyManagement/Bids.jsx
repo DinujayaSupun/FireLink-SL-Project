@@ -153,7 +153,7 @@ const Bids = () => {
 								<div className="flex justify-between items-center">
 									<h1 className="text-2xl font-bold text-gray-800">My Bids</h1>
 									<button
-										className="bg-red-600 text-white px-5 py-2.5 rounded-lg hover:bg-red-700 transition-colors flex items-center font-medium"
+										className="bg-fire text-white px-5 py-2.5 rounded-lg hover:bg-fire-dark transition-colors flex items-center font-medium"
 										onClick={handleNewApplication}
 									>
 										<PlusIcon size={18} className="mr-2" />
@@ -225,14 +225,14 @@ const Bids = () => {
 														<td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
 															<div className="flex space-x-3">
 																<button
-																	className="text-yellow-600 hover:text-yellow-900"
+																	className="text-amber hover:text-amber-dark"
 																	onClick={() => toggleModifyForm(request)}
 																	title="Edit"
 																>
 																	<EditIcon size={18} />
 																</button>
 																<button
-																	className="text-red-600 hover:text-red-900"
+																	className="text-fire hover:text-fire-dark"
 																	onClick={() => {
 																		setShowDeleteConfirm(true);
 																		setCurrentRequest(request);

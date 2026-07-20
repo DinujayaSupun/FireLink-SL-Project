@@ -94,7 +94,7 @@ export function AddRequestModal({ setShowAddModal, fetchRequests, setError }) {
 								name="title"
 								value={formData.title}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -111,7 +111,7 @@ export function AddRequestModal({ setShowAddModal, fetchRequests, setError }) {
 								value={formData.description}
 								onChange={handleChange}
 								rows={3}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -128,7 +128,7 @@ export function AddRequestModal({ setShowAddModal, fetchRequests, setError }) {
 									name="category"
 									value={formData.category}
 									onChange={handleChange}
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 									required
 								>
 									<option value="">Select a type</option>
@@ -158,7 +158,7 @@ export function AddRequestModal({ setShowAddModal, fetchRequests, setError }) {
 									value={formData.quantity}
 									onChange={handleChange}
 									min="1"
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 									required
 								/>
 							</div>
@@ -175,7 +175,7 @@ export function AddRequestModal({ setShowAddModal, fetchRequests, setError }) {
 									name="unit"
 									value={formData.unit}
 									onChange={handleChange}
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 									required
 								/>
 							</div>
@@ -193,7 +193,7 @@ export function AddRequestModal({ setShowAddModal, fetchRequests, setError }) {
 								name="applicationDeadline"
 								value={formData.applicationDeadline}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								min={new Date().toLocaleDateString("en-CA")}
 								required
 							/>
@@ -211,7 +211,7 @@ export function AddRequestModal({ setShowAddModal, fetchRequests, setError }) {
 						</button>
 						<button
 							type="submit"
-							className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+							className="px-4 py-2 bg-fire text-white rounded-md hover:bg-fire-dark transition-colors"
 						>
 							Create Request
 						</button>

@@ -124,7 +124,7 @@ const Sidebar = () => {
 	return (
 		<div className="w-64 bg-gray-900 text-white flex flex-col h-full hidden md:block">
 			<div className="p-4 flex items-center gap-3">
-				<Flame className="h-8 w-8 text-red-500" />
+				<Flame className="h-8 w-8 text-fire" />
 				<span className="text-xl font-bold">FireDept MS</span>
 			</div>
 			<div className="flex-1 overflow-y-auto">
@@ -138,7 +138,7 @@ const Sidebar = () => {
 							to={`/${item.id}`}
 							className={`w-full flex items-center gap-3 px-4 py-3 text-left ${
 								location.pathname.startsWith(`/${item.id}`)
-									? "bg-red-700 text-white"
+									? "bg-fire-dark text-white"
 									: "text-gray-300 hover:bg-gray-800"
 							}`}
 						>

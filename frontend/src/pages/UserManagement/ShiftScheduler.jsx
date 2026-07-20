@@ -354,15 +354,15 @@ const ShiftScheduler = () => {
             <div>
               <h1 className="text-3xl font-bold text-gray-800">Fire Vehicle Shift Scheduler</h1>
               <p className="text-gray-600 mt-2">Schedule shifts for fire vehicles with up to 8 members per vehicle</p>
-              <div className="mt-3 p-3 bg-blue-50 rounded-lg">
-                <p className="text-sm text-blue-800">
+              <div className="mt-3 p-3 bg-info-50 rounded-lg">
+                <p className="text-sm text-info-dark">
                   <strong>Requirements:</strong> Cannot schedule past dates • Team must include one 1st-class Officer, one Fighter, and one Team Captain • Maximum 8 members per vehicle
                 </p>
               </div>
             </div>
             <Link
               to="/officer-profile"
-              className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition duration-300 font-semibold"
+              className="bg-fire text-white px-6 py-3 rounded-lg hover:bg-fire-dark transition duration-300 font-semibold"
             >
               Back to Profile
             </Link>
@@ -389,11 +389,11 @@ const ShiftScheduler = () => {
                   onChange={handleInputChange}
                   min={getTodayDate()}
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent ${errors.date ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-fire focus:border-transparent ${errors.date ? 'border-fire' : 'border-gray-300'
                     }`}
                 />
                 {errors.date && (
-                  <p className="text-red-500 text-sm mt-1 flex items-center">
+                  <p className="text-fire text-sm mt-1 flex items-center">
                     <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                     </svg>
@@ -412,14 +412,14 @@ const ShiftScheduler = () => {
                   value={formData.vehicle}
                   onChange={handleInputChange}
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent ${errors.vehicle ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-fire focus:border-transparent ${errors.vehicle ? 'border-fire' : 'border-gray-300'
                     }`}
                 >
                   <option value="">Select vehicle</option>
                   {vehicleOptions.map(v => <option key={v} value={v}>{v}</option>)}
                 </select>
                 {errors.vehicle && (
-                  <p className="text-red-500 text-sm mt-1">{errors.vehicle}</p>
+                  <p className="text-fire text-sm mt-1">{errors.vehicle}</p>
                 )}
               </div>
 
@@ -433,14 +433,14 @@ const ShiftScheduler = () => {
                   value={formData.shiftType}
                   onChange={handleInputChange}
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent ${errors.shiftType ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-fire focus:border-transparent ${errors.shiftType ? 'border-fire' : 'border-gray-300'
                     }`}
                 >
                   <option value="">Select shift</option>
                   {shiftTypeOptions.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
                 {errors.shiftType && (
-                  <p className="text-red-500 text-sm mt-1">{errors.shiftType}</p>
+                  <p className="text-fire text-sm mt-1">{errors.shiftType}</p>
                 )}
               </div>
 
@@ -456,16 +456,16 @@ const ShiftScheduler = () => {
                     const position = getMemberPosition(id);
                     const isLeader = isLeadershipRole(position);
                     return (
-                      <span key={id} className={`px-3 py-1 rounded-full text-sm flex items-center ${isLeader ? 'bg-blue-100 text-blue-800 border border-blue-300' : 'bg-red-100 text-red-800'
+                      <span key={id} className={`px-3 py-1 rounded-full text-sm flex items-center ${isLeader ? 'bg-info-100 text-info-dark border border-info-300' : 'bg-fire-100 text-fire-dark'
                         }`}>
                         {getMemberName(id)}
                         {isLeader && (
-                          <span className="ml-1 text-xs bg-blue-200 px-1 rounded">Lead</span>
+                          <span className="ml-1 text-xs bg-info-200 px-1 rounded">Lead</span>
                         )}
                         <button
                           type="button"
                           onClick={() => removeMember(id)}
-                          className="ml-2 hover:text-red-800 font-bold"
+                          className="ml-2 hover:text-fire-dark font-bold"
                         >
                           ×
                         </button>
@@ -482,7 +482,7 @@ const ShiftScheduler = () => {
                       e.target.value = '';
                     }
                   }}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fire focus:border-transparent"
                 >
                   <option value="">Select member to add...</option>
                   {members
@@ -508,7 +508,7 @@ const ShiftScheduler = () => {
                 </select>
 
                 {errors.members ? (
-                  <p className="text-red-500 text-sm mt-1 flex items-center">
+                  <p className="text-fire text-sm mt-1 flex items-center">
                     <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                     </svg>
@@ -531,7 +531,7 @@ const ShiftScheduler = () => {
                   value={formData.notes}
                   onChange={handleInputChange}
                   rows="3"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fire focus:border-transparent"
                   placeholder="Additional notes or special instructions..."
                 />
               </div>
@@ -540,7 +540,7 @@ const ShiftScheduler = () => {
               <div className="flex gap-4 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition duration-300 font-semibold"
+                  className="flex-1 bg-fire text-white py-3 rounded-lg hover:bg-fire-dark transition duration-300 font-semibold"
                 >
                   {editingSchedule ? 'Update Schedule' : 'Create Schedule'}
                 </button>
@@ -570,7 +570,7 @@ const ShiftScheduler = () => {
                     type="date"
                     value={searchDate}
                     onChange={(e) => setSearchDate(e.target.value)}
-                    className="border p-2 rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-400 transition"
+                    className="border p-2 rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-info-300 transition"
                   />
                   <button
                     onClick={() => setSearchDate("")}
@@ -610,7 +610,7 @@ const ShiftScheduler = () => {
                   <div className="flex gap-1">
                     <button
                       onClick={downloadSchedules}
-                      className="bg-green-600 text-white px-2 py-1 text-xs rounded hover:bg-green-700 transition duration-300"
+                      className="bg-success text-white px-2 py-1 text-xs rounded hover:bg-success-dark transition duration-300"
                     >
                       Download CSV
                     </button>
@@ -623,7 +623,7 @@ const ShiftScheduler = () => {
                         setLoadingReport(false);
                       }}
                       disabled={loadingReport}
-                      className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white px-2 py-1 text-xs rounded transition duration-300"
+                      className="bg-info hover:bg-info-dark disabled:bg-info-300 text-white px-2 py-1 text-xs rounded transition duration-300"
                     >
                       {loadingReport ? '⏳ Loading...' : '📄 Generate PDF Report'}
                     </button>
@@ -669,7 +669,7 @@ const ShiftScheduler = () => {
                           </h3>
                           <p className="text-gray-600 text-sm">{formatDate(s.date)}</p>
                           {!hasTeamCaptain && (
-                            <span className="inline-block bg-red-100 text-red-800 text-xs px-2 py-1 rounded mt-1">
+                            <span className="inline-block bg-fire-100 text-fire-dark text-xs px-2 py-1 rounded mt-1">
                               ⚠️ Missing Team Leader
                             </span>
                           )}
@@ -677,13 +677,13 @@ const ShiftScheduler = () => {
                         <div className="flex gap-2">
                           <button
                             onClick={() => editSchedule(s)}
-                            className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                            className="text-info hover:text-info-dark text-sm font-medium"
                           >
                             Edit
                           </button>
                           <button
                             onClick={() => deleteSchedule(s._id)}
-                            className="text-red-600 hover:text-red-800 text-sm font-medium"
+                            className="text-fire hover:text-fire-dark text-sm font-medium"
                           >
                             Delete
                           </button>
@@ -697,8 +697,8 @@ const ShiftScheduler = () => {
                             <span
                               key={member._id}
                               className={`px-2 py-1 rounded text-xs ${isLeadershipRole(member.position)
-                                  ? "bg-blue-100 text-blue-800 border border-blue-300"
-                                  : "bg-green-100 text-green-800"
+                                  ? "bg-info-100 text-info-dark border border-info-300"
+                                  : "bg-success-100 text-success-dark"
                                 }`}
                             >
                               {member.name} ({member.staffId})
@@ -737,7 +737,7 @@ const ShiftScheduler = () => {
               </button>
             </div>
 
-            <div className="border border-red-600 p-2 print:p-1 mb-1 print:mb-0">
+            <div className="border border-fire p-2 print:p-1 mb-1 print:mb-0">
               <div className="flex items-center justify-between mb-1 print:mb-0">
                 <div className="flex items-center">
                   <div className="w-10 h-10 print:w-8 print:h-8 mr-2 flex-shrink-0">
@@ -751,7 +751,7 @@ const ShiftScheduler = () => {
                     />
                   </div>
                   <div>
-                    <h1 className="text-lg font-bold text-red-600 print:text-base">FIRELINK-SL</h1>
+                    <h1 className="text-lg font-bold text-fire print:text-base">FIRELINK-SL</h1>
                     <p className="text-xs text-gray-600 print:text-xs">Fire Service Management System</p>
                   </div>
                 </div>
@@ -874,7 +874,7 @@ const ShiftScheduler = () => {
                     }, 1000);
                   };
                 }}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-info text-white rounded-md hover:bg-info-dark transition-colors"
               >
                 🖨️ Print Report
               </button>

@@ -171,7 +171,7 @@ function AddFireStaff() {
                 className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              {errors.name && <p className="text-fire text-sm mt-1">{errors.name}</p>}
             </div>
 
             {/* Phone */}
@@ -186,7 +186,7 @@ function AddFireStaff() {
                 className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              {errors.phone && <p className="text-fire text-sm mt-1">{errors.phone}</p>}
             </div>
 
             {/* Age */}
@@ -201,7 +201,7 @@ function AddFireStaff() {
                 className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
+              {errors.age && <p className="text-fire text-sm mt-1">{errors.age}</p>}
             </div>
 
             {/* Email */}
@@ -216,7 +216,7 @@ function AddFireStaff() {
                 className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.gmail && <p className="text-red-500 text-sm mt-1">{errors.gmail}</p>}
+              {errors.gmail && <p className="text-fire text-sm mt-1">{errors.gmail}</p>}
             </div>
 
             {/* Position */}
@@ -269,7 +269,7 @@ function AddFireStaff() {
                 rows={3}
                 required
               />
-              {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+              {errors.address && <p className="text-fire text-sm mt-1">{errors.address}</p>}
             </div>
 
             {/* Password */}
@@ -284,7 +284,7 @@ function AddFireStaff() {
                 className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+              {errors.password && <p className="text-fire text-sm mt-1">{errors.password}</p>}
             </div>
 
             {/* Submit */}

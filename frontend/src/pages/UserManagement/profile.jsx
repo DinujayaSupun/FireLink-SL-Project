@@ -16,7 +16,7 @@ const Profile = () => {
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-navy">
-        <p className="text-xl text-red-400">User not found</p>
+        <p className="text-xl text-fire-300">User not found</p>
       </div>
     );
   }
@@ -30,7 +30,7 @@ const Profile = () => {
       <div className="flex-1 py-8 px-4">
         <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6 relative">
+          <div className="bg-gradient-to-r from-fire to-fire-dark text-white p-6 relative">
             <div className="absolute top-4 right-4">
               <span className="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full">
                 {user.status || "Active"}
@@ -64,7 +64,7 @@ const Profile = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-bold">My Profile</h1>
-                <p className="mt-1 text-red-100">Fire Department Staff Details</p>
+                <p className="mt-1 text-fire-100">Fire Department Staff Details</p>
               </div>
             </div>
           </div>
@@ -77,9 +77,9 @@ const Profile = () => {
                 <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">
                   Identification
                 </h2>
-                <div className="flex items-center bg-red-50 p-4 rounded-lg border border-red-100">
+                <div className="flex items-center bg-fire-50 p-4 rounded-lg border border-fire-100">
                   <span className="font-medium text-gray-700 mr-3">Staff ID:</span>
-                  <span className="text-red-800 font-mono bg-red-100 px-3 py-1 rounded">
+                  <span className="text-fire-dark font-mono bg-fire-100 px-3 py-1 rounded">
                     {user.staffId || user._id}
                   </span>
                 </div>

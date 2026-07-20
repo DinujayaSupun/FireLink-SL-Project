@@ -163,7 +163,7 @@ const SupplyRequests = () => {
 							</h1>
 							<button
 								onClick={() => setShowAddModal(true)}
-								className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md transition-colors"
+								className="flex items-center gap-2 bg-fire hover:bg-fire-dark text-white py-2 px-4 rounded-md transition-colors"
 							>
 								<Plus size={18} />
 								<span>Create Request</span>
@@ -177,7 +177,7 @@ const SupplyRequests = () => {
 								</div>
 								<div className="flex flex-wrap gap-3">
 									<select
-										className="border border-gray-300 rounded-md px-3 py-1.5 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+										className="border border-gray-300 rounded-md px-3 py-1.5 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-fire"
 										value={filterStatus}
 										onChange={(e) => {
 											setFilterStatus(e.target.value);
@@ -243,7 +243,7 @@ const SupplyRequests = () => {
 													<StatusBadge status={request.status} />
 												</td>
 												<td className="py-3 px-4">
-													<span className="inline-flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+													<span className="inline-flex items-center justify-center w-6 h-6 bg-info-100 text-info-dark rounded-full text-xs font-medium">
 														{request.bids.length}
 													</span>
 												</td>
@@ -252,7 +252,7 @@ const SupplyRequests = () => {
 														{request.status === "Assigned" && (
 															<Fragment>
 																<button
-																	className="p-1 bg-green-100 text-green-700 rounded hover:bg-green-200 transition-colors"
+																	className="p-1 bg-success-100 text-success-dark rounded hover:bg-success-200 transition-colors"
 																	title="Approve"
 																	onClick={() => {
 																		setCurrentRequest(request);
@@ -262,7 +262,7 @@ const SupplyRequests = () => {
 																	<Check size={18} />
 																</button>
 																<button
-																	className="p-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
+																	className="p-1 bg-fire-100 text-fire-dark rounded hover:bg-fire-200 transition-colors"
 																	title="Reject"
 																	onClick={() => {
 																		setCurrentRequest(request);
@@ -275,7 +275,7 @@ const SupplyRequests = () => {
 														)}
 														{request.status === "Open" && (
 															<button
-																className="p-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
+																className="p-1 bg-info-100 text-info-dark rounded hover:bg-info-200 transition-colors"
 																onClick={() => {
 																	setCurrentRequest(request);
 																	setShowEditModal(true);
@@ -286,7 +286,7 @@ const SupplyRequests = () => {
 														)}
 														{request.status === "Open" && (
 															<button
-																className="p-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
+																className="p-1 bg-fire-100 text-fire-dark rounded hover:bg-fire-200 transition-colors"
 																title="Delete"
 																onClick={() => {
 																	setCurrentRequest(request);
@@ -303,7 +303,7 @@ const SupplyRequests = () => {
 																		setShowComparisonModal(true);
 																		setCurrentRequest(request);
 																	}}
-																	className="p-1 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors"
+																	className="p-1 bg-info-100 text-info-dark rounded hover:bg-info-200 transition-colors"
 																	title="View Bids"
 																>
 																	<BarChart size={18} />

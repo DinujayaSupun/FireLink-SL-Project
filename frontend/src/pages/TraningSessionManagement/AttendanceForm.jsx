@@ -112,7 +112,7 @@ const AttendanceForm = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 p-3 bg-amber text-white rounded-md hover:bg-orange-600 transition font-semibold"
+            className="w-full flex items-center justify-center gap-2 p-3 bg-amber text-white rounded-md hover:bg-amber transition font-semibold"
           >
             {loading ? "Submitting..." : <>
               <FiCheck /> Submit

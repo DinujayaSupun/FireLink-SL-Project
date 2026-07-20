@@ -30,7 +30,7 @@ const SearchBox = ({ searchQuery, setSearchQuery, hideSearchBar }) => {
 						<input
 							type="text"
 							placeholder="Search suppliers, requests"
-							className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+							className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
 						/>
@@ -40,7 +40,7 @@ const SearchBox = ({ searchQuery, setSearchQuery, hideSearchBar }) => {
 			<div className="flex items-center gap-4">
 				<button className="relative p-1">
 					<Bell size={20} className="text-gray-600" />
-					<span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+					<span className="absolute top-0 right-0 h-2 w-2 bg-fire rounded-full"></span>
 				</button>
 				<div className="flex items-center gap-3" onClick={() => handleClick()}>
 					<div className="hidden md:block text-right">

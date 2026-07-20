@@ -206,9 +206,9 @@ const VehicleItemsPage = () => {
   const getExpiryColor = (expireDate) => {
     const status = getExpiryStatus(expireDate);
     switch (status) {
-      case 'Expired': return 'bg-red-100 text-red-800';
-      case 'Expiring Soon': return 'bg-yellow-100 text-yellow-800';
-      case 'OK': return 'bg-green-100 text-green-800';
+      case 'Expired': return 'bg-fire-100 text-fire-dark';
+      case 'Expiring Soon': return 'bg-amber-100 text-amber-dark';
+      case 'OK': return 'bg-success-100 text-success-dark';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -217,7 +217,7 @@ const VehicleItemsPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-info mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading vehicle items...</p>
         </div>
       </div>
@@ -251,13 +251,13 @@ const VehicleItemsPage = () => {
           <div className="flex gap-4">
             <button
               onClick={openAssignModal}
-              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 disabled:opacity-60"
+              className="bg-success hover:bg-success-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 disabled:opacity-60"
               disabled={actionLoading}
             >Assign Item</button>
             {vehicleId && (
               <Link
                 to={`/inventory/vehicles/${vehicleId}`}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
               >
                 Back to Vehicle
               </Link>
@@ -270,7 +270,7 @@ const VehicleItemsPage = () => {
             </Link>
             <Link
               to="/dashboard"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
             >
               Dashboard
             </Link>
@@ -288,7 +288,7 @@ const VehicleItemsPage = () => {
                     <select
                       value={selectedVehicle}
                       onChange={(e) => setSelectedVehicle(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
                     >
                       <option value="">All Vehicles</option>
                       {availableVehicles.map(vehicle => (
@@ -304,7 +304,7 @@ const VehicleItemsPage = () => {
             <select
               value={selectedItem}
               onChange={(e) => setSelectedItem(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             >
               <option value="">All Items</option>
               {availableItems.map(item => (
@@ -318,7 +318,7 @@ const VehicleItemsPage = () => {
           <div className="flex items-end">
             <button
               onClick={handleFilterChange}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
+              className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
             >
               Apply Filters
             </button>
@@ -333,7 +333,7 @@ const VehicleItemsPage = () => {
       </div>
 
       {feedback && (
-        <div className={`mb-4 p-3 rounded-md border text-sm ${feedback.type === 'error' ? 'bg-red-50 border-red-200 text-red-700' : 'bg-green-50 border-green-200 text-green-700'}`}>{feedback.msg}</div>
+        <div className={`mb-4 p-3 rounded-md border text-sm ${feedback.type === 'error' ? 'bg-fire-50 border-fire-200 text-fire-dark' : 'bg-success-50 border-success-200 text-success-dark'}`}>{feedback.msg}</div>
       )}
 
       {/* Vehicle Items Table */}
@@ -343,8 +343,8 @@ const VehicleItemsPage = () => {
         </div>
 
         {error && (
-          <div className="px-6 py-3 bg-red-50 border-b border-red-200">
-            <p className="text-red-700">{error}</p>
+          <div className="px-6 py-3 bg-fire-50 border-b border-fire-200">
+            <p className="text-fire-dark">{error}</p>
           </div>
         )}
 
@@ -433,12 +433,12 @@ const VehicleItemsPage = () => {
                       <div className="flex gap-2">
                         <button
                           onClick={() => openEditModal(vehicleItem)}
-                          className="px-2 py-1 text-xs rounded bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
+                          className="px-2 py-1 text-xs rounded bg-info text-white hover:bg-info-dark disabled:opacity-50"
                           disabled={actionLoading}
                         >Edit</button>
                         <button
                           onClick={() => removeAssignment(vehicleItem)}
-                          className="px-2 py-1 text-xs rounded bg-red-600 text-white hover:bg-red-700 disabled:opacity-50"
+                          className="px-2 py-1 text-xs rounded bg-fire text-white hover:bg-fire-dark disabled:opacity-50"
                           disabled={actionLoading}
                         >Remove</button>
                       </div>
@@ -495,7 +495,7 @@ const VehicleItemsPage = () => {
                   name="vehicle_ID"
                   value={assignForm.vehicle_ID}
                   onChange={handleAssignChange}
-                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-info"
                   required
                 >
                   <option value="">Select a vehicle</option>
@@ -510,7 +510,7 @@ const VehicleItemsPage = () => {
                   name="item_ID"
                   value={assignForm.item_ID}
                   onChange={handleAssignChange}
-                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-info"
                   required
                 >
                   <option value="">Select an item</option>
@@ -527,7 +527,7 @@ const VehicleItemsPage = () => {
                   min={1}
                   value={assignForm.quantity}
                   onChange={handleAssignChange}
-                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-info"
                   required
                 />
                 {assignForm.item_ID && (
@@ -538,7 +538,7 @@ const VehicleItemsPage = () => {
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button type="button" onClick={closeAssignModal} className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm">Cancel</button>
-                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white text-sm disabled:opacity-60">
+                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-success hover:bg-success-dark text-white text-sm disabled:opacity-60">
                   {actionLoading ? 'Assigning...' : 'Assign'}
                 </button>
               </div>
@@ -563,13 +563,13 @@ const VehicleItemsPage = () => {
                   min={1}
                   value={editForm.quantity}
                   onChange={handleEditChange}
-                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-info"
                   required
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button type="button" onClick={closeEditModal} className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm">Cancel</button>
-                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white text-sm disabled:opacity-60">
+                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-info hover:bg-info-dark text-white text-sm disabled:opacity-60">
                   {actionLoading ? 'Saving...' : 'Save'}
                 </button>
               </div>

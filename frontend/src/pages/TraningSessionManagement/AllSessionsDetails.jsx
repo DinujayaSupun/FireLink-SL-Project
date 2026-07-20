@@ -60,7 +60,7 @@ const SessionsList = ({ userFromProps }) => {
   };
 
   if (loading) return <div className="p-6 text-white">Loading sessions...</div>;
-  if (error) return <div className="p-6 text-red-400">{error}</div>;
+  if (error) return <div className="p-6 text-fire-300">{error}</div>;
 
   return (
     
@@ -97,9 +97,9 @@ const SessionsList = ({ userFromProps }) => {
                     <FiUsers /> {s.teamMembers?.length || 0} assigned
                   </span>
                   <span className={`px-2 py-1 rounded text-xs ${
-                    status === "coming" ? "bg-yellow-100 text-yellow-800" :
-                    status === "active" ? "bg-green-100 text-green-800" :
-                    "bg-red-100 text-red-800"
+                    status === "coming" ? "bg-amber-100 text-amber-dark" :
+                    status === "active" ? "bg-success-100 text-success-dark" :
+                    "bg-fire-100 text-fire-dark"
                   }`}>
                     {status === "coming" ? "Upcoming" : 
                      status === "active" ? "Active" : "Expired"}
@@ -112,7 +112,7 @@ const SessionsList = ({ userFromProps }) => {
                 {status === "active" && (
                   <button
                     onClick={() => openQR(s._id)}
-                    className="px-4 py-2 bg-info-dark text-white rounded hover:bg-blue-600"
+                    className="px-4 py-2 bg-info-dark text-white rounded hover:bg-info"
                   >
                     Show QR for attendance
                   </button>
@@ -138,7 +138,7 @@ const SessionsList = ({ userFromProps }) => {
                   if (status === "coming") {
                     return (
                       <div className="text-center">
-                        <span className="text-yellow-700 font-semibold block mb-2">
+                        <span className="text-amber-dark font-semibold block mb-2">
                           Session hasn't started yet
                         </span>
                         <p className="text-sm text-gray-600">
@@ -151,7 +151,7 @@ const SessionsList = ({ userFromProps }) => {
                   if (status === "expired") {
                     return (
                       <div className="text-center">
-                        <span className="text-red-700 font-semibold block mb-2">
+                        <span className="text-fire-dark font-semibold block mb-2">
                           Session has expired
                         </span>
                         <p className="text-sm text-gray-600">

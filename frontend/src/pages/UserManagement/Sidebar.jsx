@@ -143,7 +143,7 @@ const Sidebar = ({ user, onLogout }) => {
             onLogout ? onLogout() : navigate("/staff-login");
           }
         }}
-        className="flex items-center gap-3 mt-6 px-3 py-2 rounded bg-red-600 hover:bg-red-700 transition"
+        className="flex items-center gap-3 mt-6 px-3 py-2 rounded bg-fire hover:bg-fire-dark transition"
       >
         <FaSignOutAlt />
         Logout

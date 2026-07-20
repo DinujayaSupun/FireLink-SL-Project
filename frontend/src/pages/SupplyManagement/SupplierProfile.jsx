@@ -68,7 +68,7 @@ const SupplierProfile = () => {
 						<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
 							<div className="bg-gray-50 border-b border-gray-200 p-5">
 								<div className="flex items-center">
-									<IdCardIcon size={24} className="text-red-600 mr-3" />
+									<IdCardIcon size={24} className="text-fire mr-3" />
 									<div>
 										<p className="text-sm text-gray-500">Supplier ID</p>
 										<p className="font-medium">{supplierData.id}</p>
@@ -78,7 +78,7 @@ const SupplierProfile = () => {
 							<div className="p-6">
 								<div className="mb-8">
 									<div className="flex items-center mb-6">
-										<BuildingIcon size={20} className="text-red-600 mr-2" />
+										<BuildingIcon size={20} className="text-fire mr-2" />
 										<h2 className="text-xl font-bold text-gray-800">
 											Company Information
 										</h2>
@@ -143,51 +143,51 @@ const SupplierProfile = () => {
 								</div>
 								<div className="mb-6">
 									<div className="flex items-center mb-6">
-										<PackageIcon size={20} className="text-red-600 mr-2" />
+										<PackageIcon size={20} className="text-fire mr-2" />
 										<h2 className="text-xl font-bold text-gray-800">
 											Supply Performance
 										</h2>
 									</div>
 									<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-										<div className="bg-green-50 border border-green-100 rounded-lg p-4">
+										<div className="bg-success-50 border border-success-100 rounded-lg p-4">
 											<div className="flex items-center mb-2">
 												<PackageIcon
 													size={20}
-													className="text-green-600 mr-2"
+													className="text-success mr-2"
 												/>
-												<h3 className="font-semibold text-green-800">
+												<h3 className="font-semibold text-success-dark">
 													Successful Supplies
 												</h3>
 											</div>
-											<p className="text-2xl font-bold text-green-800">
+											<p className="text-2xl font-bold text-success-dark">
 												{supplierData.supplyCount}
 											</p>
 										</div>
-										<div className="bg-red-50 border border-red-100 rounded-lg p-4">
+										<div className="bg-fire-50 border border-fire-100 rounded-lg p-4">
 											<div className="flex items-center mb-2">
 												<AlertTriangleIcon
 													size={20}
-													className="text-red-600 mr-2"
+													className="text-fire mr-2"
 												/>
-												<h3 className="font-semibold text-red-800">
+												<h3 className="font-semibold text-fire-dark">
 													Failed Supplies
 												</h3>
 											</div>
-											<p className="text-2xl font-bold text-red-800">
+											<p className="text-2xl font-bold text-fire-dark">
 												{supplierData.failedSupplyCount}
 											</p>
 										</div>
-										<div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
+										<div className="bg-info-50 border border-info-100 rounded-lg p-4">
 											<div className="flex items-center mb-2">
 												<BadgeCheckIcon
 													size={20}
-													className="text-blue-600 mr-2"
+													className="text-info mr-2"
 												/>
-												<h3 className="font-semibold text-blue-800">
+												<h3 className="font-semibold text-info-dark">
 													Success Rate
 												</h3>
 											</div>
-											<p className="text-2xl font-bold text-blue-800">
+											<p className="text-2xl font-bold text-info-dark">
 												{calculateSuccessRate()}%
 											</p>
 										</div>
@@ -201,11 +201,11 @@ const SupplierProfile = () => {
 								</div>
 							</div>
 						</div>
-						<div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+						<div className="bg-info-50 border border-info-200 rounded-lg p-4">
 							<div className="flex">
 								<div className="flex-shrink-0">
 									<svg
-										className="h-5 w-5 text-blue-400"
+										className="h-5 w-5 text-info-300"
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
 										fill="currentColor"
@@ -218,7 +218,7 @@ const SupplierProfile = () => {
 									</svg>
 								</div>
 								<div className="ml-3">
-									<p className="text-sm text-blue-700">
+									<p className="text-sm text-info-dark">
 										This is a read-only profile view. To update any information,
 										please contact system administration.
 									</p>
