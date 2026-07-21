@@ -30,7 +30,7 @@ const Profile = () => {
       <div className="flex-1 py-8 px-4">
         <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-fire to-fire-dark text-white p-6 relative">
+          <div className="bg-navy text-white p-6 relative">
             <div className="absolute top-4 right-4">
               <span className="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full">
                 {user.status || "Active"}

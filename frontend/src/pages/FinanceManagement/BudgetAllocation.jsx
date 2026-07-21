@@ -92,30 +92,30 @@ const BudgetAllocation = () => {
 						</h1>
 						{/* Summary Cards */}
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-4">
-							<div className="bg-gradient-to-br from-info to-info rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">Total Budget</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.financeManager.totalBudget}
 										</p>
-										<p className="text-info-100 mt-1">For current month</p>
+										<p className="text-gray-500 mt-1">For current month</p>
 									</div>
-									<div className="bg-info-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<DollarSignIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-info to-info rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Supply Manager Budget
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.supplyManager.totalBudget}
 										</p>
-										<p className="text-info-100 mt-1">
+										<p className="text-gray-500 mt-1">
 											{Math.round(
 												(allocationData.supplyManager.totalBudget /
 													allocationData.financeManager.totalBudget) *
@@ -124,19 +124,19 @@ const BudgetAllocation = () => {
 											% of total budget
 										</p>
 									</div>
-									<div className="bg-info-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<PieChartIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-success to-success rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">Spent</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.financeManager.spendAmount}
 										</p>
-										<p className="text-success-100 mt-1">
+										<p className="text-gray-500 mt-1">
 											{Math.round(
 												(allocationData.financeManager.spendAmount /
 													allocationData.financeManager.totalBudget) *
@@ -145,19 +145,19 @@ const BudgetAllocation = () => {
 											% of total budget
 										</p>
 									</div>
-									<div className="bg-success-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<BarChartIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-amber to-amber rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">Remaining</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.financeManager.remainingAmount}
 										</p>
-										<p className="text-amber-100 mt-1">
+										<p className="text-gray-500 mt-1">
 											{Math.round(
 												(allocationData.financeManager.remainingAmount /
 													allocationData.financeManager.totalBudget) *
@@ -166,7 +166,7 @@ const BudgetAllocation = () => {
 											% of total budget
 										</p>
 									</div>
-									<div className="bg-amber-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<ArrowRightIcon size={32} />
 									</div>
 								</div>
@@ -299,7 +299,7 @@ const BudgetAllocation = () => {
 								{!isAllocated && (
 									<div className="mt-6 flex justify-end">
 										<button
-											className="px-4 py-2 text-sm bg-info text-white rounded-lg hover:bg-info-dark shadow-md transition-colors flex items-center"
+											className="px-4 py-2 text-sm bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 shadow-md transition-colors flex items-center"
 											onClick={() => {
 												setShowFinanceManagerModal(true);
 											}}

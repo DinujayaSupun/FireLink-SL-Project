@@ -805,14 +805,14 @@ const MissionRecords = () => {
 						setShowForm(true);
 					}
 				}}
-				className="bg-info hover:bg-info-dark text-white font-medium py-2 px-4 rounded-md transition duration-200"
+				className="bg-fire hover:bg-fire-dark text-white font-medium py-2 px-4 rounded-md transition duration-200"
 			>
 				{showForm ? "Cancel" : "Add New Mission"}
 			</button>
 			<button
 				onClick={() => loadAllMissionsForReport()}
 				disabled={loadingReport}
-				className="bg-info hover:bg-info-dark disabled:bg-info-300 text-white font-medium py-2 px-4 rounded-md transition duration-200 flex items-center gap-2"
+				className="bg-white text-navy border border-gray-300 hover:bg-gray-50 disabled:opacity-45 font-medium py-2 px-4 rounded-md transition duration-200 flex items-center gap-2"
 			>
 				{loadingReport ? (
 					<>
@@ -826,7 +826,7 @@ const MissionRecords = () => {
 			</button>
 			<button
 				onClick={() => navigate("/salary-management")}
-				className="bg-success hover:bg-success-dark text-white font-medium py-2 px-4 rounded-md transition duration-200"
+				className="bg-white text-navy border border-gray-300 hover:bg-gray-50 font-medium py-2 px-4 rounded-md transition duration-200"
 			>
 				Go to Salary Management
 			</button>
@@ -937,7 +937,7 @@ const MissionRecords = () => {
 								<button
 									type="button"
 									onClick={addInventoryItem}
-									className="bg-success hover:bg-success-dark text-white text-sm px-3 py-1 rounded"
+									className="bg-white text-navy border border-gray-300 hover:bg-gray-50 text-sm px-3 py-1 rounded"
 								>
 									Add Item
 								</button>
@@ -991,7 +991,7 @@ const MissionRecords = () => {
 														setFilteredSuggestions((prev) => ({ ...prev, [index]: inventoryItems }));
 														setShowSuggestions((prev) => ({ ...prev, [index]: !showSuggestions[index] }));
 													}}
-													className="px-3 py-2 bg-info hover:bg-info-dark text-white rounded-md"
+													className="px-3 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md"
 													title="Browse all items"
 												>
 													▼
@@ -1197,7 +1197,7 @@ const MissionRecords = () => {
 							<button
 								type="submit"
 								disabled={loading}
-								className="px-4 py-2 bg-info text-white rounded-md hover:bg-info-dark disabled:opacity-50"
+								className="px-4 py-2 bg-fire text-white rounded-md hover:bg-fire-dark disabled:opacity-50"
 							>
 								{loading 
 									? (editingMissionId ? "Updating..." : "Creating...") 
@@ -1314,7 +1314,7 @@ const MissionRecords = () => {
 											<div className="flex items-center gap-2">
 												<button
 													onClick={() => startEditMission(mission)}
-													className="px-3 py-1 bg-info hover:bg-info-dark text-white rounded"
+													className="px-3 py-1 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded"
 												>
 													Edit
 												</button>
@@ -1417,7 +1417,7 @@ const MissionRecords = () => {
 											loadAllMissionsForReport();
 										}}
 										disabled={loadingReport}
-										className="w-full bg-info hover:bg-info-dark disabled:bg-info-300 text-white px-4 py-2 rounded-md transition-colors"
+										className="w-full bg-white text-navy border border-gray-300 hover:bg-gray-50 disabled:opacity-45 px-4 py-2 rounded-md transition-colors"
 									>
 										{loadingReport ? 'Applying...' : 'Apply Filter'}
 									</button>
@@ -1570,7 +1570,7 @@ const MissionRecords = () => {
 							</button>
 							<button
 								onClick={handlePrintReport}
-								className="px-6 py-2 bg-info hover:bg-info-dark text-white rounded-md transition-colors flex items-center gap-2"
+								className="px-6 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors flex items-center gap-2"
 							>
 								Print Report
 							</button>

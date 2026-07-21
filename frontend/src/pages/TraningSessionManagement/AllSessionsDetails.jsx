@@ -112,7 +112,7 @@ const SessionsList = ({ userFromProps }) => {
                 {status === "active" && (
                   <button
                     onClick={() => openQR(s._id)}
-                    className="px-4 py-2 bg-info-dark text-white rounded hover:bg-info"
+                    className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded"
                   >
                     Show QR for attendance
                   </button>

@@ -30,7 +30,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
               <div key={session._id} className="border border-gray-700 rounded-xl p-5 hover:shadow-md transition bg-gray-800 text-white group">
                 <div className="flex justify-between items-start mb-3">
                   <h4 className="font-semibold text-lg text-white group-hover:text-fire transition">{session.title}</h4>
-                  <span className="bg-info-dark text-white text-xs font-medium px-2 py-1 rounded">{session.teamMembers.length} participants</span>
+                  <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded">{session.teamMembers.length} participants</span>
                 </div>
                 <p className="text-gray-300 mb-2">{session.description}</p>
                 <div className="flex items-center text-sm text-gray-400 mb-1">
@@ -350,7 +350,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                     printWindow.close();
                   }, 500);
                 }}
-                className="px-4 py-2 bg-info text-white rounded-md hover:bg-info-dark transition-colors"
+                className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors"
               >
                 Print Report
               </button>
@@ -444,7 +444,7 @@ const SessionsTab = ({ sessions, handleDeleteSession, handlePrint }) => {
                     printWindow.close();
                   }, 500);
                 }}
-                className="px-4 py-2 bg-success text-white rounded-md hover:bg-success-dark transition-colors"
+                className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors"
               >
                 Export PDF
               </button>

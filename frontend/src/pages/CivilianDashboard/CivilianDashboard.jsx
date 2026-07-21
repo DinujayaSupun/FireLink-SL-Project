@@ -87,7 +87,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Learn about fire safety, emergency preparedness, and community safety programs.
 						</p>
-						<button className="w-full bg-info hover:bg-info-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-white text-navy border border-gray-300 hover:bg-gray-50 py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							View Safety Info
 						</button>
 					</div>
@@ -105,7 +105,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Stay updated on fire department events, training sessions, and community outreach programs.
 						</p>
-						<button className="w-full bg-success hover:bg-success-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-white text-navy border border-gray-300 hover:bg-gray-50 py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							View Events
 						</button>
 					</div>
@@ -145,7 +145,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Submit incident reports, view report status, and access historical incident data.
 						</p>
-						<button className="w-full bg-info hover:bg-info-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-white text-navy border border-gray-300 hover:bg-gray-50 py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							Submit Report
 						</button>
 					</div>
@@ -163,7 +163,7 @@ const CivilianDashboard = () => {
 						<p className="text-gray-300 mb-4">
 							Get in touch with the fire department for non-emergency inquiries and general information.
 						</p>
-						<button className="w-full bg-info hover:bg-info-dark text-white py-2 px-4 rounded-md text-sm font-medium transition-colors">
+						<button className="w-full bg-white text-navy border border-gray-300 hover:bg-gray-50 py-2 px-4 rounded-md text-sm font-medium transition-colors">
 							Contact Department
 						</button>
 					</div>

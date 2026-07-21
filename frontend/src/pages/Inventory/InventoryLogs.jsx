@@ -192,24 +192,24 @@ const InventoryLogs = () => {
       {/* Statistics Cards */}
       {stats && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="rounded-lg bg-info p-4 text-white shadow-md">
+          <div className="rounded-lg bg-white border border-gray-200 p-4 shadow-sm">
             <div className="text-center">
-              <p className="text-info-100 text-xs font-medium">Total Logs</p>
-              <p className="text-xl font-bold">{stats.totalLogs}</p>
+              <p className="text-gray-500 text-xs font-medium">Total Logs</p>
+              <p className="text-xl font-bold text-navy tabular-nums">{stats.totalLogs}</p>
             </div>
           </div>
 
-          <div className="rounded-lg bg-success p-4 text-white shadow-md">
+          <div className="rounded-lg bg-white border border-gray-200 p-4 shadow-sm">
             <div className="text-center">
-              <p className="text-success-100 text-xs font-medium">Today's Activities</p>
-              <p className="text-xl font-bold">{stats.todayLogs}</p>
+              <p className="text-gray-500 text-xs font-medium">Today's Activities</p>
+              <p className="text-xl font-bold text-navy tabular-nums">{stats.todayLogs}</p>
             </div>
           </div>
 
-          <div className="rounded-lg bg-info p-4 text-white shadow-md">
+          <div className="rounded-lg bg-white border border-gray-200 p-4 shadow-sm">
             <div className="text-center">
-              <p className="text-info-100 text-xs font-medium">Action Types</p>
-              <p className="text-xl font-bold">{stats.actionBreakdown?.length || 0}</p>
+              <p className="text-gray-500 text-xs font-medium">Action Types</p>
+              <p className="text-xl font-bold text-navy tabular-nums">{stats.actionBreakdown?.length || 0}</p>
             </div>
           </div>
         </div>
@@ -270,7 +270,7 @@ const InventoryLogs = () => {
           <div className="flex items-end">
             <button
               onClick={handleSearch}
-              className="w-full bg-info hover:bg-info-dark text-white px-4 py-2 rounded-md font-medium transition-colors duration-200"
+              className="w-full bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-md font-medium transition-colors duration-200"
             >
               Apply Filters
             </button>

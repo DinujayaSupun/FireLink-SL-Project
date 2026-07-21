@@ -610,7 +610,7 @@ const ShiftScheduler = () => {
                   <div className="flex gap-1">
                     <button
                       onClick={downloadSchedules}
-                      className="bg-success text-white px-2 py-1 text-xs rounded hover:bg-success-dark transition duration-300"
+                      className="bg-white text-navy border border-gray-300 px-2 py-1 text-xs rounded hover:bg-gray-50 transition duration-300"
                     >
                       Download CSV
                     </button>
@@ -623,7 +623,7 @@ const ShiftScheduler = () => {
                         setLoadingReport(false);
                       }}
                       disabled={loadingReport}
-                      className="bg-info hover:bg-info-dark disabled:bg-info-300 text-white px-2 py-1 text-xs rounded transition duration-300"
+                      className="bg-white text-navy border border-gray-300 hover:bg-gray-50 disabled:opacity-45 px-2 py-1 text-xs rounded transition duration-300"
                     >
                       {loadingReport ? '⏳ Loading...' : '📄 Generate PDF Report'}
                     </button>
@@ -874,7 +874,7 @@ const ShiftScheduler = () => {
                     }, 1000);
                   };
                 }}
-                className="px-4 py-2 bg-info text-white rounded-md hover:bg-info-dark transition-colors"
+                className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors"
               >
                 🖨️ Print Report
               </button>

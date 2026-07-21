@@ -160,55 +160,55 @@ const EmployeePayments = () => {
 							Employee Payments
 						</h1>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-							<div className="bg-gradient-to-br from-info to-info rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Pending Approvals
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											{
 												employeePayments.filter((p) => p.status === "pending")
 													.length
 											}
 										</p>
-										<p className="text-info-100 mt-1">payments need review</p>
+										<p className="text-gray-500 mt-1">payments need review</p>
 									</div>
-									<div className="bg-info-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<UserIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-success to-success rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Approved Payments
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.
 											{employeePayments
 												.filter((p) => p.status === "paid")
 												.reduce((sum, p) => sum + p.finalSalary, 0)
 												.toLocaleString()}
 										</p>
-										<p className="text-success-100 mt-1">total approved</p>
+										<p className="text-gray-500 mt-1">total approved</p>
 									</div>
-									<div className="bg-success-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<CheckIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-info to-info rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Payment Schedule
 										</h3>
-										<p className="text-3xl font-bold">Oct 30</p>
-										<p className="text-info-100 mt-1">next payroll date</p>
+										<p className="text-3xl font-bold text-navy">Oct 30</p>
+										<p className="text-gray-500 mt-1">next payroll date</p>
 									</div>
-									<div className="bg-info-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<CalendarIcon size={32} />
 									</div>
 								</div>
@@ -616,7 +616,7 @@ const EmployeePayments = () => {
 																		onClick={() =>
 																			handleApproval(payment._id, "approved")
 																		}
-																		className="px-4 py-2 bg-info text-white rounded-lg hover:bg-info-dark shadow-sm transition-colors"
+																		className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 shadow-sm transition-colors"
 																	>
 																		Approve Payment
 																	</button>

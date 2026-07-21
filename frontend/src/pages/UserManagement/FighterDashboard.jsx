@@ -144,7 +144,7 @@ const FighterDashboard = () => {
                     </div>
                     <button
                       onClick={() => openShiftModal(s._id)}
-                      className="bg-success text-white px-3 py-1 rounded hover:bg-success-dark"
+                      className="bg-white text-navy border border-gray-300 px-3 py-1 rounded hover:bg-gray-50"
                     >
                       Request Shift Change
                     </button>
@@ -174,7 +174,7 @@ const FighterDashboard = () => {
                       </button>
                       <button
                         onClick={() => setTrainingModal({ open: true, title: t.title, note: "" })}
-                        className="bg-info text-white px-3 py-1 rounded hover:bg-info-dark"
+                        className="bg-white text-navy border border-gray-300 px-3 py-1 rounded hover:bg-gray-50"
                       >
                         Request Training Session
                       </button>

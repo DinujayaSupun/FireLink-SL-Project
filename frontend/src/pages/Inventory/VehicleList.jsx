@@ -156,7 +156,7 @@ const VehicleList = () => {
             </Link>
             <Link
               to="/inventory/vehicles/add"
-              className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors duration-200"
             >
               Add New Vehicle
             </Link>
@@ -215,7 +215,7 @@ const VehicleList = () => {
           <div className="flex items-end">
             <button
               onClick={handleFilterChange}
-              className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
             >
               Apply Filters
             </button>

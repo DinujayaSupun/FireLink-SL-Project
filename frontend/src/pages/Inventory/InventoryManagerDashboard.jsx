@@ -873,13 +873,13 @@ const InventoryManagerDashboard = () => {
           <div className="bg-white rounded-lg shadow p-5">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">Quick Links</h2>
             <div className="grid grid-cols-2 gap-3 text-sm">
-              <Link to="/inventory" className="px-3 py-2 rounded bg-info text-white text-center hover:bg-info-dark transition-colors">
+              <Link to="/inventory" className="px-3 py-2 rounded bg-white text-navy border border-gray-300 text-center hover:bg-gray-50 transition-colors">
                 Inventory
               </Link>
-              <Link to="/inventory/vehicle-items" className="px-3 py-2 rounded bg-info text-white text-center hover:bg-info-dark transition-colors">
+              <Link to="/inventory/vehicle-items" className="px-3 py-2 rounded bg-white text-navy border border-gray-300 text-center hover:bg-gray-50 transition-colors">
                 Vehicle Items
               </Link>
-              <Link to="/inventory/vehicles" className="px-3 py-2 rounded bg-success text-white text-center hover:bg-success-dark transition-colors">
+              <Link to="/inventory/vehicles" className="px-3 py-2 rounded bg-white text-navy border border-gray-300 text-center hover:bg-gray-50 transition-colors">
                 Vehicles
               </Link>
               <Link to="/inventory/reorders" className="px-3 py-2 rounded bg-amber text-white text-center hover:bg-amber-dark transition-colors">

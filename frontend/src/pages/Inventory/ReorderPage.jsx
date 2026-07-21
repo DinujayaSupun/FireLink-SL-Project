@@ -820,7 +820,7 @@ const ReorderPage = () => {
               type="button"
               onClick={handleGeneratePDF}
               disabled={!item || !reorderData.quantity}
-              className="bg-success hover:bg-success-dark disabled:bg-success-300 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 disabled:opacity-45 px-6 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               Download PDF Report
             </button>
@@ -828,7 +828,7 @@ const ReorderPage = () => {
               type="button"
               onClick={handleSendToManager}
               disabled={!lastCreatedReorderId || sending}
-              className="bg-info hover:bg-info-dark disabled:bg-info-300 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 disabled:opacity-45 px-6 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               {sending ? 'Sending...' : 'Send to Supply Manager'}
             </button>

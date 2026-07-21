@@ -76,7 +76,7 @@ const UserDetails = () => {
         <div className="flex justify-end mb-4">
           <button
             onClick={handlePrint}
-            className="px-4 py-2 bg-info text-white rounded-md shadow hover:bg-info-dark transition text-sm"
+            className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-md shadow hover:bg-gray-50 transition text-sm"
           >
             Print / Download PDF
           </button>
@@ -125,7 +125,7 @@ const UserDetails = () => {
           </button>
           <Link
             to={`/update-user/${user._id}`}
-            className="px-6 py-2 bg-info text-white rounded-md"
+            className="px-6 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md"
           >
             Edit User
           </Link>

@@ -83,7 +83,7 @@ const MakeTrainingSession = ({ manager }) => {
         />
         <button
           type="submit"
-          className="bg-info text-white w-full py-2 rounded-lg hover:bg-info-dark"
+          className="bg-white text-navy border border-gray-300 w-full py-2 rounded-lg hover:bg-gray-50"
         >
           Create Session
         </button>

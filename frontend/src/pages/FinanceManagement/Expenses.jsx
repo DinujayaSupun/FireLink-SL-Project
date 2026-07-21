@@ -207,56 +207,56 @@ const Expenses = () => {
 					<div className="space-y-6">
 						<h1 className="text-2xl font-bold text-gray-800">Expense</h1>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-							<div className="bg-gradient-to-br from-info to-info rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Total Expenses
 										</h3>
-										<p className="text-3xl font-bold">{expenses.length}</p>
-										<p className="text-info-100 mt-1">Last 30 days</p>
+										<p className="text-3xl font-bold text-navy">{expenses.length}</p>
+										<p className="text-gray-500 mt-1">Last 30 days</p>
 									</div>
-									<div className="bg-info-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<ClipboardIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-fire to-fire rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Emergency Expenses
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.
 											{expenses
 												.filter((t) => t.type === "emergency")
 												.reduce((sum, t) => sum + t.amount, 0)
 												.toLocaleString()}
 										</p>
-										<p className="text-fire-100 mt-1">Critical Expenses</p>
+										<p className="text-gray-500 mt-1">Critical Expenses</p>
 									</div>
-									<div className="bg-fire-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<TagIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-success to-success rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Regular Expenses
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.
 											{expenses
 												.filter((t) => t.type !== "emergency")
 												.reduce((sum, t) => sum + t.amount, 0)
 												.toLocaleString()}
 										</p>
-										<p className="text-success-100 mt-1">Operational Expenses</p>
+										<p className="text-gray-500 mt-1">Operational Expenses</p>
 									</div>
-									<div className="bg-success-300/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<DollarSignIcon size={32} />
 									</div>
 								</div>
@@ -403,7 +403,7 @@ const Expenses = () => {
 								<div className="flex space-x-2">
 									<button
 										onClick={() => setShowAddModal(true)}
-										className="px-4 py-2 bg-info text-white rounded-lg hover:bg-info-dark text-sm flex items-center shadow-sm transition-colors"
+										className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 text-sm flex items-center shadow-sm transition-colors"
 									>
 										<PlusIcon size={16} className="mr-1" />
 										Add Expense
@@ -413,7 +413,7 @@ const Expenses = () => {
 											<ExpensePdfDocument expenses={currentTransactions} />
 										}
 										fileName="expense_report.pdf"
-										className="px-4 py-2 bg-success text-white rounded-lg hover:bg-success-dark text-sm flex items-center shadow-sm transition-colors"
+										className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 text-sm flex items-center shadow-sm transition-colors"
 									>
 										<DownloadIcon size={16} className="mr-2" />
 										Download Expense Report
@@ -517,7 +517,7 @@ const Expenses = () => {
 									</p>
 									<button
 										onClick={() => setShowAddModal(true)}
-										className="mt-4 px-4 py-2 bg-info text-white rounded-lg hover:bg-info-dark text-sm shadow-sm transition-colors"
+										className="mt-4 px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 text-sm shadow-sm transition-colors"
 									>
 										<PlusIcon size={16} className="inline-block mr-1" />
 										Add Transaction
@@ -727,7 +727,7 @@ const Expenses = () => {
 									<div className="mt-6 flex justify-end">
 										<button
 											onClick={() => setShowViewModal(null)}
-											className="px-4 py-2 bg-info text-white rounded-md shadow-sm text-sm font-medium hover:bg-info-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info flex items-center"
+											className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-md shadow-sm text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info flex items-center"
 										>
 											<ArrowRightIcon size={16} className="mr-1" />
 											Close

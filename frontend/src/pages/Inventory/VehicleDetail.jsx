@@ -155,7 +155,7 @@ const VehicleDetail = () => {
             </Link>
             <Link
               to={`/inventory/vehicles/edit/${vehicle._id}`}
-              className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors duration-200"
             >
               Edit Vehicle
             </Link>

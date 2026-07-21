@@ -91,7 +91,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
         <button
           type="submit"
           disabled={loading || formData.teamMembers.length === 0}
-          className="px-8 py-3 bg-gradient-to-r from-fire to-fire text-white rounded-lg hover:from-fire-dark hover:to-fire disabled:opacity-50 transition flex items-center shadow-md"
+          className="px-8 py-3 bg-fire hover:bg-fire-dark text-white rounded-lg hover:from-fire-dark hover:to-fire disabled:opacity-50 transition flex items-center shadow-md"
         >
           {loading ? <><FiSettings className="animate-spin mr-2" /> Creating...</> : <><FiPlus className="mr-2" /> Create Session</>}
         </button>

@@ -131,7 +131,7 @@ const Settings = () => {
       {/* Main Settings Section */}
       <div className="flex-1 py-10 px-6">
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-fire to-fire-dark text-white p-6">
+          <div className="bg-navy text-white p-6">
             <h1 className="text-3xl font-bold">Settings</h1>
           </div>
 
@@ -178,7 +178,7 @@ const Settings = () => {
                   ></textarea>
                   <button
                     type="submit"
-                    className="flex items-center gap-2 px-4 py-2 bg-info text-white rounded hover:bg-info-dark"
+                    className="flex items-center gap-2 px-4 py-2 bg-white text-navy border border-gray-300 rounded hover:bg-gray-50"
                   >
                     <FiSave /> Update Profile
                   </button>

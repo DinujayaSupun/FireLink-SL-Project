@@ -1247,7 +1247,7 @@ const InventoryList = () => {
                     printWindow.close();
                   }, 500);
                 }}
-                className="px-4 py-2 bg-info text-white rounded-md hover:bg-info-dark transition-colors"
+                className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors"
               >
                 Print Report
               </button>
@@ -1376,7 +1376,7 @@ const InventoryList = () => {
                     printWindow.close();
                   }, 500);
                 }}
-                className="px-4 py-2 bg-success text-white rounded-md hover:bg-success-dark transition-colors"
+                className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors"
               >
                 Export PDF
               </button>

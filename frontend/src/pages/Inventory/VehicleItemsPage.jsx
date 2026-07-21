@@ -251,13 +251,13 @@ const VehicleItemsPage = () => {
           <div className="flex gap-4">
             <button
               onClick={openAssignModal}
-              className="bg-success hover:bg-success-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 disabled:opacity-60"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors duration-200 disabled:opacity-60"
               disabled={actionLoading}
             >Assign Item</button>
             {vehicleId && (
               <Link
                 to={`/inventory/vehicles/${vehicleId}`}
-                className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors duration-200"
               >
                 Back to Vehicle
               </Link>
@@ -270,7 +270,7 @@ const VehicleItemsPage = () => {
             </Link>
             <Link
               to="/dashboard"
-              className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors duration-200"
             >
               Dashboard
             </Link>
@@ -318,7 +318,7 @@ const VehicleItemsPage = () => {
           <div className="flex items-end">
             <button
               onClick={handleFilterChange}
-              className="bg-info hover:bg-info-dark text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
             >
               Apply Filters
             </button>
@@ -433,7 +433,7 @@ const VehicleItemsPage = () => {
                       <div className="flex gap-2">
                         <button
                           onClick={() => openEditModal(vehicleItem)}
-                          className="px-2 py-1 text-xs rounded bg-info text-white hover:bg-info-dark disabled:opacity-50"
+                          className="px-2 py-1 text-xs rounded bg-white text-navy border border-gray-300 hover:bg-gray-50 disabled:opacity-50"
                           disabled={actionLoading}
                         >Edit</button>
                         <button
@@ -538,7 +538,7 @@ const VehicleItemsPage = () => {
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button type="button" onClick={closeAssignModal} className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm">Cancel</button>
-                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-success hover:bg-success-dark text-white text-sm disabled:opacity-60">
+                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-white text-navy border border-gray-300 hover:bg-gray-50 text-sm disabled:opacity-60">
                   {actionLoading ? 'Assigning...' : 'Assign'}
                 </button>
               </div>
@@ -569,7 +569,7 @@ const VehicleItemsPage = () => {
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button type="button" onClick={closeEditModal} className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm">Cancel</button>
-                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-info hover:bg-info-dark text-white text-sm disabled:opacity-60">
+                <button type="submit" disabled={actionLoading} className="px-4 py-2 rounded bg-white text-navy border border-gray-300 hover:bg-gray-50 text-sm disabled:opacity-60">
                   {actionLoading ? 'Saving...' : 'Save'}
                 </button>
               </div>

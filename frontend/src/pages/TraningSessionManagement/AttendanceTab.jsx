@@ -53,7 +53,7 @@ const AttendanceTab = ({ sessions }) => {
 
             <button
               onClick={() => fetchAttendance(session._id)}
-              className="px-4 py-2 bg-info text-white rounded-lg mb-2 hover:bg-info-dark transition text-sm"
+              className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg mb-2 hover:bg-gray-50 transition text-sm"
             >
               Load Attendance
             </button>
@@ -82,7 +82,7 @@ const AttendanceTab = ({ sessions }) => {
               />
               <button
                 onClick={() => handleSendReport(selectedNumber, session)}
-                className="px-4 py-2 bg-success text-white rounded-lg hover:bg-success-dark transition flex items-center"
+                className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 transition flex items-center"
               >
                 <FiSend className="mr-2" /> Send Report
               </button>

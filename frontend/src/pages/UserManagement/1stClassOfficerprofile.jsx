@@ -109,7 +109,7 @@ useEffect(() => {
       {/* Officer Profile Card */}
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden mb-8">
         {/* Header */}
-        <div className="bg-gradient-to-r from-fire to-fire-dark text-white p-6 relative">
+        <div className="bg-navy text-white p-6 relative">
           <div className="absolute top-4 right-4">
             <span className="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full">
               {officer.status || "Active"}
@@ -190,10 +190,10 @@ useEffect(() => {
           <Link to="/shiftschedule" className="px-6 py-3 bg-amber text-white rounded-lg shadow hover:bg-amber-dark transition">
             Make Shift
           </Link>
-          <Link to={`/update-user/${officer._id}`} className="px-6 py-3 bg-info text-white rounded-lg shadow hover:bg-info-dark transition">
+          <Link to={`/update-user/${officer._id}`} className="px-6 py-3 bg-white text-navy border border-gray-300 rounded-lg shadow hover:bg-gray-50 transition">
             Edit Profile
           </Link>
-          <Link to="/firstaff" className="px-6 py-3 bg-success text-white rounded-lg shadow hover:bg-success-dark transition">
+          <Link to="/firstaff" className="px-6 py-3 bg-white text-navy border border-gray-300 rounded-lg shadow hover:bg-gray-50 transition">
             Add Staff Members
           </Link>
 
@@ -205,7 +205,7 @@ useEffect(() => {
       {/* Shift Change Requests Table */}
       {/* Shift Change Requests Table */}
       <div className="mt-10 max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="bg-gradient-to-r from-amber to-amber-dark text-white p-4">
+        <div className="bg-navy text-white p-4">
           <h2 className="text-2xl font-semibold">Shift Change Requests</h2>
         </div>
 
@@ -264,7 +264,7 @@ useEffect(() => {
 
 {/* Ready Vehicles Table */}
 <div className="mt-10 max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-  <div className="bg-gradient-to-r from-success to-success-dark text-white p-4">
+  <div className="bg-navy text-white p-4">
     <h2 className="text-2xl font-semibold">Ready Vehicles & Shift Schedules</h2>
   </div>
 
