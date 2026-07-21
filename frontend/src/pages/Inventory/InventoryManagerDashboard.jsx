@@ -2,236 +2,64 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getInventoryDashboardStats } from '../../api/inventoryDashboardApi';
 
-// Enhanced line chart component with detailed X and Y axes
-const LineChart = ({ data, height = 200, stroke = 'var(--color-info-dark)', dataKey = 'count', yAxisLabel = 'Value' }) => {
-  try {
-    if (!data || !Array.isArray(data) || data.length === 0) {
-      return <div className="text-gray-400 text-sm">No trend data available</div>;
-    }
-    
-    // Use the specified dataKey (either 'count' or 'quantity')
-    const maxValue = Math.max(...data.map(d => d?.[dataKey] || 0), 5); // Minimum scale of 5
-    const padding = { top: 20, right: 30, bottom: 60, left: 50 };
-    const chartWidth = 500;
-    const chartHeight = height - padding.top - padding.bottom;
-    const chartInnerWidth = chartWidth - padding.left - padding.right;
-    
-    // Calculate positions
-    const stepX = chartInnerWidth / (data.length - 1 || 1);
-    
-    const points = data.map((d, i) => {
-      const value = d?.[dataKey] || 0;
-      const x = padding.left + (i * stepX);
-      const y = padding.top + (chartHeight - (value / maxValue) * chartHeight);
-      return { x, y, value, date: d?.date, count: d?.count || 0, quantity: d?.quantity || 0 };
-    });
-    
-    const pathData = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
-    
-    // Y-axis ticks (5 levels)
-    const yTicks = [];
-    for (let i = 0; i <= 4; i++) {
-      const value = Math.round((maxValue / 4) * i);
-      const y = padding.top + chartHeight - (i / 4) * chartHeight;
-      yTicks.push({ value, y });
-    }
-    
-    return (
-      <div className="w-full">
-        <svg 
-          viewBox={`0 0 ${chartWidth} ${height}`} 
-          className="w-full overflow-visible"
-          style={{ height: height }}
-        >
-          {/* Background grid */}
-          <defs>
-            <pattern id="grid" width="50" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 50 0 L 0 0 0 40" fill="none" stroke="var(--color-gray-100)" strokeWidth="1"/>
-            </pattern>
-          </defs>
-          <rect 
-            x={padding.left} 
-            y={padding.top} 
-            width={chartInnerWidth} 
-            height={chartHeight} 
-            fill="url(#grid)" 
-          />
-          
-          {/* Y-axis */}
-          <line 
-            x1={padding.left} 
-            y1={padding.top} 
-            x2={padding.left} 
-            y2={padding.top + chartHeight} 
-            stroke="var(--color-gray-500)" 
-            strokeWidth="2"
-          />
-          
-          {/* Y-axis ticks and labels */}
-          {yTicks.map((tick, i) => (
-            <g key={i}>
-              <line 
-                x1={padding.left - 5} 
-                y1={tick.y} 
-                x2={padding.left} 
-                y2={tick.y} 
-                stroke="var(--color-gray-500)" 
-                strokeWidth="1"
-              />
-              <text 
-                x={padding.left - 10} 
-                y={tick.y + 4} 
-                textAnchor="end" 
-                className="text-xs fill-gray-600"
-                fontSize="11"
-              >
-                {tick.value}
-              </text>
-              {/* Horizontal grid lines */}
-              <line 
-                x1={padding.left} 
-                y1={tick.y} 
-                x2={padding.left + chartInnerWidth} 
-                y2={tick.y} 
-                stroke="var(--color-gray-200)" 
-                strokeWidth="0.5" 
-                strokeDasharray="2,2"
-              />
-            </g>
-          ))}
-          
-          {/* X-axis */}
-          <line 
-            x1={padding.left} 
-            y1={padding.top + chartHeight} 
-            x2={padding.left + chartInnerWidth} 
-            y2={padding.top + chartHeight} 
-            stroke="var(--color-gray-500)" 
-            strokeWidth="2"
-          />
-          
-          {/* X-axis ticks and labels */}
-          {points.map((point, i) => {
-            const date = new Date(point.date);
-            const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-            const dayNumber = date.getDate();
-            const monthName = date.toLocaleDateString('en-US', { month: 'short' });
-            
-            return (
-              <g key={i}>
-                <line 
-                  x1={point.x} 
-                  y1={padding.top + chartHeight} 
-                  x2={point.x} 
-                  y2={padding.top + chartHeight + 5} 
-                  stroke="var(--color-gray-500)" 
-                  strokeWidth="1"
-                />
-                <text 
-                  x={point.x} 
-                  y={padding.top + chartHeight + 18} 
-                  textAnchor="middle" 
-                  className="text-xs fill-gray-600 font-medium"
-                  fontSize="10"
-                >
-                  {dayName}
-                </text>
-                <text 
-                  x={point.x} 
-                  y={padding.top + chartHeight + 32} 
-                  textAnchor="middle" 
-                  className="text-xs fill-gray-500"
-                  fontSize="9"
-                >
-                  {monthName} {dayNumber}
-                </text>
-                {/* Vertical grid lines */}
-                <line 
-                  x1={point.x} 
-                  y1={padding.top} 
-                  x2={point.x} 
-                  y2={padding.top + chartHeight} 
-                  stroke="var(--color-gray-100)" 
-                  strokeWidth="1"
-                />
-              </g>
-            );
-          })}
-          
-          {/* Chart line */}
-          <path 
-            d={pathData}
-            fill="none" 
-            stroke={stroke} 
-            strokeWidth="3" 
-            strokeLinejoin="round" 
-            strokeLinecap="round"
-          />
-          
-          {/* Data points with hover areas */}
-          {points.map((point, i) => (
-            <g key={i}>
-              <circle 
-                cx={point.x} 
-                cy={point.y} 
-                r="4" 
-                fill={stroke}
-                stroke="white"
-                strokeWidth="2"
-              />
-              {/* Hover area */}
-              <circle 
-                cx={point.x} 
-                cy={point.y} 
-                r="12" 
-                fill="transparent"
-                className="cursor-pointer"
-              >
-                <title>{`${point.value} ${dataKey === 'quantity' ? 'units' : 'items'} on ${new Date(point.date).toLocaleDateString()}`}</title>
-              </circle>
-              {/* Value label on hover */}
-              {point.value > 0 && (
-                <text 
-                  x={point.x} 
-                  y={point.y - 8} 
-                  textAnchor="middle" 
-                  className="text-xs fill-gray-700 font-medium"
-                  fontSize="10"
-                >
-                  {point.value}
-                </text>
-              )}
-            </g>
-          ))}
-          
-          {/* Chart title and axis labels */}
-          <text 
-            x={padding.left + chartInnerWidth / 2} 
-            y={height - 10} 
-            textAnchor="middle" 
-            className="text-sm fill-gray-600 font-medium"
-            fontSize="12"
-          >
-            Date (Last 7 Days)
-          </text>
-          
-          <text 
-            x="15" 
-            y={padding.top + chartHeight / 2} 
-            textAnchor="middle" 
-            className="text-sm fill-gray-600 font-medium"
-            fontSize="12"
-            transform={`rotate(-90, 15, ${padding.top + chartHeight / 2})`}
-          >
-            {yAxisLabel}
-          </text>
-        </svg>
-      </div>
-    );
-  } catch (error) {
-    console.error('LineChart error:', error);
-    return <div className="text-fire-300 text-sm">Chart error</div>;
+
+/**
+ * Inventory activity — ONE chart, two series.
+ *
+ * Replaces four separate single-series charts (plus a 28-tile day grid and an
+ * 8-tile weekly block) that all showed the same week of data. Added and removed
+ * belong on a shared axis: the comparison between them is the actual insight.
+ * Navy = added, fire = removed, with the latest point emphasised.
+ */
+const ActivityChart = ({ added = [], removed = [], height = 240 }) => {
+  const days = Math.max(added.length, removed.length);
+  if (!days) {
+    return <div className="py-10 text-center text-sm text-gray-400">No activity recorded yet</div>;
   }
+
+  const W = 720;
+  const P = { top: 16, right: 16, bottom: 34, left: 36 };
+  const innerW = W - P.left - P.right;
+  const innerH = height - P.top - P.bottom;
+
+  const at = (arr, i) => arr[i]?.count || 0;
+  const max = Math.max(4, ...added.map((d) => d?.count || 0), ...removed.map((d) => d?.count || 0));
+  const stepX = days > 1 ? innerW / (days - 1) : 0;
+  const x = (i) => P.left + i * stepX;
+  const y = (v) => P.top + innerH - (v / max) * innerH;
+
+  const line = (arr) =>
+    Array.from({ length: days }, (_, i) => `${i ? "L" : "M"} ${x(i)} ${y(at(arr, i))}`).join(" ");
+  const area = (arr) => `${line(arr)} L ${x(days - 1)} ${P.top + innerH} L ${x(0)} ${P.top + innerH} Z`;
+
+  const ticks = [0, 1, 2, 3, 4].map((t) => ({
+    v: Math.round((max * t) / 4),
+    y: P.top + innerH - (t / 4) * innerH,
+  }));
+  const label = (i) => String(added[i]?.date || removed[i]?.date || "").slice(5);
+
+  return (
+    <svg viewBox={`0 0 ${W} ${height}`} className="w-full" style={{ height }}
+         role="img" aria-label="Inventory items added versus removed over the last 7 days">
+      {ticks.map((t) => (
+        <g key={t.y}>
+          <line x1={P.left} y1={t.y} x2={W - P.right} y2={t.y} stroke="var(--color-gray-200)" strokeWidth="1" />
+          <text x={P.left - 8} y={t.y + 4} textAnchor="end" fontSize="10" fill="var(--color-gray-400)">{t.v}</text>
+        </g>
+      ))}
+      <path d={area(added)} fill="var(--color-navy)" opacity="0.07" />
+      <path d={area(removed)} fill="var(--color-fire)" opacity="0.06" />
+      <path d={line(added)} fill="none" stroke="var(--color-navy)" strokeWidth="2" />
+      <path d={line(removed)} fill="none" stroke="var(--color-fire)" strokeWidth="2" />
+      <circle cx={x(days - 1)} cy={y(at(added, days - 1))} r="3.5" fill="var(--color-navy)" />
+      <circle cx={x(days - 1)} cy={y(at(removed, days - 1))} r="3.5" fill="var(--color-fire)" />
+      {Array.from({ length: days }, (_, i) => (
+        <text key={i} x={x(i)} y={height - 12} textAnchor="middle" fontSize="10" fill="var(--color-gray-400)">
+          {label(i)}
+        </text>
+      ))}
+    </svg>
+  );
 };
 
 const InventoryManagerDashboard = () => {
@@ -481,323 +309,52 @@ const InventoryManagerDashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Enhanced Trend Chart */}
           <div className="col-span-1 lg:col-span-2 bg-white rounded-lg shadow p-5">
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <h2 className="text-lg font-semibold text-gray-800">Inventory Activity Trends</h2>
-                <p className="text-sm text-gray-500">Daily items and quantities added/removed over the last 7 days</p>
+              {/* Totals live in the summary row under the chart — no need to repeat them here. */}
+              <div className="mb-4">
+                <h2 className="text-lg font-semibold text-gray-800">Inventory Activity</h2>
+                <p className="text-sm text-gray-500">Items added and removed over the last 7 days</p>
               </div>
-              <div className="text-right">
-                <div className="grid grid-cols-2 gap-6 text-sm">
-                  <div>
-                    <div className="text-success font-medium">Added</div>
-                    <div className="text-lg font-bold text-success-dark">
-                      {(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
-                    </div>
-                    <div className="text-base font-semibold text-info">
-                      {(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0)} units
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-fire font-medium">Removed</div>
-                    <div className="text-lg font-bold text-fire-dark">
-                      {(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
-                    </div>
-                    <div className="text-base font-semibold text-amber">
-                      {(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0)} units
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             
-            {/* Charts Grid - 4 Charts (2x2) */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-              {/* Top Row: Additions */}
-              
-              {/* New Items Added (Count) Chart */}
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <div className="bg-white p-2 rounded shadow-sm">
-                  <LineChart 
-                    data={trends.itemsAddedLast7Days || []} 
-                    height={180} 
-                    stroke="#16a34a" 
-                    yAxisLabel="Items (Count)"
-                  />
-                </div>
-                <div className="mt-2 space-y-1">
-                  <div className="text-xs font-semibold text-gray-700 text-center">New Items Added</div>
-                  <div className="text-xs text-gray-500 text-center">Count of new inventory records created</div>
-                </div>
+            {/* One chart: added and removed share an axis — the comparison is the insight. */}
+            <div className="mt-2">
+              <div className="mb-2 flex items-center gap-4 text-xs text-gray-500">
+                <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-navy" />Items added</span>
+                <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-fire" />Items removed</span>
               </div>
-              
-              {/* Quantity Added Chart */}
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <div className="bg-white p-2 rounded shadow-sm">
-                  <LineChart 
-                    data={trends.itemsAddedLast7Days || []} 
-                    height={180} 
-                    stroke="var(--color-info-dark)"
-                    dataKey="quantity"
-                    yAxisLabel="Quantity (Units)"
-                  />
-                </div>
-                <div className="mt-2 space-y-1">
-                  <div className="text-xs font-semibold text-gray-700 text-center">Quantity Added</div>
-                  <div className="text-xs text-gray-500 text-center">Total units added to stock</div>
-                </div>
-              </div>
-              
-              {/* Bottom Row: Removals */}
-              
-              {/* Items Removed (Count) Chart */}
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <div className="bg-white p-2 rounded shadow-sm">
-                  <LineChart 
-                    data={trends.itemsRemovedLast7Days || []} 
-                    height={180} 
-                    stroke="var(--color-amber-dark)"
-                    yAxisLabel="Items (Count)"
-                  />
-                </div>
-                <div className="mt-2 space-y-1">
-                  <div className="text-xs font-semibold text-gray-700 text-center">Items Removed</div>
-                  <div className="text-xs text-gray-500 text-center">Count of inventory records deleted</div>
-                </div>
-              </div>
-              
-              {/* Quantity Removed Chart */}
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <div className="bg-white p-2 rounded shadow-sm">
-                  <LineChart 
-                    data={trends.itemsRemovedLast7Days || []} 
-                    height={180} 
-                    stroke="var(--color-fire)"
-                    dataKey="quantity"
-                    yAxisLabel="Quantity (Units)"
-                  />
-                </div>
-                <div className="mt-2 space-y-1">
-                  <div className="text-xs font-semibold text-gray-700 text-center">Quantity Removed</div>
-                  <div className="text-xs text-gray-500 text-center">Total units removed from stock</div>
-                </div>
-              </div>
+              <ActivityChart
+                added={trends.itemsAddedLast7Days || []}
+                removed={trends.itemsRemovedLast7Days || []}
+              />
             </div>
-            
-            {/* Detailed Daily Breakdown */}
-            <div className="border-t pt-4">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">Daily Activity Breakdown</h3>
-              
-              {/* Added Items & Quantity */}
-              <div className="mb-4">
-                <h4 className="text-xs font-medium text-success-dark mb-2">Items Added (Count)</h4>
-                <div className="grid grid-cols-7 gap-2 text-xs">
-                  {(trends.itemsAddedLast7Days || []).map((d, index) => {
-                    const date = new Date(d?.date);
-                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-                    const isToday = date.toDateString() === new Date().toDateString();
-                    const isHighest = d?.count === Math.max(...(trends.itemsAddedLast7Days || []).map(item => item?.count || 0));
-                    
-                    return (
-                      <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-success-100 border-2 border-success-300' : 
-                        isHighest && d?.count > 0 ? 'bg-success-50 border border-success-300' : 
-                        'bg-gray-50 border border-gray-200'
-                      }`}>
-                        <div className={`font-medium ${isToday ? 'text-success-dark' : isHighest && d?.count > 0 ? 'text-success' : 'text-gray-700'}`}>
-                          +{d?.count || 0}
-                        </div>
-                        <div className="text-gray-500 text-xs">{dayName}</div>
-                        <div className="text-gray-400 text-xs">{d?.date ? d.date.slice(8, 10) : '--'}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              
-              {/* Added Quantity */}
-              <div className="mb-4">
-                <h4 className="text-xs font-medium text-info-dark mb-2">Quantity Added (Units)</h4>
-                <div className="grid grid-cols-7 gap-2 text-xs">
-                  {(trends.itemsAddedLast7Days || []).map((d, index) => {
-                    const date = new Date(d?.date);
-                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-                    const isToday = date.toDateString() === new Date().toDateString();
-                    const isHighest = d?.quantity === Math.max(...(trends.itemsAddedLast7Days || []).map(item => item?.quantity || 0));
-                    
-                    return (
-                      <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-info-100 border-2 border-info-300' : 
-                        isHighest && d?.quantity > 0 ? 'bg-info-50 border border-info-300' : 
-                        'bg-gray-50 border border-gray-200'
-                      }`}>
-                        <div className={`font-medium ${isToday ? 'text-info-dark' : isHighest && d?.quantity > 0 ? 'text-info' : 'text-gray-700'}`}>
-                          +{d?.quantity || 0}
-                        </div>
-                        <div className="text-gray-500 text-xs">{dayName}</div>
-                        <div className="text-gray-400 text-xs">{d?.date ? d.date.slice(8, 10) : '--'}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              
-              {/* Removed Items (Count) */}
-              <div className="mb-4">
-                <h4 className="text-xs font-medium text-amber-dark mb-2">Items Removed (Count)</h4>
-                <div className="grid grid-cols-7 gap-2 text-xs">
-                  {(trends.itemsRemovedLast7Days || []).map((d, index) => {
-                    const date = new Date(d?.date);
-                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-                    const isToday = date.toDateString() === new Date().toDateString();
-                    const isHighest = d?.count === Math.max(...(trends.itemsRemovedLast7Days || []).map(item => item?.count || 0));
-                    
-                    return (
-                      <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-amber-100 border-2 border-amber-300' : 
-                        isHighest && d?.count > 0 ? 'bg-amber-50 border border-amber-300' : 
-                        'bg-gray-50 border border-gray-200'
-                      }`}>
-                        <div className={`font-medium ${isToday ? 'text-amber-dark' : isHighest && d?.count > 0 ? 'text-amber' : 'text-gray-700'}`}>
-                          -{d?.count || 0}
-                        </div>
-                        <div className="text-gray-500 text-xs">{dayName}</div>
-                        <div className="text-gray-400 text-xs">{d?.date ? d.date.slice(8, 10) : '--'}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              
-              {/* Removed Quantity */}
-              <div className="mb-4">
-                <h4 className="text-xs font-medium text-fire-dark mb-2">Quantity Removed (Units)</h4>
-                <div className="grid grid-cols-7 gap-2 text-xs">
-                  {(trends.itemsRemovedLast7Days || []).map((d, index) => {
-                    const date = new Date(d?.date);
-                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-                    const isToday = date.toDateString() === new Date().toDateString();
-                    const isHighest = d?.quantity === Math.max(...(trends.itemsRemovedLast7Days || []).map(item => item?.quantity || 0));
-                    
-                    return (
-                      <div key={index} className={`p-2 rounded text-center ${
-                        isToday ? 'bg-fire-100 border-2 border-fire-300' : 
-                        isHighest && d?.quantity > 0 ? 'bg-fire-50 border border-fire-300' : 
-                        'bg-gray-50 border border-gray-200'
-                      }`}>
-                        <div className={`font-medium ${isToday ? 'text-fire-dark' : isHighest && d?.quantity > 0 ? 'text-fire' : 'text-gray-700'}`}>
-                          -{d?.quantity || 0}
-                        </div>
-                        <div className="text-gray-500 text-xs">{dayName}</div>
-                        <div className="text-gray-400 text-xs">{d?.date ? d.date.slice(8, 10) : '--'}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              
-              {/* Comprehensive Statistics */}
-              <div className="mt-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-3">Weekly Summary</h4>
-                
-                {/* Item Count Stats */}
-                <div className="mb-3">
-                  <div className="text-xs text-gray-500 font-medium mb-2">ITEM COUNT (Number of Items)</div>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
-                    {/* Added Items Count Stats */}
-                    <div className="bg-success-50 p-3 rounded">
-                      <div className="text-success font-medium">Items Added</div>
-                      <div className="text-success-dark font-bold">
-                        +{(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
-                      </div>
-                    </div>
-                    <div className="bg-success-50 p-3 rounded">
-                      <div className="text-success font-medium">Avg Added/Day</div>
-                      <div className="text-success-dark font-bold">
-                        {((trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0) / 7).toFixed(1)} items
-                      </div>
-                    </div>
-                    
-                    {/* Removed Items Count Stats */}
-                    <div className="bg-fire-50 p-3 rounded">
-                      <div className="text-fire font-medium">Items Removed</div>
-                      <div className="text-fire-dark font-bold">
-                        -{(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0)} items
-                      </div>
-                    </div>
-                    <div className="bg-fire-50 p-3 rounded">
-                      <div className="text-fire font-medium">Avg Removed/Day</div>
-                      <div className="text-fire-dark font-bold">
-                        {((trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0) / 7).toFixed(1)} items
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Quantity Stats */}
-                <div className="mb-3">
-                  <div className="text-xs text-gray-500 font-medium mb-2">QUANTITY (Total Units)</div>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
-                    {/* Added Quantity Stats */}
-                    <div className="bg-success-50 p-3 rounded">
-                      <div className="text-success font-medium">Quantity Added</div>
-                      <div className="text-success-dark font-bold">
-                        +{(trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0).toLocaleString()} units
-                      </div>
+            {/* Compact summary — replaces the 28-tile day grid and 8-tile weekly block. */}
+            {(() => {
+              const A = trends.itemsAddedLast7Days || [];
+              const R = trends.itemsRemovedLast7Days || [];
+              const sum = (arr, k) => arr.reduce((s, d) => s + (d?.[k] || 0), 0);
+              const addedItems = sum(A, 'count');
+              const removedItems = sum(R, 'count');
+              const netItems = addedItems - removedItems;
+              const netUnits = sum(A, 'quantity') - sum(R, 'quantity');
+              const signed = (n) => `${n >= 0 ? '+' : ''}${n.toLocaleString()}`;
+              const tone = (n) => (n > 0 ? 'text-success-dark' : n < 0 ? 'text-fire' : 'text-navy');
+              const tiles = [
+                ['Items added', String(addedItems), 'text-navy'],
+                ['Items removed', String(removedItems), 'text-navy'],
+                ['Net items', signed(netItems), tone(netItems)],
+                ['Net units', signed(netUnits), tone(netUnits)],
+              ];
+              return (
+                <div className="mt-5 grid grid-cols-2 gap-3 border-t border-gray-200 pt-4 lg:grid-cols-4">
+                  {tiles.map(([label, value, colour]) => (
+                    <div key={label} className="rounded-lg border border-gray-200 bg-gray-50 p-3">
+                      <p className="text-xs text-gray-500">{label}</p>
+                      <p className={`text-xl font-bold tabular-nums ${colour}`}>{value}</p>
                     </div>
-                    <div className="bg-success-50 p-3 rounded">
-                      <div className="text-success font-medium">Avg Qty Added/Day</div>
-                      <div className="text-success-dark font-bold">
-                        {((trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0) / 7).toFixed(0)} units
-                      </div>
-                    </div>
-                    
-                    {/* Removed Quantity Stats */}
-                    <div className="bg-fire-50 p-3 rounded">
-                      <div className="text-fire font-medium">Quantity Removed</div>
-                      <div className="text-fire-dark font-bold">
-                        -{(trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0).toLocaleString()} units
-                      </div>
-                    </div>
-                    <div className="bg-fire-50 p-3 rounded">
-                      <div className="text-fire font-medium">Avg Qty Removed/Day</div>
-                      <div className="text-fire-dark font-bold">
-                        {((trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0) / 7).toFixed(0)} units
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-                
-                {/* Net Change - Both Count and Quantity */}
-                <div className="mt-3 grid grid-cols-1 lg:grid-cols-2 gap-3">
-                  <div className="bg-info-50 p-3 rounded">
-                    <div className="flex justify-between items-center">
-                      <span className="text-info font-medium">Net Item Change (7 days)</span>
-                      <span className="text-info-dark font-bold text-lg">
-                        {(() => {
-                          const added = (trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0);
-                          const removed = (trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.count || 0), 0);
-                          const net = added - removed;
-                          return net >= 0 ? `+${net} items` : `${net} items`;
-                        })()}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="bg-info-50 p-3 rounded">
-                    <div className="flex justify-between items-center">
-                      <span className="text-info font-medium">Net Quantity Change (7 days)</span>
-                      <span className="text-info-dark font-bold text-lg">
-                        {(() => {
-                          const added = (trends.itemsAddedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0);
-                          const removed = (trends.itemsRemovedLast7Days || []).reduce((sum, d) => sum + (d?.quantity || 0), 0);
-                          const net = added - removed;
-                          return net >= 0 ? `+${net.toLocaleString()} units` : `${net.toLocaleString()} units`;
-                        })()}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              );
+            })()}
           </div>
 
           {/* Category Distribution */}
@@ -882,13 +439,13 @@ const InventoryManagerDashboard = () => {
               <Link to="/inventory/vehicles" className="px-3 py-2 rounded bg-white text-navy border border-gray-300 text-center hover:bg-gray-50 transition-colors">
                 Vehicles
               </Link>
-              <Link to="/inventory/reorders" className="px-3 py-2 rounded bg-amber text-white text-center hover:bg-amber-dark transition-colors">
+              <Link to="/inventory/reorders" className="px-3 py-2 rounded bg-white text-navy border border-gray-300 text-center hover:bg-gray-50 transition-colors">
                 Reorders
               </Link>
-              <Link to="/inventory/logs" className="px-3 py-2 rounded bg-gray-700 text-white text-center hover:bg-gray-800 transition-colors">
+              <Link to="/inventory/logs" className="px-3 py-2 rounded bg-white text-navy border border-gray-300 text-center hover:bg-gray-50 transition-colors">
                 Logs
               </Link>
-              <Link to="/dashboard" className="px-3 py-2 rounded bg-slate-600 text-white text-center hover:bg-slate-700 transition-colors">
+              <Link to="/dashboard" className="px-3 py-2 rounded bg-white text-navy border border-gray-300 text-center hover:bg-gray-50 transition-colors">
                 Main
               </Link>
             </div>
