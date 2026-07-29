@@ -8,16 +8,16 @@
 		"backend:prod": "cd backend && npm run backend:prod",
 		"frontend:dev": "cd frontend && npm run dev",
 		"dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
-		"backend:deps": "cd backend && npm i ",
-		"frontend:deps": "cd frontend && npm i ",
-		"deps": "npm run frontend:deps && npm run backend:deps"
+		"backend:deps": "cd backend && npm i --legacy-peer-deps",
+		"frontend:deps": "cd frontend && npm i --legacy-peer-deps",
+		"deps": "npm run frontend:deps && npm run backend:deps",
+		"seed": "cd backend && npm run seed:all"
 	},
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/ViduraTheekshana/FireLink-SL.git"
 	},
-	"author": "Thevindu Senanayake",
-	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/ViduraTheekshana/FireLink-SL/issues"
 	},

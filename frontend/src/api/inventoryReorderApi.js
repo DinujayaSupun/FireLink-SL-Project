@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_BASE_URL as API_ORIGIN } from "../config/api";
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = `${API_ORIGIN}/api`;
 
 // Create a new reorder
 export const createReorder = async (reorderData) => {

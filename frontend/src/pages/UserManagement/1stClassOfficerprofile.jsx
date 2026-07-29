@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 
 const OfficerProfile = ({ officerId }) => {
   const { id: paramId } = useParams();
@@ -25,7 +26,7 @@ const OfficerProfile = ({ officerId }) => {
         setLoading(true);
         const token = localStorage.getItem("token");
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        const response = await axios.get(`http://localhost:5000/users/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/users/${id}`, {
           headers,
           withCredentials: true,
         });
@@ -46,7 +47,7 @@ const [loadingRequests, setLoadingRequests] = useState(true);
 useEffect(() => {
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/shiftChange");
+      const res = await axios.get(`${API_BASE_URL}/api/shiftChange`);
       setShiftRequests(res.data.requests || []);
       setLoadingRequests(false);
     } catch (err) {
@@ -65,7 +66,7 @@ const [vehiclesLoading, setVehiclesLoading] = useState(true);
 useEffect(() => {
   const fetchReadyVehicles = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/shifts/ready"); // create this endpoint
+      const res = await axios.get(`${API_BASE_URL}/api/shifts/ready`); // create this endpoint
       setReadyVehicles(res.data.shifts || []);
       setVehiclesLoading(false);
     } catch (err) {
@@ -81,34 +82,34 @@ useEffect(() => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1e2a38]">
-        <div className="text-xl text-blue-400">Loading officer data...</div>
+      <div className="flex items-center justify-center min-h-screen bg-navy">
+        <div className="text-xl text-info-300">Loading officer data...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1e2a38]">
-        <div className="text-xl text-red-400">{error}</div>
+      <div className="flex items-center justify-center min-h-screen bg-navy">
+        <div className="text-xl text-fire-300">{error}</div>
       </div>
     );
   }
 
   if (!officer) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#1e2a38]">
-        <div className="text-xl text-red-400">Officer not found</div>
+      <div className="flex items-center justify-center min-h-screen bg-navy">
+        <div className="text-xl text-fire-300">Officer not found</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#1e2a38] py-8 px-4">
+    <div className="min-h-screen bg-navy py-8 px-4">
       {/* Officer Profile Card */}
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden mb-8">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6 relative">
+        <div className="bg-navy text-white p-6 relative">
           <div className="absolute top-4 right-4">
             <span className="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full">
               {officer.status || "Active"}
@@ -142,7 +143,7 @@ useEffect(() => {
             </div>
             <div>
               <h1 className="text-3xl font-bold">First Class Officer Profile</h1>
-              <p className="mt-1 text-red-100">Fire Department Staff Details</p>
+              <p className="mt-1 text-fire-100">Fire Department Staff Details</p>
             </div>
           </div>
         </div>
@@ -155,9 +156,9 @@ useEffect(() => {
             {/* Staff ID */}
             <div className="col-span-2">
              
-              <div className="flex items-center bg-blue-50 p-4 rounded-lg border border-blue-100">
+              <div className="flex items-center bg-info-50 p-4 rounded-lg border border-info-100">
                 <span className="font-medium text-gray-700 mr-3">Staff ID:</span>
-                <span className="text-blue-800 font-mono bg-blue-100 px-3 py-1 rounded">
+                <span className="text-info-dark font-mono bg-info-100 px-3 py-1 rounded">
                   {officer.staffId || officer._id}
                 </span>
               </div>
@@ -183,16 +184,16 @@ useEffect(() => {
           </div>
           <div className="flex flex-wrap gap-4 justify-center">  
  
- {/*<Link to="/stafflogin" className="px-6 py-3 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition">
+ {/*<Link to="/stafflogin" className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-fire-dark transition">
             Back to Login
           </Link>*/}
-          <Link to="/shiftschedule" className="px-6 py-3 bg-yellow-600 text-white rounded-lg shadow hover:bg-yellow-700 transition">
+          <Link to="/shiftschedule" className="px-6 py-3 bg-amber text-white rounded-lg shadow hover:bg-amber-dark transition">
             Make Shift
           </Link>
-          <Link to={`/update-user/${officer._id}`} className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
+          <Link to={`/update-user/${officer._id}`} className="px-6 py-3 bg-white text-navy border border-gray-300 rounded-lg shadow hover:bg-gray-50 transition">
             Edit Profile
           </Link>
-          <Link to="/firstaff" className="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition">
+          <Link to="/firstaff" className="px-6 py-3 bg-white text-navy border border-gray-300 rounded-lg shadow hover:bg-gray-50 transition">
             Add Staff Members
           </Link>
 
@@ -204,7 +205,7 @@ useEffect(() => {
       {/* Shift Change Requests Table */}
       {/* Shift Change Requests Table */}
       <div className="mt-10 max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="bg-gradient-to-r from-yellow-600 to-yellow-700 text-white p-4">
+        <div className="bg-navy text-white p-4">
           <h2 className="text-2xl font-semibold">Shift Change Requests</h2>
         </div>
 
@@ -212,7 +213,7 @@ useEffect(() => {
           {loading ? (
             <div className="text-center text-gray-500">Loading shift change requests...</div>
           ) : error ? (
-            <div className="text-center text-red-500">{error}</div>
+            <div className="text-center text-fire">{error}</div>
           ) : (
             <table className="min-w-full border border-gray-200">
               <thead className="bg-gray-100">
@@ -238,10 +239,10 @@ useEffect(() => {
                       <td className="px-4 py-2 border">{req.note}</td>
                       <td
                         className={`px-4 py-2 border font-semibold ${req.status === "Approved"
-                            ? "text-green-600"
+                            ? "text-success"
                             : req.status === "Rejected"
-                              ? "text-red-600"
-                              : "text-yellow-600"
+                              ? "text-fire"
+                              : "text-amber"
                           }`}
                       >
                         {req.status}
@@ -263,7 +264,7 @@ useEffect(() => {
 
 {/* Ready Vehicles Table */}
 <div className="mt-10 max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-  <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-4">
+  <div className="bg-navy text-white p-4">
     <h2 className="text-2xl font-semibold">Ready Vehicles & Shift Schedules</h2>
   </div>
 

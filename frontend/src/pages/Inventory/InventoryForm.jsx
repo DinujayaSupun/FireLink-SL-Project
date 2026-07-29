@@ -457,7 +457,7 @@ const InventoryForm = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-info mx-auto mb-4"></div>
           <p className="text-gray-600">Loading...</p>
         </div>
       </div>
@@ -487,16 +487,16 @@ const InventoryForm = () => {
 
         {/* Error Display */}
         {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 rounded-md p-4">
+          <div className="mb-6 bg-fire-50 border border-fire-200 rounded-md p-4">
             <div className="flex">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <svg className="h-5 w-5 text-fire-300" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-red-800">Error</h3>
-                <p className="mt-1 text-sm text-red-700">{error}</p>
+                <h3 className="text-sm font-medium text-fire-dark">Error</h3>
+                <p className="mt-1 text-sm text-fire-dark">{error}</p>
               </div>
             </div>
           </div>
@@ -508,7 +508,7 @@ const InventoryForm = () => {
             {/* Item ID */}
             <div>
               <label htmlFor="item_ID" className="block text-sm font-medium text-gray-700 mb-2">
-                Item ID <span className="text-red-500">*</span>
+                Item ID <span className="text-fire">*</span>
               </label>
               <input
                 type="text"
@@ -527,17 +527,17 @@ const InventoryForm = () => {
                 readOnly={isEditing}
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.item_ID || itemIdExists
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.item_ID === '' && formData.item_ID && !itemIdExists && !checkingItemId
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 } ${isEditing ? 'bg-gray-100 cursor-not-allowed' : ''}`}
                 placeholder="Enter unique item ID (numbers only)"
               />
               
               {/* Field-specific error message */}
               {fieldErrors.item_ID && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.item_ID}
                 </p>
               )}
@@ -552,15 +552,15 @@ const InventoryForm = () => {
               {!isEditing && formData.item_ID && !fieldErrors.item_ID && (
                 <div className="mt-1">
                   {checkingItemId ? (
-                    <p className="text-xs text-blue-600">
+                    <p className="text-xs text-info">
                       Checking if Item ID is available...
                     </p>
                   ) : itemIdExists ? (
-                    <p className="text-xs text-red-600 font-medium">
+                    <p className="text-xs text-fire font-medium">
                       Warning: This Item ID already exists! Please choose a different one.
                     </p>
                   ) : (
-                    <p className="text-xs text-green-600 font-medium">
+                    <p className="text-xs text-success font-medium">
                       Item ID is available
                     </p>
                   )}
@@ -571,7 +571,7 @@ const InventoryForm = () => {
             {/* Item Name */}
             <div>
               <label htmlFor="item_name" className="block text-sm font-medium text-gray-700 mb-2">
-                Item Name <span className="text-red-500">*</span>
+                Item Name <span className="text-fire">*</span>
               </label>
               <input
                 type="text"
@@ -582,17 +582,17 @@ const InventoryForm = () => {
                 required
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.item_name
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.item_name === '' && formData.item_name
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
                 placeholder="Enter item name (2-100 characters, letters, numbers, and common symbols only)"
               />
               
               {/* Field-specific error message */}
               {fieldErrors.item_name && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.item_name}
                 </p>
               )}
@@ -601,7 +601,7 @@ const InventoryForm = () => {
             {/* Category */}
             <div>
               <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
-                Category <span className="text-red-500">*</span>
+                Category <span className="text-fire">*</span>
               </label>
               <select
                 id="category"
@@ -611,10 +611,10 @@ const InventoryForm = () => {
                 required
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.category || (!formData.category && formData.category !== '')
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : formData.category
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
               >
                 <option value="">Select category</option>
@@ -625,7 +625,7 @@ const InventoryForm = () => {
               
               {/* Field-specific error message */}
               {fieldErrors.category && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.category}
                 </p>
               )}
@@ -634,7 +634,7 @@ const InventoryForm = () => {
             {/* Quantity */}
             <div>
               <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-2">
-                Quantity <span className="text-red-500">*</span>
+                Quantity <span className="text-fire">*</span>
               </label>
               <input
                 type="number"
@@ -653,17 +653,17 @@ const InventoryForm = () => {
                 required
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.quantity
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.quantity === '' && formData.quantity
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
                 placeholder="Enter quantity (0-999,999)"
               />
               
               {/* Field-specific error message */}
               {fieldErrors.quantity && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.quantity}
                 </p>
               )}
@@ -696,17 +696,17 @@ const InventoryForm = () => {
                 step="0.01"
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.unit_price
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.unit_price === '' && formData.unit_price
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
                 placeholder="Enter unit price (optional, max 999,999.99)"
               />
               
               {/* Field-specific error message */}
               {fieldErrors.unit_price && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.unit_price}
                 </p>
               )}
@@ -722,7 +722,7 @@ const InventoryForm = () => {
                 name="condition"
                 value={formData.condition}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-info focus:border-info"
               >
                 <option value="Good">Good</option>
                 <option value="Damaged">Damaged</option>
@@ -733,7 +733,7 @@ const InventoryForm = () => {
             {/* Location */}
             <div>
               <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
-                Location <span className="text-red-500">*</span>
+                Location <span className="text-fire">*</span>
               </label>
               <select
                 id="location"
@@ -743,10 +743,10 @@ const InventoryForm = () => {
                 required
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.location || (!formData.location && formData.location !== '')
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : formData.location
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
               >
                 <option value="">Select location</option>
@@ -757,7 +757,7 @@ const InventoryForm = () => {
               
               {/* Field-specific error message */}
               {fieldErrors.location && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.location}
                 </p>
               )}
@@ -773,7 +773,7 @@ const InventoryForm = () => {
                 name="status"
                 value={formData.status}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-info focus:border-info"
               >
                 <option value="Available">Available</option>
                 <option value="In Use">In Use</option>
@@ -802,17 +802,17 @@ const InventoryForm = () => {
                 min="0"
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.threshold
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.threshold === '' && formData.threshold
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
                 placeholder="Enter threshold (0-9,999, default: 30)"
               />
               
               {/* Field-specific error message */}
               {fieldErrors.threshold && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.threshold}
                 </p>
               )}
@@ -831,16 +831,16 @@ const InventoryForm = () => {
                 onChange={handleInputChange}
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.expire_date
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
                     : fieldErrors.expire_date === '' && formData.expire_date
-                    ? 'border-green-300 focus:ring-green-500 focus:border-green-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-success-300 focus:ring-success focus:border-success'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
               />
               
               {/* Field-specific error message */}
               {fieldErrors.expire_date && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.expire_date}
                 </p>
               )}
@@ -865,15 +865,15 @@ const InventoryForm = () => {
                 maxLength="500"
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
                   fieldErrors.notes
-                    ? 'border-red-300 focus:ring-red-500 focus:border-red-500'
-                    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+                    ? 'border-fire-300 focus:ring-fire focus:border-fire'
+                    : 'border-gray-300 focus:ring-info focus:border-info'
                 }`}
                 placeholder="Enter any additional notes about this item (max 500 characters)"
               />
               
               {/* Field-specific error message */}
               {fieldErrors.notes && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1 text-xs text-fire">
                   {fieldErrors.notes}
                 </p>
               )}
@@ -885,7 +885,7 @@ const InventoryForm = () => {
             <button
               type="button"
               onClick={handleCancel}
-              className="px-6 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="px-6 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
             >
               Cancel
             </button>
@@ -896,7 +896,7 @@ const InventoryForm = () => {
                 // Don't prevent default here, let the form handle submission
               }}
               disabled={submitting}
-              className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-400"
+              className="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-info hover:bg-info-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info disabled:bg-info-300"
             >
               {submitting ? 'Saving...' : (isEditing ? 'Update Item' : 'Add Item')}
             </button>

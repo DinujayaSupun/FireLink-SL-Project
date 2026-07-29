@@ -44,11 +44,11 @@ const Header = () => {
 							<a
 								key={index}
 								href={item.href}
-								className={`text-sm font-semibold tracking-wider transition-colors duration-300 hover:text-red-400 ${
-									item.active ? "text-red-400" : "text-white"
+								className={`text-sm font-semibold tracking-wider transition-colors duration-300 hover:text-fire-300 ${
+									item.active ? "text-fire-300" : "text-white"
 								} ${
 									item.isButton
-										? "bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg hover:text-white"
+										? "bg-fire hover:bg-fire-dark px-4 py-2 rounded-lg hover:text-white"
 										: ""
 								}`}
 							>
@@ -59,7 +59,7 @@ const Header = () => {
 
 					{/* Mobile menu button */}
 					<button
-						className="lg:hidden text-white hover:text-red-400 transition-colors"
+						className="lg:hidden text-white hover:text-fire-300 transition-colors"
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
 					>
 						<svg
@@ -89,11 +89,11 @@ const Header = () => {
 								<a
 									key={index}
 									href={item.href}
-									className={`block px-3 py-2 text-sm font-semibold tracking-wider transition-colors duration-300 rounded-md hover:text-red-400 hover:bg-gray-800 ${
-										item.active ? "text-red-400 bg-gray-800" : "text-white"
+									className={`block px-3 py-2 text-sm font-semibold tracking-wider transition-colors duration-300 rounded-md hover:text-fire-300 hover:bg-gray-800 ${
+										item.active ? "text-fire-300 bg-gray-800" : "text-white"
 									} ${
 										item.isButton
-											? "bg-red-600 hover:bg-red-700 text-center hover:text-white"
+											? "bg-fire hover:bg-fire-dark text-center hover:text-white"
 											: ""
 									}`}
 									onClick={() => setIsMenuOpen(false)}

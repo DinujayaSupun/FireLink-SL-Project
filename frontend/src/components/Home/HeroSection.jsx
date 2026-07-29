@@ -35,7 +35,7 @@ const HeroSection = () => {
               />
             </div>
             {/* Top Right - empty/overlay */}
-            <div className="rounded-xl bg-transparent border border-[#232b36] col-span-1 row-span-1" />
+            <div className="rounded-xl bg-transparent border border-navy-light col-span-1 row-span-1" />
             {/* Bottom Right - fire4.jpg */}
             <div className="relative rounded-xl overflow-hidden">
               <img

@@ -7,6 +7,7 @@ import ProfileTab from "./ProfileTab";
 import CreateSessionTab from "./CreateSessionTab";
 import SessionsTab from "./SessionsTab";
 import AttendanceTab from "./AttendanceTab";
+import { API_BASE_URL } from "../../config/api";
 
 const TrainingSessionManager = () => {
   const location = useLocation();
@@ -41,7 +42,7 @@ const TrainingSessionManager = () => {
 
   const fetchStaffMembers = async () => {
     try {
-      const res = await fetch("http://localhost:5000/sessions/staff-members");
+      const res = await fetch(`${API_BASE_URL}/sessions/staff-members`);
       const data = await res.json();
       if (data.users) setStaffMembers(data.users);
     } catch (err) {
@@ -51,7 +52,7 @@ const TrainingSessionManager = () => {
 
   const fetchSessions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/sessions");
+      const res = await fetch(`${API_BASE_URL}/sessions`);
       const data = await res.json();
       if (data.sessions) setSessions(data.sessions);
     } catch (err) {
@@ -62,7 +63,7 @@ const TrainingSessionManager = () => {
   const handleDeleteSession = async (id) => {
     if (window.confirm("Are you sure you want to delete this session?")) {
       try {
-        await fetch(`http://localhost:5000/sessions/${id}`, { method: "DELETE" });
+        await fetch(`${API_BASE_URL}/sessions/${id}`, { method: "DELETE" });
         setSessions((prev) => prev.filter((s) => s._id !== id));
       } catch (err) {
         console.error(err);
@@ -76,7 +77,7 @@ const TrainingSessionManager = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/sessions", {
+      const res = await fetch(`${API_BASE_URL}/sessions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -114,9 +115,9 @@ const TrainingSessionManager = () => {
       const dateStr = date.toDateString();
       let bgColor = "";
 
-      if (todaySessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "#9ca3af"; // gray
-      else if (upcomingSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "#3b82f6"; // blue
-      else if (expiredSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "#ef4444"; // red
+      if (todaySessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "var(--color-gray-400)"; // gray
+      else if (upcomingSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "var(--color-info)"; // blue
+      else if (expiredSessions.some(s => new Date(s.date).toDateString() === dateStr)) bgColor = "var(--color-fire)"; // red
 
       if (bgColor)
         return (

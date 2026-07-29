@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Sidebar from "../UserManagement/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 
 const FighterDashboard = () => {
   const [user, setUser] = useState(
@@ -24,7 +25,7 @@ const FighterDashboard = () => {
     setLoading(true);
     try {
       // Fetch shifts
-      const { data: scheduleData } = await axios.get("http://localhost:5000/shift-schedules");
+      const { data: scheduleData } = await axios.get(`${API_BASE_URL}/shift-schedules`);
       const ownSchedules = scheduleData.schedules.filter(s =>
         s.members.some(m => m._id === user._id)
       );
@@ -32,7 +33,7 @@ const FighterDashboard = () => {
 
       // Fetch training sessions
       try {
-        const { data: trainingData } = await axios.get(`http://localhost:5000/training-sessions`);
+        const { data: trainingData } = await axios.get(`${API_BASE_URL}/training-sessions`);
         // Filter sessions where the fighter is a member
         const ownSessions = trainingData.sessions.filter(t =>
           t.teamMembers.includes(user._id)
@@ -65,12 +66,12 @@ const FighterDashboard = () => {
     return (
       <div className="mt-1 flex flex-col gap-1 text-xs">
         {dayShifts.map(s => (
-          <span key={s._id} className="bg-blue-100 text-blue-800 rounded px-1">
+          <span key={s._id} className="bg-info-100 text-info-dark rounded px-1">
             {s.vehicle} ({s.shiftType})
           </span>
         ))}
         {dayTraining.map(t => (
-          <span key={t._id} className="bg-green-100 text-green-800 rounded px-1">
+          <span key={t._id} className="bg-success-100 text-success-dark rounded px-1">
             {t.title}
           </span>
         ))}
@@ -84,7 +85,7 @@ const FighterDashboard = () => {
 
   const submitShiftRequest = async () => {
     try {
-      await axios.post("http://localhost:5000/shift-change-requests", {
+      await axios.post(`${API_BASE_URL}/shift-change-requests`, {
         shiftId: shiftModal.shiftId,
         fighterId: user._id,
         note: shiftModal.note,
@@ -99,7 +100,7 @@ const FighterDashboard = () => {
 
   const submitTrainingRequest = async () => {
     try {
-      await axios.post("http://localhost:5000/training-requests", {
+      await axios.post(`${API_BASE_URL}/training-requests`, {
         fighterId: user._id,
         title: trainingModal.title,
         note: trainingModal.note,
@@ -113,7 +114,7 @@ const FighterDashboard = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#1e2a38]">
+    <div className="flex min-h-screen bg-navy">
       <Sidebar />
 
       <div className="flex-1 p-6">
@@ -143,7 +144,7 @@ const FighterDashboard = () => {
                     </div>
                     <button
                       onClick={() => openShiftModal(s._id)}
-                      className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                      className="bg-white text-navy border border-gray-300 px-3 py-1 rounded hover:bg-gray-50"
                     >
                       Request Shift Change
                     </button>
@@ -173,7 +174,7 @@ const FighterDashboard = () => {
                       </button>
                       <button
                         onClick={() => setTrainingModal({ open: true, title: t.title, note: "" })}
-                        className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                        className="bg-white text-navy border border-gray-300 px-3 py-1 rounded hover:bg-gray-50"
                       >
                         Request Training Session
                       </button>
@@ -245,7 +246,7 @@ const Modal = ({ title, value, onChange, extraInput, onClose, onSubmit, placehol
       />
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="px-4 py-2 border rounded hover:bg-gray-100">Cancel</button>
-        <button onClick={onSubmit} className={`px-4 py-2 text-white rounded hover:opacity-90`} style={{ backgroundColor: color === "green" ? "#16a34a" : "#2563eb" }}>
+        <button onClick={onSubmit} className={`px-4 py-2 text-white rounded hover:opacity-90`} style={{ backgroundColor: color === "green" ? "#16a34a" : "var(--color-info-dark)" }}>
           {submitText}
         </button>
       </div>

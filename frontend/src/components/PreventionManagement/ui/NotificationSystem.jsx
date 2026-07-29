@@ -29,10 +29,10 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
     };
 
     const borderColors = {
-      success: '#10b981',
-      error: '#ef4444',
-      warning: '#f59e0b',
-      info: '#3b82f6',
+      success: 'var(--color-success)',
+      error: 'var(--color-fire)',
+      warning: 'var(--color-amber)',
+      info: 'var(--color-info)',
     };
 
     return {
@@ -43,10 +43,10 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
 
   const getIconStyle = (type) => {
     const colors = {
-      success: '#10b981',
-      error: '#ef4444',
-      warning: '#f59e0b',
-      info: '#3b82f6',
+      success: 'var(--color-success)',
+      error: 'var(--color-fire)',
+      warning: 'var(--color-amber)',
+      info: 'var(--color-info)',
     };
 
     return {
@@ -71,7 +71,7 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
     background: 'none',
     border: 'none',
     cursor: 'pointer',
-    color: '#9ca3af',
+    color: 'var(--color-gray-400)',
     fontSize: '18px',
     fontWeight: 'bold',
     padding: '0',
@@ -82,12 +82,12 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
   const messageStyle = {
     flex: 1,
     fontSize: '14px',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
   };
 
   const timestampStyle = {
     fontSize: '12px',
-    color: '#6b7280',
+    color: 'var(--color-gray-500)',
     marginTop: '4px',
   };
 
@@ -144,8 +144,8 @@ const NotificationSystem = ({ notifications, onRemoveNotification }) => {
           <button
             onClick={() => onRemoveNotification(notification.id)}
             style={closeButtonStyle}
-            onMouseOver={(e) => e.target.style.color = '#374151'}
-            onMouseOut={(e) => e.target.style.color = '#9ca3af'}
+            onMouseOver={(e) => e.target.style.color = 'var(--color-gray-700)'}
+            onMouseOut={(e) => e.target.style.color = 'var(--color-gray-400)'}
           >
             ×
           </button>

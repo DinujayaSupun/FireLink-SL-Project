@@ -37,7 +37,7 @@ import InventoryManagerProfile from "./pages/Inventory/InventoryManagerProfile";
 
 import SupplierManagement from "./pages/SupplyManagement/SupplierManagement";
 import SupplyRequests from "./pages/SupplyManagement/SupplyRequests";
-import SupplyRequestForSupplier from "./pages/SupplyManagement/supplyRequestForSupplier";
+import SupplyRequestForSupplier from "./pages/SupplyManagement/SupplyRequestForSupplier";
 import Bids from "./pages/SupplyManagement/Bids";
 import SupplierProfile from "./pages/SupplyManagement/SupplierProfile";
 import PreventionCertificateForm from "./pages/PreventionManagement/PreventionCertificateForm";
@@ -46,7 +46,7 @@ import InspectedDocuments from "./pages/PreventionManagement/InspectedDocuments"
 import Home from "./pages/Home/Home";
 
 import ProtectedRoute from "./components/ProtectedRoute";
-import ProtectedSupplierRoute from "./components/protectedSupplierRoute";
+import ProtectedSupplierRoute from "./components/ProtectedSupplierRoute";
 import { Bounce, ToastContainer } from "react-toastify";
 import SupplyDashboard from "./pages/SupplyManagement/DashBoard";
 import { ProcurementReport } from "./pages/SupplyManagement/ProcurementReport";
@@ -56,9 +56,18 @@ import BudgetAllocation from "./pages/FinanceManagement/BudgetAllocation";
 import EmployeePayments from "./pages/FinanceManagement/EmployeePayments";
 import { LocationsPage } from "./pages/Home/Location";
 
+// Guarded: a malformed "user" entry in localStorage would otherwise throw here
+// and take down the whole app with a blank screen.
+const readStoredUser = () => {
+	try {
+		return JSON.parse(localStorage.getItem("user"));
+	} catch {
+		return null;
+	}
+};
+
 const App = () => {
-	const user = JSON.parse(localStorage.getItem("user"));
-	const supplier = JSON.parse(localStorage.getItem("supplier")); // example for supplier login
+	const user = readStoredUser();
 
 	return (
 		<BrowserRouter>
@@ -72,7 +81,6 @@ const App = () => {
 				<Route path="/supplier-login" element={<SupplierLogin />} />
 				<Route path="/firstaff" element={<AddFireStaff />} />
 				<Route path="/officer/:id" element={<OfficerProfile />} />
-				<Route path="/firstaff" element={<AddFireStaff />} />
 				<Route path="/update-user/:id" element={<UpdateUser />} />
 				<Route path="/userdetails/:id" element={<UserDetails />} />
 				<Route path="/attendance/:token" element={<AttendanceForm />} />
@@ -102,12 +110,7 @@ const App = () => {
 					path="/prevention-certificate-form"
 					element={<PreventionCertificateForm />}
 				/>
-				<Route
-					path="/prevention-officer-dashboard"
-					element={<PreventionOfficerDashboard />}
-				/>
 				<Route path="/inspected-documents" element={<InspectedDocuments />} />
-				<Route path="/profile" element={<DynamicDashboard />} />
 
 				<Route
 					path="/training-dashboard"
@@ -116,10 +119,6 @@ const App = () => {
 				<Route path="/update-session/:id" element={<UpdateSession />} />
 				<Route path="/shiftschedule" element={<ShiftScheduler />} />
 				<Route path="/sessions" element={<ViewSessions />} />
-				<Route path="/attendance/:id" element={<AttendanceForm />} />
-				{/* Protected user routes */}
-				<Route path="/dashboard" element={<DynamicDashboard />} />
-				<Route path="/mission-records" element={<MissionRecords />} />
 				<Route path="/salary-management" element={<SalaryManagement />} />
 
 				{/* Protected user routes */}
@@ -127,7 +126,7 @@ const App = () => {
 				<Route
 					path="/mission-records"
 					element={
-						<ProtectedRoute user={user}>
+						<ProtectedRoute>
 							<MissionRecords />
 						</ProtectedRoute>
 					}

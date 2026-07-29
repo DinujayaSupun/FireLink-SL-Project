@@ -4,15 +4,15 @@ const StatusBadge = ({ status }) => {
 	const getStatusStyles = () => {
 		switch (status) {
 			case "Open":
-				return "bg-green-100 text-green-800";
+				return "bg-success-100 text-success-dark";
 			case "pending":
-				return "bg-yellow-100 text-yellow-800";
+				return "bg-amber-100 text-amber-dark";
 			case "approved":
-				return "bg-green-100 text-green-800";
+				return "bg-success-100 text-success-dark";
 			case "Closed":
-				return "bg-red-100 text-red-800";
+				return "bg-fire-100 text-fire-dark";
 			case "under-review":
-				return "bg-blue-100 text-blue-800";
+				return "bg-info-100 text-info-dark";
 			default:
 				return "bg-gray-100 text-gray-800";
 		}

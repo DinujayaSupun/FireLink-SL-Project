@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const supplierSchema = new mongoose.Schema(
@@ -85,7 +85,8 @@ supplierSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 supplierSchema.methods.getJwt = function () {
-	return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+	// `type` distinguishes this from staff/civilian tokens, which share JWT_SECRET.
+	return jwt.sign({ id: this._id, type: "supplier" }, process.env.JWT_SECRET, {
 		expiresIn: process.env.ACCESS_TOKEN_EXP,
 	});
 };

@@ -52,12 +52,12 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="bg-red-600 text-white shadow-lg">
+		<nav className="bg-fire text-white shadow-lg">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between h-16">
 					<div className="flex items-center">
 						<div className="flex-shrink-0">
-							<Link to="/dashboard" className="text-xl font-bold hover:text-red-200 transition-colors">
+							<Link to="/dashboard" className="text-xl font-bold hover:text-fire-200 transition-colors">
 								 Fire Handling System
 							</Link>
 						</div>
@@ -68,8 +68,8 @@ const Navbar = () => {
 								to="/dashboard"
 								className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
 									isActiveLink('/dashboard') 
-										? 'bg-red-700 text-white' 
-										: 'text-red-200 hover:text-white hover:bg-red-700'
+										? 'bg-fire-dark text-white' 
+										: 'text-fire-200 hover:text-white hover:bg-fire-dark'
 								}`}
 							>
 								Dashboard
@@ -79,8 +79,8 @@ const Navbar = () => {
 								to="/profile"
 								className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
 									isActiveLink('/profile') 
-										? 'bg-red-700 text-white' 
-										: 'text-red-200 hover:text-white hover:bg-red-700'
+										? 'bg-fire-dark text-white' 
+										: 'text-fire-200 hover:text-white hover:bg-fire-dark'
 								}`}
 							>
 								Profile
@@ -93,8 +93,8 @@ const Navbar = () => {
 								to="/mission-records"
 								className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
 									isActiveLink('/mission-records') 
-										? 'bg-red-700 text-white' 
-										: 'text-red-200 hover:text-white hover:bg-red-700'
+										? 'bg-fire-dark text-white' 
+										: 'text-fire-200 hover:text-white hover:bg-fire-dark'
 								}`}
 							>
 								Mission Records
@@ -105,8 +105,8 @@ const Navbar = () => {
 									to="/user-management"
 									className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
 										isActiveLink('/user-management') 
-											? 'bg-red-700 text-white' 
-											: 'text-red-200 hover:text-white hover:bg-red-700'
+											? 'bg-fire-dark text-white' 
+											: 'text-fire-200 hover:text-white hover:bg-fire-dark'
 									}`}
 								>
 									User Management
@@ -118,8 +118,8 @@ const Navbar = () => {
 								to="/shifts"
 								className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
 									isActiveLink('/shifts') || location.pathname.startsWith('/shifts/')
-										? 'bg-red-700 text-white' 
-										: 'text-red-200 hover:text-white hover:bg-red-700'
+										? 'bg-fire-dark text-white' 
+										: 'text-fire-200 hover:text-white hover:bg-fire-dark'
 								}`}
 							>
 								Shift Management
@@ -132,7 +132,7 @@ const Navbar = () => {
 						<div className="hidden md:flex items-center space-x-4">
 							<div className="text-sm text-right">
 								<p className="font-medium">{user?.name}</p>
-								<p className="text-red-200">{getHighestRole()}</p>
+								<p className="text-fire-200">{getHighestRole()}</p>
 							</div>
 
 							
@@ -142,7 +142,7 @@ const Navbar = () => {
 						<div className="md:hidden">
 							<button
 								onClick={() => setIsMenuOpen(!isMenuOpen)}
-								className="text-white hover:text-red-200 focus:outline-none focus:text-red-200"
+								className="text-white hover:text-fire-200 focus:outline-none focus:text-fire-200"
 							>
 								<svg
 									className="h-6 w-6"
@@ -165,12 +165,12 @@ const Navbar = () => {
 				{/* Mobile menu */}
 				{isMenuOpen && (
 					<div className="md:hidden">
-						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-red-500">
+						<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-fire">
 														
 							
 							<button
 								onClick={handleLogout}
-								className="w-full text-left px-3 py-2 text-red-200 hover:text-white hover:bg-red-700 rounded-md"
+								className="w-full text-left px-3 py-2 text-fire-200 hover:text-white hover:bg-fire-dark rounded-md"
 							>
 								Logout
 							</button>

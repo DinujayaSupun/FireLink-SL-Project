@@ -104,20 +104,20 @@ const ReordersList = () => {
   const getPriorityColor = (priority) => {
     switch (priority) {
       case 'Low': return 'bg-gray-100 text-gray-800';
-      case 'Medium': return 'bg-blue-100 text-blue-800';
-      case 'High': return 'bg-orange-100 text-orange-800';
-      case 'Urgent': return 'bg-red-100 text-red-800';
+      case 'Medium': return 'bg-info-100 text-info-dark';
+      case 'High': return 'bg-amber-100 text-amber-dark';
+      case 'Urgent': return 'bg-fire-100 text-fire-dark';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Pending': return 'bg-yellow-100 text-yellow-800';
-      case 'Approved': return 'bg-green-100 text-green-800';
-      case 'In Transit': return 'bg-blue-100 text-blue-800';
-      case 'Delivered': return 'bg-green-100 text-green-800';
-      case 'Cancelled': return 'bg-red-100 text-red-800';
+      case 'Pending': return 'bg-amber-100 text-amber-dark';
+      case 'Approved': return 'bg-success-100 text-success-dark';
+      case 'In Transit': return 'bg-info-100 text-info-dark';
+      case 'Delivered': return 'bg-success-100 text-success-dark';
+      case 'Cancelled': return 'bg-fire-100 text-fire-dark';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -126,7 +126,7 @@ const ReordersList = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-fire mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading reorders...</p>
         </div>
       </div>
@@ -172,7 +172,7 @@ const ReordersList = () => {
               placeholder="Search items, categories..."
               value={filters.search}
               onChange={(e) => handleFilterChange('search', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire"
             />
           </div>
           <div>
@@ -180,7 +180,7 @@ const ReordersList = () => {
             <select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire"
             >
               <option value="">All Statuses</option>
               <option value="Pending">Pending</option>
@@ -195,7 +195,7 @@ const ReordersList = () => {
             <select
               value={filters.priority}
               onChange={(e) => handleFilterChange('priority', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire"
             >
               <option value="">All Priorities</option>
               <option value="Low">Low</option>
@@ -211,14 +211,14 @@ const ReordersList = () => {
               placeholder="Filter by supplier"
               value={filters.supplier}
               onChange={(e) => handleFilterChange('supplier', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire"
             />
           </div>
         </div>
         <div className="flex gap-3">
           <button
             onClick={handleSearch}
-            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200"
+            className="bg-fire hover:bg-fire-dark text-white px-4 py-2 rounded-md font-medium transition-colors duration-200"
           >
             Search
           </button>
@@ -241,7 +241,7 @@ const ReordersList = () => {
 
       {/* Error Display */}
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div className="bg-fire-100 border border-fire-300 text-fire-dark px-4 py-3 rounded mb-4">
           {error}
         </div>
       )}
@@ -297,7 +297,7 @@ const ReordersList = () => {
                     <div className="flex gap-2">
                       <button 
                         onClick={() => handleDelete(reorder._id)}
-                        className="text-red-600 hover:text-red-900"
+                        className="text-fire hover:text-fire-dark"
                       >
                         Delete
                       </button>
@@ -340,7 +340,7 @@ const ReordersList = () => {
           <p className="text-gray-500 mb-4">When you create reorders for low stock items, they will appear here.</p>
           <Link
             to="/inventory"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-fire hover:bg-fire-dark"
           >
             Go to Inventory
           </Link>

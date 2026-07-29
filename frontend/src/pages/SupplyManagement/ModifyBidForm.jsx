@@ -137,7 +137,7 @@ function ModifyBidForm({
 					<div className="space-y-6">
 						<div>
 							<label className="block text-sm font-medium text-gray-700 mb-1">
-								Offer Price (Rs.) <span className="text-red-500">*</span>
+								Offer Price (Rs.) <span className="text-fire">*</span>
 							</label>
 							<div className="relative">
 								<span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
@@ -146,7 +146,7 @@ function ModifyBidForm({
 								<input
 									type="text"
 									inputMode="decimal"
-									className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+									className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:border-fire focus:ring focus:ring-fire-200 focus:ring-opacity-50"
 									value={offerPrice}
 									onChange={(e) => handleOfferPriceChange(e)}
 									required
@@ -159,7 +159,7 @@ function ModifyBidForm({
 						</div>
 						<div>
 							<label className="block text-sm font-medium text-gray-700 mb-1">
-								Estimated Delivery Date <span className="text-red-500">*</span>
+								Estimated Delivery Date <span className="text-fire">*</span>
 							</label>
 							<div className="relative">
 								<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -167,7 +167,7 @@ function ModifyBidForm({
 								</div>
 								<input
 									type="date"
-									className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+									className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:border-fire focus:ring focus:ring-fire-200 focus:ring-opacity-50"
 									value={deliveryDate}
 									onChange={(e) => setDeliveryDate(e.target.value)}
 									required
@@ -183,7 +183,7 @@ function ModifyBidForm({
 								Additional Notes
 							</label>
 							<textarea
-								className="w-full border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+								className="w-full border-gray-300 rounded-lg shadow-sm focus:border-fire focus:ring focus:ring-fire-200 focus:ring-opacity-50"
 								rows={4}
 								placeholder="Any additional information about your bid..."
 								value={notes}
@@ -205,7 +205,7 @@ function ModifyBidForm({
 						</button>
 						<button
 							type="submit"
-							className="px-5 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium"
+							className="px-5 py-2.5 bg-fire text-white rounded-lg hover:bg-fire-dark font-medium"
 							disabled={loading ? true : false}
 						>
 							{currentRequest.bid ? "Update Bid" : "Submit Bid"}
@@ -215,8 +215,8 @@ function ModifyBidForm({
 			) : (
 				<div className="text-center py-12">
 					<div className="mb-4">
-						<div className="mx-auto w-16 h-16 rounded-full bg-red-100 flex items-center justify-center">
-							<SearchIcon className="h-8 w-8 text-red-600" />
+						<div className="mx-auto w-16 h-16 rounded-full bg-fire-100 flex items-center justify-center">
+							<SearchIcon className="h-8 w-8 text-fire" />
 						</div>
 					</div>
 					<h3 className="text-lg font-medium text-gray-900 mb-2">
@@ -227,7 +227,7 @@ function ModifyBidForm({
 					</p>
 					<div className="max-w-md mx-auto">
 						<select
-							className="w-full border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+							className="w-full border-gray-300 rounded-lg shadow-sm focus:border-fire focus:ring focus:ring-fire-200 focus:ring-opacity-50"
 							value={""}
 							onChange={(e) => setCurrentRequest(JSON.parse(e.target.value))}
 						>

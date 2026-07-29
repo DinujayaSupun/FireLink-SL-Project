@@ -92,30 +92,30 @@ const BudgetAllocation = () => {
 						</h1>
 						{/* Summary Cards */}
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-4">
-							<div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">Total Budget</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.financeManager.totalBudget}
 										</p>
-										<p className="text-blue-100 mt-1">For current month</p>
+										<p className="text-gray-500 mt-1">For current month</p>
 									</div>
-									<div className="bg-blue-400/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<DollarSignIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Supply Manager Budget
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.supplyManager.totalBudget}
 										</p>
-										<p className="text-purple-100 mt-1">
+										<p className="text-gray-500 mt-1">
 											{Math.round(
 												(allocationData.supplyManager.totalBudget /
 													allocationData.financeManager.totalBudget) *
@@ -124,19 +124,19 @@ const BudgetAllocation = () => {
 											% of total budget
 										</p>
 									</div>
-									<div className="bg-purple-400/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<PieChartIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">Spent</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.financeManager.spendAmount}
 										</p>
-										<p className="text-green-100 mt-1">
+										<p className="text-gray-500 mt-1">
 											{Math.round(
 												(allocationData.financeManager.spendAmount /
 													allocationData.financeManager.totalBudget) *
@@ -145,19 +145,19 @@ const BudgetAllocation = () => {
 											% of total budget
 										</p>
 									</div>
-									<div className="bg-green-400/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<BarChartIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg p-6 text-white shadow-md">
+							<div className="bg-white border border-gray-200 rounded-lg p-6  shadow-md">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">Remaining</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.{allocationData.financeManager.remainingAmount}
 										</p>
-										<p className="text-amber-100 mt-1">
+										<p className="text-gray-500 mt-1">
 											{Math.round(
 												(allocationData.financeManager.remainingAmount /
 													allocationData.financeManager.totalBudget) *
@@ -166,7 +166,7 @@ const BudgetAllocation = () => {
 											% of total budget
 										</p>
 									</div>
-									<div className="bg-amber-400/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<ArrowRightIcon size={32} />
 									</div>
 								</div>
@@ -178,34 +178,34 @@ const BudgetAllocation = () => {
 							<div className="bg-white rounded-xl p-6">
 								<div className="flex items-center justify-between mb-5 border-b border-b-gray-200 pb-3">
 									<div className="flex items-center">
-										<div className="bg-blue-100 p-3 rounded-full mr-3">
-											<UserIcon size={22} className="text-blue-600" />
+										<div className="bg-info-100 p-3 rounded-full mr-3">
+											<UserIcon size={22} className="text-info" />
 										</div>
 										<h2 className="text-xl font-semibold text-gray-800">
 											Supply Manager Budget
 										</h2>
 									</div>
-									<span className="text-sm bg-blue-50 text-blue-700 font-medium px-3 py-1 rounded-full">
+									<span className="text-sm bg-info-50 text-info-dark font-medium px-3 py-1 rounded-full">
 										Current Month
 									</span>
 								</div>
 
 								<div className="flex flex-wrap gap-4 mb-6 justify-between">
-									<div className="flex-1 bg-blue-50 rounded-lg p-4 text-center">
+									<div className="flex-1 bg-info-50 rounded-lg p-4 text-center">
 										<p className="text-sm text-gray-600">Total Budget</p>
 										<p className="text-2xl font-bold text-gray-800">
 											Rs.{allocationData.supplyManager.totalBudget}
 										</p>
 									</div>
-									<div className="flex-1 bg-blue-50 rounded-lg p-4 text-center">
+									<div className="flex-1 bg-info-50 rounded-lg p-4 text-center">
 										<p className="text-sm text-gray-600">Spent</p>
-										<p className="text-2xl font-bold text-blue-600">
+										<p className="text-2xl font-bold text-info">
 											Rs.{allocationData.supplyManager.spendAmount}
 										</p>
 									</div>
-									<div className="flex-1 bg-blue-50 rounded-lg p-4 text-center">
+									<div className="flex-1 bg-info-50 rounded-lg p-4 text-center">
 										<p className="text-sm text-gray-600">Remaining</p>
-										<p className="text-2xl font-bold text-green-600">
+										<p className="text-2xl font-bold text-success">
 											Rs.{allocationData.supplyManager.remainingAmount}
 										</p>
 									</div>
@@ -216,7 +216,7 @@ const BudgetAllocation = () => {
 									{usageData.supplyManager.map((category, index) => (
 										<div
 											key={index}
-											className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors shadow-sm"
+											className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-100 hover:border-info-200 transition-colors shadow-sm"
 										>
 											<div>
 												<p className="font-medium text-gray-800">
@@ -240,34 +240,34 @@ const BudgetAllocation = () => {
 							<div className="bg-white rounded-xl p-6">
 								<div className="flex items-center justify-between mb-5 border-b border-b-gray-200 pb-3">
 									<div className="flex items-center">
-										<div className="bg-purple-100 p-3 rounded-full mr-3">
-											<UsersIcon size={22} className="text-purple-600" />
+										<div className="bg-info-100 p-3 rounded-full mr-3">
+											<UsersIcon size={22} className="text-info" />
 										</div>
 										<h2 className="text-xl font-semibold text-gray-800">
 											Finance Manager Budget
 										</h2>
 									</div>
-									<span className="text-sm bg-purple-50 text-purple-700 font-medium px-3 py-1 rounded-full">
+									<span className="text-sm bg-info-50 text-info-dark font-medium px-3 py-1 rounded-full">
 										Current Month
 									</span>
 								</div>
 
 								<div className="flex flex-wrap gap-4 mb-6 justify-between">
-									<div className="flex-1 bg-purple-50 rounded-lg p-4 text-center">
+									<div className="flex-1 bg-info-50 rounded-lg p-4 text-center">
 										<p className="text-sm text-gray-600">Total Budget</p>
 										<p className="text-2xl font-bold text-gray-800">
 											Rs.{allocationData.financeManager.totalBudget}
 										</p>
 									</div>
-									<div className="flex-1 bg-purple-50 rounded-lg p-4 text-center">
+									<div className="flex-1 bg-info-50 rounded-lg p-4 text-center">
 										<p className="text-sm text-gray-600">Spent</p>
-										<p className="text-2xl font-bold text-purple-600">
+										<p className="text-2xl font-bold text-info">
 											Rs.{allocationData.financeManager.spendAmount}
 										</p>
 									</div>
-									<div className="flex-1 bg-purple-50 rounded-lg p-4 text-center">
+									<div className="flex-1 bg-info-50 rounded-lg p-4 text-center">
 										<p className="text-sm text-gray-600">Remaining</p>
-										<p className="text-2xl font-bold text-green-600">
+										<p className="text-2xl font-bold text-success">
 											Rs.{allocationData.financeManager.remainingAmount}
 										</p>
 									</div>
@@ -278,7 +278,7 @@ const BudgetAllocation = () => {
 									{usageData.financeManager.map((category, index) => (
 										<div
 											key={index}
-											className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-100 hover:border-purple-200 transition-colors shadow-sm"
+											className="flex items-center justify-between bg-white p-4 rounded-lg border border-gray-100 hover:border-info-200 transition-colors shadow-sm"
 										>
 											<div>
 												<p className="font-medium text-gray-800">
@@ -299,7 +299,7 @@ const BudgetAllocation = () => {
 								{!isAllocated && (
 									<div className="mt-6 flex justify-end">
 										<button
-											className="px-4 py-2 text-sm bg-purple-600 text-white rounded-lg hover:bg-purple-700 shadow-md transition-colors flex items-center"
+											className="px-4 py-2 text-sm bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 shadow-md transition-colors flex items-center"
 											onClick={() => {
 												setShowFinanceManagerModal(true);
 											}}
@@ -316,8 +316,8 @@ const BudgetAllocation = () => {
 						<div className="bg-white rounded-lg shadow-sm p-5 shadow-md">
 							<div className="flex items-center justify-between mb-6 border-b border-b-gray-200 pb-4">
 								<div className="flex items-center">
-									<div className="bg-green-100 p-2 rounded-full mr-3">
-										<BarChartIcon size={20} className="text-green-600" />
+									<div className="bg-success-100 p-2 rounded-full mr-3">
+										<BarChartIcon size={20} className="text-success" />
 									</div>
 									<h2 className="text-xl font-semibold">
 										Monthly Budget Utilization
@@ -384,7 +384,7 @@ const BudgetAllocation = () => {
 										<Bar
 											dataKey="supply"
 											name="Supply Manager %"
-											fill="#3b82f6"
+											fill="var(--color-info)"
 											radius={[4, 4, 0, 0]}
 											animationDuration={1500}
 										/>
@@ -405,8 +405,8 @@ const BudgetAllocation = () => {
 								<div className="bg-white rounded-lg shadow-xl w-full max-w-lg p-6 animate-fadeIn">
 									<div className="flex justify-between items-center mb-6">
 										<div className="flex items-center">
-											<div className="bg-purple-100 p-2 rounded-full mr-3">
-												<DollarSignIcon size={20} className="text-purple-600" />
+											<div className="bg-info-100 p-2 rounded-full mr-3">
+												<DollarSignIcon size={20} className="text-info" />
 											</div>
 											<h3 className="text-lg font-semibold">
 												Allocate Budget to Supply Manager
@@ -419,10 +419,10 @@ const BudgetAllocation = () => {
 											<XIcon size={20} />
 										</button>
 									</div>
-									<div className="mb-6 bg-purple-50 p-4 rounded-lg">
+									<div className="mb-6 bg-info-50 p-4 rounded-lg">
 										<div className="flex justify-between items-center mb-2">
 											<p className="font-medium">Total Budget:</p>
-											<p className="font-bold text-purple-700">
+											<p className="font-bold text-info-dark">
 												Rs.{allocationData.financeManager.totalBudget}
 											</p>
 										</div>
@@ -437,8 +437,8 @@ const BudgetAllocation = () => {
 															tempAllocation.operationalTransactions +
 															tempAllocation.emergencyTransactions) ===
 													0
-														? "text-green-600"
-														: "text-red-600"
+														? "text-success"
+														: "text-fire"
 												}`}
 											>
 												$
@@ -455,7 +455,7 @@ const BudgetAllocation = () => {
 												<span className="text-sm font-medium">
 													Supply Manager Budget
 												</span>
-												<span className="text-sm text-purple-600 font-medium">
+												<span className="text-sm text-info font-medium">
 													Rs.{sliderValue.toLocaleString()}
 												</span>
 											</label>
@@ -469,7 +469,7 @@ const BudgetAllocation = () => {
 													onChange={(e) =>
 														setSliderValue(parseInt(e.target.value))
 													}
-													className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
+													className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-info"
 												/>
 											</div>
 											<div className="flex justify-between mt-1 text-xs text-gray-500">
@@ -496,7 +496,7 @@ const BudgetAllocation = () => {
 														tempAllocation.operationalTransactions +
 														tempAllocation.emergencyTransactions) ===
 												0
-													? "bg-purple-600 hover:bg-purple-700"
+													? "bg-info hover:bg-info-dark"
 													: "bg-gray-400 cursor-not-allowed"
 											} transition-colors shadow-md`}
 											disabled={

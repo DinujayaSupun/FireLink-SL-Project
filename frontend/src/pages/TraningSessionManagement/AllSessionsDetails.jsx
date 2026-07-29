@@ -4,6 +4,7 @@ import axios from "axios";
 import QRCode from "react-qr-code";
 import { FiClock, FiMapPin, FiUsers, FiHash } from "react-icons/fi";
 import Sidebar from "../UserManagement/Sidebar";
+import { API_BASE_URL } from "../../config/api";
 
 const SessionsList = ({ userFromProps }) => {
   const [sessions, setSessions] = useState([]);
@@ -28,7 +29,7 @@ const SessionsList = ({ userFromProps }) => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/sessions");
+        const res = await axios.get(`${API_BASE_URL}/sessions`);
         setSessions(res.data.sessions || []);
       } catch (err) {
         console.error(err);
@@ -59,11 +60,11 @@ const SessionsList = ({ userFromProps }) => {
   };
 
   if (loading) return <div className="p-6 text-white">Loading sessions...</div>;
-  if (error) return <div className="p-6 text-red-400">{error}</div>;
+  if (error) return <div className="p-6 text-fire-300">{error}</div>;
 
   return (
     
-    <div className="min-h-screen bg-[#1e2a38] p-6">
+    <div className="min-h-screen bg-navy p-6">
       <div className="max-w-4xl mx-auto space-y-6">
         <h1 className="text-3xl text-white font-bold">Training Sessions</h1>
 
@@ -96,9 +97,9 @@ const SessionsList = ({ userFromProps }) => {
                     <FiUsers /> {s.teamMembers?.length || 0} assigned
                   </span>
                   <span className={`px-2 py-1 rounded text-xs ${
-                    status === "coming" ? "bg-yellow-100 text-yellow-800" :
-                    status === "active" ? "bg-green-100 text-green-800" :
-                    "bg-red-100 text-red-800"
+                    status === "coming" ? "bg-amber-100 text-amber-dark" :
+                    status === "active" ? "bg-success-100 text-success-dark" :
+                    "bg-fire-100 text-fire-dark"
                   }`}>
                     {status === "coming" ? "Upcoming" : 
                      status === "active" ? "Active" : "Expired"}
@@ -111,7 +112,7 @@ const SessionsList = ({ userFromProps }) => {
                 {status === "active" && (
                   <button
                     onClick={() => openQR(s._id)}
-                    className="px-4 py-2 bg-[#2563eb] text-white rounded hover:bg-blue-600"
+                    className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded"
                   >
                     Show QR for attendance
                   </button>
@@ -137,7 +138,7 @@ const SessionsList = ({ userFromProps }) => {
                   if (status === "coming") {
                     return (
                       <div className="text-center">
-                        <span className="text-yellow-700 font-semibold block mb-2">
+                        <span className="text-amber-dark font-semibold block mb-2">
                           Session hasn't started yet
                         </span>
                         <p className="text-sm text-gray-600">
@@ -150,7 +151,7 @@ const SessionsList = ({ userFromProps }) => {
                   if (status === "expired") {
                     return (
                       <div className="text-center">
-                        <span className="text-red-700 font-semibold block mb-2">
+                        <span className="text-fire-dark font-semibold block mb-2">
                           Session has expired
                         </span>
                         <p className="text-sm text-gray-600">
@@ -166,7 +167,7 @@ const SessionsList = ({ userFromProps }) => {
                         Scan with your phone to confirm attendance.
                       </p>
                       <QRCode
-                        value={`http://localhost:5000/attendance?sessionId=${activeQR}`}
+                        value={`${API_BASE_URL}/attendance?sessionId=${activeQR}`}
                       />
                     </div>
                   );

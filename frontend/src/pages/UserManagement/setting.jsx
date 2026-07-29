@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import { FiLock, FiSave, FiTrash2 } from "react-icons/fi";
+import { API_BASE_URL } from "../../config/api";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const Settings = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:5000/users/${user._id}`,
+        `${API_BASE_URL}/users/${user._id}`,
         {
           name: inputs.name,
           age: inputs.age,
@@ -87,7 +88,7 @@ const Settings = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/users/${user._id}/password`,
+        `${API_BASE_URL}/users/${user._id}/password`,
         { password: passwordData.newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -106,7 +107,7 @@ const Settings = () => {
       )
     ) {
       try {
-        await axios.delete(`http://localhost:5000/users/${user._id}`, {
+        await axios.delete(`${API_BASE_URL}/users/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Account deleted successfully!");
@@ -123,14 +124,14 @@ const Settings = () => {
   if (!user) return null;
 
   return (
-    <div className="flex min-h-screen bg-[#1e2a38]">
+    <div className="flex min-h-screen bg-navy">
       {/* Sidebar */}
       <Sidebar user={user} onLogout={() => navigate("/staff-login")} />
 
       {/* Main Settings Section */}
       <div className="flex-1 py-10 px-6">
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6">
+          <div className="bg-navy text-white p-6">
             <h1 className="text-3xl font-bold">Settings</h1>
           </div>
 
@@ -177,7 +178,7 @@ const Settings = () => {
                   ></textarea>
                   <button
                     type="submit"
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="flex items-center gap-2 px-4 py-2 bg-white text-navy border border-gray-300 rounded hover:bg-gray-50"
                   >
                     <FiSave /> Update Profile
                   </button>
@@ -206,11 +207,11 @@ const Settings = () => {
                   className="p-3 border rounded"
                 />
                 {passwordError && (
-                  <p className="text-red-500 text-sm">{passwordError}</p>
+                  <p className="text-fire text-sm">{passwordError}</p>
                 )}
                 <button
                   type="submit"
-                  className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700"
+                  className="flex items-center gap-2 px-4 py-2 bg-amber text-white rounded hover:bg-amber-dark"
                 >
                   <FiLock /> Update Password
                 </button>
@@ -219,7 +220,7 @@ const Settings = () => {
 
             {/* Delete Account */}
             <div className="bg-gray-50 rounded-lg p-6 border">
-              <h2 className="text-xl font-semibold mb-2 text-red-600">
+              <h2 className="text-xl font-semibold mb-2 text-fire">
                 Delete Account
               </h2>
               <p className="mb-4">
@@ -227,7 +228,7 @@ const Settings = () => {
               </p>
               <button
                 onClick={handleDeleteAccount}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                className="flex items-center gap-2 px-4 py-2 bg-fire text-white rounded hover:bg-fire-dark"
               >
                 <FiTrash2 /> Delete Account
               </button>

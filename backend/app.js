@@ -14,7 +14,6 @@ const shiftScheduleRoutes = require("./routes/UserManagement/ShiftScheduleRoute.
 const preventionCertificateRoutes = require("./routes/preventionCertificateRoutes");
 const preventionOfficerRoutes = require("./routes/preventionOfficerRoutes");
 const shiftChangeRoutes = require("./routes/UserManagement/shiftChangeRoutes.js");
-const shiftRoutes = require("./routes/UserManagement/ShiftScheduleRoute.js");
 
 // Register schemas BEFORE routes
 require("./models/UserManagement/Attendance.js"); // Attendance schema
@@ -82,9 +81,6 @@ app.use("/api/v1/finance", require("./routes/financeRoutes"));
 app.use("/api/prevention/certificates", preventionCertificateRoutes);
 app.use("/api/prevention-officer", preventionOfficerRoutes);
 
-// Middleware to handle errors
-app.use(errorMiddleware);
-
 // User Registration endpoint
 app.use("/users", userRouter);
 app.use("/sessions", sessionRouter);
@@ -92,7 +88,8 @@ app.use("/attendance", attendanceRouter);
 app.use("/shift-schedules", shiftScheduleRoutes);
 app.use("/shift-change-requests", shiftChangeRoutes);
 app.use("/api/shiftChange", shiftChangeRoutes);
-app.use("/api/shifts", shiftRoutes);
+// Same router as /shift-schedules above, kept for the frontend's /api/shifts calls
+app.use("/api/shifts", shiftScheduleRoutes);
 
 // Civilian login endpoint
 const civilianAuthRoutes = require("./routes/UserManagement/civilianAuthRoutes.js");
@@ -101,5 +98,10 @@ app.use("/api/v1/civilian-auth", civilianAuthRoutes);
 app.get("/", (req, res) => {
 	res.send("Fire Handling System API running");
 });
+
+// Error handling must be mounted AFTER every route: Express only looks forward
+// through the stack from where next(err) was called, so an error handler mounted
+// above a router can never see that router's errors.
+app.use(errorMiddleware);
 
 module.exports = app;

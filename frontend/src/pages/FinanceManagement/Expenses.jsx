@@ -141,9 +141,9 @@ const Expenses = () => {
 	const getTypeBadge = (type) => {
 		switch (type) {
 			case "emergency":
-				return "bg-red-100 text-red-800";
+				return "bg-fire-100 text-fire-dark";
 			case "other":
-				return "bg-blue-100 text-blue-800";
+				return "bg-info-100 text-info-dark";
 			default:
 				return "bg-gray-100 text-gray-800";
 		}
@@ -207,56 +207,56 @@ const Expenses = () => {
 					<div className="space-y-6">
 						<h1 className="text-2xl font-bold text-gray-800">Expense</h1>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-							<div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Total Expenses
 										</h3>
-										<p className="text-3xl font-bold">{expenses.length}</p>
-										<p className="text-blue-100 mt-1">Last 30 days</p>
+										<p className="text-3xl font-bold text-navy">{expenses.length}</p>
+										<p className="text-gray-500 mt-1">Last 30 days</p>
 									</div>
-									<div className="bg-blue-400/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<ClipboardIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Emergency Expenses
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.
 											{expenses
 												.filter((t) => t.type === "emergency")
 												.reduce((sum, t) => sum + t.amount, 0)
 												.toLocaleString()}
 										</p>
-										<p className="text-red-100 mt-1">Critical Expenses</p>
+										<p className="text-gray-500 mt-1">Critical Expenses</p>
 									</div>
-									<div className="bg-red-400/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<TagIcon size={32} />
 									</div>
 								</div>
 							</div>
-							<div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white">
+							<div className="bg-white border border-gray-200 rounded-lg p-6 ">
 								<div className="flex items-center justify-between">
 									<div>
 										<h3 className="text-lg font-semibold mb-1">
 											Regular Expenses
 										</h3>
-										<p className="text-3xl font-bold">
+										<p className="text-3xl font-bold text-navy">
 											Rs.
 											{expenses
 												.filter((t) => t.type !== "emergency")
 												.reduce((sum, t) => sum + t.amount, 0)
 												.toLocaleString()}
 										</p>
-										<p className="text-green-100 mt-1">Operational Expenses</p>
+										<p className="text-gray-500 mt-1">Operational Expenses</p>
 									</div>
-									<div className="bg-green-400/30 p-4 rounded-full">
+									<div className="bg-gray-100 text-navy p-4 rounded-full">
 										<DollarSignIcon size={32} />
 									</div>
 								</div>
@@ -265,8 +265,8 @@ const Expenses = () => {
 						<div className={"bg-white rounded-lg shadow-sm p-5 "}>
 							<div className="flex items-center justify-between mb-6 border-b border-gray-200-b border-gray-200 pb-4">
 								<div className="flex items-center">
-									<div className="bg-blue-100 p-2 rounded-full mr-3">
-										<CreditCardIcon size={20} className="text-blue-600" />
+									<div className="bg-info-100 p-2 rounded-full mr-3">
+										<CreditCardIcon size={20} className="text-info" />
 									</div>
 									<h2 className="text-xl font-semibold">Expense Management</h2>
 								</div>
@@ -275,7 +275,7 @@ const Expenses = () => {
 										onClick={() => setShowDatePicker(!showDatePicker)}
 										className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm"
 									>
-										<CalendarIcon size={16} className="text-blue-600" />
+										<CalendarIcon size={16} className="text-info" />
 										<span>
 											{getMonthName(selectedMonth)} {selectedYear}
 										</span>
@@ -318,7 +318,7 @@ const Expenses = () => {
 															disabled={isFutureMonth}
 															className={`py-2 px-1 text-sm rounded-md ${
 																selectedMonth === i
-																	? "bg-blue-100 text-blue-700 font-medium"
+																	? "bg-info-100 text-info-dark font-medium"
 																	: isFutureMonth
 																	? "text-gray-300 cursor-not-allowed"
 																	: "hover:bg-gray-100"
@@ -378,7 +378,7 @@ const Expenses = () => {
 										<input
 											type="text"
 											placeholder="Search transactions..."
-											className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500"
+											className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:ring-info focus:border-info"
 											value={searchQuery}
 											onChange={(e) => setSearchQuery(e.target.value)}
 										/>
@@ -387,7 +387,7 @@ const Expenses = () => {
 										<FilterIcon size={16} className="text-gray-500" />
 										<span className="text-sm font-medium">Filter by:</span>
 										<select
-											className="border border-gray-200 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+											className="border border-gray-200 rounded px-3 py-1 text-sm focus:ring-2 focus:ring-info focus:border-info"
 											value={filterType}
 											onChange={(e) => setFilterType(e.target.value)}
 										>
@@ -403,7 +403,7 @@ const Expenses = () => {
 								<div className="flex space-x-2">
 									<button
 										onClick={() => setShowAddModal(true)}
-										className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm flex items-center shadow-sm transition-colors"
+										className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 text-sm flex items-center shadow-sm transition-colors"
 									>
 										<PlusIcon size={16} className="mr-1" />
 										Add Expense
@@ -413,7 +413,7 @@ const Expenses = () => {
 											<ExpensePdfDocument expenses={currentTransactions} />
 										}
 										fileName="expense_report.pdf"
-										className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm flex items-center shadow-sm transition-colors"
+										className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 text-sm flex items-center shadow-sm transition-colors"
 									>
 										<DownloadIcon size={16} className="mr-2" />
 										Download Expense Report
@@ -492,7 +492,7 @@ const Expenses = () => {
 												<td className="py-3 px-4 text-center">
 													<div className="flex justify-center">
 														<button
-															className="p-1.5 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition-colors"
+															className="p-1.5 bg-info-100 text-info rounded-lg hover:bg-info-200 transition-colors"
 															onClick={() => setShowViewModal(transaction)}
 														>
 															<EyeIcon size={16} />
@@ -517,7 +517,7 @@ const Expenses = () => {
 									</p>
 									<button
 										onClick={() => setShowAddModal(true)}
-										className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm shadow-sm transition-colors"
+										className="mt-4 px-4 py-2 bg-white text-navy border border-gray-300 rounded-lg hover:bg-gray-50 text-sm shadow-sm transition-colors"
 									>
 										<PlusIcon size={16} className="inline-block mr-1" />
 										Add Transaction
@@ -589,7 +589,7 @@ const Expenses = () => {
 															amount: parseFloat(e.target.value),
 														})
 													}
-													className="pl-10 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-200 p-2"
+													className="pl-10 block w-full border-gray-300 rounded-md shadow-sm focus:ring-info focus:border-info sm:text-sm border border-gray-200 p-2"
 													placeholder="0.00"
 													required
 													min={1}
@@ -608,7 +608,7 @@ const Expenses = () => {
 														type: e.target.value,
 													})
 												}
-												className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-200 p-2"
+												className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-info focus:border-info sm:text-sm border border-gray-200 p-2"
 												required
 											>
 												<option value="">Transactions Type</option>
@@ -631,7 +631,7 @@ const Expenses = () => {
 														description: e.target.value,
 													})
 												}
-												className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-200 p-2"
+												className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-info focus:border-info sm:text-sm border border-gray-200 p-2"
 												rows={3}
 												placeholder="Transaction description..."
 											></textarea>
@@ -640,13 +640,13 @@ const Expenses = () => {
 									<div className="mt-6 flex justify-end space-x-3">
 										<button
 											onClick={() => setShowAddModal(false)}
-											className="px-4 py-2 border border-gray-200 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+											className="px-4 py-2 border border-gray-200 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
 										>
 											Cancel
 										</button>
 										<button
 											onClick={submitHandler}
-											className="px-4 py-2 border border-gray-200 border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+											className="px-4 py-2 border border-gray-200 border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-info hover:bg-info-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
 										>
 											Save Transaction
 										</button>
@@ -663,16 +663,16 @@ const Expenses = () => {
 											<div
 												className={`p-2 rounded-full mr-3 ${
 													showViewModal.type === "emergency"
-														? "bg-red-100"
-														: "bg-blue-100"
+														? "bg-fire-100"
+														: "bg-info-100"
 												}`}
 											>
 												<TagIcon
 													size={20}
 													className={
 														showViewModal.type === "emergency"
-															? "text-red-600"
-															: "text-blue-600"
+															? "text-fire"
+															: "text-info"
 													}
 												/>
 											</div>
@@ -727,7 +727,7 @@ const Expenses = () => {
 									<div className="mt-6 flex justify-end">
 										<button
 											onClick={() => setShowViewModal(null)}
-											className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 flex items-center"
+											className="px-4 py-2 bg-white text-navy border border-gray-300 rounded-md shadow-sm text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info flex items-center"
 										>
 											<ArrowRightIcon size={16} className="mr-1" />
 											Close

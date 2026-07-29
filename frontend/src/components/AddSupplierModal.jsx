@@ -147,7 +147,7 @@ export function AddSupplierModal({
 								name="name"
 								value={formData.name}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -164,7 +164,7 @@ export function AddSupplierModal({
 								name="email"
 								value={formData.email}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -181,7 +181,7 @@ export function AddSupplierModal({
 								name="phone"
 								value={formData.phone}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -198,7 +198,7 @@ export function AddSupplierModal({
 								name="nic"
 								value={formData.nic}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -214,7 +214,7 @@ export function AddSupplierModal({
 								name="supplierType"
 								value={formData.supplierType}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							>
 								<option value="">Select a type</option>
@@ -240,7 +240,7 @@ export function AddSupplierModal({
 									name="password"
 									value={formData.password}
 									onChange={handleChange}
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 									required
 									minLength={8}
 								/>
@@ -270,7 +270,7 @@ export function AddSupplierModal({
 									name="confirmPassword"
 									value={formData.confirmPassword}
 									onChange={handleChange}
-									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 									required
 								/>
 								<button
@@ -286,7 +286,7 @@ export function AddSupplierModal({
 								</button>
 							</div>
 							{passwordError && (
-								<p className="text-xs text-red-600 mt-1">{passwordError}</p>
+								<p className="text-xs text-fire mt-1">{passwordError}</p>
 							)}
 						</div>
 					</div>
@@ -300,7 +300,7 @@ export function AddSupplierModal({
 						</button>
 						<button
 							type="submit"
-							className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+							className="px-4 py-2 bg-fire text-white rounded-md hover:bg-fire-dark transition-colors"
 						>
 							Add Supplier
 						</button>

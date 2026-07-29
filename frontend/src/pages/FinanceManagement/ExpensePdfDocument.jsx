@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 		fontFamily: "Helvetica",
 		fontSize: 10,
 		lineHeight: 1.5,
-		backgroundColor: "#f8f8f8",
+		backgroundColor: "#f9fafb",
 	},
 	headerContainer: {
 		flexDirection: "row",
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 		alignItems: "flex-start",
 		paddingBottom: 10,
 		borderBottomWidth: "2pt",
-		borderBottomColor: "#D90429",
+		borderBottomColor: "#c62828",
 		marginBottom: 15,
 	},
 	companyInfo: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 	companyTitle: {
 		fontSize: 16,
 		fontWeight: "bold",
-		color: "#D90429",
+		color: "#c62828",
 	},
 	contactText: {
 		fontSize: 8,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 		borderTopColor: "#ccc",
 	},
 	tableHeader: {
-		backgroundColor: "#EF4444",
+		backgroundColor: "#c62828",
 		color: "#fff",
 		borderTopWidth: 0,
 	},
@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
 		padding: 8,
 		backgroundColor: "#fff",
 		borderWidth: "1pt",
-		borderColor: "#D90429",
+		borderColor: "#c62828",
 		borderRadius: 3,
 	},
 	totalText: {
 		fontSize: 12,
 		fontWeight: "bold",
-		color: "#D90429",
+		color: "#c62828",
 	},
 	signatureBlock: {
 		marginTop: 50,

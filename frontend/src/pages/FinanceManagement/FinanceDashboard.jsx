@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { StatTile } from "../../components/ui";
 import {
 	DollarSignIcon,
 	PercentIcon,
@@ -116,15 +117,17 @@ const FinancialOverview = () => {
 		}
 	}, [error]);
 
+	// Restrained, brand-led chart palette: navy + the fire accent + amber, then
+	// neutral steel greys. Reads as one system instead of a six-hue rainbow.
 	const COLORS = [
-		"#0088FE",
-		"#00C49F",
-		"#FFBB28",
-		"#FF8042",
-		"#8884D8",
-		"#82CA9D",
+		"#1e2a38", // navy
+		"#c62828", // fire
+		"#ff9800", // amber
+		"#64748b", // steel
+		"#94a3b8", // steel light
+		"#cbd5e1", // steel lighter
 	];
-	const FINANCE_COLORS = ["#8884D8", "#82CA9D", "#ffc658"];
+	const FINANCE_COLORS = ["#1e2a38", "#c62828", "#ff9800"];
 
 	if (loading) return <Loader />;
 
@@ -139,56 +142,28 @@ const FinancialOverview = () => {
 						</h1>
 						{/* Summary Cards */}
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-							<div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white shadow-md">
-								<div className="flex items-center justify-between">
-									<div>
-										<h3 className="text-lg font-semibold mb-1">Total Budget</h3>
-										<p className="text-3xl font-bold">
-											Rs.{allocationData.financeManager.totalBudget}
-										</p>
-									</div>
-									<div className="bg-blue-400/30 p-4 rounded-full">
-										<DollarSignIcon size={32} />
-									</div>
-								</div>
-							</div>
-							<div className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg p-6 text-white shadow-md">
-								<div className="flex items-center justify-between">
-									<div>
-										<h3 className="text-lg font-semibold mb-1">
-											Total Expenses
-										</h3>
-										<p className="text-3xl font-bold">
-											Rs.{allocationData.financeManager.spendAmount}
-										</p>
-									</div>
-									<div className="bg-red-400/30 p-4 rounded-full">
-										<WalletIcon size={32} />
-									</div>
-								</div>
-							</div>
-							<div className="bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg p-6 text-white shadow-md">
-								<div className="flex items-center justify-between">
-									<div>
-										<h3 className="text-lg font-semibold mb-1">
-											Remaining Budget
-										</h3>
-										<p className="text-3xl font-bold">
-											Rs.{allocationData.financeManager.remainingAmount}
-										</p>
-									</div>
-									<div className="bg-amber-400/30 p-4 rounded-full">
-										<PercentIcon size={32} />
-									</div>
-								</div>
-							</div>
+							<StatTile
+								label="Total Budget"
+								value={`Rs.${allocationData.financeManager.totalBudget}`}
+								icon={<DollarSignIcon size={16} />}
+							/>
+							<StatTile
+								label="Total Expenses"
+								value={`Rs.${allocationData.financeManager.spendAmount}`}
+								icon={<WalletIcon size={16} />}
+							/>
+							<StatTile
+								label="Remaining Budget"
+								value={`Rs.${allocationData.financeManager.remainingAmount}`}
+								icon={<PercentIcon size={16} />}
+							/>
 						</div>
 						<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 							<div className="bg-white rounded-lg shadow-sm p-5">
 								<div className="flex items-center justify-between mb-6 border-b border-gray-200 pb-4">
 									<div className="flex items-center">
-										<div className="bg-blue-100 p-2 rounded-full mr-3">
-											<PieChartIcon size={20} className="text-blue-600" />
+										<div className="bg-info-100 p-2 rounded-full mr-3">
+											<PieChartIcon size={20} className="text-info" />
 										</div>
 										<h2 className="text-xl font-semibold">
 											Budget Allocation by Manager
@@ -204,7 +179,7 @@ const FinancialOverview = () => {
 												cy="50%"
 												labelLine={false}
 												outerRadius={100}
-												fill="#8884d8"
+												fill="#1e2a38"
 												dataKey="value"
 												label={({ name, percent }) =>
 													`${name}: ${percent * 100}%`
@@ -271,8 +246,8 @@ const FinancialOverview = () => {
 							<div className="bg-white rounded-lg shadow-sm p-5">
 								<div className="flex items-center justify-between mb-6 border-b border-gray-200 pb-4">
 									<div className="flex items-center">
-										<div className="bg-purple-100 p-2 rounded-full mr-3">
-											<PieChartIcon size={20} className="text-purple-600" />
+										<div className="bg-info-100 p-2 rounded-full mr-3">
+											<PieChartIcon size={20} className="text-info" />
 										</div>
 										<h2 className="text-xl font-semibold">
 											Finance Manager Budget Breakdown
@@ -288,7 +263,7 @@ const FinancialOverview = () => {
 												cy="50%"
 												labelLine={false}
 												outerRadius={100}
-												fill="#8884d8"
+												fill="#1e2a38"
 												dataKey="value"
 												label={({ name, percent }) =>
 													`${(percent * 100).toFixed(0)}%`
@@ -337,37 +312,37 @@ const FinancialOverview = () => {
 						<div className="bg-white rounded-lg shadow-sm p-5 col-span-2">
 							<div className="flex items-center justify-between mb-6 border-b border-gray-200 pb-4">
 								<div className="flex items-center">
-									<div className="bg-green-100 p-2 rounded-full mr-3">
-										<UsersIcon size={20} className="text-green-600" />
+									<div className="bg-success-100 p-2 rounded-full mr-3">
+										<UsersIcon size={20} className="text-success" />
 									</div>
 									<h2 className="text-xl font-semibold">Budget Managers</h2>
 								</div>
 							</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-								<div className="flex items-center p-4 bg-blue-50 rounded-lg border border-blue-100">
-									<div className="bg-blue-100 p-3 rounded-full mr-4">
-										<UserIcon size={24} className="text-blue-600" />
+								<div className="flex items-center p-4 bg-info-50 rounded-lg border border-info-100">
+									<div className="bg-info-100 p-3 rounded-full mr-4">
+										<UserIcon size={24} className="text-info" />
 									</div>
 									<div>
 										<h3 className="font-medium">Supply Manager</h3>
 										<p className="text-sm text-gray-600">
 											Manages equipment & supplies
 										</p>
-										<p className="text-sm font-medium text-blue-600 mt-1">
+										<p className="text-sm font-medium text-info mt-1">
 											Rs.{allocationData.supplyManager.totalBudget} allocated
 										</p>
 									</div>
 								</div>
-								<div className="flex items-center p-4 bg-purple-50 rounded-lg border border-purple-100">
-									<div className="bg-purple-100 p-3 rounded-full mr-4">
-										<UsersIcon size={24} className="text-purple-600" />
+								<div className="flex items-center p-4 bg-info-50 rounded-lg border border-info-100">
+									<div className="bg-info-100 p-3 rounded-full mr-4">
+										<UsersIcon size={24} className="text-info" />
 									</div>
 									<div>
 										<h3 className="font-medium">Finance Manager</h3>
 										<p className="text-sm text-gray-600">
 											Manages salaries & transactions
 										</p>
-										<p className="text-sm font-medium text-purple-600 mt-1">
+										<p className="text-sm font-medium text-info mt-1">
 											Rs.{allocationData.financeManager.totalBudget} allocated
 										</p>
 									</div>

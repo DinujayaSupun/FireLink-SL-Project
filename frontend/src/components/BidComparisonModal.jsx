@@ -107,16 +107,16 @@ export function BidComparisonModal({
 							Bid Summary
 						</h3>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-							<div className="bg-green-50 p-3 rounded-md border border-green-200">
+							<div className="bg-success-50 p-3 rounded-md border border-success-200">
 								<p className="text-sm text-gray-500">Total Bids</p>
-								<p className="text-2xl font-bold text-green-700">
+								<p className="text-2xl font-bold text-success-dark">
 									{request.bids.length}
 								</p>
 							</div>
 							{lowestBid && (
-								<div className="bg-blue-50 p-3 rounded-md border border-blue-200">
+								<div className="bg-info-50 p-3 rounded-md border border-info-200">
 									<p className="text-sm text-gray-500">Lowest Bid</p>
-									<p className="text-2xl font-bold text-blue-700">
+									<p className="text-2xl font-bold text-info-dark">
 										${lowestBid.offerPrice.toLocaleString()}
 									</p>
 									<p className="text-xs text-gray-500">
@@ -125,9 +125,9 @@ export function BidComparisonModal({
 								</div>
 							)}
 							{earliestDelivery && (
-								<div className="bg-purple-50 p-3 rounded-md border border-purple-200">
+								<div className="bg-info-50 p-3 rounded-md border border-info-200">
 									<p className="text-sm text-gray-500">Earliest Delivery</p>
-									<p className="text-lg font-bold text-purple-700">
+									<p className="text-lg font-bold text-info-dark">
 										{formatDate(earliestDelivery.deliveryDate)}
 									</p>
 									<p className="text-xs text-gray-500">
@@ -162,7 +162,7 @@ export function BidComparisonModal({
 											</div>
 											<div className="w-full bg-gray-200 rounded-full h-2.5">
 												<div
-													className="bg-blue-600 h-2.5 rounded-full"
+													className="bg-info h-2.5 rounded-full"
 													style={{
 														width: `${successRate}%`,
 													}}
@@ -201,7 +201,7 @@ export function BidComparisonModal({
 										<tr
 											key={bid._id}
 											className={`hover:bg-gray-50 ${
-												isSelected ? "bg-blue-50" : ""
+												isSelected ? "bg-info-50" : ""
 											}`}
 											onClick={() => handleSelectBid(bid._id, bid.supplier._id)}
 										>
@@ -210,7 +210,7 @@ export function BidComparisonModal({
 													<div
 														className={`w-5 h-5 rounded-full border ${
 															isSelected
-																? "bg-blue-500 border-blue-500"
+																? "bg-info border-info"
 																: "border-gray-300"
 														} flex items-center justify-center`}
 													>
@@ -244,12 +244,12 @@ export function BidComparisonModal({
 															<div
 																className={`h-2 rounded-full ${
 																	parseFloat(successRate) > 90
-																		? "bg-green-500"
+																		? "bg-success"
 																		: parseFloat(successRate) > 70
-																		? "bg-blue-500"
+																		? "bg-info"
 																		: parseFloat(successRate) > 50
-																		? "bg-yellow-500"
-																		: "bg-red-500"
+																		? "bg-amber"
+																		: "bg-fire"
 																}`}
 																style={{
 																	width: `${successRate}%`,
@@ -285,7 +285,7 @@ export function BidComparisonModal({
 							disabled={!selectedBid}
 							className={`px-4 py-2 rounded-md text-white transition-colors ${
 								selectedBid
-									? "bg-red-600 hover:bg-red-700"
+									? "bg-fire hover:bg-fire-dark"
 									: "bg-gray-400 cursor-not-allowed"
 							}`}
 						>

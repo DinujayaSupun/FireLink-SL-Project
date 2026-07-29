@@ -1,9 +1,10 @@
 
 import axios from 'axios';
+import { API_BASE_URL } from "../config/api";
 // Use global axios instance (interceptors are set in auth context)
 // Set baseURL for axios globally if needed
 if (!axios.defaults.baseURL) {
-  axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  axios.defaults.baseURL = API_BASE_URL;
 }
 
 // Inventory API functions

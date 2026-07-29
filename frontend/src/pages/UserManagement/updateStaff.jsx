@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 import {
   FiUser,
   FiMail,
@@ -42,7 +43,7 @@ function UpdateUser() {
         console.log("Fetching user with ID:", id);
         console.log("Token:", token);
 
-        const response = await axios.get(`http://localhost:5000/users/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/users/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         console.log("User fetched:", response.data.user);
@@ -65,7 +66,7 @@ function UpdateUser() {
   const sendRequest = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/users/${id}`,
+        `${API_BASE_URL}/users/${id}`,
         {
           name: String(inputs.name),
           gmail: String(inputs.gmail),
@@ -89,7 +90,7 @@ function UpdateUser() {
     if (passwordData.newPassword && passwordData.newPassword === passwordData.confirmPassword) {
       try {
         await axios.put(
-          `http://localhost:5000/users/${id}/password`,
+          `${API_BASE_URL}/users/${id}/password`,
           { password: passwordData.newPassword },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -183,7 +184,7 @@ function UpdateUser() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1e2a38] py-8 px-4">
+    <div className="min-h-screen bg-navy py-8 px-4">
       <div className="max-w-3xl mx-auto">
         <button
           onClick={() => navigate(`/userdetails/${id}`)}
@@ -194,7 +195,7 @@ function UpdateUser() {
 
         {/* Update User Info */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
-          <div className="bg-[#c62828] text-white p-6">
+          <div className="bg-fire text-white p-6">
             <h1 className="text-3xl font-bold text-center">Update User Information</h1>
           </div>
           <form className="p-6 md:p-8" onSubmit={handleSubmit}>
@@ -209,10 +210,10 @@ function UpdateUser() {
                   name="name"
                   value={inputs.name || ""}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                {errors.name && <p className="text-fire text-sm mt-1">{errors.name}</p>}
               </div>
 
               {/* Age */}
@@ -227,10 +228,10 @@ function UpdateUser() {
                   onChange={handleChange}
                   min="20"
                   max="55"
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
+                {errors.age && <p className="text-fire text-sm mt-1">{errors.age}</p>}
               </div>
 
               {/* Email */}
@@ -243,10 +244,10 @@ function UpdateUser() {
                   name="gmail"
                   value={inputs.gmail || ""}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.gmail && <p className="text-red-500 text-sm mt-1">{errors.gmail}</p>}
+                {errors.gmail && <p className="text-fire text-sm mt-1">{errors.gmail}</p>}
               </div>
 
               {/* Address */}
@@ -259,10 +260,10 @@ function UpdateUser() {
                   value={inputs.address || ""}
                   onChange={handleChange}
                   rows="3"
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+                {errors.address && <p className="text-fire text-sm mt-1">{errors.address}</p>}
               </div>
 
               {/* Phone */}
@@ -275,10 +276,10 @@ function UpdateUser() {
                   name="phone"
                   value={inputs.phone || ""}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
-                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                {errors.phone && <p className="text-fire text-sm mt-1">{errors.phone}</p>}
               </div>
 
               {/* Position */}
@@ -290,7 +291,7 @@ function UpdateUser() {
                   name="position"
                   value={inputs.position || ""}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none"
                   required
                 >
                   <option value="">Select Position</option>
@@ -310,7 +311,7 @@ function UpdateUser() {
                   name="status"
                   value={inputs.status || ""}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none"
                   required
                 >
                   <option value="">Select Status</option>
@@ -331,7 +332,7 @@ function UpdateUser() {
               </button>
               <button
                 type="submit"
-                className="px-6 py-3 bg-[#c62828] text-white rounded-lg shadow hover:bg-red-800 transition flex items-center"
+                className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-fire-dark transition flex items-center"
                 disabled={Object.keys(errors).length > 0}
               >
                 <FiSave className="mr-2" /> Update User
@@ -342,7 +343,7 @@ function UpdateUser() {
 
         {/* Password Update */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-[#2c3e50] text-white p-6">
+          <div className="bg-navy-light text-white p-6">
             <h2 className="text-2xl font-bold text-center flex items-center justify-center">
               <FiLock className="mr-2" /> Update Password
             </h2>
@@ -366,7 +367,7 @@ function UpdateUser() {
                     name="newPassword"
                     value={passwordData.newPassword}
                     onChange={handlePasswordChange}
-                    className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#2c3e50] focus:border-transparent outline-none transition pr-10"
+                    className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-navy-light focus:border-transparent outline-none transition pr-10"
                     placeholder="Enter new password"
                   />
                   <button
@@ -389,7 +390,7 @@ function UpdateUser() {
                     name="confirmPassword"
                     value={passwordData.confirmPassword}
                     onChange={handlePasswordChange}
-                    className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#2c3e50] focus:border-transparent outline-none transition pr-10"
+                    className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-navy-light focus:border-transparent outline-none transition pr-10"
                     placeholder="Confirm new password"
                   />
                   <button
@@ -400,14 +401,14 @@ function UpdateUser() {
                     {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
                   </button>
                 </div>
-                {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
+                {passwordError && <p className="text-fire text-sm mt-1">{passwordError}</p>}
               </div>
             </div>
 
             <div className="mt-8 flex justify-center">
               <button
                 type="submit"
-                className="px-6 py-3 bg-[#2c3e50] text-white rounded-lg shadow hover:bg-[#1a2530] transition flex items-center"
+                className="px-6 py-3 bg-navy-light text-white rounded-lg shadow hover:bg-navy-dark transition flex items-center"
                 disabled={!passwordData.newPassword && !passwordData.confirmPassword}
               >
                 <FiLock className="mr-2" /> Update Password

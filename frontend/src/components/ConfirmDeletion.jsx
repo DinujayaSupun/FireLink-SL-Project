@@ -6,8 +6,8 @@ function ConfirmDeletion({ handleDeleteBid, setShowDeleteConfirm }) {
 		<div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
 			<div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
 				<div className="flex items-center justify-center mb-4">
-					<div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
-						<TrashIcon size={24} className="text-red-600" />
+					<div className="w-12 h-12 rounded-full bg-fire-100 flex items-center justify-center">
+						<TrashIcon size={24} className="text-fire" />
 					</div>
 				</div>
 				<h3 className="text-lg font-bold text-center mb-2">Confirm Deletion</h3>
@@ -23,7 +23,7 @@ function ConfirmDeletion({ handleDeleteBid, setShowDeleteConfirm }) {
 						Cancel
 					</button>
 					<button
-						className="px-5 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium flex items-center"
+						className="px-5 py-2.5 bg-fire text-white rounded-lg hover:bg-fire-dark font-medium flex items-center"
 						onClick={handleDeleteBid}
 					>
 						<CheckIcon size={18} className="mr-2" />

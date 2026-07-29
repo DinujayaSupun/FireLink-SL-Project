@@ -93,14 +93,14 @@ const InspectionTrackingTable = ({
 
   // Get priority color based on urgency and days
   const getPriorityColor = (urgencyLevel, daysSincePayment) => {
-    if (urgencyLevel === 'Critical' || daysSincePayment > 14) return '#dc2626';
-    if (urgencyLevel === 'High' || daysSincePayment > 7) return '#ea580c';
-    return '#059669';
+    if (urgencyLevel === 'Critical' || daysSincePayment > 14) return 'var(--color-fire)';
+    if (urgencyLevel === 'High' || daysSincePayment > 7) return 'var(--color-amber-dark)';
+    return 'var(--color-success-dark)';
   };
 
   // Table styles
   const tableContainerStyle = {
-  backgroundColor: '#CED6DF',
+  backgroundColor: 'var(--color-gray-300)',
   borderRadius: '12px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   overflow: 'hidden',
@@ -114,22 +114,22 @@ const InspectionTrackingTable = ({
   const tableTitleStyle = {
     fontSize: '20px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     padding: '20px 24px 16px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     margin: 0,
   };
 
   const searchContainerStyle = {
     padding: '16px 24px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
   };
 
   const searchInputStyle = {
     width: '100%',
     maxWidth: '400px',
     padding: '8px 12px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '6px',
     fontSize: '14px',
   };
@@ -142,18 +142,18 @@ const InspectionTrackingTable = ({
   const thStyle = {
     padding: '12px 16px',
     textAlign: 'left',
-    backgroundColor: '#f9fafb',
-    borderBottom: '1px solid #e5e7eb',
+    backgroundColor: 'var(--color-gray-50)',
+    borderBottom: '1px solid var(--color-gray-200)',
     fontSize: '14px',
     fontWeight: '600',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
   };
 
   const tdStyle = {
     padding: '12px 16px',
-    borderBottom: '1px solid #f3f4f6',
+    borderBottom: '1px solid var(--color-gray-100)',
     fontSize: '14px',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
     verticalAlign: 'middle',
   };
 
@@ -162,7 +162,7 @@ const InspectionTrackingTable = ({
     borderRadius: '12px',
     fontSize: '12px',
     fontWeight: '500',
-    backgroundColor: '#e0e7ff',
+    backgroundColor: 'var(--color-gray-100)',
     color: '#3730a3',
   };
 
@@ -194,15 +194,15 @@ const InspectionTrackingTable = ({
     width: '100%',
     minHeight: '60px',
     padding: '8px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '4px',
     fontSize: '13px',
     resize: 'vertical',
   };
 
   const notesDisplayStyle = {
-    backgroundColor: '#f9fafb',
-    border: '1px solid #e5e7eb',
+    backgroundColor: 'var(--color-gray-50)',
+    border: '1px solid var(--color-gray-200)',
     borderRadius: '4px',
     padding: '8px',
     fontSize: '13px',
@@ -215,7 +215,7 @@ const InspectionTrackingTable = ({
     return (
       <div style={tableContainerStyle}>
         <h3 style={tableTitleStyle}>Inspection Tracking - Loading...</h3>
-        <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>
+        <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-gray-500)' }}>
           Loading applications...
         </div>
       </div>
@@ -267,7 +267,7 @@ const InspectionTrackingTable = ({
           <tbody>
             {filteredApplications.length === 0 ? (
               <tr>
-                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: '#6b7280', padding: '40px' }}>
+                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: 'var(--color-gray-500)', padding: '40px' }}>
                   {searchTerm ? 'No applications match your search.' : 'No applications ready for inspection found.'}
                 </td>
               </tr>
@@ -282,7 +282,7 @@ const InspectionTrackingTable = ({
                     <td style={tdStyle}>{app.contactNumber || 'N/A'}</td>
                     <td style={tdStyle}>{app.serviceType || 'Fire Prevention Certificate'}</td>
                     <td style={tdStyle}>
-                      <span style={{ color: '#059669', fontWeight: '500' }}>
+                      <span style={{ color: 'var(--color-success-dark)', fontWeight: '500' }}>
                         Rs. {app.payment}
                       </span>
                     </td>
@@ -311,7 +311,7 @@ const InspectionTrackingTable = ({
                         {/* View Icon Button */}
                         <button
                           onClick={() => onViewDetails && onViewDetails(app)}
-                          style={{ ...iconButtonStyle, backgroundColor: '#3b82f6', color: 'white' }}
+                          style={{ ...iconButtonStyle, backgroundColor: 'var(--color-info)', color: 'white' }}
                           title="View Details"
                         >
                           <span className="material-icons" style={{ fontSize: '16px' }}>visibility</span>
@@ -325,7 +325,7 @@ const InspectionTrackingTable = ({
                               onDeleteApplication(app._id);
                             }
                           }}
-                          style={{ ...iconButtonStyle, backgroundColor: '#ef4444', color: 'white' }}
+                          style={{ ...iconButtonStyle, backgroundColor: 'var(--color-fire)', color: 'white' }}
                           title="Delete"
                         >
                           <span className="material-icons" style={{ fontSize: '16px' }}>delete</span>
@@ -336,7 +336,7 @@ const InspectionTrackingTable = ({
                           onClick={() => openInspectionModal(app)}
                           style={{ 
                             ...buttonStyle, 
-                            backgroundColor: '#10b981', 
+                            backgroundColor: 'var(--color-success)', 
                             color: 'white',
                             marginRight: '0',
                             height: '32px',
@@ -360,15 +360,15 @@ const InspectionTrackingTable = ({
       {/* Priority Legend */}
       <div style={{ 
         padding: '16px 24px', 
-        backgroundColor: '#f9fafb', 
-        borderTop: '1px solid #e5e7eb',
+        backgroundColor: 'var(--color-gray-50)', 
+        borderTop: '1px solid var(--color-gray-200)',
         fontSize: '13px',
-        color: '#6b7280'
+        color: 'var(--color-gray-500)'
       }}>
         <strong>Priority Legend:</strong> 
-        <span style={{ color: '#dc2626', marginLeft: '8px' }}>● Critical/Overdue (14+ days)</span>
-        <span style={{ color: '#ea580c', marginLeft: '12px' }}>● High Priority/Due Soon (7+ days)</span>
-        <span style={{ color: '#059669', marginLeft: '12px' }}>● Normal Priority</span>
+        <span style={{ color: 'var(--color-fire)', marginLeft: '8px' }}>● Critical/Overdue (14+ days)</span>
+        <span style={{ color: 'var(--color-amber-dark)', marginLeft: '12px' }}>● High Priority/Due Soon (7+ days)</span>
+        <span style={{ color: 'var(--color-success-dark)', marginLeft: '12px' }}>● Normal Priority</span>
       </div>
 
 
@@ -404,7 +404,7 @@ const InspectionTrackingTable = ({
                 fontSize: '18px',
                 fontWeight: '600',
                 marginBottom: '16px',
-                color: '#111827',
+                color: 'var(--color-gray-900)',
                 fontFamily: 'Public Sans, system-ui, -apple-system, sans-serif',
               }}
             >
@@ -414,7 +414,7 @@ const InspectionTrackingTable = ({
             <div style={{ marginBottom: '16px' }}>
               <p style={{ 
                 fontSize: '14px', 
-                color: '#6b7280', 
+                color: 'var(--color-gray-500)', 
                 marginBottom: '12px',
                 fontFamily: 'Public Sans, system-ui, -apple-system, sans-serif',
               }}>
@@ -422,7 +422,7 @@ const InspectionTrackingTable = ({
               </p>
               <p style={{ 
                 fontSize: '14px', 
-                color: '#374151', 
+                color: 'var(--color-gray-700)', 
                 marginBottom: '16px',
                 fontFamily: 'Public Sans, system-ui, -apple-system, sans-serif',
               }}>
@@ -439,7 +439,7 @@ const InspectionTrackingTable = ({
                 width: '100%',
                 padding: '12px',
                 borderRadius: '8px',
-                border: '2px solid #d1d5db',
+                border: '2px solid var(--color-gray-300)',
                 fontSize: '14px',
                 fontFamily: 'Public Sans, system-ui, -apple-system, sans-serif',
                 resize: 'vertical',
@@ -447,8 +447,8 @@ const InspectionTrackingTable = ({
                 outline: 'none',
                 transition: 'border-color 0.2s ease',
               }}
-              onFocus={(e) => e.target.style.borderColor = '#10b981'}
-              onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+              onFocus={(e) => e.target.style.borderColor = 'var(--color-success)'}
+              onBlur={(e) => e.target.style.borderColor = 'var(--color-gray-300)'}
             />
 
             <div
@@ -468,9 +468,9 @@ const InspectionTrackingTable = ({
                 style={{
                   padding: '10px 20px',
                   borderRadius: '8px',
-                  border: '1px solid #d1d5db',
+                  border: '1px solid var(--color-gray-300)',
                   backgroundColor: 'white',
-                  color: '#374151',
+                  color: 'var(--color-gray-700)',
                   fontSize: '14px',
                   fontWeight: '500',
                   cursor: 'pointer',
@@ -486,7 +486,7 @@ const InspectionTrackingTable = ({
                   padding: '10px 20px',
                   borderRadius: '8px',
                   border: 'none',
-                  backgroundColor: finalInspectionNotes.trim() ? '#10b981' : '#9ca3af',
+                  backgroundColor: finalInspectionNotes.trim() ? 'var(--color-success)' : 'var(--color-gray-400)',
                   color: 'white',
                   fontSize: '14px',
                   fontWeight: '500',

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 import {
   FiArrowLeft,
   FiSave,
@@ -29,7 +30,7 @@ const UpdateSession = () => {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/sessions/${id}`);
+        const res = await axios.get(`${API_BASE_URL}/sessions/${id}`);
         const session = res.data.session;
         setInputs({
           title: session.title || "",
@@ -74,7 +75,7 @@ const UpdateSession = () => {
   e.preventDefault();
   setLoading(true);
   try {
-    await axios.put(`http://localhost:5000/sessions/${id}`, {
+    await axios.put(`${API_BASE_URL}/sessions/${id}`, {
       title: inputs.title,
       description: inputs.description,
       date: inputs.date,
@@ -92,7 +93,7 @@ const UpdateSession = () => {
 };
 
   return (
-    <div className="min-h-screen bg-[#1e2a38] py-8 px-4">
+    <div className="min-h-screen bg-navy py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Back button */}
         <button
@@ -103,7 +104,7 @@ const UpdateSession = () => {
         </button>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
-          <div className="bg-[#c62828] text-white p-6">
+          <div className="bg-fire text-white p-6">
             <h1 className="text-3xl font-bold text-center">
               Update Training Session
             </h1>
@@ -121,7 +122,7 @@ const UpdateSession = () => {
                   name="title"
                   value={inputs.title}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
               </div>
@@ -136,7 +137,7 @@ const UpdateSession = () => {
                   value={inputs.description}
                   onChange={handleChange}
                   rows="3"
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 ></textarea>
               </div>
@@ -151,7 +152,7 @@ const UpdateSession = () => {
                   name="date"
                   value={inputs.date}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
               </div>
@@ -166,7 +167,7 @@ const UpdateSession = () => {
                   name="venue"
                   value={inputs.venue}
                   onChange={handleChange}
-                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-[#c62828] focus:border-transparent outline-none transition"
+                  className="w-full bg-gray-50 p-3 rounded-md border border-gray-200 focus:ring-2 focus:ring-fire focus:border-transparent outline-none transition"
                   required
                 />
               </div>
@@ -182,12 +183,12 @@ const UpdateSession = () => {
                     placeholder="Enter staff ID"
                     value={newMember}
                     onChange={(e) => setNewMember(e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#c62828] focus:border-transparent transition"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fire focus:border-transparent transition"
                   />
                   <button
                     type="button"
                     onClick={addTeamMember}
-                    className="px-4 py-2 bg-[#c62828] text-white rounded-lg hover:bg-red-700 transition"
+                    className="px-4 py-2 bg-fire text-white rounded-lg hover:bg-fire-dark transition"
                   >
                     Add
                   </button>
@@ -197,13 +198,13 @@ const UpdateSession = () => {
                     {inputs.teamMembers.map((member, index) => (
                       <span
                         key={index}
-                        className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center gap-2"
+                        className="bg-info-100 text-info-dark px-3 py-1 rounded-full flex items-center gap-2"
                       >
                         {member}
                         <button
                           type="button"
                           onClick={() => removeTeamMember(member)}
-                          className="text-red-500 font-bold"
+                          className="text-fire font-bold"
                         >
                           ×
                         </button>
@@ -226,7 +227,7 @@ const UpdateSession = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-3 bg-[#c62828] text-white rounded-lg shadow hover:bg-red-800 transition flex items-center"
+                className="px-6 py-3 bg-fire text-white rounded-lg shadow hover:bg-fire-dark transition flex items-center"
               >
                 {loading ? "Updating..." : <><FiSave className="mr-2" /> Update Session</>}
               </button>

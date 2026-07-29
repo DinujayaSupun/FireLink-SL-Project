@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_BASE_URL as API_ORIGIN } from "../config/api";
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = `${API_ORIGIN}/api`;
 
 // Get all logs with filtering and pagination
 export const getLogs = async (params = {}) => {

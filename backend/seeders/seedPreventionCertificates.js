@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const path = require('path');
 const PreventionCertificate = require('../models/preventionCertificate');
-require('dotenv').config({ path: './config/config.env' });
+// Resolved from this file, not the working directory
+require('dotenv').config({ path: path.join(__dirname, '../config/config.env') });
 
 // Connect to MongoDB
 const connectDB = async () => {

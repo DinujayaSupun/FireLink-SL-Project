@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { FiList, FiMapPin, FiHash, FiMail, FiShield, FiCheckCircle } from "react-icons/fi";
+import { API_BASE_URL } from "../../config/api";
 
 // ----------- Profile Section -----------
 const ProfileTab = ({ user }) => {
   const colorMap = {
-    blue: { bg: "bg-blue-50", border: "border-blue-200", iconBg: "bg-blue-100", textLabel: "text-blue-700", textValue: "text-blue-900" },
-    green: { bg: "bg-green-50", border: "border-green-200", iconBg: "bg-green-100", textLabel: "text-green-700", textValue: "text-green-900" },
-    red: { bg: "bg-red-50", border: "border-red-200", iconBg: "bg-red-100", textLabel: "text-red-700", textValue: "text-red-900" },
+    blue: { bg: "bg-info-50", border: "border-info-200", iconBg: "bg-info-100", textLabel: "text-info-dark", textValue: "text-info-dark" },
+    green: { bg: "bg-success-50", border: "border-success-200", iconBg: "bg-success-100", textLabel: "text-success-dark", textValue: "text-success-dark" },
+    red: { bg: "bg-fire-50", border: "border-fire-200", iconBg: "bg-fire-100", textLabel: "text-fire-dark", textValue: "text-fire-dark" },
   };
 
   const infoItems = [
@@ -52,7 +53,7 @@ const TrainingSessionDashboard = () => {
 
   const fetchSessions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/sessions");
+      const res = await fetch(`${API_BASE_URL}/sessions`);
       const data = await res.json();
       if (data.sessions) setSessions(data.sessions);
     } catch (err) {
@@ -75,10 +76,10 @@ const TrainingSessionDashboard = () => {
         return "bg-gray-400 text-white rounded-full";
       }
       if (upcomingSessions.some(s => new Date(s.date).toDateString() === dateStr)) {
-        return "bg-blue-300 text-white rounded-full";
+        return "bg-info-300 text-white rounded-full";
       }
       if (expiredSessions.some(s => new Date(s.date).toDateString() === dateStr)) {
-        return "bg-red-300 text-white rounded-full";
+        return "bg-fire-300 text-white rounded-full";
       }
     }
   };

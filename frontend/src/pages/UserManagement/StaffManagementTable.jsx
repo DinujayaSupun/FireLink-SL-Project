@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 import Sidebar from "../UserManagement/Sidebar"; // ✅ add sidebar
 
 const StaffManagementTable = () => {
@@ -21,7 +22,7 @@ const StaffManagementTable = () => {
     const fetchStaffData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/users", {
+        const response = await axios.get(`${API_BASE_URL}/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -60,7 +61,7 @@ const StaffManagementTable = () => {
     if (!window.confirm("Are you sure you want to delete this staff member?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`, {
+      await axios.delete(`${API_BASE_URL}/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const updatedStaff = staff.filter((member) => member._id !== id);
@@ -109,11 +110,11 @@ const StaffManagementTable = () => {
     navigate("/staff-login");
   };
 
-  if (loading) return <div className="text-center py-8 text-blue-600">Loading staff data...</div>;
-  if (error) return <div className="text-center py-8 text-red-600">{error}</div>;
+  if (loading) return <div className="text-center py-8 text-info">Loading staff data...</div>;
+  if (error) return <div className="text-center py-8 text-fire">{error}</div>;
 
   return (
-    <div className="flex min-h-screen bg-[#1e2a38]">
+    <div className="flex min-h-screen bg-navy">
       {/* Sidebar */}
       <Sidebar user={user} onLogout={handleLogout} />
 
@@ -140,7 +141,7 @@ const StaffManagementTable = () => {
               )}
               <button
                 onClick={() => setShowReportModal(true)}
-                className="px-4 py-2 bg-red-600 text-white rounded-md shadow hover:bg-red-700 transition text-sm"
+                className="px-4 py-2 bg-fire text-white rounded-md shadow hover:bg-fire-dark transition text-sm"
               >
                 Generate Report
               </button>
@@ -170,10 +171,10 @@ const StaffManagementTable = () => {
                       <span
                         className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                           member.status === "Active"
-                            ? "bg-green-100 text-green-800"
+                            ? "bg-success-100 text-success-dark"
                             : member.status === "Inactive"
-                            ? "bg-red-100 text-red-800"
-                            : "bg-yellow-100 text-yellow-800"
+                            ? "bg-fire-100 text-fire-dark"
+                            : "bg-amber-100 text-amber-dark"
                         }`}
                       >
                         {member.status || "Active"}
@@ -181,7 +182,7 @@ const StaffManagementTable = () => {
                     </td>
 
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium no-print">
-                      <Link to={`/userdetails/${member._id}`} className="text-indigo-600 hover:text-indigo-900">
+                      <Link to={`/userdetails/${member._id}`} className="text-info hover:text-info-dark">
                         Edit
                       </Link>
                     </td>
@@ -189,7 +190,7 @@ const StaffManagementTable = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium no-print">
                       <button
                         onClick={() => handleDelete(member._id)}
-                        className="px-3 py-1 bg-red-700 text-white rounded-md shadow hover:bg-red-800 transition flex items-center text-sm"
+                        className="px-3 py-1 bg-fire-dark text-white rounded-md shadow hover:bg-fire-dark transition flex items-center text-sm"
                       >
                         Delete
                       </button>
@@ -219,14 +220,14 @@ const StaffManagementTable = () => {
                 </div>
 
                 {/* Report Header */}
-                <div className="border border-red-600 p-2 print:p-1 mb-1 print:mb-0">
+                <div className="border border-fire p-2 print:p-1 mb-1 print:mb-0">
                   <div className="flex items-center justify-between mb-1 print:mb-0">
                     <div className="flex items-center">
                       <div className="w-10 h-10 print:w-8 print:h-8 mr-2 flex-shrink-0">
                         <img src="/firelink-logo.png" alt="FireLink-SL Logo" className="w-full h-full object-contain rounded print:rounded-none" />
                       </div>
                       <div className="text-left">
-                        <h1 className="text-lg font-bold text-red-600 print:text-base">FIRELINK-SL</h1>
+                        <h1 className="text-lg font-bold text-fire print:text-base">FIRELINK-SL</h1>
                         <p className="text-xs font-semibold print:text-[10px] text-gray-700">Fire and Rescue Service</p>
                         <p className="text-[10px] print:text-[8px] text-gray-600 mt-0.5 leading-tight">
                           Main Fire Station (Head Quarters)<br />
@@ -254,11 +255,11 @@ const StaffManagementTable = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-700 print:text-[8px]">Active</p>
-                      <p className="text-sm print:text-[10px] font-bold text-green-600">{staff.filter(s => s.status === 'Active').length}</p>
+                      <p className="text-sm print:text-[10px] font-bold text-success">{staff.filter(s => s.status === 'Active').length}</p>
                     </div>
                     <div>
                       <p className="font-semibold text-gray-700 print:text-[8px]">Inactive</p>
-                      <p className="text-sm print:text-[10px] font-bold text-red-600">{staff.filter(s => s.status === 'Inactive').length}</p>
+                      <p className="text-sm print:text-[10px] font-bold text-fire">{staff.filter(s => s.status === 'Inactive').length}</p>
                     </div>
                     <div>
                       <p className="font-semibold text-gray-700 print:text-[8px]">Positions</p>
@@ -269,10 +270,10 @@ const StaffManagementTable = () => {
 
                 {/* Detailed Staff Table */}
                 <div className="border border-gray-300 mt-0 print:mt-0" ref={printRef}>
-                  <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-red-600 print:bg-white print:border-b print:border-red-600 print:text-sm">DETAILED STAFF LIST</h3>
+                  <h3 className="text-base font-semibold mb-1 print:mb-0 p-2 print:p-1 bg-gray-50 text-fire print:bg-white print:border-b print:border-fire print:text-sm">DETAILED STAFF LIST</h3>
                   <div className="overflow-x-auto print:overflow-visible">
                     <table className="w-full text-sm print:text-xs">
-                      <thead className="bg-red-600 text-white">
+                      <thead className="bg-fire text-white">
                         <tr>
                           <th className="px-3 py-2 text-left">No.</th>
                           <th className="px-3 py-2 text-left">Staff ID</th>
@@ -297,26 +298,26 @@ const StaffManagementTable = () => {
                 </div>
 
                 {/* Footer */}
-                <div className="border-t-2 border-red-600 mt-6 pt-4 print:mt-4 print:pt-2">
+                <div className="border-t-2 border-fire mt-6 pt-4 print:mt-4 print:pt-2">
                   <div className="grid grid-cols-3 gap-4 text-sm print:text-xs">
                     <div>
-                      <h4 className="font-semibold text-red-600 mb-2 print:mb-1">SYSTEM INFORMATION</h4>
+                      <h4 className="font-semibold text-fire mb-2 print:mb-1">SYSTEM INFORMATION</h4>
                       <p><strong>Generated By:</strong> FireLink-SL TMS</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-red-600 mb-2 print:mb-1">CONTACT INFORMATION</h4>
+                      <h4 className="font-semibold text-fire mb-2 print:mb-1">CONTACT INFORMATION</h4>
                       <p><strong>Emergency Hotline:</strong> 110</p>
                       <p><strong>Admin Office:</strong> +94-11-55544466</p>
                       <p><strong>Email:</strong> training@firelink.lk</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-red-600 mb-2 print:mb-1">DOCUMENT CONTROL</h4>
+                      <h4 className="font-semibold text-fire mb-2 print:mb-1">DOCUMENT CONTROL</h4>
                       <p><strong>Valid Until:</strong> {new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                       <p><strong>Next Review:</strong> {new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                     </div>
                   </div>
 
-                  <div className="bg-red-50 print:bg-gray-100 p-3 print:p-2 rounded print:rounded-none mt-4 print:mt-2 border border-red-200 print:border-gray-300">
+                  <div className="bg-fire-50 print:bg-gray-100 p-3 print:p-2 rounded print:rounded-none mt-4 print:mt-2 border border-fire-200 print:border-gray-300">
                     <p className="text-xs print:text-[10px] text-gray-700 text-center">
                       <strong>CONFIDENTIAL DOCUMENT</strong> - This staff report contains sensitive operational data of the Fire and Rescue Service of Sri Lanka. Distribution is restricted to authorized personnel only.
                     </p>
@@ -378,7 +379,7 @@ const StaffManagementTable = () => {
                         printWindow.close();
                       }, 500);
                     }}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                    className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors"
                   >
                     Print Report
                   </button>
@@ -420,7 +421,7 @@ const StaffManagementTable = () => {
                         printWindow.close();
                       }, 500);
                     }}
-                    className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+                    className="px-4 py-2 bg-white text-navy border border-gray-300 hover:bg-gray-50 rounded-md transition-colors"
                   >
                     Export PDF
                   </button>

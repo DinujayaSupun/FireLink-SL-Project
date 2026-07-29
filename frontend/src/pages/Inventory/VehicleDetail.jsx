@@ -57,10 +57,10 @@ const VehicleDetail = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Available': return 'bg-green-100 text-green-800';
-      case 'In Use': return 'bg-blue-100 text-blue-800';
-      case 'Maintenance': return 'bg-yellow-100 text-yellow-800';
-      case 'Out of Service': return 'bg-red-100 text-red-800';
+      case 'Available': return 'bg-success-100 text-success-dark';
+      case 'In Use': return 'bg-info-100 text-info-dark';
+      case 'Maintenance': return 'bg-amber-100 text-amber-dark';
+      case 'Out of Service': return 'bg-fire-100 text-fire-dark';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -71,10 +71,10 @@ const VehicleDetail = () => {
     const now = new Date();
     const daysUntilMaintenance = Math.ceil((new Date(nextMaintenance) - now) / (1000 * 60 * 60 * 24));
     
-    if (daysUntilMaintenance < 0) return 'bg-red-100 text-red-800';
-    if (daysUntilMaintenance <= 7) return 'bg-yellow-100 text-yellow-800';
-    if (daysUntilMaintenance <= 30) return 'bg-blue-100 text-blue-800';
-    return 'bg-green-100 text-green-800';
+    if (daysUntilMaintenance < 0) return 'bg-fire-100 text-fire-dark';
+    if (daysUntilMaintenance <= 7) return 'bg-amber-100 text-amber-dark';
+    if (daysUntilMaintenance <= 30) return 'bg-info-100 text-info-dark';
+    return 'bg-success-100 text-success-dark';
   };
 
   const getMaintenanceStatus = (nextMaintenance) => {
@@ -93,7 +93,7 @@ const VehicleDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-info mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading vehicle data...</p>
         </div>
       </div>
@@ -103,15 +103,15 @@ const VehicleDetail = () => {
   if (error) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-red-50 border border-red-200 rounded-md p-4">
+        <div className="bg-fire-50 border border-fire-200 rounded-md p-4">
           <div className="flex">
             <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+              <svg className="h-5 w-5 text-fire-300" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-700">{error}</p>
+              <p className="text-sm text-fire-dark">{error}</p>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ const VehicleDetail = () => {
             </Link>
             <Link
               to={`/inventory/vehicles/edit/${vehicle._id}`}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors duration-200"
             >
               Edit Vehicle
             </Link>
@@ -257,15 +257,15 @@ const VehicleDetail = () => {
         </div>
         <div className="px-6 py-4">
           {vehicle.status === 'Maintenance' && (
-            <div className="mb-3 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+            <div className="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-md">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                  <svg className="h-5 w-5 text-amber-300" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-yellow-700">
+                  <p className="text-sm text-amber-dark">
                     This vehicle is currently under maintenance
                   </p>
                 </div>
@@ -274,15 +274,15 @@ const VehicleDetail = () => {
           )}
 
           {vehicle.status === 'Out of Service' && (
-            <div className="mb-3 p-3 bg-red-50 border border-red-200 rounded-md">
+            <div className="mb-3 p-3 bg-fire-50 border border-fire-200 rounded-md">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                  <svg className="h-5 w-5 text-fire-300" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-red-700">
+                  <p className="text-sm text-fire-dark">
                     This vehicle is out of service
                   </p>
                 </div>
@@ -291,15 +291,15 @@ const VehicleDetail = () => {
           )}
 
           {vehicle.nextMaintenance && getMaintenanceStatus(vehicle.nextMaintenance) === 'Overdue' && (
-            <div className="mb-3 p-3 bg-red-50 border border-red-200 rounded-md">
+            <div className="mb-3 p-3 bg-fire-50 border border-fire-200 rounded-md">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                  <svg className="h-5 w-5 text-fire-300" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-red-700">
+                  <p className="text-sm text-fire-dark">
                     Maintenance is overdue! Schedule maintenance immediately.
                   </p>
                 </div>
@@ -308,15 +308,15 @@ const VehicleDetail = () => {
           )}
 
           {vehicle.nextMaintenance && getMaintenanceStatus(vehicle.nextMaintenance) === 'Due Soon' && (
-            <div className="mb-3 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+            <div className="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-md">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                  <svg className="h-5 w-5 text-amber-300" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-yellow-700">
+                  <p className="text-sm text-amber-dark">
                     Maintenance is due soon. Schedule maintenance within the next 7 days.
                   </p>
                 </div>
@@ -325,15 +325,15 @@ const VehicleDetail = () => {
           )}
 
           {!vehicle.nextMaintenance && (
-            <div className="p-3 bg-blue-50 border border-blue-200 rounded-md">
+            <div className="p-3 bg-info-50 border border-info-200 rounded-md">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <svg className="h-5 w-5 text-info-300" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-blue-700">
+                  <p className="text-sm text-info-dark">
                     No maintenance schedule set. Consider scheduling regular maintenance.
                   </p>
                 </div>
@@ -350,20 +350,20 @@ const VehicleDetail = () => {
           <div className="flex flex-wrap gap-3">
             <Link
               to={`/inventory/vehicle-items?vehicleId=${vehicle._id}`}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-info hover:bg-info-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
             >
               View Assigned Items
             </Link>
             <Link
               to={`/inventory/vehicles/edit/${vehicle._id}`}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
             >
               Edit Vehicle
             </Link>
             <button
               onClick={handleDelete}
               disabled={deleting}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:bg-red-400"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-fire hover:bg-fire-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fire disabled:bg-fire-300"
             >
               {deleting ? 'Deleting...' : 'Delete Vehicle'}
             </button>

@@ -2,12 +2,26 @@ const express = require("express");
 const router = express.Router();
 const User = require("../../models/UserManagement/UserReg");
 const UserController = require("../../controllers/UserManagement/UserController");
-const { auth } = require("../../middlewares/authMiddleware");
-const bcrypt = require("bcrypt");
+const { auth, protect } = require("../../middlewares/authMiddleware");
+const { authorizePositions } = require("../../middlewares/roleMiddleware");
+const bcrypt = require("bcryptjs");
+
+// Who may create staff accounts. Uses protect (not auth) because
+// authorizePositions needs the full user document — auth only attaches the
+// decoded JWT payload, which carries no position.
+const CAN_MANAGE_STAFF = ["chief officer", "1stclassofficer"];
 
 // Public routes
-router.post("/", UserController.addUsers); // Add user
 router.post("/stafflogin", UserController.staffLogin); // Login
+
+// Creating staff is privileged: without this guard anyone could self-register as
+// a chief officer. The first chief officer comes from `npm run seed:users`.
+router.post(
+	"/",
+	protect,
+	authorizePositions(CAN_MANAGE_STAFF),
+	UserController.addUsers
+); // Add user
 
 // Protected routes
 router.get("/staff/:staffId", auth, async (req, res) => {

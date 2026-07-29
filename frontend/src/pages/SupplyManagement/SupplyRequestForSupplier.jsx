@@ -142,7 +142,7 @@ const SupplyRequestForSupplier = () => {
 								{!currentRequest.isBidden && (
 									<div className="flex justify-end pt-4 border-t border-gray-200">
 										<button
-											className="bg-red-600 text-white px-5 py-2.5 rounded-lg hover:bg-red-700 transition-colors font-medium"
+											className="bg-fire text-white px-5 py-2.5 rounded-lg hover:bg-fire-dark transition-colors font-medium"
 											onClick={() => handleSubmitBid(currentRequest._id)}
 										>
 											Submit Bid for this Request
@@ -222,7 +222,7 @@ const SupplyRequestForSupplier = () => {
 													<td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
 														<div className="flex space-x-3">
 															<button
-																className="text-blue-600 hover:text-blue-900"
+																className="text-info hover:text-info-dark"
 																title="View"
 																onClick={() => viewRequestHandler(request._id)}
 															>
@@ -230,7 +230,7 @@ const SupplyRequestForSupplier = () => {
 															</button>
 															{!request.isBidden && (
 																<button
-																	className="text-red-600 hover:text-red-900 font-medium"
+																	className="text-fire hover:text-fire-dark font-medium"
 																	onClick={() => handleSubmitBid(request._id)}
 																>
 																	Submit Bid

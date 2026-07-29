@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const InventoryVehicleItems = require('./models/inventoryVehicleItems');
-const Vehicle = require('./models/inventoryVehicle');
-const Inventory = require('./models/Inventory');
-require('dotenv').config();
+const path = require('path');
+const InventoryVehicleItems = require('../models/inventoryVehicleItems');
+const Vehicle = require('../models/inventoryVehicle');
+const Inventory = require('../models/Inventory');
+require('dotenv').config({ path: path.join(__dirname, '../config/config.env') });
 
 // Sample vehicle items data for testing
 const sampleVehicleItems = [
@@ -30,7 +31,7 @@ const sampleVehicleItems = [
 const seedInventoryVehicleItems = async () => {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.DB_URI);
     console.log('Connected to MongoDB');
 
     // Get existing vehicles and items

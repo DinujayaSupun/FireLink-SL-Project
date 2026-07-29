@@ -135,7 +135,7 @@ export function EditSupplierModal({
 								name="name"
 								value={formData.name}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -152,7 +152,7 @@ export function EditSupplierModal({
 								name="email"
 								value={formData.email}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							/>
 						</div>
@@ -169,7 +169,7 @@ export function EditSupplierModal({
 								name="phone"
 								value={formData.phone}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 								inputMode="numeric"
 							/>
@@ -186,7 +186,7 @@ export function EditSupplierModal({
 								name="supplierType"
 								value={formData.supplierType}
 								onChange={handleChange}
-								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+								className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 								required
 							>
 								<option value="">Select a type</option>
@@ -206,7 +206,7 @@ export function EditSupplierModal({
 									id="changePassword"
 									checked={changePassword}
 									onChange={() => setChangePassword(!changePassword)}
-									className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+									className="h-4 w-4 text-fire focus:ring-fire border-gray-300 rounded"
 								/>
 								<label
 									htmlFor="changePassword"
@@ -233,7 +233,7 @@ export function EditSupplierModal({
 											name="password"
 											value={formData.password}
 											onChange={handleChange}
-											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 											required={changePassword}
 											minLength={8}
 										/>
@@ -264,7 +264,7 @@ export function EditSupplierModal({
 											name="confirmPassword"
 											value={formData.confirmPassword}
 											onChange={handleChange}
-											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+											className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fire focus:border-fire"
 											required={changePassword}
 										/>
 										<button
@@ -282,7 +282,7 @@ export function EditSupplierModal({
 										</button>
 									</div>
 									{passwordError && (
-										<p className="text-xs text-red-600 mt-1">{passwordError}</p>
+										<p className="text-xs text-fire mt-1">{passwordError}</p>
 									)}
 								</div>
 							</>
@@ -298,7 +298,7 @@ export function EditSupplierModal({
 						</button>
 						<button
 							type="submit"
-							className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+							className="px-4 py-2 bg-fire text-white rounded-md hover:bg-fire-dark transition-colors"
 						>
 							Update Supplier
 						</button>

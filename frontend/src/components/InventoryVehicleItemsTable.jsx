@@ -43,9 +43,9 @@ const InventoryVehicleItemsTable = ({
   };
 
   const getExpiryColor = (expireDate) => {
-    if (isExpired(expireDate)) return 'bg-red-100 text-red-800';
-    if (isExpiringSoon(expireDate)) return 'bg-yellow-100 text-yellow-800';
-    return 'bg-green-100 text-green-800';
+    if (isExpired(expireDate)) return 'bg-fire-100 text-fire-dark';
+    if (isExpiringSoon(expireDate)) return 'bg-amber-100 text-amber-dark';
+    return 'bg-success-100 text-success-dark';
   };
 
   // Handle edit quantity
@@ -134,7 +134,7 @@ const InventoryVehicleItemsTable = ({
           <h3 className="text-lg font-medium text-gray-900">Vehicle Items</h3>
           <button
             onClick={() => setShowAssignModal(true)}
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-info hover:bg-info-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info"
           >
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -146,15 +146,15 @@ const InventoryVehicleItemsTable = ({
 
       {/* Error Display */}
       {error && (
-        <div className="px-6 py-3 bg-red-50 border-b border-red-200">
+        <div className="px-6 py-3 bg-fire-50 border-b border-fire-200">
           <div className="flex">
             <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+              <svg className="h-5 w-5 text-fire-300" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-700">{error}</p>
+              <p className="text-sm text-fire-dark">{error}</p>
             </div>
           </div>
         </div>
@@ -218,7 +218,7 @@ const InventoryVehicleItemsTable = ({
                         <button
                           onClick={handleSaveEdit}
                           disabled={loading}
-                          className="text-green-600 hover:text-green-900 text-sm font-medium"
+                          className="text-success hover:text-success-dark text-sm font-medium"
                         >
                           ✓
                         </button>
@@ -253,14 +253,14 @@ const InventoryVehicleItemsTable = ({
                       <button
                         onClick={() => handleEdit(vehicleItem)}
                         disabled={loading || editingId === vehicleItem._id}
-                        className="text-blue-600 hover:text-blue-900 disabled:text-gray-400"
+                        className="text-info hover:text-info-dark disabled:text-gray-400"
                       >
                         ✏️ Edit
                       </button>
                       <button
                         onClick={() => handleRemove(vehicleItem._id)}
                         disabled={loading}
-                        className="text-red-600 hover:text-red-900 disabled:text-gray-400"
+                        className="text-fire hover:text-fire-dark disabled:text-gray-400"
                       >
                         🗑️ Remove
                       </button>
@@ -290,7 +290,7 @@ const InventoryVehicleItemsTable = ({
                     value={assignForm.item_ID}
                     onChange={handleAssignInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-info focus:border-info"
                   >
                     <option value="">Choose an item...</option>
                     {availableItems.map((item) => (
@@ -312,7 +312,7 @@ const InventoryVehicleItemsTable = ({
                     onChange={handleAssignInputChange}
                     min="1"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-info focus:border-info"
                   />
                 </div>
                 
@@ -327,7 +327,7 @@ const InventoryVehicleItemsTable = ({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400"
+                    className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-info hover:bg-info-dark disabled:bg-info-300"
                   >
                     {loading ? 'Assigning...' : 'Assign Item'}
                   </button>

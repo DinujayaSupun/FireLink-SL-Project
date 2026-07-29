@@ -98,7 +98,7 @@ const PaymentAssignmentTable = ({
 
   // Table styles
   const tableContainerStyle = {
-    backgroundColor: '#CED6DF',
+    backgroundColor: 'var(--color-gray-300)',
     borderRadius: '12px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
@@ -108,22 +108,22 @@ const PaymentAssignmentTable = ({
   const tableTitleStyle = {
     fontSize: '20px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     padding: '20px 24px 16px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     margin: 0,
   };
 
   const searchContainerStyle = {
     padding: '16px 24px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
   };
 
   const searchInputStyle = {
     width: '100%',
     maxWidth: '400px',
     padding: '8px 12px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '6px',
     fontSize: '14px',
   };
@@ -136,20 +136,20 @@ const PaymentAssignmentTable = ({
   const thStyle = {
     padding: '12px 16px',
     textAlign: 'left',
-    backgroundColor: '#f9fafb',
-    borderBottom: '1px solid #e5e7eb',
+    backgroundColor: 'var(--color-gray-50)',
+    borderBottom: '1px solid var(--color-gray-200)',
     fontSize: '14px',
     fontWeight: '600',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
     cursor: 'pointer',
     userSelect: 'none',
   };
 
   const tdStyle = {
     padding: '12px 16px',
-    borderBottom: '1px solid #f3f4f6',
+    borderBottom: '1px solid var(--color-gray-100)',
     fontSize: '14px',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
   };
 
   const statusBadgeStyle = {
@@ -189,7 +189,7 @@ const PaymentAssignmentTable = ({
   const paymentInputStyle = {
     width: '100px',
     padding: '4px 8px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '4px',
     fontSize: '14px',
     marginRight: '8px',
@@ -199,7 +199,7 @@ const PaymentAssignmentTable = ({
     return (
       <div style={tableContainerStyle}>
         <h3 style={tableTitleStyle}>Payment Assignment - Loading...</h3>
-        <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>
+        <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-gray-500)' }}>
           Loading applications...
         </div>
       </div>
@@ -251,7 +251,7 @@ const PaymentAssignmentTable = ({
           <tbody>
             {filteredApplications.length === 0 ? (
               <tr>
-                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: '#6b7280', padding: '40px' }}>
+                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: 'var(--color-gray-500)', padding: '40px' }}>
                   {searchTerm ? 'No applications match your search.' : 'No approved applications found.'}
                 </td>
               </tr>
@@ -271,11 +271,11 @@ const PaymentAssignmentTable = ({
                   <td style={tdStyle}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                       {app.payment ? (
-                        <span style={{ color: '#059669', fontWeight: '500' }}>
+                        <span style={{ color: 'var(--color-success-dark)', fontWeight: '500' }}>
                           Rs. {app.payment}
                         </span>
                       ) : (
-                        <span style={{ color: '#6b7280' }}>Not assigned</span>
+                        <span style={{ color: 'var(--color-gray-500)' }}>Not assigned</span>
                       )}
                     </div>
                   </td>
@@ -283,7 +283,7 @@ const PaymentAssignmentTable = ({
                     {/* View Icon Button */}
                     <button
                       onClick={() => onViewDetails && onViewDetails(app)}
-                      style={{ ...iconButtonStyle, backgroundColor: '#3b82f6', color: 'white' }}
+                      style={{ ...iconButtonStyle, backgroundColor: 'var(--color-info)', color: 'white' }}
                       title="View Details"
                     >
                       <span className="material-icons" style={{ fontSize: '16px' }}>visibility</span>
@@ -296,7 +296,7 @@ const PaymentAssignmentTable = ({
                           onDelete(app._id);
                         }
                       }}
-                      style={{ ...iconButtonStyle, backgroundColor: '#ef4444', color: 'white' }}
+                      style={{ ...iconButtonStyle, backgroundColor: 'var(--color-fire)', color: 'white' }}
                       title="Delete"
                     >
                       <span className="material-icons" style={{ fontSize: '16px' }}>delete</span>
@@ -325,7 +325,7 @@ const PaymentAssignmentTable = ({
                           setPaymentAmount(app.payment.toString());
                           setShowPaymentModal(true);
                         }}
-                        style={{ ...iconButtonStyle, backgroundColor: '#f59e0b', color: 'white' }}
+                        style={{ ...iconButtonStyle, backgroundColor: 'var(--color-amber)', color: 'white' }}
                         title="Edit Payment"
                       >
                         <span className="material-icons" style={{ fontSize: '16px' }}>edit</span>
@@ -342,10 +342,10 @@ const PaymentAssignmentTable = ({
       {/* Payment Guidelines */}
       <div style={{ 
         padding: '16px 24px', 
-        backgroundColor: '#f9fafb', 
-        borderTop: '1px solid #e5e7eb',
+        backgroundColor: 'var(--color-gray-50)', 
+        borderTop: '1px solid var(--color-gray-200)',
         fontSize: '13px',
-        color: '#6b7280'
+        color: 'var(--color-gray-500)'
       }}>
         <strong>Payment Guidelines:</strong> Fire Prevention: Rs. 1,500 | Safety Audit: Rs. 2,000 | Inspection: Rs. 1,200 
         | Commercial +50% | Industrial +100%
@@ -383,7 +383,7 @@ const PaymentAssignmentTable = ({
               <h3 style={{
                 fontSize: '20px',
                 fontWeight: '600',
-                color: '#1f2937',
+                color: 'var(--color-gray-800)',
                 margin: 0,
               }}>
                 {selectedAppForPayment.payment ? 'Edit Payment' : 'Assign Payment'} - {selectedAppForPayment.fullName}
@@ -399,7 +399,7 @@ const PaymentAssignmentTable = ({
                   border: 'none',
                   fontSize: '24px',
                   cursor: 'pointer',
-                  color: '#6b7280',
+                  color: 'var(--color-gray-500)',
                   padding: '4px',
                 }}
               >
@@ -414,7 +414,7 @@ const PaymentAssignmentTable = ({
                 gap: '16px',
                 marginBottom: '20px',
                 padding: '16px',
-                backgroundColor: '#f9fafb',
+                backgroundColor: 'var(--color-gray-50)',
                 borderRadius: '8px',
               }}>
                 <div>
@@ -427,13 +427,13 @@ const PaymentAssignmentTable = ({
                 </div>
                 <div>
                   <strong>Suggested Amount:</strong>
-                  <div style={{ color: '#059669', fontWeight: '500' }}>
+                  <div style={{ color: 'var(--color-success-dark)', fontWeight: '500' }}>
                     Rs. {getSuggestedPayment(selectedAppForPayment.serviceType, selectedAppForPayment.constructionType)}
                   </div>
                 </div>
                 <div>
                   <strong>Current Payment:</strong>
-                  <div style={{ color: selectedAppForPayment.payment ? '#059669' : '#6b7280' }}>
+                  <div style={{ color: selectedAppForPayment.payment ? 'var(--color-success-dark)' : 'var(--color-gray-500)' }}>
                     {selectedAppForPayment.payment ? `Rs. ${selectedAppForPayment.payment}` : 'Not assigned'}
                   </div>
                 </div>
@@ -444,7 +444,7 @@ const PaymentAssignmentTable = ({
                   display: 'block',
                   fontSize: '14px',
                   fontWeight: '500',
-                  color: '#374151',
+                  color: 'var(--color-gray-700)',
                   marginBottom: '8px',
                 }}>
                   Payment Amount (Rs.)
@@ -459,7 +459,7 @@ const PaymentAssignmentTable = ({
                   style={{
                     width: '100%',
                     padding: '12px',
-                    border: '1px solid #d1d5db',
+                    border: '1px solid var(--color-gray-300)',
                     borderRadius: '8px',
                     fontSize: '16px',
                     fontFamily: 'inherit',
@@ -467,7 +467,7 @@ const PaymentAssignmentTable = ({
                 />
                 <div style={{
                   fontSize: '12px',
-                  color: '#6b7280',
+                  color: 'var(--color-gray-500)',
                   marginTop: '4px',
                 }}>
                   Suggested amount: Rs. {getSuggestedPayment(selectedAppForPayment.serviceType, selectedAppForPayment.constructionType)}
@@ -490,9 +490,9 @@ const PaymentAssignmentTable = ({
                 style={{
                   padding: '10px 20px',
                   borderRadius: '8px',
-                  border: '1px solid #d1d5db',
+                  border: '1px solid var(--color-gray-300)',
                   backgroundColor: 'white',
-                  color: '#374151',
+                  color: 'var(--color-gray-700)',
                   fontSize: '14px',
                   fontWeight: '500',
                   cursor: 'pointer',
@@ -507,7 +507,7 @@ const PaymentAssignmentTable = ({
                   padding: '10px 20px',
                   borderRadius: '8px',
                   border: 'none',
-                  backgroundColor: selectedAppForPayment.payment ? '#f59e0b' : '#8b5cf6',
+                  backgroundColor: selectedAppForPayment.payment ? 'var(--color-amber)' : '#8b5cf6',
                   color: 'white',
                   fontSize: '14px',
                   fontWeight: '500',

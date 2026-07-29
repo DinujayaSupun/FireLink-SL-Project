@@ -87,10 +87,10 @@ const VehicleList = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'Available': return 'bg-green-100 text-green-800';
-      case 'In Use': return 'bg-blue-100 text-blue-800';
-      case 'Maintenance': return 'bg-yellow-100 text-yellow-800';
-      case 'Out of Service': return 'bg-red-100 text-red-800';
+      case 'Available': return 'bg-success-100 text-success-dark';
+      case 'In Use': return 'bg-info-100 text-info-dark';
+      case 'Maintenance': return 'bg-amber-100 text-amber-dark';
+      case 'Out of Service': return 'bg-fire-100 text-fire-dark';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -101,10 +101,10 @@ const VehicleList = () => {
     const now = new Date();
     const daysUntilMaintenance = Math.ceil((new Date(nextMaintenance) - now) / (1000 * 60 * 60 * 24));
     
-    if (daysUntilMaintenance < 0) return 'bg-red-100 text-red-800';
-    if (daysUntilMaintenance <= 7) return 'bg-yellow-100 text-yellow-800';
-    if (daysUntilMaintenance <= 30) return 'bg-blue-100 text-blue-800';
-    return 'bg-green-100 text-green-800';
+    if (daysUntilMaintenance < 0) return 'bg-fire-100 text-fire-dark';
+    if (daysUntilMaintenance <= 7) return 'bg-amber-100 text-amber-dark';
+    if (daysUntilMaintenance <= 30) return 'bg-info-100 text-info-dark';
+    return 'bg-success-100 text-success-dark';
   };
 
   const getMaintenanceStatus = (nextMaintenance) => {
@@ -123,7 +123,7 @@ const VehicleList = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-info mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading vehicles...</p>
         </div>
       </div>
@@ -156,7 +156,7 @@ const VehicleList = () => {
             </Link>
             <Link
               to="/inventory/vehicles/add"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-colors duration-200"
             >
               Add New Vehicle
             </Link>
@@ -176,7 +176,7 @@ const VehicleList = () => {
               placeholder="Search vehicles..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             />
           </div>
 
@@ -185,7 +185,7 @@ const VehicleList = () => {
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             >
               <option value="">All Types</option>
               <option value="Fire Engine">Fire Engine</option>
@@ -202,7 +202,7 @@ const VehicleList = () => {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-info"
             >
               <option value="">All Statuses</option>
               <option value="Available">Available</option>
@@ -215,7 +215,7 @@ const VehicleList = () => {
           <div className="flex items-end">
             <button
               onClick={handleFilterChange}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
+              className="bg-white text-navy border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-md font-medium transition-colors duration-200 mr-2"
             >
               Apply Filters
             </button>
@@ -236,8 +236,8 @@ const VehicleList = () => {
         </div>
 
         {error && (
-          <div className="px-6 py-3 bg-red-50 border-b border-red-200">
-            <p className="text-red-700">{error}</p>
+          <div className="px-6 py-3 bg-fire-50 border-b border-fire-200">
+            <p className="text-fire-dark">{error}</p>
           </div>
         )}
 
@@ -316,19 +316,19 @@ const VehicleList = () => {
                       <div className="flex space-x-2">
                         <Link
                           to={`/inventory/vehicles/${vehicle._id}`}
-                          className="text-blue-600 hover:text-blue-900"
+                          className="text-info hover:text-info-dark"
                         >
                           View
                         </Link>
                         <Link
                           to={`/inventory/vehicles/edit/${vehicle._id}`}
-                          className="text-green-600 hover:text-green-900"
+                          className="text-success hover:text-success-dark"
                         >
                           Edit
                         </Link>
                         <button
                           onClick={() => handleDelete(vehicle._id)}
-                          className="text-red-600 hover:text-red-900"
+                          className="text-fire hover:text-fire-dark"
                         >
                           Delete
                         </button>

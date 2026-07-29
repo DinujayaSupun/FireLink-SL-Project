@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { FaUser, FaPhone, FaBirthdayCake, FaEnvelope, FaBriefcase, FaFlag, FaMapMarkerAlt, FaLock } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 import Sidebar from '../UserManagement/Sidebar'; // import sidebar
 
-const URL = "http://localhost:5000/users";
+const URL = `${API_BASE_URL}/users`;
 
 function AddFireStaff() {
   const navigate = useNavigate();
@@ -24,15 +25,17 @@ function AddFireStaff() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  // These strings are what get stored on the user and matched by the route guards
+  // in App.jsx and the backend. Keep them in sync with those guards.
   const positions = [
-  "chief officer",       // ✅ New
+  "chief officer",
   "1stclassofficer",
-  "financemanager",      // fixed typo: was "finanaceManager"
+  "finance_manager",
   "inventorymanager",
   "recordmanager",
   "preventionmanager",
   "trainingsessionmanager",
-  "suppliermanager",     // fixed typo: was "suplliermanager"
+  "supply_manager",
   "teamcaptain",
   "fighter",
 ];
@@ -78,13 +81,14 @@ function AddFireStaff() {
       else delete err.phone;
     }
 
-    // Password validation
+    // Password validation — the 8 character floor must match MIN_PASSWORD_LENGTH
+    // in the backend's UserController, or the form accepts passwords the API rejects.
     if (name === "password") {
       const passwordPattern =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{6,}$/;
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
       if (!passwordPattern.test(value))
         err.password =
-          "Password must be at least 6 characters and include uppercase, lowercase, number, and special character";
+          "Password must be at least 8 characters and include uppercase, lowercase, number, and special character";
       else delete err.password;
     }
 
@@ -127,7 +131,7 @@ function AddFireStaff() {
           address: "",
           password: "",
         });
-        navigate("/stafflogin");
+        navigate("/staff-login");
       } else alert("Error adding staff");
     } catch (err) {
       console.error(err);
@@ -143,14 +147,14 @@ function AddFireStaff() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#1E2A38]">
+    <div className="flex min-h-screen bg-navy">
       {/* Sidebar */}
       <Sidebar user={user} onLogout={handleLogout} />
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center p-6">
-        <div className="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-2xl border-t-8 border-[#C62828]">
-          <h2 className="text-3xl font-bold text-[#C62828] mb-8 text-center">
+        <div className="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-2xl border-t-8 border-fire">
+          <h2 className="text-3xl font-bold text-fire mb-8 text-center">
             Add Fire Department Staff
           </h2>
 
@@ -164,10 +168,10 @@ function AddFireStaff() {
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              {errors.name && <p className="text-fire text-sm mt-1">{errors.name}</p>}
             </div>
 
             {/* Phone */}
@@ -179,10 +183,10 @@ function AddFireStaff() {
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              {errors.phone && <p className="text-fire text-sm mt-1">{errors.phone}</p>}
             </div>
 
             {/* Age */}
@@ -194,10 +198,10 @@ function AddFireStaff() {
                 placeholder="Age"
                 value={formData.age}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
+              {errors.age && <p className="text-fire text-sm mt-1">{errors.age}</p>}
             </div>
 
             {/* Email */}
@@ -209,10 +213,10 @@ function AddFireStaff() {
                 placeholder="Email"
                 value={formData.gmail}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.gmail && <p className="text-red-500 text-sm mt-1">{errors.gmail}</p>}
+              {errors.gmail && <p className="text-fire text-sm mt-1">{errors.gmail}</p>}
             </div>
 
             {/* Position */}
@@ -222,7 +226,7 @@ function AddFireStaff() {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] appearance-none"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber appearance-none"
                 required
               >
                 <option value="">Select Position</option>
@@ -241,7 +245,7 @@ function AddFireStaff() {
                 name="status"
                 value={formData.status}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] appearance-none"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber appearance-none"
                 required
               >
                 <option value="">Select Status</option>
@@ -261,11 +265,11 @@ function AddFireStaff() {
                 placeholder="Address"
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full pl-10 pt-3 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 pt-3 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 rows={3}
                 required
               />
-              {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+              {errors.address && <p className="text-fire text-sm mt-1">{errors.address}</p>}
             </div>
 
             {/* Password */}
@@ -277,10 +281,10 @@ function AddFireStaff() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800]"
+                className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber"
                 required
               />
-              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+              {errors.password && <p className="text-fire text-sm mt-1">{errors.password}</p>}
             </div>
 
             {/* Submit */}
@@ -289,7 +293,7 @@ function AddFireStaff() {
               disabled={!isFormValid() || loading}
               className={`w-full p-3 text-white font-semibold rounded-xl shadow-lg transition ${
                 isFormValid() && !loading
-                  ? "bg-[#FF9800] hover:shadow-xl"
+                  ? "bg-amber hover:shadow-xl"
                   : "bg-gray-400 cursor-not-allowed"
               }`}
             >

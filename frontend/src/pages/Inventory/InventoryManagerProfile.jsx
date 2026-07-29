@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBriefcase, FaIdCard, FaEdit, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const InventoryManagerProfile = () => {
   const navigate = useNavigate();
@@ -117,7 +118,7 @@ const InventoryManagerProfile = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/users/${user._id}`,
+        `${API_BASE_URL}/users/${user._id}`,
         {
           name: formData.name,
           gmail: formData.gmail,
@@ -160,7 +161,7 @@ const InventoryManagerProfile = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/users/${user._id}/password`,
+        `${API_BASE_URL}/users/${user._id}/password`,
         { password: passwordData.newPassword },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -220,11 +221,11 @@ const InventoryManagerProfile = () => {
 
           {/* Staff ID Section */}
           <div className="p-6 border-b">
-            <div className="flex items-center bg-red-50 p-4 rounded-lg border border-red-100">
-              <FaIdCard className="text-red-600 mr-3 text-xl" />
+            <div className="flex items-center bg-fire-50 p-4 rounded-lg border border-fire-100">
+              <FaIdCard className="text-fire mr-3 text-xl" />
               <div>
                 <span className="font-medium text-gray-700 mr-3">Staff ID:</span>
-                <span className="text-red-800 font-mono bg-red-100 px-3 py-1 rounded">
+                <span className="text-fire-dark font-mono bg-fire-100 px-3 py-1 rounded">
                   {user.staffId || user._id}
                 </span>
               </div>
@@ -240,7 +241,7 @@ const InventoryManagerProfile = () => {
                   <h2 className="text-xl font-semibold text-gray-800">Personal Information</h2>
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                    className="flex items-center gap-2 px-4 py-2 bg-fire text-white rounded-lg hover:bg-fire-dark transition"
                   >
                     <FaEdit /> Edit Profile
                   </button>
@@ -303,55 +304,55 @@ const InventoryManagerProfile = () => {
                   {/* Name */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Full Name <span className="text-red-500">*</span>
+                      Full Name <span className="text-fire">*</span>
                     </label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                        errors.name ? "border-red-500" : "border-gray-300"
+                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-fire ${
+                        errors.name ? "border-fire" : "border-gray-300"
                       }`}
                       placeholder="Enter your full name"
                     />
-                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                    {errors.name && <p className="text-fire text-xs mt-1">{errors.name}</p>}
                   </div>
 
                   {/* Email */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email <span className="text-red-500">*</span>
+                      Email <span className="text-fire">*</span>
                     </label>
                     <input
                       type="email"
                       name="gmail"
                       value={formData.gmail}
                       onChange={handleChange}
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                        errors.gmail ? "border-red-500" : "border-gray-300"
+                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-fire ${
+                        errors.gmail ? "border-fire" : "border-gray-300"
                       }`}
                       placeholder="Enter your email"
                     />
-                    {errors.gmail && <p className="text-red-500 text-xs mt-1">{errors.gmail}</p>}
+                    {errors.gmail && <p className="text-fire text-xs mt-1">{errors.gmail}</p>}
                   </div>
 
                   {/* Phone */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone Number <span className="text-red-500">*</span>
+                      Phone Number <span className="text-fire">*</span>
                     </label>
                     <input
                       type="text"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                        errors.phone ? "border-red-500" : "border-gray-300"
+                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-fire ${
+                        errors.phone ? "border-fire" : "border-gray-300"
                       }`}
                       placeholder="0XXXXXXXXX"
                     />
-                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+                    {errors.phone && <p className="text-fire text-xs mt-1">{errors.phone}</p>}
                   </div>
 
                   {/* Position (Read-only) */}
@@ -368,19 +369,19 @@ const InventoryManagerProfile = () => {
                   {/* Address */}
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Address <span className="text-red-500">*</span>
+                      Address <span className="text-fire">*</span>
                     </label>
                     <textarea
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
                       rows="3"
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
-                        errors.address ? "border-red-500" : "border-gray-300"
+                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-fire ${
+                        errors.address ? "border-fire" : "border-gray-300"
                       }`}
                       placeholder="Enter your full address"
                     />
-                    {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
+                    {errors.address && <p className="text-fire text-xs mt-1">{errors.address}</p>}
                   </div>
                 </div>
 
@@ -396,7 +397,7 @@ const InventoryManagerProfile = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition ${
+                    className={`px-6 py-2 bg-fire text-white rounded-lg hover:bg-fire-dark transition ${
                       loading ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                   >
@@ -422,7 +423,7 @@ const InventoryManagerProfile = () => {
                 </div>
                 <button
                   onClick={() => setIsChangingPassword(true)}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                  className="px-4 py-2 bg-fire text-white rounded-lg hover:bg-fire-dark transition"
                 >
                   Change Password
                 </button>
@@ -435,13 +436,13 @@ const InventoryManagerProfile = () => {
                 </h2>
 
                 {passwordError && (
-                  <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg">{passwordError}</div>
+                  <div className="bg-fire-50 text-fire-dark px-4 py-3 rounded-lg">{passwordError}</div>
                 )}
 
                 {/* New Password */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    New Password <span className="text-red-500">*</span>
+                    New Password <span className="text-fire">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -449,7 +450,7 @@ const InventoryManagerProfile = () => {
                       name="newPassword"
                       value={passwordData.newPassword}
                       onChange={handlePasswordChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fire"
                       placeholder="Enter new password"
                     />
                     <button
@@ -468,7 +469,7 @@ const InventoryManagerProfile = () => {
                 {/* Confirm Password */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Confirm Password <span className="text-red-500">*</span>
+                    Confirm Password <span className="text-fire">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -476,7 +477,7 @@ const InventoryManagerProfile = () => {
                       name="confirmPassword"
                       value={passwordData.confirmPassword}
                       onChange={handlePasswordChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fire"
                       placeholder="Confirm new password"
                     />
                     <button
@@ -501,7 +502,7 @@ const InventoryManagerProfile = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition ${
+                    className={`px-6 py-2 bg-fire text-white rounded-lg hover:bg-fire-dark transition ${
                       loading ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                   >

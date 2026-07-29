@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -14,6 +15,16 @@ export const authUtils = {
 	},
 	isAuthenticated: () => !!localStorage.getItem("token"),
 };
+
+// api/inventoryApi.js and friends call through the global axios instance, so the
+// bearer token has to be attached here or those requests go out anonymous.
+axios.interceptors.request.use((config) => {
+	const token = authUtils.getAccessToken();
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`;
+	}
+	return config;
+});
 
 const getInitialUser = () => {
 	const userJson = localStorage.getItem("user");

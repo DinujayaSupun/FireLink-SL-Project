@@ -82,7 +82,7 @@ const RejectedDocumentsTable = ({
 
   // Table styles
   const tableContainerStyle = {
-    backgroundColor: '#CED6DF',
+    backgroundColor: 'var(--color-gray-300)',
     borderRadius: '12px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
@@ -92,15 +92,15 @@ const RejectedDocumentsTable = ({
   const tableTitleStyle = {
     fontSize: '20px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     padding: '20px 24px 16px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     margin: 0,
   };
 
   const searchContainerStyle = {
     padding: '16px 24px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     display: 'flex',
     gap: '12px',
     alignItems: 'center',
@@ -111,7 +111,7 @@ const RejectedDocumentsTable = ({
     flex: 1,
     minWidth: '250px',
     padding: '8px 12px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '6px',
     fontSize: '14px',
   };
@@ -134,13 +134,13 @@ const RejectedDocumentsTable = ({
 
   const reactivateButtonStyle = {
     ...buttonStyle,
-    backgroundColor: '#f59e0b',
+    backgroundColor: 'var(--color-amber)',
     color: 'white',
   };
 
   const deleteButtonStyle = {
     ...buttonStyle,
-    backgroundColor: '#ef4444',
+    backgroundColor: 'var(--color-fire)',
     color: 'white',
   };
 
@@ -152,20 +152,20 @@ const RejectedDocumentsTable = ({
   const thStyle = {
     padding: '12px 16px',
     textAlign: 'left',
-    backgroundColor: '#f9fafb',
-    borderBottom: '1px solid #e5e7eb',
+    backgroundColor: 'var(--color-gray-50)',
+    borderBottom: '1px solid var(--color-gray-200)',
     fontSize: '14px',
     fontWeight: '600',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
     cursor: 'pointer',
     userSelect: 'none',
   };
 
   const tdStyle = {
     padding: '12px 16px',
-    borderBottom: '1px solid #f3f4f6',
+    borderBottom: '1px solid var(--color-gray-100)',
     fontSize: '14px',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
   };
 
   const statusBadgeStyle = {
@@ -173,8 +173,8 @@ const RejectedDocumentsTable = ({
     borderRadius: '12px',
     fontSize: '12px',
     fontWeight: '500',
-    backgroundColor: '#fee2e2',
-    color: '#dc2626',
+    backgroundColor: 'var(--color-fire-100)',
+    color: 'var(--color-fire)',
   };
 
   const actionButtonStyle = {
@@ -185,12 +185,12 @@ const RejectedDocumentsTable = ({
   };
 
   const rejectionReasonStyle = {
-    backgroundColor: '#fef2f2',
-    border: '1px solid #fecaca',
+    backgroundColor: 'var(--color-fire-50)',
+    border: '1px solid var(--color-fire-100)',
     borderRadius: '4px',
     padding: '8px',
     fontSize: '13px',
-    color: '#dc2626',
+    color: 'var(--color-fire)',
     maxWidth: '200px',
   };
 
@@ -198,7 +198,7 @@ const RejectedDocumentsTable = ({
     return (
       <div style={tableContainerStyle}>
         <h3 style={tableTitleStyle}>Rejected Documents - Loading...</h3>
-        <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>
+        <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-gray-500)' }}>
           Loading applications...
         </div>
       </div>
@@ -223,7 +223,7 @@ const RejectedDocumentsTable = ({
         
         {selectedApplications.length > 0 && (
           <div style={batchActionStyle}>
-            <span style={{ fontSize: '14px', color: '#6b7280' }}>
+            <span style={{ fontSize: '14px', color: 'var(--color-gray-500)' }}>
               {selectedApplications.length} selected
             </span>
             <button
@@ -274,13 +274,13 @@ const RejectedDocumentsTable = ({
           <tbody>
             {filteredApplications.length === 0 ? (
               <tr>
-                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: '#6b7280', padding: '40px' }}>
+                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: 'var(--color-gray-500)', padding: '40px' }}>
                   {searchTerm ? 'No applications match your search.' : 'No rejected applications found.'}
                 </td>
               </tr>
             ) : (
               filteredApplications.map((app) => (
-                <tr key={app._id} style={{ backgroundColor: selectedApplications.includes(app._id) ? '#fef2f2' : 'transparent' }}>
+                <tr key={app._id} style={{ backgroundColor: selectedApplications.includes(app._id) ? 'var(--color-fire-50)' : 'transparent' }}>
                   <td style={tdStyle}>
                     <input
                       type="checkbox"
@@ -305,7 +305,7 @@ const RejectedDocumentsTable = ({
                   <td style={tdStyle}>
                     <button
                       onClick={() => onViewDetails && onViewDetails(app)}
-                      style={{ ...actionButtonStyle, backgroundColor: '#3b82f6', color: 'white' }}
+                      style={{ ...actionButtonStyle, backgroundColor: 'var(--color-info)', color: 'white' }}
                     >
                       View
                     </button>
@@ -314,7 +314,7 @@ const RejectedDocumentsTable = ({
                         setSelectedAppForReactivation(app);
                         setShowReactivationModal(true);
                       }}
-                      style={{ ...actionButtonStyle, backgroundColor: '#f59e0b', color: 'white' }}
+                      style={{ ...actionButtonStyle, backgroundColor: 'var(--color-amber)', color: 'white' }}
                     >
                       Reactivate
                     </button>
@@ -324,7 +324,7 @@ const RejectedDocumentsTable = ({
                           onDelete(app._id);
                         }
                       }}
-                      style={{ ...actionButtonStyle, backgroundColor: '#ef4444', color: 'white' }}
+                      style={{ ...actionButtonStyle, backgroundColor: 'var(--color-fire)', color: 'white' }}
                     >
                       Delete
                     </button>
@@ -339,10 +339,10 @@ const RejectedDocumentsTable = ({
       {/* Help Text */}
       <div style={{ 
         padding: '16px 24px', 
-        backgroundColor: '#fef2f2', 
-        borderTop: '1px solid #e5e7eb',
+        backgroundColor: 'var(--color-fire-50)', 
+        borderTop: '1px solid var(--color-gray-200)',
         fontSize: '13px',
-        color: '#dc2626'
+        color: 'var(--color-fire)'
       }}>
         <strong>Note:</strong> Reactivated applications will be moved back to pending status for review. 
         Deleted applications will be permanently removed from the database.
@@ -381,7 +381,7 @@ const RejectedDocumentsTable = ({
               <h3 style={{
                 fontSize: '20px',
                 fontWeight: '600',
-                color: '#1f2937',
+                color: 'var(--color-gray-800)',
                 margin: 0,
               }}>
                 Reactivate Application - {selectedAppForReactivation.fullName}
@@ -396,7 +396,7 @@ const RejectedDocumentsTable = ({
                   border: 'none',
                   fontSize: '24px',
                   cursor: 'pointer',
-                  color: '#6b7280',
+                  color: 'var(--color-gray-500)',
                   padding: '4px',
                 }}
               >
@@ -429,7 +429,7 @@ const RejectedDocumentsTable = ({
                 </div>
                 <div>
                   <strong>Current Status:</strong>
-                  <div style={{ color: '#dc2626', fontWeight: '500' }}>
+                  <div style={{ color: 'var(--color-fire)', fontWeight: '500' }}>
                     {selectedAppForReactivation.status}
                   </div>
                 </div>
@@ -473,9 +473,9 @@ const RejectedDocumentsTable = ({
                 style={{
                   padding: '12px 24px',
                   borderRadius: '8px',
-                  border: '1px solid #d1d5db',
+                  border: '1px solid var(--color-gray-300)',
                   backgroundColor: 'white',
-                  color: '#374151',
+                  color: 'var(--color-gray-700)',
                   fontSize: '16px',
                   fontWeight: '500',
                   cursor: 'pointer',

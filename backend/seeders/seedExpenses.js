@@ -4,7 +4,7 @@ const Transaction = require("../models/Expense");
 const generateUniqueId = require("../utils/generateUniqueId");
 const connectDatabase = require("../config/database");
 
-dotenv.config({ path: "../config/config.env" });
+dotenv.config({ path: path.join(__dirname, "../config/config.env") });
 
 const types = [
 	"emergency",

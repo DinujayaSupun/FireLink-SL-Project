@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const path = require("path");
 const Supplier = require("../models/Supplier");
 const connectDatabase = require("../config/database");
 const generateUniqueId = require("../utils/generateUniqueId");
 
-dotenv.config({ path: "../config/config.env" });
+dotenv.config({ path: path.join(__dirname, "../config/config.env") });
 
 const suppliers = [
 	{

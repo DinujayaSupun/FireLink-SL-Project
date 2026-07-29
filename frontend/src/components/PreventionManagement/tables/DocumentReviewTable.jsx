@@ -89,7 +89,7 @@ const DocumentReviewTable = ({
 
   // Table styles
   const tableContainerStyle = {
-    backgroundColor: '#CED6DF',
+    backgroundColor: 'var(--color-gray-300)',
     borderRadius: '12px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
@@ -99,15 +99,15 @@ const DocumentReviewTable = ({
   const tableTitleStyle = {
     fontSize: '20px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     padding: '20px 24px 16px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     margin: 0,
   };
 
   const searchContainerStyle = {
     padding: '16px 24px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     display: 'flex',
     gap: '12px',
     alignItems: 'center',
@@ -118,7 +118,7 @@ const DocumentReviewTable = ({
     flex: 1,
     minWidth: '250px',
     padding: '8px 12px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '6px',
     fontSize: '14px',
   };
@@ -141,19 +141,19 @@ const DocumentReviewTable = ({
 
   const approveButtonStyle = {
     ...buttonStyle,
-    backgroundColor: '#10b981',
+    backgroundColor: 'var(--color-success)',
     color: 'white',
   };
 
   const rejectButtonStyle = {
     ...buttonStyle,
-    backgroundColor: '#ef4444',
+    backgroundColor: 'var(--color-fire)',
     color: 'white',
   };
 
   const deleteButtonStyle = {
     ...buttonStyle,
-    backgroundColor: '#6b7280',
+    backgroundColor: 'var(--color-gray-500)',
     color: 'white',
   };
 
@@ -165,20 +165,20 @@ const DocumentReviewTable = ({
   const thStyle = {
     padding: '12px 16px',
     textAlign: 'left',
-    backgroundColor: '#f9fafb',
-    borderBottom: '1px solid #e5e7eb',
+    backgroundColor: 'var(--color-gray-50)',
+    borderBottom: '1px solid var(--color-gray-200)',
     fontSize: '14px',
     fontWeight: '600',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
     cursor: 'pointer',
     userSelect: 'none',
   };
 
   const tdStyle = {
     padding: '12px 16px',
-    borderBottom: '1px solid #f3f4f6',
+    borderBottom: '1px solid var(--color-gray-100)',
     fontSize: '14px',
-    color: '#374151',
+    color: 'var(--color-gray-700)',
   };
 
   const statusBadgeStyle = {
@@ -201,7 +201,7 @@ const DocumentReviewTable = ({
     return (
       <div style={tableContainerStyle}>
         <h3 style={tableTitleStyle}>Document Review - Loading...</h3>
-        <div style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>
+        <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-gray-500)' }}>
           Loading applications...
         </div>
       </div>
@@ -226,7 +226,7 @@ const DocumentReviewTable = ({
         
         {selectedApplications.length > 0 && (
           <div style={batchActionStyle}>
-            <span style={{ fontSize: '14px', color: '#6b7280' }}>
+            <span style={{ fontSize: '14px', color: 'var(--color-gray-500)' }}>
               {selectedApplications.length} selected
             </span>
             <button
@@ -279,7 +279,7 @@ const DocumentReviewTable = ({
           <tbody>
             {filteredApplications.length === 0 ? (
               <tr>
-                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: '#6b7280', padding: '40px' }}>
+                <td colSpan="8" style={{ ...tdStyle, textAlign: 'center', color: 'var(--color-gray-500)', padding: '40px' }}>
                   {searchTerm ? 'No applications match your search.' : 'No pending applications found.'}
                 </td>
               </tr>
@@ -299,8 +299,8 @@ const DocumentReviewTable = ({
                   <td style={tdStyle}>{app.constructionType}</td>
                   <td style={tdStyle}>
                     <span style={{
-                      color: app.urgencyLevel === 'Critical' ? '#dc2626' : 
-                             app.urgencyLevel === 'High' ? '#ea580c' : '#059669'
+                      color: app.urgencyLevel === 'Critical' ? 'var(--color-fire)' : 
+                             app.urgencyLevel === 'High' ? 'var(--color-amber-dark)' : 'var(--color-success-dark)'
                     }}>
                       {app.urgencyLevel || 'Normal'}
                     </span>
@@ -311,13 +311,13 @@ const DocumentReviewTable = ({
                   <td style={tdStyle}>
                     <button
                       onClick={() => onViewDetails && onViewDetails(app)}
-                      style={{ ...actionButtonStyle, backgroundColor: '#3b82f6', color: 'white' }}
+                      style={{ ...actionButtonStyle, backgroundColor: 'var(--color-info)', color: 'white' }}
                     >
                       View
                     </button>
                     <button
                       onClick={() => onApprove(app._id)}
-                      style={{ ...actionButtonStyle, backgroundColor: '#10b981', color: 'white' }}
+                      style={{ ...actionButtonStyle, backgroundColor: 'var(--color-success)', color: 'white' }}
                     >
                       Approve
                     </button>
@@ -327,7 +327,7 @@ const DocumentReviewTable = ({
                         setRejectionReason('');
                         setShowRejectionModal(true);
                       }}
-                      style={{ ...actionButtonStyle, backgroundColor: '#ef4444', color: 'white' }}
+                      style={{ ...actionButtonStyle, backgroundColor: 'var(--color-fire)', color: 'white' }}
                     >
                       Reject
                     </button>
@@ -337,7 +337,7 @@ const DocumentReviewTable = ({
                           onDelete(app._id);
                         }
                       }}
-                      style={{ ...actionButtonStyle, backgroundColor: '#6b7280', color: 'white' }}
+                      style={{ ...actionButtonStyle, backgroundColor: 'var(--color-gray-500)', color: 'white' }}
                     >
                       Delete
                     </button>
@@ -382,7 +382,7 @@ const DocumentReviewTable = ({
               <h3 style={{
                 fontSize: '20px',
                 fontWeight: '600',
-                color: '#1f2937',
+                color: 'var(--color-gray-800)',
                 margin: 0,
               }}>
                 Reject Application - {selectedAppForRejection.fullName}
@@ -398,7 +398,7 @@ const DocumentReviewTable = ({
                   border: 'none',
                   fontSize: '24px',
                   cursor: 'pointer',
-                  color: '#6b7280',
+                  color: 'var(--color-gray-500)',
                   padding: '4px',
                 }}
               >
@@ -413,9 +413,9 @@ const DocumentReviewTable = ({
                 gap: '16px',
                 marginBottom: '20px',
                 padding: '16px',
-                backgroundColor: '#fef2f2',
+                backgroundColor: 'var(--color-fire-50)',
                 borderRadius: '8px',
-                border: '1px solid #fecaca',
+                border: '1px solid var(--color-fire-100)',
               }}>
                 <div>
                   <strong>Service Type:</strong>
@@ -432,8 +432,8 @@ const DocumentReviewTable = ({
                 <div>
                   <strong>Urgency Level:</strong>
                   <div style={{ 
-                    color: selectedAppForRejection.urgencyLevel === 'Critical' ? '#dc2626' : 
-                           selectedAppForRejection.urgencyLevel === 'High' ? '#ea580c' : '#059669'
+                    color: selectedAppForRejection.urgencyLevel === 'Critical' ? 'var(--color-fire)' : 
+                           selectedAppForRejection.urgencyLevel === 'High' ? 'var(--color-amber-dark)' : 'var(--color-success-dark)'
                   }}>
                     {selectedAppForRejection.urgencyLevel || 'Normal'}
                   </div>
@@ -445,10 +445,10 @@ const DocumentReviewTable = ({
                   display: 'block',
                   fontSize: '14px',
                   fontWeight: '500',
-                  color: '#374151',
+                  color: 'var(--color-gray-700)',
                   marginBottom: '8px',
                 }}>
-                  Rejection Reason <span style={{ color: '#dc2626' }}>*</span>
+                  Rejection Reason <span style={{ color: 'var(--color-fire)' }}>*</span>
                 </label>
                 <textarea
                   value={rejectionReason}
@@ -458,7 +458,7 @@ const DocumentReviewTable = ({
                   style={{
                     width: '100%',
                     padding: '12px',
-                    border: '1px solid #d1d5db',
+                    border: '1px solid var(--color-gray-300)',
                     borderRadius: '8px',
                     fontSize: '14px',
                     resize: 'vertical',
@@ -468,7 +468,7 @@ const DocumentReviewTable = ({
                 />
                 <div style={{
                   fontSize: '12px',
-                  color: '#6b7280',
+                  color: 'var(--color-gray-500)',
                   marginTop: '4px',
                 }}>
                   This reason will be communicated to the applicant
@@ -491,9 +491,9 @@ const DocumentReviewTable = ({
                 style={{
                   padding: '10px 20px',
                   borderRadius: '8px',
-                  border: '1px solid #d1d5db',
+                  border: '1px solid var(--color-gray-300)',
                   backgroundColor: 'white',
-                  color: '#374151',
+                  color: 'var(--color-gray-700)',
                   fontSize: '14px',
                   fontWeight: '500',
                   cursor: 'pointer',
@@ -508,7 +508,7 @@ const DocumentReviewTable = ({
                   padding: '10px 20px',
                   borderRadius: '8px',
                   border: 'none',
-                  backgroundColor: '#ef4444',
+                  backgroundColor: 'var(--color-fire)',
                   color: 'white',
                   fontSize: '14px',
                   fontWeight: '500',

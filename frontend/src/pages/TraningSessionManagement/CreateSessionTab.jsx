@@ -31,7 +31,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
           value={formData.date}
           handleInputChange={handleInputChange}
           type="datetime-local"
-          icon={<FiCalendar className="mr-2 text-[#c62828]" />}
+          icon={<FiCalendar className="mr-2 text-fire" />}
           inputProps={{ min: new Date().toISOString().slice(0,16) }}
         />
         <InputField
@@ -39,7 +39,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
           name="venue"
           value={formData.venue}
           handleInputChange={handleInputChange}
-          icon={<FiMapPin className="mr-2 text-[#c62828]" />}
+          icon={<FiMapPin className="mr-2 text-fire" />}
         />
       </div>
 
@@ -54,7 +54,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
               handleTeamMemberChange(selectedId);
             }
           }}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-info transition"
         >
           <option value="">-- Select staff --</option>
           {staffMembers.map(staff => (
@@ -70,9 +70,9 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
             const staff = staffMembers.find(s => s.staffId === id);
             const displayName = staff ? `${staff.name} (${staff.staffId})` : id;
             return (
-              <span key={idx} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full flex items-center gap-2">
+              <span key={idx} className="bg-info-100 text-info-dark px-3 py-1 rounded-full flex items-center gap-2">
                 {displayName}
-                <button type="button" onClick={() => handleTeamMemberChange(id)} className="text-red-500 font-bold">×</button>
+                <button type="button" onClick={() => handleTeamMemberChange(id)} className="text-fire font-bold">×</button>
               </span>
             );
           })}
@@ -91,7 +91,7 @@ const CreateSessionTab = ({ user, staffMembers, onSubmit, formData, setFormData,
         <button
           type="submit"
           disabled={loading || formData.teamMembers.length === 0}
-          className="px-8 py-3 bg-gradient-to-r from-[#c62828] to-[#d32f2f] text-white rounded-lg hover:from-[#b71c1c] hover:to-[#c62828] disabled:opacity-50 transition flex items-center shadow-md"
+          className="px-8 py-3 bg-fire hover:bg-fire-dark text-white rounded-lg hover:from-fire-dark hover:to-fire disabled:opacity-50 transition flex items-center shadow-md"
         >
           {loading ? <><FiSettings className="animate-spin mr-2" /> Creating...</> : <><FiPlus className="mr-2" /> Create Session</>}
         </button>

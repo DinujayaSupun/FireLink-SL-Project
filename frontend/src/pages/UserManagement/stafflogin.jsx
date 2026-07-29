@@ -4,8 +4,9 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { useAuth } from "../../context/auth";
+import { API_BASE_URL } from "../../config/api";
 
-const URL = "http://localhost:5000/users/stafflogin";
+const URL = `${API_BASE_URL}/users/stafflogin`;
 
 function StaffLogin() {
 	const navigate = useNavigate();
@@ -58,9 +59,9 @@ function StaffLogin() {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#1E2A38] flex items-center justify-center p-6">
+		<div className="min-h-screen bg-navy flex items-center justify-center p-6">
 			<div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md">
-				<h2 className="text-4xl font-bold text-[#C62828] mb-2 text-center">
+				<h2 className="text-4xl font-bold text-fire mb-2 text-center">
 					Fire Staff Login
 				</h2>
 				<p className="text-center text-gray-500 mb-6">
@@ -77,7 +78,7 @@ function StaffLogin() {
 							placeholder="Staff ID"
 							value={formData.staffId}
 							onChange={handleChange}
-							className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition"
+							className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber transition"
 							required
 						/>
 					</div>
@@ -91,7 +92,7 @@ function StaffLogin() {
 							placeholder="Password"
 							value={formData.password}
 							onChange={handleChange}
-							className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] transition"
+							className="w-full pl-10 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber transition"
 							required
 						/>
 					</div>
@@ -103,7 +104,7 @@ function StaffLogin() {
 						className={`w-full p-3 font-semibold rounded-xl shadow-lg transition ${
 							loading || !isFormValid()
 								? "bg-gray-400 text-white cursor-not-allowed"
-								: "bg-[#FF9800] text-white hover:shadow-xl"
+								: "bg-amber text-white hover:shadow-xl"
 						}`}
 					>
 						{loading ? "Logging in..." : "Login"}
@@ -113,7 +114,7 @@ function StaffLogin() {
 				{/* Optional Footer */}
 				<div className="mt-6 text-center text-gray-500 text-sm">
 					Forgot your password?{" "}
-					<span className="text-[#C62828] cursor-pointer hover:underline">
+					<span className="text-fire cursor-pointer hover:underline">
 						Reset here
 					</span>
 				</div>
@@ -123,7 +124,7 @@ function StaffLogin() {
 					<p>
 						<Link
 							to="/supplier-login"
-							className="text-blue-600 hover:underline"
+							className="text-info hover:underline"
 						>
 							Supplier Login
 						</Link>
@@ -131,7 +132,7 @@ function StaffLogin() {
 					<p>
 						<Link
 							to="/civilian-login"
-							className="text-green-600 hover:underline"
+							className="text-success hover:underline"
 						>
 							Civilian Login
 						</Link>

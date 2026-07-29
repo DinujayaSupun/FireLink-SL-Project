@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast, Toaster } from 'sonner';
+import { API_BASE_URL } from "../../config/api";
 
 // Add Public Sans font from Google Fonts
 if (typeof document !== 'undefined') {
@@ -29,13 +30,13 @@ const dropdownCSS = `
     background-repeat: no-repeat;
     background-size: 16px;
     padding-right: 40px;
-    color: #374151;
+    color: var(--color-gray-700);
     font-weight: 500;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
 
   .modern-select:hover {
-    border-color: #d1d5db;
+    border-color: var(--color-gray-300);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     transform: translateY(-1px);
   }
@@ -49,7 +50,7 @@ const dropdownCSS = `
   .modern-select option {
     padding: 12px 16px;
     background-color: white;
-    color: #374151;
+    color: var(--color-gray-700);
     font-size: 14px;
     font-weight: 500;
     line-height: 1.5;
@@ -59,7 +60,7 @@ const dropdownCSS = `
 
   .modern-select option:hover {
     background-color: #f8fafc !important;
-    color: #1f2937 !important;
+    color: var(--color-gray-800) !important;
     font-weight: 600 !important;
   }
 
@@ -78,8 +79,8 @@ const dropdownCSS = `
   /* Enhanced styling for better visual hierarchy */
   .modern-select optgroup {
     font-weight: bold;
-    color: #6b7280;
-    background-color: #f9fafb;
+    color: var(--color-gray-500);
+    background-color: var(--color-gray-50);
     padding: 8px 16px;
   }
 
@@ -274,7 +275,7 @@ const PreventionCertificateForm = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/prevention/certificates/apply", data, {
+      await axios.post("${API_BASE_URL}/api/prevention/certificates/apply", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       toast.success("Application submitted successfully!");
@@ -304,7 +305,7 @@ const PreventionCertificateForm = () => {
   // Inline styles
   const pageStyle = {
   minHeight: "100vh",
-  backgroundColor: "#1E2A38",
+  backgroundColor: "var(--color-navy)",
   backgroundImage: `url('/images/fire-truck-bg.jpg')`,
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -318,7 +319,7 @@ const PreventionCertificateForm = () => {
   maxWidth: "600px",
   margin: "40px auto",
   padding: "30px",
-  backgroundColor: "#354759",
+  backgroundColor: "var(--color-gray-700)",
   backdropFilter: "blur(10px)",
   borderRadius: "15px",
   boxShadow: "0px 8px 25px rgba(0,0,0,0.4)",
@@ -360,7 +361,7 @@ const PreventionCertificateForm = () => {
     width: "100%",
     padding: "12px 16px",
     borderRadius: "12px",
-    border: "2px solid #ef4444",
+    border: "2px solid var(--color-fire)",
     fontSize: "14px",
     boxSizing: "border-box",
     backgroundColor: "white",
@@ -369,7 +370,7 @@ const PreventionCertificateForm = () => {
   };
 
   const errorTextStyle = {
-    color: "#ef4444",
+    color: "var(--color-fire)",
     fontSize: "12px",
     marginTop: "5px",
     fontWeight: "bold",
@@ -392,7 +393,7 @@ const PreventionCertificateForm = () => {
     width: "100%",
     padding: "12px 16px",
     borderRadius: "15px",
-    border: "2px solid #ef4444",
+    border: "2px solid var(--color-fire)",
     fontSize: "14px",
     boxSizing: "border-box",
     backgroundColor: "white",
@@ -402,7 +403,7 @@ const PreventionCertificateForm = () => {
   };
 
   const buttonStyle = {
-    backgroundColor: "#C62828",
+    backgroundColor: "var(--color-fire)",
     color: "white",
     padding: "14px 20px",
     border: "none",
@@ -416,7 +417,7 @@ const PreventionCertificateForm = () => {
   };
 
   const buttonHoverStyle = {
-    backgroundColor: "#B71C1C",
+    backgroundColor: "var(--color-fire-dark)",
     transform: "translateY(-2px)",
     boxShadow: "0 6px 12px rgba(198, 40, 40, 0.4)",
   };
@@ -438,19 +439,19 @@ const PreventionCertificateForm = () => {
     backgroundRepeat: "no-repeat",
     backgroundSize: "16px",
     paddingRight: "40px",
-    color: "#374151",
+    color: "var(--color-gray-700)",
     fontWeight: "500",
     boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
   };
 
   const selectFocusStyle = {
-    borderColor: "#3b82f6",
+    borderColor: "var(--color-info)",
     boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
     transform: "translateY(-1px)",
   };
 
   const selectHoverStyle = {
-    borderColor: "#d1d5db",
+    borderColor: "var(--color-gray-300)",
     boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
     transform: "translateY(-1px)",
   };
@@ -463,22 +464,22 @@ const PreventionCertificateForm = () => {
   const optionStyle = {
     padding: "12px 16px",
     backgroundColor: "white",
-    color: "#374151",
+    color: "var(--color-gray-700)",
     fontSize: "14px",
     fontWeight: "500",
-    borderBottom: "1px solid #f3f4f6",
+    borderBottom: "1px solid var(--color-gray-100)",
     cursor: "pointer",
     transition: "all 0.2s ease",
   };
 
   const optionHoverStyle = {
-    backgroundColor: "#f8fafc",
-    color: "#1f2937",
+    backgroundColor: "var(--color-gray-50)",
+    color: "var(--color-gray-800)",
     fontWeight: "600",
   };
 
   const optionSelectedStyle = {
-    backgroundColor: "#3b82f6",
+    backgroundColor: "var(--color-info)",
     color: "white",
     fontWeight: "600",
   };

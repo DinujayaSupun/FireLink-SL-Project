@@ -53,7 +53,7 @@ const InspectedDocumentsTable = ({
 
   // Table styles
   const tableContainerStyle = {
-    backgroundColor: '#CED6DF',
+    backgroundColor: 'var(--color-gray-300)',
     borderRadius: '12px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
@@ -67,22 +67,22 @@ const InspectedDocumentsTable = ({
   const tableTitleStyle = {
     fontSize: '20px',
     fontWeight: '600',
-    color: '#1f2937',
+    color: 'var(--color-gray-800)',
     padding: '20px 24px 16px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
     margin: 0,
   };
 
   const searchContainerStyle = {
     padding: '16px 24px',
-    borderBottom: '1px solid #e5e7eb',
+    borderBottom: '1px solid var(--color-gray-200)',
   };
 
   const searchInputStyle = {
     width: '100%',
     padding: '12px 16px',
     fontSize: '14px',
-    border: '1px solid #d1d5db',
+    border: '1px solid var(--color-gray-300)',
     borderRadius: '8px',
     backgroundColor: 'white',
     outline: 'none',
@@ -96,13 +96,13 @@ const InspectedDocumentsTable = ({
   };
 
   const thStyle = {
-    backgroundColor: '#f8fafc',
+    backgroundColor: 'var(--color-gray-50)',
     padding: '16px',
     textAlign: 'left',
     fontSize: '14px',
     fontWeight: '600',
-    color: '#374151',
-    borderBottom: '2px solid #e5e7eb',
+    color: 'var(--color-gray-700)',
+    borderBottom: '2px solid var(--color-gray-200)',
     position: 'sticky',
     top: 0,
     zIndex: 10,
@@ -111,13 +111,13 @@ const InspectedDocumentsTable = ({
   const tdStyle = {
     padding: '16px',
     fontSize: '14px',
-    color: '#374151',
-    borderBottom: '1px solid #f3f4f6',
+    color: 'var(--color-gray-700)',
+    borderBottom: '1px solid var(--color-gray-100)',
     verticalAlign: 'middle',
   };
 
   const statusBadgeStyle = {
-    backgroundColor: '#10b981',
+    backgroundColor: 'var(--color-success)',
     color: 'white',
     padding: '4px 12px',
     borderRadius: '20px',
@@ -143,20 +143,20 @@ const InspectedDocumentsTable = ({
 
   const viewButtonStyle = {
     ...actionButtonStyle,
-    backgroundColor: '#3b82f6',
+    backgroundColor: 'var(--color-info)',
     color: 'white',
   };
 
   const deleteButtonStyle = {
     ...actionButtonStyle,
-    backgroundColor: '#ef4444',
+    backgroundColor: 'var(--color-fire)',
     color: 'white',
   };
 
   const emptyStateStyle = {
     textAlign: 'center',
     padding: '48px 24px',
-    color: '#6b7280',
+    color: 'var(--color-gray-500)',
     fontSize: '16px',
   };
 
@@ -205,7 +205,7 @@ const InspectedDocumentsTable = ({
             {loading ? (
               <tr>
                 <td colSpan="7" style={{ ...tdStyle, textAlign: 'center', padding: '48px' }}>
-                  <div style={{ color: '#6b7280' }}>Loading inspected applications...</div>
+                  <div style={{ color: 'var(--color-gray-500)' }}>Loading inspected applications...</div>
                 </td>
               </tr>
             ) : filteredApplications.length === 0 ? (
@@ -216,7 +216,7 @@ const InspectedDocumentsTable = ({
               </tr>
             ) : (
               filteredApplications.map((app, index) => (
-                <tr key={app._id || index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9fafb' }}>
+                <tr key={app._id || index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : 'var(--color-gray-50)' }}>
                   <td style={tdStyle}>
                     <strong>{app._id?.substring(0, 8).toUpperCase() || 'N/A'}</strong>
                   </td>
@@ -233,8 +233,8 @@ const InspectedDocumentsTable = ({
                     <button
                       style={viewButtonStyle}
                       onClick={() => onViewDetails(app)}
-                      onMouseOver={(e) => e.target.style.backgroundColor = '#2563eb'}
-                      onMouseOut={(e) => e.target.style.backgroundColor = '#3b82f6'}
+                      onMouseOver={(e) => e.target.style.backgroundColor = 'var(--color-info-dark)'}
+                      onMouseOut={(e) => e.target.style.backgroundColor = 'var(--color-info)'}
                     >
                       <span className="material-icons" style={{ fontSize: '16px' }}>visibility</span>
                       View Details
@@ -246,8 +246,8 @@ const InspectedDocumentsTable = ({
                           onDeleteApplication(app._id);
                         }
                       }}
-                      onMouseOver={(e) => e.target.style.backgroundColor = '#dc2626'}
-                      onMouseOut={(e) => e.target.style.backgroundColor = '#ef4444'}
+                      onMouseOver={(e) => e.target.style.backgroundColor = 'var(--color-fire)'}
+                      onMouseOut={(e) => e.target.style.backgroundColor = 'var(--color-fire)'}
                     >
                       <span className="material-icons" style={{ fontSize: '16px' }}>delete</span>
                       delete
